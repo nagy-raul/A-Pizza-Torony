@@ -1,2 +1,2 @@
-# Pizza-etterem-projekt
+# A-Pizza-Torony
 Tagok: Nagy Raul és Balázs Lehel
