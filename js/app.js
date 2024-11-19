@@ -63,6 +63,12 @@
         parent: 'root',
 				templateUrl: './html/rolunk.html',
 				controller: 'rolunkController'
+			})
+      .state('asztalfoglalas', {
+				url: '/',
+        parent: 'root',
+				templateUrl: './htmlasztalfoglalas.html',
+				controller: 'asztalfoglalasController'
 			});
       
       $urlRouterProvider.otherwise('/');
@@ -124,5 +130,13 @@
       console.log('rolunkController...');
     }
   ])
+
+  // Home controller
+  .controller('asztalfoglalasController', [
+    '$scope',
+    function($scope) {
+      console.log('asztalfoglalasController...');
+    }
+  ]);
 	
 })(window, angular);
