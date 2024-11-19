@@ -33,6 +33,36 @@
         parent: 'root',
 				templateUrl: './html/home.html',
 				controller: 'homeController'
+			})
+      .state('etlap', {
+				url: '/',
+        parent: 'root',
+				templateUrl: './html/etlap.html',
+				controller: 'etlapController'
+			})
+      .state('foglalas', {
+				url: '/',
+        parent: 'root',
+				templateUrl: './html/foglalas.html',
+				controller: 'foglalasController'
+			})
+      .state('kapcsolat', {
+				url: '/',
+        parent: 'root',
+				templateUrl: './html/kapcsolat.html',
+				controller: 'kapcsolatController'
+			})
+      .state('rendeles', {
+				url: '/',
+        parent: 'root',
+				templateUrl: './html/rendeles.html',
+				controller: 'rendelesController'
+			})
+      .state('rolunk', {
+				url: '/',
+        parent: 'root',
+				templateUrl: './html/rolunk.html',
+				controller: 'rolunkController'
 			});
       
       $urlRouterProvider.otherwise('/');
@@ -52,6 +82,46 @@
     '$scope',
     function($scope) {
       console.log('Home controller...');
+    }
+  ])
+
+  // Home controller
+  .controller('etlapController', [
+    '$scope',
+    function($scope) {
+      console.log('etlapController...');
+    }
+  ])
+
+  // Home controller
+  .controller('foglalasController', [
+    '$scope',
+    function($scope) {
+      console.log('foglalasController...');
+    }
+  ])
+
+  // Home controller
+  .controller('kapcsolatController', [
+    '$scope',
+    function($scope) {
+      console.log('kapcsolatController...');
+    }
+  ])
+
+  // Home controller
+  .controller('rendelesController', [
+    '$scope',
+    function($scope) {
+      console.log('rendelesController...');
+    }
+  ])
+
+  // Home controller
+  .controller('rolunkController', [
+    '$scope',
+    function($scope) {
+      console.log('rolunkController...');
     }
   ])
 	
