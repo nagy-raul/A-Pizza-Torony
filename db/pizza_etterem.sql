@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Nov 20. 09:12
+-- Létrehozás ideje: 2024. Nov 20. 11:33
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.1.17
 
@@ -34,8 +34,8 @@ CREATE TABLE `asztalfoglalasok` (
   `ido` time NOT NULL,
   `orak` int(2) NOT NULL,
   `vendegek` int(2) NOT NULL,
-  `megjegyzes` varchar(1000) NOT NULL,
-  `igeny` varchar(1000) NOT NULL
+  `megjegyzes` text NOT NULL,
+  `igeny` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -76,7 +76,7 @@ CREATE TABLE `kapcsolat` (
   `kapcsolatID` int(10) NOT NULL,
   `felhasznaloID` int(5) NOT NULL,
   `targy` varchar(100) NOT NULL,
-  `uzenet` varchar(1000) NOT NULL
+  `uzenet` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -95,23 +95,33 @@ INSERT INTO `kapcsolat` (`kapcsolatID`, `felhasznaloID`, `targy`, `uzenet`) VALU
 CREATE TABLE `pizza` (
   `termekID` int(11) NOT NULL,
   `termeknev` varchar(100) NOT NULL,
-  `termekdesc` varchar(1000) NOT NULL,
+  `termekdesc` text NOT NULL,
   `termekAr` int(10) NOT NULL,
   `meret` int(10) NOT NULL,
   `hej` varchar(50) NOT NULL,
   `szosz` varchar(100) NOT NULL,
   `sajt` varchar(100) NOT NULL,
   `feltetek` varchar(100) NOT NULL,
-  `extrak` varchar(1000) NOT NULL,
-  `kep` varchar(100) NOT NULL
+  `kep` varchar(100) NOT NULL,
+  `kategoria` varchar(100) NOT NULL,
+  `learazas` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- A tábla adatainak kiíratása `pizza`
 --
 
-INSERT INTO `pizza` (`termekID`, `termeknev`, `termekdesc`, `termekAr`, `meret`, `hej`, `szosz`, `sajt`, `feltetek`, `extrak`, `kep`) VALUES
-(1, 'Sonkás pizza', 'paradicsomos alap, sonka, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'sonka', 'üditő', 'sonkas.jpg');
+INSERT INTO `pizza` (`termekID`, `termeknev`, `termekdesc`, `termekAr`, `meret`, `hej`, `szosz`, `sajt`, `feltetek`, `kep`, `kategoria`, `learazas`) VALUES
+(1, 'Sonkás pizza', 'paradicsomos alap, sonka, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'sonka', 'sonkas.jpg', 'Classic (vastag) 24-es pizza', NULL),
+(2, 'Margaréta', 'paradicsomos alap, paradicsomkarika, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'paradicsomkarika', 'margareta.jpg', 'Classic (vastag) 24-es pizza', NULL),
+(3, 'Szalámis pizza', 'paradicsomos alap, szalámi, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsomos', 'mozzarella, trappista', 'szalámi', 'szalamis.jpg', 'Classic (vastag) 24-es pizza', NULL),
+(4, 'Tarjás pizza', 'paradicsomos alap, tarja, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'tarja', 'tarjas.jpg', 'Classic (vastag) 24-es pizza', NULL),
+(5, 'Kolbászos pizza', 'paradicsomos alap, kolbász, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'kolbász', 'kolbasz.jpg', 'Classic (vastag) 24-es pizza', NULL),
+(6, 'Margaréta', 'paradicsomos alap, paradicsomkarika, mozzarella, trappista', 3140, 32, 'vékony', 'paradicsom', 'mozzarella, trappista', 'paradicsomkarika', 'margareta.jpg', 'Olasz (vékony) 32-es pizzák', NULL),
+(7, 'Sonkás pizza', 'paradicsomos alap, sonka, mozzarella, trappista', 3140, 32, 'vekony', 'paradicsom', 'mozzarella, trappista', 'sonka', 'sonkas.jpg', 'Olasz (vékony) 32-es pizzák', NULL),
+(8, 'Szalámis pizza', 'paradicsomos alap, szalámi, mozzarella, trappista', 3140, 32, 'vékony', 'paradicsom', 'mozzarella, trappista', 'szalámi', 'szalamis.jpg', 'Olasz (vékony) 32-es pizzák', NULL),
+(9, 'Kolbászos pizza', 'paradicsomos alap, kolbász, mozzarella, trappista', 3140, 32, 'vekony', 'paradicsom', 'mozzarella, trappista', 'kolbász', 'kolbaszos.jpg', 'Olasz (vékony) 32-es pizzák', NULL),
+(10, 'Tarjás pizza', 'paradicsomos alap, tarja, mozzarella, trappista', 3140, 32, 'vékony', 'paradicsom', 'mozzarella, trappista', 'tarja', 'tarjas.jpg', 'Olasz (vékony) 32-es pizzák\r\n', NULL);
 
 -- --------------------------------------------------------
 
@@ -145,7 +155,7 @@ INSERT INTO `rendelesek` (`felhasznaloID`, `rendelesID`, `szalcim`, `fizform`, `
 CREATE TABLE `rendeles_elemei` (
   `termekID` int(11) NOT NULL,
   `rendeles_id` int(11) NOT NULL,
-  `darab` int(100) NOT NULL
+  `darab` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -223,13 +233,13 @@ ALTER TABLE `kapcsolat`
 -- AUTO_INCREMENT a táblához `pizza`
 --
 ALTER TABLE `pizza`
-  MODIFY `termekID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `termekID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT a táblához `rendeles_elemei`
 --
 ALTER TABLE `rendeles_elemei`
-  MODIFY `rendeles_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `rendeles_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
