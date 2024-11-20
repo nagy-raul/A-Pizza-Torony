@@ -63,6 +63,24 @@
         parent: 'root',
 				templateUrl: './html/rolunk.html',
 				controller: 'rolunkController'
+			})
+      .state('login', {
+				url: '/',
+        parent: 'root',
+				templateUrl: './html/login.html',
+				controller: 'loginController'
+			})
+      .state('register', {
+				url: '/',
+        parent: 'root',
+				templateUrl: './html/register.html',
+				controller: 'registerController'
+			})
+      .state('profile', {
+				url: '/',
+        parent: 'root',
+				templateUrl: './html/profile.html',
+				controller: 'profileController'
 			});
       
       $urlRouterProvider.otherwise('/');
@@ -85,51 +103,75 @@
     }
   ])
 
-  // Home controller
+  // Etlap controller
   .controller('etlapController', [
     '$scope',
     function($scope) {
-      console.log('etlapController...');
+      console.log('Etlap Controller...');
     }
   ])
 
-  // Home controller
+  // Foglalas controller
   .controller('foglalasController', [
     '$scope',
     function($scope) {
-      console.log('foglalasController...');
+      console.log('Foglalas Controller...');
     }
   ])
 
-  // Home controller
+  // Kapcsolat controller
   .controller('kapcsolatController', [
     '$scope',
     function($scope) {
-      console.log('kapcsolatController...');
+      console.log('Kapcsolat Controller...');
     }
   ])
 
-  // Home controller
+  // Rendeles controller
   .controller('rendelesController', [
     '$scope',
     function($scope) {
-      console.log('rendelesController...');
+      console.log('Rendeles Controller...');
     }
   ])
 
-  // Home controller
+  // Rolunk controller
   .controller('rolunkController', [
     '$scope',
     function($scope) {
-      console.log('rolunkController...');
+      console.log('Rolunk Controller...');
     }
   ])
 
-  // Home controller
+  // Foglalas controller
   .controller('foglalasController', [
     '$scope',
     function($scope) {
-      console.log('foglalasController...');
+      console.log('Foglalas Controller...');
+    }
+  ])
+  
+  // Home controller
+  .controller('Login Controller', [
+    '$scope',
+    function($scope) {
+      console.log('Login Controller...');
+    }
+  ])
+  
+  // Home controller
+  .controller('Register Controller', [
+    '$scope',
+    function($scope) {
+      console.log('Register Controller...');
+    }
+  ])
+  
+  // Home controller
+  .controller('ProfileController', [
+    '$scope',
+    function($scope) {
+      console.log('Profile Controller...');
     }
   ]);
 	
