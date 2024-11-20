@@ -124,9 +124,9 @@ CREATE TABLE `rendelesek` (
   `rendelesID` int(11) NOT NULL,
   `szalcim` varchar(100) NOT NULL,
   `fizform` varchar(100) NOT NULL,
-  `reszossz` int(100) NOT NULL,
-  `fizossz` int(100) NOT NULL,
-  `szalldij` int(100) NOT NULL
+  `reszossz` int(10) NOT NULL,
+  `fizossz` int(10) NOT NULL,
+  `szalldij` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -145,7 +145,7 @@ INSERT INTO `rendelesek` (`felhasznaloID`, `rendelesID`, `szalcim`, `fizform`, `
 CREATE TABLE `rendeles_elemei` (
   `termekID` int(11) NOT NULL,
   `rendeles_id` int(11) NOT NULL,
-  `darab` int(100) NOT NULL
+  `darab` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
