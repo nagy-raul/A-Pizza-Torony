@@ -1,0 +1,9 @@
+.custom-tooltip {
+  --bs-tooltip-bg: var(--bs-primary);
+	--bs-tooltip-color: var(--bs-light);
+}
+.form-control-disabled {
+	border: 0 !important;
+	box-shadow: none !important;
+	cursor: default !important;
+}
