@@ -2,7 +2,7 @@
 <div class="row mb-4">
   <h3 class="text-center">
     <i class="fa-solid fa-right-to-bracket"></i>
-    <span class="text-capitalize ms-2">login</span>
+    <span class="text-capitalize ms-2">bejelentkezés</span>
   </h3>
 </div>
 
@@ -47,14 +47,14 @@
            class="col-form-label col-12 col-md-5 text-md-end">
       <i class="fa-solid fa-star fa-2xs text-danger"></i>
       <i class="fa-solid fa-key me-1"></i>
-      <span class="text-capitalize">password:</span>
+      <span class="text-capitalize">jelszó:</span>
     </label>
     <div class="col-11 col-md-6 position-relative">
       <input id="login-password"
              class="form-control"
              name="password" 
              type="{{model.login.showPassword ? 'text' : 'password'}}"
-             placeholder="password"
+             placeholder="jelszó"
              spellcheck="false" 
              autocomplete="off" 
              required
@@ -74,8 +74,8 @@
       <span data-bs-toggle="tooltip"
             data-bs-custom-class="custom-tooltip"
             data-bs-html="true"
-            data-bs-title="&lt;p class='my-1'>6-20 characters&lt;/br>
-                           &lt;small>(contains uppercase, lowercase letters and numbers)&lt;/small>&lt;/p>">
+            data-bs-title="&lt;p class='my-1'>6-20 karakter&lt;/br>
+                           &lt;small>(tartalmaz nagybetűket, kisbetűket és számokat)&lt;/small>&lt;/p>">
         <i class="fa-solid fa-circle-info text-primary ms-2"></i>
       </span>
     </div>
@@ -92,7 +92,7 @@
              ng-model="model.login.showPassword">
       <label for="login-showPassword"
              class="form-check-label ms-1">
-        Show password
+        Jelszó megjelenítése
       </label>
     </div>
   </div>
@@ -105,7 +105,7 @@
             class="btn btn-primary w-auto px-5 me-3 text-capitalize"
             ng-disabled="loginForm.$invalid"
             ng-click="methods.httpRequest()">
-      login
+      bejelentkezés
     </button>
   </div>
 </form>

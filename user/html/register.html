@@ -2,7 +2,7 @@
 <div class="row mb-4">
   <h3 class="text-center">
     <i class="fa-solid fa-id-card"></i>
-    <span class="text-capitalize ms-2">registration</span>
+    <span class="text-capitalize ms-2">regisztráció</span>
   </h3>
 </div>
 
@@ -15,14 +15,14 @@
            class="col-form-label col-12 col-md-5 text-md-end">
       <i class="fa-solid fa-star fa-2xs text-danger"></i>
       <i class="fa-solid fa-user me-1"></i>
-      <span class="text-capitalize">name:</span>
+      <span class="text-capitalize">név:</span>
     </label>
     <div class="col-11 col-md-6 position-relative">
       <input id="register-name"
              class="form-control"
              name="name" 
              type="text"
-             placeholder="name"
+             placeholder="név"
              spellcheck="false" 
              autocomplete="off" 
              required
@@ -45,14 +45,14 @@
            class="col-form-label col-12 col-md-5 text-md-end">
       <i class="fa-solid fa-star fa-2xs text-danger"></i>
       <i class="fa-solid fa-calendar-days me-1"></i>
-      <span class="text-capitalize">born:</span>
+      <span class="text-capitalize">születési dátum:</span>
     </label>
     <div class="col-11 col-md-6 position-relative">
       <input id="register-born"
              class="form-control"
              name="born" 
              type="date"
-             placeholder="born"
+             placeholder="születési dátum"
              spellcheck="false" 
              autocomplete="off"
 						 max="{{helper.maxBorn}}"
@@ -72,7 +72,7 @@
 			<span data-bs-toggle="tooltip"
             data-bs-custom-class="custom-tooltip"
             data-bs-html="true"
-            data-bs-title="&lt;p class='my-1'>Only people over 16 years old can be register!&lt;/p>">
+            data-bs-title="&lt;p class='my-1'>Csak a 16 éven felüliek regisztrálhatnak!&lt;/p>">
         <i class="fa-solid fa-circle-info text-primary ms-2"></i>
       </span>
     </div>
@@ -84,7 +84,7 @@
 			<i class="fa-solid fa-star fa-2xs text-danger"></i>
 			<i class="fa-solid fa-venus-mars me-1"></i>
 			<span class="text-capitalize">
-				gender:
+				nem:
 			</span>
 		</legend>
 		<div class="col-11 col-md-6 position-relative d-flex align-items-center"
@@ -144,7 +144,7 @@
       <span data-bs-toggle="tooltip"
             data-bs-custom-class="custom-tooltip"
             data-bs-html="true"
-            data-bs-title="&lt;p class='my-1'>The email address verification is required!&lt;/p>">
+            data-bs-title="&lt;p class='my-1'>Az email cím megerősítése kötelező!&lt;/p>">
         <i class="fa-solid fa-circle-info text-primary ms-2"></i>
       </span>
     </div>
@@ -156,14 +156,14 @@
            class="col-form-label col-12 col-md-5 text-md-end">
       <i class="fa-solid fa-star fa-2xs text-danger"></i>
       <i class="fa-regular fa-envelope me-1"></i>
-      <span class="text-capitalize">confirm:</span>
+      <span class="text-capitalize">megerősítés:</span>
     </label>
     <div class="col-11 col-md-6 position-relative">
       <input id="register-emailConfirm"
              class="form-control"
              name="emailConfirm" 
              type="text"
-             placeholder="email confirmation"
+             placeholder="email megerősítés"
              spellcheck="false" 
              autocomplete="off" 
              required
@@ -183,7 +183,7 @@
 			<span data-bs-toggle="tooltip"
             data-bs-custom-class="custom-tooltip"
             data-bs-html="true"
-            data-bs-title="&lt;p class='my-1'>Please re-enter your email address for security!&lt;/p>">
+            data-bs-title="&lt;p class='my-1'>Kérjük, adja meg újra az e-mail címét a biztonság érdekében!&lt;/p>">
         <i class="fa-solid fa-circle-info text-primary ms-2"></i>
       </span>
     </div>
@@ -195,14 +195,14 @@
            class="col-form-label col-12 col-md-5 text-md-end">
       <i class="fa-solid fa-star fa-2xs text-danger"></i>
       <i class="fa-solid fa-key me-1"></i>
-      <span class="text-capitalize">password:</span>
+      <span class="text-capitalize">jelszó:</span>
     </label>
     <div class="col-11 col-md-6 position-relative">
       <input id="register-password"
              class="form-control"
              name="password" 
              type="{{model.register.showPassword ? 'text' : 'password'}}"
-             placeholder="password"
+             placeholder="jelszó"
              spellcheck="false" 
              autocomplete="off" 
              required
@@ -222,8 +222,8 @@
       <span data-bs-toggle="tooltip"
             data-bs-custom-class="custom-tooltip"
             data-bs-html="true"
-            data-bs-title="&lt;p class='my-1'>6-20 characters&lt;/br>
-                           &lt;small>(contains uppercase, lowercase letters and numbers)&lt;/small>&lt;/p>">
+            data-bs-title="&lt;p class='my-1'>6-20 karakter&lt;/br>
+                          &lt;small>(tartalmaz nagybetűket, kisbetűket és számokat)&lt;/small>&lt;/p>">
         <i class="fa-solid fa-circle-info text-primary ms-2"></i>
       </span>
     </div>
@@ -235,14 +235,14 @@
            class="col-form-label col-12 col-md-5 text-md-end">
       <i class="fa-solid fa-star fa-2xs text-danger"></i>
       <i class="fa-solid fa-unlock-keyhole me-1"></i>
-      <span class="text-capitalize">confirm:</span>
+      <span class="text-capitalize">megerősítés:</span>
     </label>
     <div class="col-11 col-md-6 position-relative">
       <input id="register-passwordConfirm"
              class="form-control"
              name="passwordConfirm" 
              type="{{model.register.showPassword ? 'text' : 'password'}}"
-             placeholder="password confirmation"
+             placeholder="jelszó megerősítés"
              spellcheck="false" 
              autocomplete="off" 
              required
@@ -263,7 +263,7 @@
       <span data-bs-toggle="tooltip"
             data-bs-custom-class="custom-tooltip"
             data-bs-html="true"
-            data-bs-title="&lt;p class='my-1'>Please re-enter your password for security!&lt;/p>">
+            data-bs-title="&lt;p class='my-1'>Kérjük, adja meg újra az jelszavát a biztonság érdekében!&lt;/p>">
         <i class="fa-solid fa-circle-info text-primary ms-2"></i>
       </span>
     </div>
@@ -280,7 +280,7 @@
              ng-model="model.register.showPassword">
       <label for="register-showPassword"
              class="form-check-label ms-1">
-        Show password
+        Jelszó megjelenítése
       </label>
     </div>
   </div>
@@ -293,7 +293,7 @@
             class="btn btn-primary w-auto px-5 me-3 text-capitalize"
             ng-disabled="registerForm.$invalid"
             ng-click="methods.httpRequest()">
-      registration
+      regisztráció
     </button>
   </div>
 </form>
