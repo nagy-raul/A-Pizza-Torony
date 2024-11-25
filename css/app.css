@@ -118,3 +118,18 @@
 	  box-shadow: none !important;
 	  cursor: default !important;
   }
+
+.banner-image{
+	height: 50%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+}
+
+.banner-text{
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+}
