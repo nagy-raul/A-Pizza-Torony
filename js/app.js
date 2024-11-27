@@ -151,7 +151,7 @@
     }
   ])
   
-  // Home controller
+  // Login controller
   .controller('Login Controller', [
     '$scope',
     function($scope) {
@@ -159,7 +159,7 @@
     }
   ])
   
-  // Home controller
+  // Register controller
   .controller('Register Controller', [
     '$scope',
     function($scope) {
@@ -167,7 +167,7 @@
     }
   ])
   
-  // Home controller
+  // Profile controller
   .controller('ProfileController', [
     '$scope',
     function($scope) {
