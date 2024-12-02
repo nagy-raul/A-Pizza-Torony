@@ -1,0 +1,37 @@
+<div id="messageDialog" 
+     class="modal fade" 
+     data-bs-backdrop="static" 
+     data-bs-keyboard="false" 
+     tabindex="-1" 
+     aria-hidden="true"
+		 data-bs-theme="light">
+	<div class="modal-dialog">
+	  <div class="modal-content text-dark">
+	    <div class="modal-header">
+				<i class="fa-3x" ng-class="$root.message.icon"></i>
+			</div>
+	    <div class="modal-body">
+				<h5 class="text-center">
+					<span>{{$root.message.content}}</span>
+				</h5>
+			</div>
+	    <div class="modal-footer">
+				<button type="button" 
+                class="btn btn-primary px-4"  
+								data-bs-dismiss="modal"
+								ng-click="$root.message.event && $root[$root.message.event]()">
+          Ok
+        </button>
+				<button type="button" 
+                class="btn btn-secondary px-4"  
+								data-bs-dismiss="modal"
+								ng-if="$root.message.event">
+          Mégsem
+        </button>
+			</div>
+	  </div>
+		<audio controls="false" class="d-none m-0 p-0">
+			<source src="./media/audio/error.mp3" type="audio/mpeg">
+		</audio>
+	</div>
+</div>

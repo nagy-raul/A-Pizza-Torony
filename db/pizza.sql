@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Nov 26. 09:40
+-- Létrehozás ideje: 2024. Dec 02. 13:34
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.1.17
 
@@ -38,7 +38,6 @@ CREATE TABLE `pizza` (
   `sajt` varchar(100) NOT NULL,
   `feltetek` varchar(100) NOT NULL,
   `kep` varchar(100) NOT NULL,
-  `kategoria` varchar(100) NOT NULL,
   `learazas` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -46,25 +45,17 @@ CREATE TABLE `pizza` (
 -- A tábla adatainak kiíratása `pizza`
 --
 
-INSERT INTO `pizza` (`termekID`, `termeknev`, `termekdesc`, `termekAr`, `meret`, `hej`, `szosz`, `sajt`, `feltetek`, `kep`, `kategoria`, `learazas`) VALUES
-(1, 'Sonkás pizza', 'paradicsomos alap, sonka, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'sonka', 'sonkas.jpg', 'Classic (vastag) 24-es pizza', NULL),
-(2, 'Margaréta', 'paradicsomos alap, paradicsomkarika, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'paradicsomkarika', 'margareta.jpg', 'Classic (vastag) 24-es pizza', NULL),
-(3, 'Szalámis pizza', 'paradicsomos alap, szalámi, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsomos', 'mozzarella, trappista', 'szalámi', 'szalamis.jpg', 'Classic (vastag) 24-es pizza', NULL),
-(4, 'Tarjás pizza', 'paradicsomos alap, tarja, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'tarja', 'tarjas.jpg', 'Classic (vastag) 24-es pizza', NULL),
-(5, 'Kolbászos pizza', 'paradicsomos alap, kolbász, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'kolbász', 'kolbasz.jpg', 'Classic (vastag) 24-es pizza', NULL),
-(6, 'Margaréta', 'paradicsomos alap, paradicsomkarika, mozzarella, trappista', 3140, 32, 'vékony', 'paradicsom', 'mozzarella, trappista', 'paradicsomkarika', 'margareta.jpg', 'Olasz (vékony) 32-es pizzák', NULL),
-(7, 'Sonkás pizza', 'paradicsomos alap, sonka, mozzarella, trappista', 3140, 32, 'vekony', 'paradicsom', 'mozzarella, trappista', 'sonka', 'sonkas.jpg', 'Olasz (vékony) 32-es pizzák', NULL),
-(8, 'Szalámis pizza', 'paradicsomos alap, szalámi, mozzarella, trappista', 3140, 32, 'vékony', 'paradicsom', 'mozzarella, trappista', 'szalámi', 'szalamis.jpg', 'Olasz (vékony) 32-es pizzák', NULL),
-(9, 'Kolbászos pizza', 'paradicsomos alap, kolbász, mozzarella, trappista', 3140, 32, 'vekony', 'paradicsom', 'mozzarella, trappista', 'kolbász', 'kolbaszos.jpg', 'Olasz (vékony) 32-es pizzák', NULL),
-(10, 'Tarjás pizza', 'paradicsomos alap, tarja, mozzarella, trappista', 3140, 32, 'vékony', 'paradicsom', 'mozzarella, trappista', 'tarja', 'tarjas.jpg', 'Olasz (vékony) 32-es pizzák\r\n', NULL),
-(12, 'Bolognai pizza', 'paradicsomos alap, bolognai ragu, hagyma, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'bolognai ragu, hagyma', 'bolognai.png', 'Classic (vastag) 24-es pizzák', NULL),
-(13, 'Csirkemelles pizza', 'tejfölös-fokhagymás alap, csirkemell, mozzarella, trappista', 3140, 32, 'vastag', 'fokhagymás tejföl', 'mozzarella, trappista', 'csirkemell', 'csirkemelles.png', 'classic (vastag) 32-es pizzák', NULL),
-(14, 'Bolognai pizza', 'paradicsomos alap, bolognai ragu, hagyma, mozzarella, trappista', 3140, 32, 'vastag', 'paradicsom', 'trappista, mozzarella', 'bolognai ragu, hagyma', 'bolognai.png', 'classic (vastag) 32-es pizzák', NULL),
-(15, 'Csirkemelles pizza', 'tejfölös-fokhagymás alap, csirkemell, mozzarella, trappista', 1990, 24, 'vastag', 'hagymás tejföl', 'mozzarella, trappista', 'csirkemell', 'csirkemelles.png', 'Classic (vastag) 24-es pizzák', NULL),
-(16, 'Húsimádó pizza', 'paradicsomos alap, szalonna, pick szalámi, sonka, kolbász, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'pick szalámi, sonka, kolbász', 'husimado.png', 'Classic (vastag) 24-es pizzák', NULL),
-(17, 'Húsimádó pizza', 'paradicsomos alap, szalonna, pick szalámi, sonka, kolbász, mozzarella, trappista', 3140, 32, 'vastag', 'paradicsom', 'mozzarella, trappista', 'pick szalámi, sonka, kolbász', 'husimado', 'Classic (vastag) 32-es pizzák', NULL),
-(18, 'Négy íz pizza', 'paradicsomos alap, pick szalámi, ananász, sonka, mozzarella, trappista, gomba,', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'gomba, ananász, sonka', 'negy-iz.png', 'Classic (vastag) 24-es', NULL),
-(19, 'QQRIQ pizza', 'paradicsomos alap, paradicsom, paprika, csirkehús, bazsalikom,', 1990, 24, 'vastag', 'paradicsom', 'nincs', 'paradicsom, paprika, csirkehús, bazsalikom', 'qqriq.png', 'Classic (vastag) 24-es pizza', NULL);
+INSERT INTO `pizza` (`termekID`, `termeknev`, `termekdesc`, `termekAr`, `meret`, `hej`, `szosz`, `sajt`, `feltetek`, `kep`, `learazas`) VALUES
+(1, 'Sonkás pizza', 'paradicsomos alap, sonka, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'sonka', 'sonkas.jpg', NULL),
+(2, 'Margaréta', 'paradicsomos alap, paradicsomkarika, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'paradicsomkarika', 'margareta.jpg', NULL),
+(3, 'Szalámis pizza', 'paradicsomos alap, szalámi, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsomos', 'mozzarella, trappista', 'szalámi', 'szalamis.jpg', NULL),
+(4, 'Tarjás pizza', 'paradicsomos alap, tarja, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'tarja', 'tarjas.jpg', NULL),
+(5, 'Kolbászos pizza', 'paradicsomos alap, kolbász, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'kolbász', 'kolbasz.jpg', NULL),
+(12, 'Bolognai pizza', 'paradicsomos alap, bolognai ragu, hagyma, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'bolognai ragu, hagyma', 'bolognai.png', NULL),
+(15, 'Csirkemelles pizza', 'tejfölös-fokhagymás alap, csirkemell, mozzarella, trappista', 1990, 24, 'vastag', 'hagymás tejföl', 'mozzarella, trappista', 'csirkemell', 'csirkemelles.png', NULL),
+(16, 'Húsimádó pizza', 'paradicsomos alap, szalonna, pick szalámi, sonka, kolbász, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'pick szalámi, sonka, kolbász', 'husimado.png', NULL),
+(18, 'Négy íz pizza', 'paradicsomos alap, pick szalámi, ananász, sonka, mozzarella, trappista, gomba,', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'gomba, ananász, sonka', 'negy-iz.png', NULL),
+(19, 'QQRIQ pizza', 'paradicsomos alap, paradicsom, paprika, csirkehús, bazsalikom,', 1990, 24, 'vastag', 'paradicsom', 'nincs', 'paradicsom, paprika, csirkehús, bazsalikom', 'qqriq.png', NULL);
 
 --
 -- Indexek a kiírt táblákhoz
