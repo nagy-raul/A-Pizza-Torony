@@ -1,9 +1,0 @@
-.nav-item a.active {
-	text-decoration: underline;
-	cursor: default;
-}
-.dropdown-item:active,
-.dropdown-item.active,
-.dropdown-item a.active {
-	background-color: transparent !important;
-}
