@@ -1,3 +1,11 @@
+@import url('https://fonts.cdnfonts.com/css/anonymous-pro');
+@import url('https://fonts.cdnfonts.com/css/pacifico');
+@import url('https://fonts.cdnfonts.com/css/source-serif-pro');
+@import url('https://fonts.cdnfonts.com/css/inter');
+@import url('https://fonts.cdnfonts.com/css/crimson-text');
+@import url('https://fonts.cdnfonts.com/css/roboto-mono');
+@import url('https://fonts.cdnfonts.com/css/finger-paint');
+
 *:not(input):not(textarea) {
 	-webkit-touch-callout:none !important;
 		-webkit-user-select:none !important;
@@ -138,3 +146,33 @@
   .navbar{
 	background-color: #FFC87B !important;
   }
+
+.box{
+	border-radius: 15px;
+    border: 5px solid #FF7518;
+    background: #FFF;
+
+    margin:0 auto;
+}
+
+#almasi{
+    width: 258px;
+    height: 257px;
+    background: cover no-repeat;
+}
+
+#keri{
+    width: 239px;
+    height: 253px;
+    background: cover no-repeat;
+}
+
+.rolam{
+
+    color: #000;
+    font-family: 'Crimson Text', sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}  
