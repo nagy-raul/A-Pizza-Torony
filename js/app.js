@@ -4,7 +4,8 @@
 
   // Application module
 	angular.module('app', [
-		'ui.router'
+		'ui.router',
+    'app.common'
 	])
 
 	// Application config
@@ -35,7 +36,7 @@
 				controller: 'homeController'
 			})
       .state('etlap', {
-				url: '/',
+				url: '/etlap',
         parent: 'root',
 				templateUrl: './html/etlap.html',
 				controller: 'etlapController'
@@ -106,8 +107,14 @@
   // Etlap controller
   .controller('etlapController', [
     '$scope',
-    function($scope) {
-      console.log('Etlap Controller...');
+    'http',
+    function($scope, http) {
+      http.request('./php/etlap.php')
+      .then(response => {
+        $scope.data = response;
+        $scope.$applyAsync();
+      })
+      .catch(e => console.log(e));
     }
   ])
 
