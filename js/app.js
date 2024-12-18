@@ -30,7 +30,7 @@
         }
       })
 			.state('home', {
-				url: '/',
+				url: '/home',
         parent: 'root',
 				templateUrl: './html/home.html',
 				controller: 'homeController'
@@ -42,43 +42,43 @@
 				controller: 'etlapController'
 			})
       .state('foglalas', {
-				url: '/',
+				url: '/foglalas',
         parent: 'root',
 				templateUrl: './html/foglalas.html',
 				controller: 'foglalasController'
 			})
       .state('kapcsolat', {
-				url: '/',
+				url: '/kapcsolat',
         parent: 'root',
 				templateUrl: './html/kapcsolat.html',
 				controller: 'kapcsolatController'
 			})
       .state('rendeles', {
-				url: '/',
+				url: '/rendeles',
         parent: 'root',
 				templateUrl: './html/rendeles.html',
 				controller: 'rendelesController'
 			})
       .state('rolunk', {
-				url: '/',
+				url: '/rolunk',
         parent: 'root',
 				templateUrl: './html/rolunk.html',
 				controller: 'rolunkController'
 			})
       .state('login', {
-				url: '/',
+				url: '/login',
         parent: 'root',
 				templateUrl: './html/login.html',
 				controller: 'loginController'
 			})
       .state('register', {
-				url: '/',
+				url: '/register',
         parent: 'root',
 				templateUrl: './html/register.html',
 				controller: 'registerController'
 			})
       .state('profile', {
-				url: '/',
+				url: '/profile',
         parent: 'root',
 				templateUrl: './html/profile.html',
 				controller: 'profileController'
