@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Dec 18. 11:57
+-- Létrehozás ideje: 2024. Dec 18. 13:00
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.1.17
 
@@ -28,12 +28,15 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `asztalfoglalasok` (
-  `felhasznaloID` int(5) NOT NULL,
   `foglalasID` int(10) NOT NULL,
+  `nev` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `telszam` varchar(100) NOT NULL,
   `datum` date NOT NULL,
   `ido` time NOT NULL,
   `orak` int(2) NOT NULL,
   `vendegek` int(2) NOT NULL,
+  `asztal` varchar(10) NOT NULL,
   `megjegyzes` text NOT NULL,
   `igeny` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -42,8 +45,8 @@ CREATE TABLE `asztalfoglalasok` (
 -- A tábla adatainak kiíratása `asztalfoglalasok`
 --
 
-INSERT INTO `asztalfoglalasok` (`felhasznaloID`, `foglalasID`, `datum`, `ido`, `orak`, `vendegek`, `megjegyzes`, `igeny`) VALUES
-(1, 1, '2024-11-21', '09:00:00', 2, 2, 'megjegyzés', 'nincs');
+INSERT INTO `asztalfoglalasok` (`foglalasID`, `nev`, `email`, `telszam`, `datum`, `ido`, `orak`, `vendegek`, `asztal`, `megjegyzes`, `igeny`) VALUES
+(1, 'Nagy Raul', 'nagyraul@gmail.com', '+36566575675', '2024-11-21', '09:00:00', 2, 2, '', 'megjegyzés', 'nincs');
 
 -- --------------------------------------------------------
 
@@ -52,7 +55,8 @@ INSERT INTO `asztalfoglalasok` (`felhasznaloID`, `foglalasID`, `datum`, `ido`, `
 --
 
 CREATE TABLE `felhasznalok` (
-  `felhasznaloID` int(5) NOT NULL,
+  `felhasznaloID` int(10) NOT NULL,
+  `nev` varchar(100) NOT NULL,
   `jelszo` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `telszam` varchar(100) NOT NULL
@@ -62,9 +66,9 @@ CREATE TABLE `felhasznalok` (
 -- A tábla adatainak kiíratása `felhasznalok`
 --
 
-INSERT INTO `felhasznalok` (`felhasznaloID`, `jelszo`, `email`, `telszam`) VALUES
-(1, 'jelszo', 'nagyraul@gmail.com', '+36566575675'),
-(2, 'jelszo2', 'balazslehel@gmail.com', '+36321312414');
+INSERT INTO `felhasznalok` (`felhasznaloID`, `nev`, `jelszo`, `email`, `telszam`) VALUES
+(1, 'Nagy Raul', 'jelszo', 'nagyraul@gmail.com', '+36566575675'),
+(2, 'Balázs Lehel', 'jelszo2', 'balazslehel@gmail.com', '+36321312414');
 
 -- --------------------------------------------------------
 
@@ -74,7 +78,9 @@ INSERT INTO `felhasznalok` (`felhasznaloID`, `jelszo`, `email`, `telszam`) VALUE
 
 CREATE TABLE `kapcsolat` (
   `kapcsolatID` int(10) NOT NULL,
-  `felhasznaloID` int(5) NOT NULL,
+  `nev` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `telszam` varchar(100) NOT NULL,
   `targy` varchar(100) NOT NULL,
   `uzenet` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -83,8 +89,8 @@ CREATE TABLE `kapcsolat` (
 -- A tábla adatainak kiíratása `kapcsolat`
 --
 
-INSERT INTO `kapcsolat` (`kapcsolatID`, `felhasznaloID`, `targy`, `uzenet`) VALUES
-(1, 1, 'A pizzát nem kaptam meg.', 'A pizzát nem sikerült megkapnom');
+INSERT INTO `kapcsolat` (`kapcsolatID`, `nev`, `email`, `telszam`, `targy`, `uzenet`) VALUES
+(1, 'Balázs Lehel', 'balazslehel@gmail.com', '+36321312414', 'A pizzát nem kaptam meg.', 'A pizzát nem sikerült megkapnom');
 
 -- --------------------------------------------------------
 
@@ -93,7 +99,7 @@ INSERT INTO `kapcsolat` (`kapcsolatID`, `felhasznaloID`, `targy`, `uzenet`) VALU
 --
 
 CREATE TABLE `pizza` (
-  `termekID` int(11) NOT NULL,
+  `termekID` int(10) NOT NULL,
   `termeknev` varchar(100) NOT NULL,
   `termekdesc` text NOT NULL,
   `termekAr` int(10) NOT NULL,
@@ -103,7 +109,6 @@ CREATE TABLE `pizza` (
   `sajt` varchar(100) NOT NULL,
   `feltetek` varchar(100) NOT NULL,
   `kep` varchar(100) NOT NULL,
-  `kategoria` varchar(100) NOT NULL,
   `learazas` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -111,25 +116,17 @@ CREATE TABLE `pizza` (
 -- A tábla adatainak kiíratása `pizza`
 --
 
-INSERT INTO `pizza` (`termekID`, `termeknev`, `termekdesc`, `termekAr`, `meret`, `hej`, `szosz`, `sajt`, `feltetek`, `kep`, `kategoria`, `learazas`) VALUES
-(1, 'Sonkás pizza', 'paradicsomos alap, sonka, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'sonka', 'sonkas.jpg', 'Classic (vastag) 24-es pizza', NULL),
-(2, 'Margaréta', 'paradicsomos alap, paradicsomkarika, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'paradicsomkarika', 'margareta.jpg', 'Classic (vastag) 24-es pizza', NULL),
-(3, 'Szalámis pizza', 'paradicsomos alap, szalámi, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsomos', 'mozzarella, trappista', 'szalámi', 'szalamis.jpg', 'Classic (vastag) 24-es pizza', NULL),
-(4, 'Tarjás pizza', 'paradicsomos alap, tarja, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'tarja', 'tarjas.jpg', 'Classic (vastag) 24-es pizza', NULL),
-(5, 'Kolbászos pizza', 'paradicsomos alap, kolbász, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'kolbász', 'kolbasz.jpg', 'Classic (vastag) 24-es pizza', NULL),
-(6, 'Margaréta', 'paradicsomos alap, paradicsomkarika, mozzarella, trappista', 3140, 32, 'vékony', 'paradicsom', 'mozzarella, trappista', 'paradicsomkarika', 'margareta.jpg', 'Olasz (vékony) 32-es pizzák', NULL),
-(7, 'Sonkás pizza', 'paradicsomos alap, sonka, mozzarella, trappista', 3140, 32, 'vekony', 'paradicsom', 'mozzarella, trappista', 'sonka', 'sonkas.jpg', 'Olasz (vékony) 32-es pizzák', NULL),
-(8, 'Szalámis pizza', 'paradicsomos alap, szalámi, mozzarella, trappista', 3140, 32, 'vékony', 'paradicsom', 'mozzarella, trappista', 'szalámi', 'szalamis.jpg', 'Olasz (vékony) 32-es pizzák', NULL),
-(9, 'Kolbászos pizza', 'paradicsomos alap, kolbász, mozzarella, trappista', 3140, 32, 'vekony', 'paradicsom', 'mozzarella, trappista', 'kolbász', 'kolbaszos.jpg', 'Olasz (vékony) 32-es pizzák', NULL),
-(10, 'Tarjás pizza', 'paradicsomos alap, tarja, mozzarella, trappista', 3140, 32, 'vékony', 'paradicsom', 'mozzarella, trappista', 'tarja', 'tarjas.jpg', 'Olasz (vékony) 32-es pizzák\r\n', NULL),
-(12, 'Bolognai pizza', 'paradicsomos alap, bolognai ragu, hagyma, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'bolognai ragu, hagyma', 'bolognai.png', 'Classic (vastag) 24-es pizzák', NULL),
-(13, 'Csirkemelles pizza', 'tejfölös-fokhagymás alap, csirkemell, mozzarella, trappista', 3140, 32, 'vastag', 'fokhagymás tejföl', 'mozzarella, trappista', 'csirkemell', 'csirkemelles.png', 'classic (vastag) 32-es pizzák', NULL),
-(14, 'Bolognai pizza', 'paradicsomos alap, bolognai ragu, hagyma, mozzarella, trappista', 3140, 32, 'vastag', 'paradicsom', 'trappista, mozzarella', 'bolognai ragu, hagyma', 'bolognai.png', 'classic (vastag) 32-es pizzák', NULL),
-(15, 'Csirkemelles pizza', 'tejfölös-fokhagymás alap, csirkemell, mozzarella, trappista', 1990, 24, 'vastag', 'hagymás tejföl', 'mozzarella, trappista', 'csirkemell', 'csirkemelles.png', 'Classic (vastag) 24-es pizzák', NULL),
-(16, 'Húsimádó pizza', 'paradicsomos alap, szalonna, pick szalámi, sonka, kolbász, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'pick szalámi, sonka, kolbász', 'husimado.png', 'Classic (vastag) 24-es pizzák', NULL),
-(17, 'Húsimádó pizza', 'paradicsomos alap, szalonna, pick szalámi, sonka, kolbász, mozzarella, trappista', 3140, 32, 'vastag', 'paradicsom', 'mozzarella, trappista', 'pick szalámi, sonka, kolbász', 'husimado', 'Classic (vastag) 32-es pizzák', NULL),
-(18, 'Négy íz pizza', 'paradicsomos alap, pick szalámi, ananász, sonka, mozzarella, trappista, gomba,', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'gomba, ananász, sonka', 'negy-iz.png', 'Classic (vastag) 24-es', NULL),
-(19, 'QQRIQ pizza', 'paradicsomos alap, paradicsom, paprika, csirkehús, bazsalikom,', 1990, 24, 'vastag', 'paradicsom', 'nincs', 'paradicsom, paprika, csirkehús, bazsalikom', 'qqriq.png', 'Classic (vastag) 24-es pizza', NULL);
+INSERT INTO `pizza` (`termekID`, `termeknev`, `termekdesc`, `termekAr`, `meret`, `hej`, `szosz`, `sajt`, `feltetek`, `kep`, `learazas`) VALUES
+(1, 'Sonkás pizza', 'paradicsomos alap, sonka, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'sonka', 'sonkas.png', NULL),
+(2, 'Margaréta', 'paradicsomos alap, paradicsomkarika, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'paradicsomkarika', 'margareta.png', NULL),
+(3, 'Szalámis pizza', 'paradicsomos alap, szalámi, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsomos', 'mozzarella, trappista', 'szalámi', 'szalamis.png', NULL),
+(4, 'Tarjás pizza', 'paradicsomos alap, tarja, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'tarja', 'tarjas.jpg', NULL),
+(5, 'Kolbászos pizza', 'paradicsomos alap, kolbász, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'kolbász', 'kolbaszos.png', NULL),
+(12, 'Bolognai pizza', 'paradicsomos alap, bolognai ragu, hagyma, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'bolognai ragu, hagyma', 'bolognai.png', NULL),
+(15, 'Csirkemelles pizza', 'tejfölös-fokhagymás alap, csirkemell, mozzarella, trappista', 1990, 24, 'vastag', 'hagymás tejföl', 'mozzarella, trappista', 'csirkemell', 'csirkemelles.png', NULL),
+(16, 'Húsimádó pizza', 'paradicsomos alap, szalonna, pick szalámi, sonka, kolbász, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'pick szalámi, sonka, kolbász', 'husimado.png', NULL),
+(18, 'Négy íz pizza', 'paradicsomos alap, pick szalámi, ananász, sonka, mozzarella, trappista, gomba,', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'gomba, ananász, sonka', 'negy-iz.png', NULL),
+(19, 'QQRIQ pizza', 'paradicsomos alap, paradicsom, paprika, csirkehús, bazsalikom,', 1990, 24, 'vastag', 'paradicsom', 'nincs', 'paradicsom, paprika, csirkehús, bazsalikom', 'qqriq.png', NULL);
 
 -- --------------------------------------------------------
 
@@ -138,8 +135,8 @@ INSERT INTO `pizza` (`termekID`, `termeknev`, `termekdesc`, `termekAr`, `meret`,
 --
 
 CREATE TABLE `rendelesek` (
-  `felhasznaloID` int(5) NOT NULL,
   `rendelesID` int(11) NOT NULL,
+  `felhasznaloID` int(5) NOT NULL,
   `szalcim` varchar(100) NOT NULL,
   `fizform` varchar(100) NOT NULL,
   `reszossz` int(10) NOT NULL,
@@ -151,7 +148,7 @@ CREATE TABLE `rendelesek` (
 -- A tábla adatainak kiíratása `rendelesek`
 --
 
-INSERT INTO `rendelesek` (`felhasznaloID`, `rendelesID`, `szalcim`, `fizform`, `reszossz`, `fizossz`, `szalldij`) VALUES
+INSERT INTO `rendelesek` (`rendelesID`, `felhasznaloID`, `szalcim`, `fizform`, `reszossz`, `fizossz`, `szalldij`) VALUES
 (1, 1, 'Makó, Hagyma utca 32.', 'készpénz', 2580, 2480, 100);
 
 -- --------------------------------------------------------
@@ -229,7 +226,7 @@ ALTER TABLE `asztalfoglalasok`
 -- AUTO_INCREMENT a táblához `felhasznalok`
 --
 ALTER TABLE `felhasznalok`
-  MODIFY `felhasznaloID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `felhasznaloID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT a táblához `kapcsolat`
@@ -241,7 +238,13 @@ ALTER TABLE `kapcsolat`
 -- AUTO_INCREMENT a táblához `pizza`
 --
 ALTER TABLE `pizza`
-  MODIFY `termekID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `termekID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT a táblához `rendelesek`
+--
+ALTER TABLE `rendelesek`
+  MODIFY `rendelesID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT a táblához `rendeles_elemei`
