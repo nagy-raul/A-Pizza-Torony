@@ -1,10 +1,9 @@
 <?php
 
-// Using namespaces aliasing
-use \Util\Util as Util;
-use \Database\Database as Database;
+declare(strict_types=1);
 
-require_once('../../common/php/environment.php');
+// Include environment
+require_once("./environment.php");
 
 $db = new Database();
 
