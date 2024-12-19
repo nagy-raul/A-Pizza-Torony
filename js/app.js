@@ -30,7 +30,7 @@
         }
       })
 			.state('home', {
-				url: '/home',
+				url: '/',
         parent: 'root',
 				templateUrl: './html/home.html',
 				controller: 'homeController'
@@ -84,7 +84,7 @@
 				controller: 'profileController'
 			});
       
-      $urlRouterProvider.otherwise('/');
+      $urlRouterProvider.otherwise('/home');
     }
   ])
 
