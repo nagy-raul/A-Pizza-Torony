@@ -5,7 +5,10 @@
   // Application module
 	angular.module('app', [
 		'ui.router',
-    'app.common'
+    'app.common',
+    'app.message',
+    'app.user',
+		'app.form'
 	])
 
 	// Application config
