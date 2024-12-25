@@ -4,6 +4,7 @@
 	</div>
 	<div class="row mt-5">
 		<main>
+			<!--
 			<div class="container bg-body-tertiary">
 				<div class="row">
 					<select class="form-select" aria-label="Kategoriák">
@@ -13,6 +14,7 @@
 					</select>
 				</div>
 			</div>
+			-->
 
 			<div class="album py-5 bg-body-tertiary mt-5">
 			  <div class="container">
@@ -20,11 +22,10 @@
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 				  <div class="col" ng-repeat="x in data track by $index">
 					<div class="card shadow-sm">
-					  <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
 						<img ng-src="./media/image/{{x.kep}}" alt="">
 					  <div class="card-body">
-							<h3>{{x.termeknev}}</h3>
-						<p class="card-text">{{x.termekdesc}}</p>
+							<h3>{{x.termekNev}}</h3>
+						<p class="card-text">{{x.termekLeiras}}</p>
 						<div class="d-flex justify-content-between align-items-center">
 						  <div class="btn-group">
 							<button type="button" class="btn btn-sm btn-outline-secondary">View</button>

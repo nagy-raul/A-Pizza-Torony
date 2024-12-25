@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Dec 18. 13:00
--- Kiszolgáló verziója: 10.4.28-MariaDB
--- PHP verzió: 8.1.17
+-- Létrehozás ideje: 2024. Dec 25. 21:47
+-- Kiszolgáló verziója: 10.4.32-MariaDB
+-- PHP verzió: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -100,8 +100,8 @@ INSERT INTO `kapcsolat` (`kapcsolatID`, `nev`, `email`, `telszam`, `targy`, `uze
 
 CREATE TABLE `pizza` (
   `termekID` int(10) NOT NULL,
-  `termeknev` varchar(100) NOT NULL,
-  `termekdesc` text NOT NULL,
+  `termekNev` varchar(100) NOT NULL,
+  `termekLeiras` text NOT NULL,
   `termekAr` int(10) NOT NULL,
   `meret` int(10) NOT NULL,
   `hej` varchar(50) NOT NULL,
@@ -109,14 +109,14 @@ CREATE TABLE `pizza` (
   `sajt` varchar(100) NOT NULL,
   `feltetek` varchar(100) NOT NULL,
   `kep` varchar(100) NOT NULL,
-  `learazas` int(11) DEFAULT NULL
+  `learazas` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- A tábla adatainak kiíratása `pizza`
 --
 
-INSERT INTO `pizza` (`termekID`, `termeknev`, `termekdesc`, `termekAr`, `meret`, `hej`, `szosz`, `sajt`, `feltetek`, `kep`, `learazas`) VALUES
+INSERT INTO `pizza` (`termekID`, `termekNev`, `termekLeiras`, `termekAr`, `meret`, `hej`, `szosz`, `sajt`, `feltetek`, `kep`, `learazas`) VALUES
 (1, 'Sonkás pizza', 'paradicsomos alap, sonka, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'sonka', 'sonkas.png', NULL),
 (2, 'Margaréta', 'paradicsomos alap, paradicsomkarika, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'paradicsomkarika', 'margareta.png', NULL),
 (3, 'Szalámis pizza', 'paradicsomos alap, szalámi, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsomos', 'mozzarella, trappista', 'szalámi', 'szalamis.png', NULL),
@@ -159,7 +159,7 @@ INSERT INTO `rendelesek` (`rendelesID`, `felhasznaloID`, `szalcim`, `fizform`, `
 
 CREATE TABLE `rendeles_elemei` (
   `termekID` int(11) NOT NULL,
-  `rendeles_id` int(11) NOT NULL,
+  `rendelesID` int(11) NOT NULL,
   `darab` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -167,7 +167,7 @@ CREATE TABLE `rendeles_elemei` (
 -- A tábla adatainak kiíratása `rendeles_elemei`
 --
 
-INSERT INTO `rendeles_elemei` (`termekID`, `rendeles_id`, `darab`) VALUES
+INSERT INTO `rendeles_elemei` (`termekID`, `rendelesID`, `darab`) VALUES
 (1, 1, 1);
 
 --
@@ -209,7 +209,7 @@ ALTER TABLE `rendelesek`
 -- A tábla indexei `rendeles_elemei`
 --
 ALTER TABLE `rendeles_elemei`
-  ADD PRIMARY KEY (`rendeles_id`),
+  ADD PRIMARY KEY (`rendelesID`),
   ADD KEY `termekID` (`termekID`);
 
 --
@@ -250,7 +250,7 @@ ALTER TABLE `rendelesek`
 -- AUTO_INCREMENT a táblához `rendeles_elemei`
 --
 ALTER TABLE `rendeles_elemei`
-  MODIFY `rendeles_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `rendelesID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
