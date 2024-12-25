@@ -84,7 +84,7 @@
 				controller: 'profileController'
 			});
       
-      $urlRouterProvider.otherwise('/home');
+      $urlRouterProvider.otherwise('/');
     }
   ])
 
