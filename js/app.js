@@ -159,7 +159,7 @@
   ])
   
   // Login controller
-  .controller('Login Controller', [
+  .controller('loginController', [
     '$scope',
     function($scope) {
       console.log('Login Controller...');
@@ -167,7 +167,7 @@
   ])
   
   // Register controller
-  .controller('Register Controller', [
+  .controller('registerController', [
     '$scope',
     function($scope) {
       console.log('Register Controller...');
@@ -175,7 +175,7 @@
   ])
   
   // Profile controller
-  .controller('ProfileController', [
+  .controller('profileController', [
     '$scope',
     function($scope) {
       console.log('Profile Controller...');
