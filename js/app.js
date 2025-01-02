@@ -160,9 +160,76 @@
   
   // Login controller
   .controller('loginController', [
+    /*
+    '$state',
+    '$rootScope',
+    */
     '$scope',
-    function($scope) {
+    /*
+    'form',
+    'user',
+    'util',
+    'http',
+    'trans',
+    'msg',
+    */
+    function(/*$state, $rootScope,*/$scope/*, form, user, util, http, trans, msg*/) {
       console.log('Login Controller...');
+
+      /*
+      // Set local methods
+      let methods = {
+
+        // Initialize
+        init: () => {
+
+          // Set email address from local storige if exist
+          $scope.model = {email: util.localStorage('get', 'email')};
+
+          // Set focus
+					form.focus();
+        }
+      };
+
+      // Set scope methods
+      $scope.methods = {
+
+        // Login
+        login: () => {
+      
+           // Set request
+          http.request({
+            url: "./php/login.php",
+            data: util.objFilterByKeys($scope.model, 'showPassword', false)
+          })
+          .then(response => {
+            response.email = $scope.model.email;
+            user.set(response);
+            util.localStorage('set', 'email', response.email);
+            trans.preventState();
+          })
+          .catch(e => {
+            $scope.model.password = null;
+            msg.error(e);
+          });
+        },
+
+        // Cancel
+        cancel: () => {
+          if ($rootScope.state.prev !== 'register'){
+            trans.preventState();
+          } 
+          else {
+            $state.go($rootScope.state.default)
+          };
+        }
+      }
+
+      // Initialize
+      methods.init();
+
+      */
+
     }
   ])
   
