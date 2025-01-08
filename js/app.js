@@ -4,8 +4,13 @@
 
   // Application module
 	angular.module('app', [
-		'ui.router',
-    'app.common'
+    'ui.router',
+    'app.common',
+    /*
+    'app.message',
+    'app.user',
+		'app.form'
+    */
 	])
 
 	// Application config
@@ -160,22 +165,18 @@
   
   // Login controller
   .controller('loginController', [
+    '$scope',
     /*
     '$state',
     '$rootScope',
-    */
-    '$scope',
-    /*
     'form',
     'user',
     'util',
     'http',
     'trans',
-    'msg',
     */
-    function(/*$state, $rootScope,*/$scope/*, form, user, util, http, trans, msg*/) {
+    function($scope/*, $state, $rootScope, form, user, util, http, trans*/) {
       console.log('Login Controller...');
-
       /*
       // Set local methods
       let methods = {
@@ -210,7 +211,7 @@
           })
           .catch(e => {
             $scope.model.password = null;
-            msg.error(e);
+            console.log(e);
           });
         },
 
@@ -227,9 +228,7 @@
 
       // Initialize
       methods.init();
-
-      */
-
+  */
     }
   ])
   
