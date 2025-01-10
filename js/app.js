@@ -166,7 +166,6 @@
   // Login controller
   .controller('loginController', [
     '$scope',
-    /*
     '$state',
     '$rootScope',
     'form',
@@ -174,23 +173,8 @@
     'util',
     'http',
     'trans',
-    */
     function($scope/*, $state, $rootScope, form, user, util, http, trans*/) {
       console.log('Login Controller...');
-      /*
-      // Set local methods
-      let methods = {
-
-        // Initialize
-        init: () => {
-
-          // Set email address from local storige if exist
-          $scope.model = {email: util.localStorage('get', 'email')};
-
-          // Set focus
-					form.focus();
-        }
-      };
 
       // Set scope methods
       $scope.methods = {
@@ -213,22 +197,11 @@
             $scope.model.password = null;
             console.log(e);
           });
-        },
-
-        // Cancel
-        cancel: () => {
-          if ($rootScope.state.prev !== 'register'){
-            trans.preventState();
-          } 
-          else {
-            $state.go($rootScope.state.default)
-          };
         }
       }
 
       // Initialize
       methods.init();
-  */
     }
   ])
   
