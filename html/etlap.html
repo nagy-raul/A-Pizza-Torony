@@ -5,10 +5,8 @@
 	</h1>
 </div>
 
-<div class="container">
-	<div class="row mt-5">
-		<main>
-			<!--
+<main>
+	<!--
 			<div class="container bg-body-tertiary">
 				<div class="row">
 					<select class="form-select" aria-label="Kategoriák">
@@ -20,12 +18,12 @@
 			</div>
 			-->
 
-			<div class="album py-5 mt-5">
-			  <div class="container">
+	<div class="album py-5 mt-5">
+		<div class="container">
 		  
-				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-				  <div class="col" ng-repeat="x in data track by $index">
-					<div class="card p-4 mb-3 text-center border-4" style="width: 25rem;">
+			<div class="row row-cols-1 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 g-3 justify-content-center">
+				<div class="col" ng-repeat="x in data track by $index">
+					<div class="card p-4 mb-3 text-center border-4 w-auto" style="max-width: 19rem;">
 						<img ng-src="./media/image/{{x.kep}}" alt="{{x.termekNev}}">
 						<hr class="my-2">
 						<div class="card-body">
@@ -33,13 +31,11 @@
 						  <p class="card-text">{{x.termekLeiras}}</p>
 						  <a href="#" class="btn btn-primary" onclick="kosarba()">Kosárba</a>
 						</div>
-					  </div>
-				  </div>
-
+					</div>
 				</div>
-			  </div>
+
 			</div>
-		  
-		  </main>
+		</div>
 	</div>
-</div>
+		
+</main>
