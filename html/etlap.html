@@ -20,25 +20,19 @@
 			</div>
 			-->
 
-			<div class="album py-5 bg-body-tertiary mt-5">
+			<div class="album py-5 mt-5">
 			  <div class="container">
 		  
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 				  <div class="col" ng-repeat="x in data track by $index">
-					<div class="card shadow-sm">
-						<img ng-src="./media/image/{{x.kep}}" alt="">
-					  <div class="card-body">
-							<h3>{{x.termekNev}}</h3>
-						<p class="card-text">{{x.termekLeiras}}</p>
-						<div class="d-flex justify-content-between align-items-center">
-						  <div class="btn-group">
-							<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-							<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-						  </div>
-						  <small class="text-body-secondary">9 mins</small>
+					<div class="card" style="width: 18rem;">
+						<img ng-src="./media/image/{{x.kep}}" alt="{{x}}">
+						<div class="card-body">
+						  <h5 class="card-title">{{x.termekNev}}</h5>
+						  <p class="card-text">{{x.termekLeiras}}</p>
+						  <a href="#" class="btn btn-primary">Go somewhere</a>
 						</div>
 					  </div>
-					</div>
 				  </div>
 
 				</div>
