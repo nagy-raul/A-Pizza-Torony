@@ -27,9 +27,9 @@
 			<!-- Form -->
 			<form name="registerForm" novalidate>
 
-				<!-- First name -->
+				<!-- Name -->
 				<div class="row mb-3">
-					<label for="register-first_name" 
+					<label for="register-name" 
 								class="col-form-label col-12 col-md-5 text-md-end">
 						<i class="fa-solid fa-star fa-2xs text-danger"></i>
 						<i class="fa-solid fa-user me-1"></i>
@@ -37,149 +37,28 @@
 						<span>név:</span>
 					</label>
 					<div class="col-11 col-md-6 position-relative">
-						<input id="register-first_name"
+						<input id="register-name"
 									 class="form-control"
-									 name="first_name" 
+									 name="name" 
 									 type="text"
 									 placeholder="first name"
 									 spellcheck="false" 
 									 autocomplete="off" 
 									 required
 									 maxlength="100"
-									 ng-init="model.first_name=null"
-									 ng-model="model.first_name"
+									 ng-init="model.name=null"
+									 ng-model="model.name"
 									 ng-clear-icon>
 					</div>
 					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
 						<span class="fw-bolder text-success"
-									ng-class="{'invisible': registerForm.first_name.$invalid}">
+									ng-class="{'invisible': registerForm.name.$invalid}">
 							&check;
 						</span>
 					</div>
 				</div>
 
-				<!-- Middle name -->
-				<div class="row mb-3">
-					<label for="register-middle_name" 
-								class="col-form-label col-12 col-md-5 text-md-end">
-						<i class="fa-solid fa-user me-1"></i>
-						<span class="text-capitalize">középső</span>
-						<span>név:</span>
-					</label>
-					<div class="col-11 col-md-6 position-relative">
-						<input id="register-middle_name"
-									 class="form-control"
-									 name="middle_name" 
-									 type="text"
-									 placeholder="middle name"
-									 spellcheck="false" 
-									 autocomplete="off" 
-									 maxlength="100"
-									 ng-init="model.middle_name=null"
-									 ng-model="model.middle_name"
-									 ng-clear-icon>
-					</div>
-				</div>
-
-				<!-- Last name -->
-				<div class="row mb-3">
-					<label for="register-last_name" 
-								class="col-form-label col-12 col-md-5 text-md-end">
-						<i class="fa-solid fa-star fa-2xs text-danger"></i>
-						<i class="fa-solid fa-user me-1"></i>
-						<span class="text-capitalize">vezeték</span>
-						<span>név:</span>
-					</label>
-					<div class="col-11 col-md-6 position-relative">
-						<input id="register-last_name"
-									 class="form-control"
-									 name="last_name" 
-									 type="text"
-									 placeholder="last name"
-									 spellcheck="false" 
-									 autocomplete="off" 
-									 required
-									 maxlength="100"
-									 ng-init="model.last_name=null"
-									 ng-model="model.last_name">
-					</div>
-					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
-						<span class="fw-bolder text-success"
-									ng-class="{'invisible': registerForm.last_name.$invalid}">
-							&check;
-						</span>
-					</div>
-				</div>
-
-				<!-- Born -->
-				<div class="row mb-3">
-					<label for="register-born" 
-								class="col-form-label col-12 col-md-5 text-md-end">
-						<i class="fa-solid fa-star fa-2xs text-danger"></i>
-						<i class="fa-solid fa-calendar-days me-1"></i>
-						<span class="text-capitalize">születési dátum:</span>
-					</label>
-					<div class="col-11 col-md-6 position-relative">
-						<input id="register-born"
-									 class="form-control"
-									 name="born" 
-									 type="date"
-									 placeholder="born"
-									 spellcheck="false" 
-									 autocomplete="off"
-									 max="{{helper.maxBorn}}"
-									 min="{{helper.minBorn}}" 
-									 required
-									 ng-init="model.born=null"
-									 ng-model="model.born">
-					</div>
-					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
-						<span class="fw-bolder text-success"
-									ng-class="{'invisible': registerForm.born.$invalid}">
-							&check;
-						</span>
-						<span data-bs-toggle="tooltip"
-									data-bs-custom-class="custom-tooltip"
-									data-bs-html="true"
-									data-bs-title="&lt;p class='my-1'>Only people over 16 years old can be register!&lt;/p>">
-							<i class="fa-solid fa-circle-info text-primary ms-2"></i>
-						</span>
-					</div>
-				</div>
-
-				<!-- Gender -->
-				<fieldset class="row input-row mb-3">
-					<legend class="col-form-label col-12 col-md-5 text-md-end">
-						<i class="fa-solid fa-star fa-2xs text-danger"></i>
-						<i class="fa-solid fa-venus-mars me-1"></i>
-						<span class="text-capitalize">
-							nem:
-						</span>
-					</legend>
-					<div class="col-11 col-md-6 position-relative d-flex align-items-center"
-							 ng-init="model.gender=null">
-						<div class="form-check form-check-inline me-4"
-								 ng-repeat="x in ['female','male'] track by $index">
-							<input id="register-{{x}}"
-										name="gender" 
-										type="radio"
-										ng-value="x === 'female' ? 'F' : 'M'"
-										class="form-check-input"
-										ng-model="model.gender" 
-										required>
-								<label for="register-{{x}}" 
-											 class="form-check-label opacity-100">
-									{{x}}
-								</label>
-						</div>
-					</div>
-					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
-						<span class="fw-bolder text-success"
-									ng-class="{'invisible': registerForm.gender.$invalid}">
-							&check;
-						</span>
-					</div>
-				</fieldset>
+			
 
 				<!-- Email -->
 				<div class="row mb-3">
@@ -250,7 +129,7 @@
 						<span data-bs-toggle="tooltip"
 									data-bs-custom-class="custom-tooltip"
 									data-bs-html="true"
-									data-bs-title="&lt;p class='my-1'>Please re-enter your email address for security!&lt;/p>">
+									data-bs-title="&lt;p class='my-1'>Adja meg újra az email címét a biztonsága érdekében!&lt;/p>">
 							<i class="fa-solid fa-circle-info text-primary ms-2"></i>
 						</span>
 					</div>
@@ -289,8 +168,8 @@
 						<span data-bs-toggle="tooltip"
 									data-bs-custom-class="custom-tooltip"
 									data-bs-html="true"
-									data-bs-title="&lt;p class='my-1'>6-20 characters&lt;/br>
-																&lt;small>(contains uppercase, lowercase letters and numbers)&lt;/small>&lt;/p>">
+									data-bs-title="&lt;p class='my-1'>6-20 karakter&lt;/br>
+																&lt;small>(legyen benne nagybetű, kisbetű és szám)&lt;/small>&lt;/p>">
 							<i class="fa-solid fa-circle-info text-primary ms-2"></i>
 						</span>
 					</div>
@@ -330,7 +209,7 @@
 						<span data-bs-toggle="tooltip"
 									data-bs-custom-class="custom-tooltip"
 									data-bs-html="true"
-									data-bs-title="&lt;p class='my-1'>Please re-enter your password for security!&lt;/p>">
+									data-bs-title="&lt;p class='my-1'>Adja meg újra a jelszavát a biztonsága érdekében!&lt;/p>">
 							<i class="fa-solid fa-circle-info text-primary ms-2"></i>
 						</span>
 					</div>
@@ -349,6 +228,43 @@
 									class="form-check-label ms-1">
 							jelszó megerősítése
 						</label>
+					</div>
+				</div>
+
+				<!-- Born -->
+				<div class="row mb-3">
+					<label for="login-born" 
+								class="col-form-label col-12 col-md-4 text-md-end">
+						<i class="fa-solid fa-star fa-2xs text-danger"></i>
+						<i class="fa-solid fa-calendar-days me-1"></i>
+						<span>Születési dátum:</span>
+					</label>
+					<div class="col-11 col-md-7 position-relative">
+						<input id="login-born"
+									 class="form-control"
+									 name="born" 
+									 type="date"
+									 placeholder="born"
+									 spellcheck="false" 
+									 autocomplete="off"
+									 max="{{helper.maxBorn}}"
+									 min="{{helper.minBorn}}" 
+									 required
+									 ng-model="model.born"
+									 ng-disable-space
+									 ng-clear-icon>
+					</div>
+					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
+						<span class="fw-bolder text-success"
+									ng-class="{'invisible': loginForm.born.$invalid}">
+							&check;
+						</span>
+						<span data-bs-toggle="tooltip"
+									data-bs-custom-class="custom-tooltip"
+									data-bs-html="true"
+									data-bs-title="&lt;p class='my-1'>Csak a 16 éven felettiek!&lt;/p>">
+							<i class="fa-solid fa-circle-info text-primary ms-2"></i>
+						</span>
 					</div>
 				</div>
 
