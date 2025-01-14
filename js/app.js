@@ -166,42 +166,27 @@
   // Login controller
   .controller('loginController', [
     '$scope',
-    '$state',
-    '$rootScope',
-    'form',
-    'user',
-    'util',
     'http',
-    'trans',
-    function($scope/*, $state, $rootScope, form, user, util, http, trans*/) {
+    function($scope, http) {
       console.log('Login Controller...');
 
-      // Set scope methods
-      $scope.methods = {
-
-        // Login
-        login: () => {
+      // Login method
+      $scope.login = () => {
       
-           // Set request
-          http.request({
-            url: "./php/login.php",
-            data: util.objFilterByKeys($scope.model, 'showPassword', false)
-          })
-          .then(response => {
-            response.email = $scope.model.email;
-            user.set(response);
-            util.localStorage('set', 'email', response.email);
-            trans.preventState();
-          })
-          .catch(e => {
-            $scope.model.password = null;
-            console.log(e);
-          });
-        }
+         // Set request
+        http.request({
+          url: "./php/login.php",
+          data: $scope.model
+        })
+        .then(response => {
+          console.log(response)
+        })
+        .catch(e => {
+          $scope.model.password = null;
+          console.log(e);
+        });
       }
-
-      // Initialize
-      methods.init();
+      
     }
   ])
   
