@@ -9,9 +9,9 @@ $args = Util::getArgs();
 
 // Set SQL command
 $query = "SELECT 	`felhasznaloID`
-						 FROM `felhasznalok` 
-						WHERE `email` = ?
-						LIMIT 1";
+		  FROM `felhasznalok` 
+		  WHERE `email` = ?
+		  LIMIT 1";
 
 // Connect to MySQL server
 $db = new Database();

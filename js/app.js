@@ -193,8 +193,36 @@
   // Register controller
   .controller('registerController', [
     '$scope',
-    function($scope) {
+    'http',
+    function($scope, http) {
       console.log('Register Controller...');
+
+      // Login method
+      $scope.login = () => {
+      
+        // Http request
+        http.request({
+          method: "POST",
+          url: "./php/register.php",
+          data: $scope.model
+        })
+        .then(response => {
+
+          // Check response
+          if (response.affectedRows) {
+
+            // Remove unnecessary data
+            delete $scope.model.password;
+            delete $scope.model.born;
+
+            // Initialize missing data
+            $scope.model.id   = response.lastInsertId;
+            $scope.model.type = "U";
+
+          } else alert("Sikertelen regisztráció!");
+        })
+        .catch(e => console.log(e));
+      }
     }
   ])
   
