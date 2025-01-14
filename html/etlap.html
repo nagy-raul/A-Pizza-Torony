@@ -25,12 +25,12 @@
 		  
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 				  <div class="col" ng-repeat="x in data track by $index">
-					<div class="card" style="width: 18rem;">
-						<img ng-src="./media/image/{{x.kep}}" alt="{{x}}">
+					<div class="card p-4 mb-3 text-center border-4" style="width: 25rem;">
+						<img ng-src="./media/image/{{x.kep}}" alt="{{x.termekNev}}">
 						<div class="card-body">
 						  <h5 class="card-title">{{x.termekNev}}</h5>
 						  <p class="card-text">{{x.termekLeiras}}</p>
-						  <a href="#" class="btn btn-primary">Go somewhere</a>
+						  <a href="#" class="btn btn-primary">Kosárba</a>
 						</div>
 					  </div>
 				  </div>
