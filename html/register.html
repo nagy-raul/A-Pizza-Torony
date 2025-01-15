@@ -27,9 +27,9 @@
 			<!-- Form -->
 			<form name="registerForm" novalidate>
 
-				<!-- First name -->
+				<!-- Name -->
 				<div class="row mb-3">
-					<label for="register-first_name" 
+					<label for="register-name" 
 								class="col-form-label col-12 col-md-5 text-md-end">
 						<i class="fa-solid fa-star fa-2xs text-danger"></i>
 						<i class="fa-solid fa-user me-1"></i>
@@ -37,22 +37,22 @@
 						<span>név:</span>
 					</label>
 					<div class="col-11 col-md-6 position-relative">
-						<input id="register-first_name"
+						<input id="register-name"
 									 class="form-control"
-									 name="first_name" 
+									 name="name" 
 									 type="text"
 									 placeholder="Kereszt név"
 									 spellcheck="false" 
 									 autocomplete="off" 
 									 required
 									 maxlength="100"
-									 ng-init="model.first_name=null"
-									 ng-model="model.first_name"
+									 ng-init="model.name=null"
+									 ng-model="model.name"
 									 ng-clear-icon>
 					</div>
 					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
 						<span class="fw-bolder text-success"
-									ng-class="{'invisible': registerForm.first_name.$invalid}">
+									ng-class="{'invisible': registerForm.name.$invalid}">
 							&check;
 						</span>
 					</div>
@@ -250,7 +250,7 @@
 						<span data-bs-toggle="tooltip"
 									data-bs-custom-class="custom-tooltip"
 									data-bs-html="true"
-									data-bs-title="&lt;p class='my-1'>Please re-enter your email address for security!&lt;/p>">
+									data-bs-title="&lt;p class='my-1'>Adja meg újra az email címét a biztonsága érdekében!&lt;/p>">
 							<i class="fa-solid fa-circle-info text-primary ms-2"></i>
 						</span>
 					</div>
@@ -289,8 +289,8 @@
 						<span data-bs-toggle="tooltip"
 									data-bs-custom-class="custom-tooltip"
 									data-bs-html="true"
-									data-bs-title="&lt;p class='my-1'>6-20 characters&lt;/br>
-																&lt;small>(contains uppercase, lowercase letters and numbers)&lt;/small>&lt;/p>">
+									data-bs-title="&lt;p class='my-1'>6-20 karakter&lt;/br>
+																&lt;small>(legyen benne nagybetű, kisbetű és szám)&lt;/small>&lt;/p>">
 							<i class="fa-solid fa-circle-info text-primary ms-2"></i>
 						</span>
 					</div>
@@ -330,7 +330,7 @@
 						<span data-bs-toggle="tooltip"
 									data-bs-custom-class="custom-tooltip"
 									data-bs-html="true"
-									data-bs-title="&lt;p class='my-1'>Please re-enter your password for security!&lt;/p>">
+									data-bs-title="&lt;p class='my-1'>Adja meg újra a jelszavát a biztonsága érdekében!&lt;/p>">
 							<i class="fa-solid fa-circle-info text-primary ms-2"></i>
 						</span>
 					</div>
@@ -349,6 +349,43 @@
 									class="form-check-label ms-1">
 							jelszó megjelenítése
 						</label>
+					</div>
+				</div>
+
+				<!-- Born -->
+				<div class="row mb-3">
+					<label for="login-born" 
+								class="col-form-label col-12 col-md-4 text-md-end">
+						<i class="fa-solid fa-star fa-2xs text-danger"></i>
+						<i class="fa-solid fa-calendar-days me-1"></i>
+						<span>Születési dátum:</span>
+					</label>
+					<div class="col-11 col-md-7 position-relative">
+						<input id="login-born"
+									 class="form-control"
+									 name="born" 
+									 type="date"
+									 placeholder="born"
+									 spellcheck="false" 
+									 autocomplete="off"
+									 max="{{helper.maxBorn}}"
+									 min="{{helper.minBorn}}" 
+									 required
+									 ng-model="model.born"
+									 ng-disable-space
+									 ng-clear-icon>
+					</div>
+					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
+						<span class="fw-bolder text-success"
+									ng-class="{'invisible': loginForm.born.$invalid}">
+							&check;
+						</span>
+						<span data-bs-toggle="tooltip"
+									data-bs-custom-class="custom-tooltip"
+									data-bs-html="true"
+									data-bs-title="&lt;p class='my-1'>Csak a 16 éven felettiek!&lt;/p>">
+							<i class="fa-solid fa-circle-info text-primary ms-2"></i>
+						</span>
 					</div>
 				</div>
 

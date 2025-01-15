@@ -197,6 +197,12 @@
     function($scope, http) {
       console.log('Register Controller...');
 
+      // Set helper
+			$scope.helper = {
+				maxBorn: moment().subtract( 16, 'years').format('YYYY-MM-DD'),
+				minBorn: moment().subtract(130, 'years').format('YYYY-MM-DD')
+			}
+
       // Login method
       $scope.login = () => {
       
