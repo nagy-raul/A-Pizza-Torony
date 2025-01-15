@@ -41,7 +41,7 @@
 									 class="form-control"
 									 name="first_name" 
 									 type="text"
-									 placeholder="first name"
+									 placeholder="Kereszt név"
 									 spellcheck="false" 
 									 autocomplete="off" 
 									 required
@@ -71,7 +71,7 @@
 									 class="form-control"
 									 name="middle_name" 
 									 type="text"
-									 placeholder="middle name"
+									 placeholder="Középső név"
 									 spellcheck="false" 
 									 autocomplete="off" 
 									 maxlength="100"
@@ -95,7 +95,7 @@
 									 class="form-control"
 									 name="last_name" 
 									 type="text"
-									 placeholder="last name"
+									 placeholder="Vezeték név"
 									 spellcheck="false" 
 									 autocomplete="off" 
 									 required
@@ -124,7 +124,7 @@
 									 class="form-control"
 									 name="born" 
 									 type="date"
-									 placeholder="born"
+									 placeholder="Született"
 									 spellcheck="false" 
 									 autocomplete="off"
 									 max="{{helper.maxBorn}}"
@@ -159,11 +159,11 @@
 					<div class="col-11 col-md-6 position-relative d-flex align-items-center"
 							 ng-init="model.gender=null">
 						<div class="form-check form-check-inline me-4"
-								 ng-repeat="x in ['female','male'] track by $index">
+								 ng-repeat="x in ['nő','férfi'] track by $index">
 							<input id="register-{{x}}"
 										name="gender" 
 										type="radio"
-										ng-value="x === 'female' ? 'F' : 'M'"
+										ng-value="x === nő' ? 'F' : 'M'"
 										class="form-check-input"
 										ng-model="model.gender" 
 										required>
@@ -194,7 +194,7 @@
 									 class="form-control"
 									 name="email" 
 									 type="text"
-									 placeholder="email"
+									 placeholder="Email"
 									 spellcheck="false" 
 									 autocomplete="off" 
 									 required
@@ -223,14 +223,14 @@
 								class="col-form-label col-12 col-md-5 text-md-end">
 						<i class="fa-solid fa-star fa-2xs text-danger"></i>
 						<i class="fa-regular fa-envelope me-1"></i>
-						<span class="text-capitalize">megerősítés:</span>
+						<span class="text-capitalize">email megerősítés:</span>
 					</label>
 					<div class="col-11 col-md-6 position-relative">
 						<input id="register-emailConfirm"
 									 class="form-control"
 									 name="emailConfirm" 
 									 type="text"
-									 placeholder="email confirmation"
+									 placeholder="Email megerősítése"
 									 spellcheck="false" 
 									 autocomplete="off" 
 									 required
@@ -269,7 +269,7 @@
 									 class="form-control"
 									 name="password" 
 									 type="{{model.showPassword ? 'text' : 'password'}}"
-									 placeholder="password"
+									 placeholder="Jelszó"
 									 spellcheck="false" 
 									 autocomplete="off" 
 									 required
@@ -302,14 +302,14 @@
 								class="col-form-label col-12 col-md-5 text-md-end">
 						<i class="fa-solid fa-star fa-2xs text-danger"></i>
 						<i class="fa-solid fa-unlock-keyhole me-1"></i>
-						<span class="text-capitalize">megerősítés:</span>
+						<span class="text-capitalize">jelszó megerősítés:</span>
 					</label>
 					<div class="col-11 col-md-6 position-relative">
 						<input id="register-passwordConfirm"
 									 class="form-control"
 									 name="passwordConfirm" 
 									 type="{{model.showPassword ? 'text' : 'password'}}"
-									 placeholder="password confirmation"
+									 placeholder="Jelszó megerősítése"
 									 spellcheck="false" 
 									 autocomplete="off" 
 									 required
@@ -347,7 +347,7 @@
 									 ng-model="model.showPassword">
 						<label for="register-showPassword"
 									class="form-check-label ms-1">
-							jelszó megerősítése
+							jelszó megjelenítése
 						</label>
 					</div>
 				</div>
