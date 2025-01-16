@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Dec 25. 21:47
--- Kiszolgáló verziója: 10.4.32-MariaDB
--- PHP verzió: 8.2.12
+-- Létrehozás ideje: 2025. Jan 16. 13:41
+-- Kiszolgáló verziója: 10.4.28-MariaDB
+-- PHP verzió: 8.1.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -57,18 +57,19 @@ INSERT INTO `asztalfoglalasok` (`foglalasID`, `nev`, `email`, `telszam`, `datum`
 CREATE TABLE `felhasznalok` (
   `felhasznaloID` int(10) NOT NULL,
   `nev` varchar(100) NOT NULL,
-  `jelszo` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `telszam` varchar(100) NOT NULL
+  `orszagkod` varchar(5) NOT NULL,
+  `telszam` varchar(100) NOT NULL,
+  `jelszo` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- A tábla adatainak kiíratása `felhasznalok`
 --
 
-INSERT INTO `felhasznalok` (`felhasznaloID`, `nev`, `jelszo`, `email`, `telszam`) VALUES
-(1, 'Nagy Raul', 'jelszo', 'nagyraul@gmail.com', '+36566575675'),
-(2, 'Balázs Lehel', 'jelszo2', 'balazslehel@gmail.com', '+36321312414');
+INSERT INTO `felhasznalok` (`felhasznaloID`, `nev`, `email`, `orszagkod`, `telszam`, `jelszo`) VALUES
+(1, 'Nagy Raul', 'nagyraul@gmail.com', '+36', '566575675', 'jelszo'),
+(2, 'Balázs Lehel', 'balazslehel@gmail.com', '+36', '321312414', 'jelszo2');
 
 -- --------------------------------------------------------
 

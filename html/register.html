@@ -57,79 +57,6 @@
 					</div>
 				</div>
 
-
-
-
-				<!-- Born -->
-				<div class="row mb-3">
-					<label for="register-born" 
-								class="col-form-label col-12 col-md-5 text-md-end">
-						<i class="fa-solid fa-star fa-2xs text-danger"></i>
-						<i class="fa-solid fa-calendar-days me-1"></i>
-						<span class="text-capitalize">születési dátum:</span>
-					</label>
-					<div class="col-11 col-md-6 position-relative">
-						<input id="register-born"
-									 class="form-control"
-									 name="born" 
-									 type="date"
-									 placeholder="Született"
-									 spellcheck="false" 
-									 autocomplete="off"
-									 max="{{helper.maxBorn}}"
-									 min="{{helper.minBorn}}" 
-									 required
-									 ng-init="model.born=null"
-									 ng-model="model.born">
-					</div>
-					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
-						<span class="fw-bolder text-success"
-									ng-class="{'invisible': registerForm.born.$invalid}">
-							&check;
-						</span>
-						<span data-bs-toggle="tooltip"
-									data-bs-custom-class="custom-tooltip"
-									data-bs-html="true"
-									data-bs-title="&lt;p class='my-1'>Only people over 16 years old can be register!&lt;/p>">
-							<i class="fa-solid fa-circle-info text-primary ms-2"></i>
-						</span>
-					</div>
-				</div>
-
-				<!-- Gender -->
-				<fieldset class="row input-row mb-3">
-					<legend class="col-form-label col-12 col-md-5 text-md-end">
-						<i class="fa-solid fa-star fa-2xs text-danger"></i>
-						<i class="fa-solid fa-venus-mars me-1"></i>
-						<span class="text-capitalize">
-							nem:
-						</span>
-					</legend>
-					<div class="col-11 col-md-6 position-relative d-flex align-items-center"
-							 ng-init="model.gender=null">
-						<div class="form-check form-check-inline me-4"
-								 ng-repeat="x in ['nő','férfi'] track by $index">
-							<input id="register-{{x}}"
-										name="gender" 
-										type="radio"
-										ng-value="x === nő' ? 'F' : 'M'"
-										class="form-check-input"
-										ng-model="model.gender" 
-										required>
-								<label for="register-{{x}}" 
-											 class="form-check-label opacity-100">
-									{{x}}
-								</label>
-						</div>
-					</div>
-					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
-						<span class="fw-bolder text-success"
-									ng-class="{'invisible': registerForm.gender.$invalid}">
-							&check;
-						</span>
-					</div>
-				</fieldset>
-
 				<!-- Email -->
 				<div class="row mb-3">
 					<label for="register-email" 
@@ -200,6 +127,44 @@
 									data-bs-title="&lt;p class='my-1'>Adja meg újra az email címét a biztonsága érdekében!&lt;/p>">
 							<i class="fa-solid fa-circle-info text-primary ms-2"></i>
 						</span>
+					</div>
+				</div>
+
+				<div class="row input-row mb-3">
+					<label for="register-phone" 
+								class="col-form-label col-12 col-md-4 text-md-end">
+						<i class="fa-solid fa-mobile-screen me-1"></i>
+						<span class="text-capitalize">
+							telefon szám:
+						</span>
+					</label>
+					<div class="col-11 col-md-7 position-relative">
+						<div class="input-group">
+							<span class="me-2 mt-1">+</span>
+							<input id="register-countryCode"
+										 name="countryCode" 
+										 type="text"
+										 placeholder="Kód"
+										 class="form-control"
+										 spellcheck="false" 
+										 autocomplete="off"
+										 maxlength="10"
+										 ng-model="model.countryCode"
+										 ng-clear-icon='{"left":"100px"}'
+										 style="max-width:100px;">
+							<input id="register-phone"
+										 name="phone" 
+										 type="tel"
+										 placeholder="Telefon"
+										 class="form-control"
+										 spellcheck="false" 
+										 autocomplete="off"
+										 maxlength="10"
+										 ng-model="model.phone"
+										 ng-pattern="/^$|^(?!(0))[0-9]{7,10}$/"
+										 ng-allow-numbers
+										 ng-clear-icon='{"right":"8px"}'>
+						</div>
 					</div>
 				</div>
 
@@ -292,43 +257,6 @@
 									class="form-check-label ms-1">
 							jelszó megjelenítése
 						</label>
-					</div>
-				</div>
-
-				<!-- Born -->
-				<div class="row mb-3">
-					<label for="login-born" 
-								class="col-form-label col-12 col-md-4 text-md-end">
-						<i class="fa-solid fa-star fa-2xs text-danger"></i>
-						<i class="fa-solid fa-calendar-days me-1"></i>
-						<span>Születési dátum:</span>
-					</label>
-					<div class="col-11 col-md-7 position-relative">
-						<input id="login-born"
-									 class="form-control"
-									 name="born" 
-									 type="date"
-									 placeholder="born"
-									 spellcheck="false" 
-									 autocomplete="off"
-									 max="{{helper.maxBorn}}"
-									 min="{{helper.minBorn}}" 
-									 required
-									 ng-model="model.born"
-									 ng-disable-space
-									 ng-clear-icon>
-					</div>
-					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
-						<span class="fw-bolder text-success"
-									ng-class="{'invisible': loginForm.born.$invalid}">
-							&check;
-						</span>
-						<span data-bs-toggle="tooltip"
-									data-bs-custom-class="custom-tooltip"
-									data-bs-html="true"
-									data-bs-title="&lt;p class='my-1'>Csak a 16 éven felettiek!&lt;/p>">
-							<i class="fa-solid fa-circle-info text-primary ms-2"></i>
-						</span>
 					</div>
 				</div>
 
