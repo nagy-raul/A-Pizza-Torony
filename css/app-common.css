@@ -1,0 +1,148 @@
+:root {
+  --xs-font-size: 0.6rem;
+  --sm-font-size: 0.7rem;
+  --md-font-size: 0.8rem;
+  --lg-font-size: 0.9rem;
+}
+*:not(input):not(textarea) {
+  -webkit-touch-callout:none !important;
+	  -webkit-user-select:none !important;
+						user-select:none !important;
+					outline-style:none !important;
+}
+.bg-img {
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+}
+.bg-img-contain {
+  -webkit-background-size: contain !important;
+          background-size: contain !important;
+}
+.bg-img-cover {
+  -webkit-background-size: cover !important;
+          background-size: cover !important;
+}
+.bg-dark-transparent {
+  background-color:rgba(0,0,0,.4);
+}
+.bg-light-transparent {
+  background-color:rgba(255,255,255,.4);
+}
+.bg-dark-strong-transparent {
+  background-color:rgba(0,0,0,.8);
+}
+.bg-light-strong-transparent {
+  background-color:rgba(255,255,255,.8);
+}
+.bg-lin-grad-blue {
+  background-image:-moz-linear-gradient(#363291,#4742be) !important;
+  background-image:     linear-gradient(#363291,#4742be) !important;
+}
+.bg-lin-grad-red {
+  background-image:-moz-linear-gradient(#b30000,#F00) !important;
+  background-image:     linear-gradient(#b30000,#F00)	!important;
+}
+.bg-lin-grad-olive {
+  background-image:-moz-linear-gradient(#660,#b3b300) !important;
+  background-image:     linear-gradient(#660,#b3b300)	!important;
+}	
+.bg-lin-grad-teal {
+  background-image:-moz-linear-gradient(#004d4d,#099) !important;
+  background-image:     linear-gradient(#004d4d,#099)	!important;
+}
+.bg-lin-grad-gray {
+  background-image:-moz-linear-gradient(#374048,#647382) !important;
+  background-image:     linear-gradient(#374048,#647382) !important;
+}
+.bg-lin-grad-green {
+  background-image:-moz-linear-gradient(#006000,#009800) !important;
+  background-image:     linear-gradient(#006000,#009800) !important;
+}
+.bg-lin-grad-yellow {
+  background-image:-moz-linear-gradient(#998500,#ffdd00) !important;
+  background-image:     linear-gradient(#998500,#ffdd00) !important;
+}
+.shadow-bottom {
+  -webkit-box-shadow:0 0.6rem 0.3rem -0.1rem rgba(0,0,0,.3);
+          box-shadow:0 0.6rem 0.3rem -0.1rem rgba(0,0,0,.3);
+}
+.shadow-bottom-end {
+  -webkit-box-shadow: 0.6rem 0.6rem 0.3rem 0 rgba(0,0,0,0.3);
+          box-shadow: 0.6rem 0.6rem 0.3rem 0 rgba(0,0,0,0.3);
+}
+.shadow-bottom-start {
+  -webkit-box-shadow:-0.6rem 0.6rem 0.3rem 0 rgba(0,0,0,.3);
+          box-shadow:-0.6rem 0.6rem 0.3rem 0 rgba(0,0,0,.3);
+}
+.shadow-top {
+  -webkit-box-shadow:0 -0.6rem 0.3rem -0.1rem rgba(0,0,0,.3);
+          box-shadow:0 -0.6rem 0.3rem -0.1rem rgba(0,0,0,.3);
+}
+.shadow-top-end {
+  -webkit-box-shadow:0.6rem -0.6rem 0.3rem 0 rgba(0,0,0,.3);
+          box-shadow:0.6rem -0.6rem 0.3rem 0 rgba(0,0,0,.3);
+}
+.shadow-top-start {
+  -webkit-box-shadow:-0.6rem -0.6rem 0.3rem 0 rgba(0,0,0,.3);
+          box-shadow:-0.6rem -0.6rem 0.3rem 0 rgba(0,0,0,.3);
+}
+.shadow-sm-bottom {
+  -webkit-box-shadow:0 0.3rem 0.3rem -0.1rem rgba(0,0,0,.3);
+          box-shadow:0 0.3rem 0.3rem -0.1rem rgba(0,0,0,.3);
+}
+.shadow-sm-bottom-end {
+  -webkit-box-shadow: 0.3rem 0.3rem 0.3rem 0 rgba(0,0,0,0.3);
+          box-shadow: 0.3rem 0.3rem 0.3rem 0 rgba(0,0,0,0.3);
+}
+.shadow-sm-bottom-start {
+  -webkit-box-shadow:-0.3rem 0.3rem 0.3rem 0 rgba(0,0,0,.3);
+          box-shadow:-0.3rem 0.3rem 0.3rem 0 rgba(0,0,0,.3);
+}
+.shadow-sm-top {
+  -webkit-box-shadow:0 -0.3rem 0.3rem -0.1rem rgba(0,0,0,.3);
+          box-shadow:0 -0.3rem 0.3rem -0.1rem rgba(0,0,0,.3);
+}
+.shadow-sm-top-end {
+  -webkit-box-shadow:0.3rem -0.3rem 0.3rem 0 rgba(0,0,0,.3);
+          box-shadow:0.3rem -0.3rem 0.3rem 0 rgba(0,0,0,.3);
+}
+.shadow-sm-top-start {
+  -webkit-box-shadow:-0.3rem -0.3rem 0.3rem 0 rgba(0,0,0,.3);
+          box-shadow:-0.3rem -0.3rem 0.3rem 0 rgba(0,0,0,.3);
+}
+.d-conditional:not(.show) {
+  display: none !important;
+}
+.d-hidden:not(.show) {
+  visibility: hidden !important
+}
+.stop-transitions {
+  transition: none !important;
+}
+.cursor-pointer {
+  cursor: pointer !important;
+}
+.cursor-default {
+  cursor: default !important;
+}
+.text-small-caps {
+	font-variant: small-caps !important;
+}
+.text-justify {
+  text-align: justify !important
+}
+.text-nowrap {
+  white-space:nowrap !important;
+}
+.fs-xs {
+  font-size: var(--xs-font-size) !important;
+}
+.fs-sm {
+  font-size: var(--sm-font-size) !important;
+}
+.fs-md {
+  font-size: var(--md-font-size) !important;
+}
+.fs-lg {
+  font-size: var(--lg-font-size) !important;
+}

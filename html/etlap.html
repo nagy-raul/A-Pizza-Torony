@@ -20,7 +20,6 @@
 
 	<div class="album py-5 mt-5">
 		<div class="container">
-		  
 			<div class="row row-cols-1 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 g-3 justify-content-center">
 				<div class="col" ng-repeat="x in data track by $index">
 					<div class="card p-4 mb-3 text-center border-4 w-auto" style="max-width: 19rem;">
@@ -29,36 +28,34 @@
 						<div class="card-body">
 						  <h5 class="card-title">{{x.termekNev}}</h5>
 						  <p class="card-text">{{x.termekLeiras}}</p>
-						  <a class="btn btn-danger" ng-click="kosarba()">Kosárba</a>
+						  <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal{{$index}}">Kosárba</a>
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>
-	<!-- The Modal -->
-	<div class="modal" id="myModal">
-		<div class="modal-dialog">
-	  		<div class="modal-content">
-  
-		<!-- Modal Header -->
+	
+	
+	
+	<div ng-repeat="x in data track by $index">
+		<!-- Modal -->
+		<div class="modal fade" id="modal{{$index}}" tabindex="-1" aria-labelledby="termek{{$index}}" aria-hidden="true">
+			<div class="modal-dialog">
+			<div class="modal-content">
 				<div class="modal-header">
-		  			<h4 class="modal-title">Modal Heading</h4>
-		  			<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				<h1 class="modal-title fs-5" id="termek{{$index}}">{{x.termekNev}}</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
-  
-		<!-- Modal body -->
 				<div class="modal-body">
-		  			Modal body..
+					{{x.termekLeiras}}
 				</div>
-  
-		<!-- Modal footer -->
 				<div class="modal-footer">
-		  			<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Kosárba</button>
 				</div>
-  
-	  		</div>
+			</div>
+			</div>
 		</div>
-  	</div>
+	</div>
 </main>
