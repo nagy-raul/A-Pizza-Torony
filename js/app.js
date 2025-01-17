@@ -169,8 +169,7 @@
     'util',
     'http',
     'trans',
-    'msg',
-    function($scope, form, util, http, trans, msg) {
+    function($scope, form, http, trans) {
 
       // Set local methods
       let methods = {
@@ -180,8 +179,6 @@
 
           console.log('Login Controller...');
 
-          // Set email address from local storige if exist
-          $scope.model = {email: util.localStorage('get', 'email')};
 
           // Set focus
 					form.focus();
@@ -197,16 +194,15 @@
           // Set request
           http.request({
             url: "./php/login.php",
-            data: util.objFilterByKeys($scope.model, 'showPassword', false)
+            data: $scope.model
           })
           .then(response => {
             response.email = $scope.model.email;
-            util.localStorage('set', 'email', response.email);
             trans.preventState();
           })
           .catch(e => {
             $scope.model.password = null;
-            alert(e);
+            console.log(e);
           });
         },
 
@@ -274,9 +270,6 @@
 
               // Initialize missing data
               data.id   = response.lastInsertId;
-
-              // Set save email address
-              util.localStorage('set', 'email', data.email);
 
               // Show result
               alert("Sikeres regisztráció!");
