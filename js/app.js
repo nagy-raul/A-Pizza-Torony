@@ -206,7 +206,7 @@
           })
           .catch(e => {
             $scope.model.password = null;
-            msg.error(e);
+            alert(e);
           });
         },
 
