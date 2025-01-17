@@ -34,7 +34,7 @@ if (is_null($result))
 $result = $result[0];
 
 // Check password
-if ($result['jelszo'] !== $args['jelszo'])
+if ($result['jelszo'] !== $args['password'])
 	Util::setError("Helytelen jelszó!");
 
 // Remove password property
