@@ -30,12 +30,11 @@
 		<main>
 		  <div class="row g-5">
 			<div class="col-md-11 col-lg-12">
-			  <h4 class="mb-3">Számlázási cím</h4>
-			  <form class="needs-validation" name="kapcsolatForm" novalidate>
+			  <form name="kapcsolatForm">
 				<div class="row g-3">
 				  <div class="col-12">
 					<label for="username" class="form-label">NÉV*</label>
-					<div class="input-group has-validation">
+					<div class="input-group">
 					  <span class="input-group-text">@</span>
 					  <div class="col-11 col-md-6 position-relative">
 						<input id="kapcsolat-name"
@@ -122,6 +121,18 @@
 									 ng-allow-numbers
 									 ng-clear-icon='{"right":"8px"}'>
 					</div>
+					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
+						<span class="fw-bolder text-success"
+									ng-class="{'invisible': registerForm.phone.$invalid}">
+							&check;
+						</span>
+						<span data-bs-toggle="tooltip"
+									data-bs-custom-class="custom-tooltip"
+									data-bs-html="true"
+									data-bs-title="&lt;p class='my-1'>&lt;/p>">
+							<i class="fa-solid fa-circle-info text-primary ms-2"></i>
+						</span>
+					</div>
 				</div>
 	  
 				  <div class="col-12">
@@ -133,7 +144,7 @@
 	  
 				<hr class="my-4">
 	  
-				<button class="w-100 btn btn-primary btn-lg" type="submit">KÜLDÉS</button>
+				<button class="w-auto btn btn-primary btn-lg" type="button">KÜLDÉS</button>
 			  </form>
 			</div>
 		  </div>
