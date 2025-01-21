@@ -135,7 +135,6 @@
     'form',
     'util',
     'http',
-    'user',
     function($scope, form, util, http) {
 
       // Set local methods
@@ -222,8 +221,6 @@
   .controller('loginController', [
     '$scope',
     'form',
-    'user',
-    'util',
     'http',
     'trans',
     function($scope, form, http, trans) {
@@ -280,7 +277,6 @@
     'form',
     'util',
     'http',
-    'user',
     function($scope, form, util, http) {
 
       // Set local methods
