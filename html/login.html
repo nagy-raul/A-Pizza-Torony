@@ -133,8 +133,15 @@
 							<button type="button"
 											class="btn btn-primary w-auto me-3 text-capitalize"
 											ng-disabled="loginForm.$invalid"
-											ng-click="login()">
+											ng-click="methods.login()">
 								bejelentkezés
+							</button>
+
+							<!-- Cancel button -->
+							<button type="button"
+									class="btn btn-secondary w-auto me-3 text-capitalize"
+									ng-click="methods.cancel()">
+								mégsem
 							</button>
 						</div>
 					</div>

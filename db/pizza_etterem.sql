@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Jan 16. 13:41
--- Kiszolgáló verziója: 10.4.28-MariaDB
--- PHP verzió: 8.1.17
+-- Létrehozás ideje: 2025. Jan 17. 22:14
+-- Kiszolgáló verziója: 10.4.32-MariaDB
+-- PHP verzió: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -68,8 +68,8 @@ CREATE TABLE `felhasznalok` (
 --
 
 INSERT INTO `felhasznalok` (`felhasznaloID`, `nev`, `email`, `orszagkod`, `telszam`, `jelszo`) VALUES
-(1, 'Nagy Raul', 'nagyraul@gmail.com', '+36', '566575675', 'jelszo'),
-(2, 'Balázs Lehel', 'balazslehel@gmail.com', '+36', '321312414', 'jelszo2');
+(1, 'Nagy Raul', 'nagyraul@gmail.com', '36', '5665756756', 'Jelszo1'),
+(2, 'Balázs Lehel', 'balazslehel@gmail.com', '36', '3213124144', 'Jelszo2');
 
 -- --------------------------------------------------------
 
@@ -227,7 +227,7 @@ ALTER TABLE `asztalfoglalasok`
 -- AUTO_INCREMENT a táblához `felhasznalok`
 --
 ALTER TABLE `felhasznalok`
-  MODIFY `felhasznaloID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `felhasznaloID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT a táblához `kapcsolat`

@@ -132,8 +132,65 @@
   // Kapcsolat controller
   .controller('kapcsolatController', [
     '$scope',
-    function($scope) {
-      console.log('Kapcsolat Controller...');
+    'form',
+    'util',
+    'http',
+    'user',
+    function($scope, form, util, http) {
+
+      // Set local methods
+      let methods = {
+
+        // Initialize
+        init: () => {
+
+          console.log('Kapcsolat Controller...');
+
+          // Set focus
+					form.focus();
+        }
+      };
+
+      // Set scope methods
+      $scope.methods = {
+
+        // Contact
+        contact: () => {
+
+          // Remove unnecessary data
+          let data  = util.objFilterByKeys($scope.model);
+
+          console.log(data);
+
+          // Http request
+          http.request({
+            method: "POST",
+            url: "./php/contact.php",
+            data: data
+          })
+          .then(response => {
+
+            // Check response
+            if (response.affectedRows) {
+
+              // Initialize missing data
+              data.kapcsolatID   = response.lastInsertId;
+
+              // Show result
+              alert("Sikeres regisztráció!");
+            } else alert("Sikertelen regisztráció!");
+          })
+          .catch(e => console.log(e));
+        },
+
+        // Cancel
+        cancel: () => {
+          console.log("cancel")
+        }
+      };
+
+      // Initialize
+      methods.init();
     }
   ])
 
@@ -164,69 +221,128 @@
   // Login controller
   .controller('loginController', [
     '$scope',
+    'form',
+    'user',
+    'util',
     'http',
-    function($scope, http) {
-      console.log('Login Controller...');
+    'trans',
+    function($scope, form, http, trans) {
 
-      // Login method
-      $scope.login = () => {
-      
-         // Set request
-        http.request({
-          url: "./php/login.php",
-          data: $scope.model
-        })
-        .then(response => {
-          console.log(response)
-        })
-        .catch(e => {
-          $scope.model.password = null;
-          console.log(e);
-        });
-      }
-      
+      // Set local methods
+      let methods = {
+
+        // Initialize
+        init: () => {
+
+          console.log('Login Controller...');
+
+
+          // Set focus
+					form.focus();
+        }
+      };
+
+      // Set scope methods
+      $scope.methods = {
+
+        // Login
+        login: () => {
+
+          // Set request
+          http.request({
+            url: "./php/login.php",
+            data: $scope.model
+          })
+          .then(response => {
+            response.email = $scope.model.email;
+            trans.preventState();
+          })
+          .catch(e => {
+            $scope.model.password = null;
+            console.log(e);
+          });
+        },
+
+        // Cancel
+        cancel: () => {
+          console.log("cancel");
+        }
+      };
+
+      // Initialize
+      methods.init();
     }
   ])
   
-  // Register controller
-  .controller('registerController', [
+   // Register controller
+   .controller('registerController', [
     '$scope',
+    'form',
+    'util',
     'http',
-    function($scope, http) {
-      console.log('Register Controller...');
+    'user',
+    function($scope, form, util, http) {
 
-      // Set helper
-			$scope.helper = {
-				maxBorn: moment().subtract( 16, 'years').format('YYYY-MM-DD'),
-				minBorn: moment().subtract(130, 'years').format('YYYY-MM-DD')
-			}
+      // Set local methods
+      let methods = {
 
-      // Login method
-      $scope.login = () => {
-      
-        // Http request
-        http.request({
-          method: "POST",
-          url: "./php/register.php",
-          data: $scope.model
-        })
-        .then(response => {
+        // Initialize
+        init: () => {
 
-          // Check response
-          if (response.affectedRows) {
+          console.log('Register Controller...');
 
-            // Remove unnecessary data
-            delete $scope.model.password;
-            delete $scope.model.born;
+          // Set focus
+					form.focus();
+        }
+      };
 
-            // Initialize missing data
-            $scope.model.id   = response.lastInsertId;
-            $scope.model.type = "U";
+      // Set scope methods
+      $scope.methods = {
 
-          } else alert("Sikertelen regisztráció!");
-        })
-        .catch(e => console.log(e));
-      }
+        // Register
+        register: () => {
+
+          // Remove unnecessary data
+          let data  = util.objFilterByKeys($scope.model, [
+                        'showPassword', 
+                        'emailConfirm',
+                        'passwordConfirm'
+                      ], false);
+
+          console.log(data);
+
+          // Http request
+          http.request({
+            method: "POST",
+            url: "./php/register.php",
+            data: data
+          })
+          .then(response => {
+
+            // Check response
+            if (response.affectedRows) {
+
+              // Remove unnecessary data
+              delete data.password;
+
+              // Initialize missing data
+              data.id   = response.lastInsertId;
+
+              // Show result
+              alert("Sikeres regisztráció!");
+            } else alert("Sikertelen regisztráció!");
+          })
+          .catch(e => console.log(e));
+        },
+
+        // Cancel
+        cancel: () => {
+          console.log("cancel")
+        }
+      };
+
+      // Initialize
+      methods.init();
     }
   ])
   
