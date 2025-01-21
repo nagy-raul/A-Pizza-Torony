@@ -132,8 +132,65 @@
   // Kapcsolat controller
   .controller('kapcsolatController', [
     '$scope',
-    function($scope) {
-      console.log('Kapcsolat Controller...');
+    'form',
+    'util',
+    'http',
+    'user',
+    function($scope, form, util, http) {
+
+      // Set local methods
+      let methods = {
+
+        // Initialize
+        init: () => {
+
+          console.log('Kapcsolat Controller...');
+
+          // Set focus
+					form.focus();
+        }
+      };
+
+      // Set scope methods
+      $scope.methods = {
+
+        // Contact
+        contact: () => {
+
+          // Remove unnecessary data
+          let data  = util.objFilterByKeys($scope.model);
+
+          console.log(data);
+
+          // Http request
+          http.request({
+            method: "POST",
+            url: "./php/contact.php",
+            data: data
+          })
+          .then(response => {
+
+            // Check response
+            if (response.affectedRows) {
+
+              // Initialize missing data
+              data.kapcsolatID   = response.lastInsertId;
+
+              // Show result
+              alert("Sikeres regisztráció!");
+            } else alert("Sikertelen regisztráció!");
+          })
+          .catch(e => console.log(e));
+        },
+
+        // Cancel
+        cancel: () => {
+          console.log("cancel")
+        }
+      };
+
+      // Initialize
+      methods.init();
     }
   ])
 
