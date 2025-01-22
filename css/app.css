@@ -92,16 +92,36 @@
   
 	.hero-image {
 		background-position: center;
-		background-repeat: no-repeat;
+		background-repeat: repeat-x;
 		background-size: cover;
 		position: relative;
+		/*animation: backdrop_roll linear 12s infinite;*/
 		height: 200px;
-	  }
+	}
+
+	@keyframes backdrop_roll { from { right: 0px; } to { right: 320px; } }
 	  
   .navbar{
 	background-color: #FFC87B !important;
   }
 
+.nav-item a.active {
+	cursor: default;
+}
+.dropdown-item:active,
+.dropdown-item.active,
+.dropdown-item a.active {
+	background-color: transparent !important;
+}
+.custom-tooltip {
+  --bs-tooltip-bg: var(--bs-primary);
+	--bs-tooltip-color: var(--bs-light);
+}
+.form-control-disabled {
+	border: 0 !important;
+	box-shadow: none !important;
+	cursor: default !important;
+}
 
 /*home.html*/
 

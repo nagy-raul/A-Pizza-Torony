@@ -36,7 +36,7 @@
 					</label>
 					<div class="col-11 col-md-7 position-relative">
 						<div class="row">
-							<div class="col-md-5">
+							<div class="col-md-2">
 								<input id="profile-id"
 											 class="form-control form-control-disabled"
 											 name="id" 
@@ -45,26 +45,6 @@
 									 		 autocomplete="off"
 											 ng-model="model.id"
 											 disabled>
-							</div>
-							<div class="col-md-7">
-								<div class="row mt-3 mt-md-0">
-									<label for="profile-type" 
-												class="col-form-label col-md-6 text-md-end">
-										<i class="fa-solid fa-location-crosshairs me-1"></i>
-										<span class="text-capitalize">típus:</span>
-									</label>
-									<div class="col-md-6">
-										<input id="profile-type"
-													 class="form-control form-control-disabled"
-													 name="type" 
-													 type="text"
-													 maxlength="1"
-													 spellcheck="false" 
-									 				 autocomplete="off"
-													 ng-model="model.type"
-													 disabled>
-										</div>
-								</div>
 							</div>
 						</div>
 					</div>
@@ -118,137 +98,6 @@
 					</div>
 				</div>
 
-
-				<!-- Born -->
-				<div class="row mb-3">
-					<label for="profile-born" 
-								class="col-form-label col-12 col-md-4 text-md-end">
-						<i class="fa-solid fa-star fa-2xs text-danger"></i>
-						<i class="fa-solid fa-calendar-days me-1"></i>
-						<span>Születési dátum:</span>
-					</label>
-					<div class="col-11 col-md-7 position-relative">
-						<input id="profile-born"
-									 class="form-control"
-									 name="born" 
-									 type="date"
-									 placeholder="Született"
-									 spellcheck="false" 
-									 autocomplete="off"
-									 max="{{helper.maxBorn}}"
-									 min="{{helper.minBorn}}" 
-									 required
-									 ng-model="model.born"
-									 ng-disable-space
-									 ng-clear-icon>
-					</div>
-					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
-						<span class="fw-bolder text-success"
-									ng-class="{'invisible': profileForm.born.$invalid}">
-							&check;
-						</span>
-						<span data-bs-toggle="tooltip"
-									data-bs-custom-class="custom-tooltip"
-									data-bs-html="true"
-									data-bs-title="&lt;p class='my-1'>Only people over 16 years old!&lt;/p>">
-							<i class="fa-solid fa-circle-info text-primary ms-2"></i>
-						</span>
-					</div>
-				</div>
-
-				<!-- Gender -->
-				<fieldset class="row input-row mb-3">
-					<legend class="col-form-label col-12 col-md-4 text-md-end">
-						<i class="fa-solid fa-star fa-2xs text-danger"></i>
-						<i class="fa-solid fa-venus-mars me-1"></i>
-						<span class="text-capitalize">
-							nem:
-						</span>
-					</legend>
-					<div class="col-11 col-md-7 position-relative d-flex align-items-center">
-						<div class="form-check form-check-inline me-4"
-								ng-repeat="x in ['nő','férfi'] track by $index">
-							<input id="profile-{{x}}"
-										name="gender" 
-										type="radio"
-										ng-value="x === 'nő' ? 'F' : 'M'"
-										class="form-check-input"
-										spellcheck="false" 
-									 	autocomplete="off"
-										ng-model="model.gender" 
-										required>
-								<label for="profile-{{x}}" 
-											 class="form-check-label opacity-100">
-									{{x}}
-								</label>
-						</div>
-					</div>
-					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
-						<span class="fw-bolder text-success"
-									ng-class="{'invisible': profileForm.gender.$invalid}">
-							&check;
-						</span>
-					</div>
-				</fieldset>
-
-				<!-- Image -->
-				<div class="row input-row mb-5">
-					<div class="col-form-label col-12 col-md-4 text-md-end">
-						<i class="fa-solid fa-image-portrait me-1"></i>
-						<span class="text-capitalize">
-							kép:
-						</span>
-					</div>
-					<div class="col-11 col-md-7 position-relative" 
-							style="height:100px;">
-						<input id="profile-image"
-									name="image" 
-									type="file"
-									accept="image/*"
-									class="form-control form-control d-none"
-									spellcheck="false" 
-									autocomplete="off"
-									ng-model="helper.image"
-									file-input
-									ng-clear-icon='{"left":"160px"}'>
-						<label for="profile-image">
-							<div class="bg-img bg-img-cover overflow-hidden rounded-circle border 
-													d-flex align-items-center justify-content-center cursor-pointer"
-									style="width:130px;height:130px;"
-									ng-style="{'background-image':model.img_type?'url(data:'+model.img_type+';base64,'+model.img+')':(model.gender?'url(./media/image/blank/'+(model.gender==='F'?'fe':'')+'male-blank.webp)':'')}">
-								<span class="text-center text-muted"
-											ng-show="!model.img && !model.gender">
-									<i class="fa-solid fa-upload"></i><br>
-									<span class="fs-sm">Max: 64KB</span>
-								</span>							
-							</div>
-						</label>
-					</div>
-				</div>
-
-				<!-- Country -->
-				<div class="row input-row mb-3">
-					<label for="profile-country" 
-								class="col-form-label col-12 col-md-4 text-md-end">
-						<i class="fa-solid fa-flag me-1"></i>
-						<span class="text-capitalize">
-							ország:
-						</span>
-					</label>
-					<div class="col-11 col-md-7 position-relative">
-						<input id="profile-country"
-									name="country" 
-									type="text"
-									placeholder="Ország"
-									class="form-control"
-									spellcheck="false" 
-									autocomplete="off"
-									maxlength="100"
-									ng-model="model.country"
-									ng-clear-icon>
-					</div>
-				</div>
-
 				<!-- Phone (Country code / Phone) -->
 				<div class="row input-row mb-3">
 					<label for="profile-phone" 
@@ -285,76 +134,6 @@
 										 ng-allow-numbers
 										 ng-clear-icon='{"right":"8px"}'>
 						</div>
-					</div>
-				</div>
-					
-				<!-- City -->
-				<div class="row input-row mb-3">
-					<label for="profile-city" 
-								class="col-form-label col-12 col-md-4 text-md-end">
-						<i class="fa-solid fa-city me-1"></i>
-						<span class="text-capitalize">
-							város:
-						</span>
-					</label>
-					<div class="col-11 col-md-7 position-relative">
-						<input id="profile-city"
-									 name="city" 
-									 type="text"
-									 placeholder="város"
-									 class="form-control"
-									 spellcheck="false" 
-									 autocomplete="off"
-									 maxlength="100"
-									 ng-model="model.city"
-									 ng-clear-icon>
-					</div>
-				</div>
-
-				<!-- Post code -->
-				<div class="row input-row mb-3">
-					<label for="profile-postcode" 
-								class="col-form-label col-12 col-md-4 text-md-end">
-						<i class="fa-solid fa-list-ol me-1"></i>
-						<span class="text-capitalize">
-							irányítószám:
-						</span>
-					</label>
-					<div class="col-11 col-md-7 position-relative">
-						<input id="profile-postcode"
-									 name="postcode" 
-									 type="text"
-									 placeholder="Irányítószám"
-									 class="form-control"
-									 spellcheck="false" 
-									 autocomplete="off"
-									 maxlength="10"
-									 ng-model="model.postcode"
-									 style="max-width:120px;"
-									 ng-clear-icon='{"left":"110px"}'>
-					</div>
-				</div>
-
-				<!-- Address -->
-				<div class="row input-row mb-5">
-					<label for="profile-address" 
-								class="col-form-label col-12 col-md-4 text-md-end">
-						<i class="fa-solid fa-location-dot me-1"></i>
-						<span class="text-capitalize">
-							cím:
-						</span>
-					</label>
-					<div class="col-11 col-md-7 position-relative">
-						<textarea id="profile-address"
-											name="address"
-											placeholder="Cím"
-											class="form-control"
-											spellcheck="false" 
-											autocomplete="off"
-											rows="1"
-											ng-model="model.address"
-											ng-clear-icon>
-						</textarea>
 					</div>
 				</div>
 
