@@ -92,8 +92,8 @@
   
 	.hero-image {
 		background-position: center;
-		background-repeat: repeat-x;
-		background-size: cover;
+		background-repeat: repeat;
+		/*background-size: cover;*/
 		position: relative;
 		/*animation: backdrop_roll linear 12s infinite;*/
 		height: 200px;
