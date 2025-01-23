@@ -222,8 +222,7 @@
     '$scope',
     'form',
     'http',
-    'trans',
-    function($scope, form, http, trans) {
+    function($scope, form, http) {
 
       // Set local methods
       let methods = {
@@ -252,7 +251,6 @@
           })
           .then(response => {
             response.email = $scope.model.email;
-            trans.preventState();
           })
           .catch(e => {
             $scope.model.password = null;
