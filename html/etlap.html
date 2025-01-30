@@ -41,22 +41,60 @@
 	
 	<div ng-repeat="x in data track by $index">
 		<!-- Modal -->
+		<div class="modal fade p-4 py-md-5" 
+		     tabindex="-1" 
+			 aria-labelledby="termek{{$index}}" 
+			 role="dialog" 
+			 id="modal{{$index}}">
+			<div class="modal-dialog" role="document">
+			  <div class="modal-content rounded-4 shadow">
+				<div class="modal-header p-5 pb-4 border-bottom-0">
+				  <h1 class="fw-bold mb-0 fs-2" id="termek{{$index}}">{{x.termekNev}}</h1>
+				  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+		  
+				<div class="modal-body p-5 pt-0">
+				  <form class="" name="form{{x.termekNev}}" novalidate>
+					<p class="mb-2">Mekkora pizzát szeretne?</p>
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+						<label class="form-check-label" for="flexRadioDefault1">
+						  24 cm
+						</label>
+					  </div>
+					  <div class="form-check mb-4">
+						<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+						<label class="form-check-label" for="flexRadioDefault2">
+						  32 cm
+						</label>
+					  </div>
+					<button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="button">Rendelés</button>
+					<hr class="my-4">
+				  </form>
+				</div>
+			  </div>
+			</div>
+		  </div>
+
+
+		<!--	
 		<div class="modal fade" id="modal{{$index}}" tabindex="-1" aria-labelledby="termek{{$index}}" aria-hidden="true">
 			<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-				<h1 class="modal-title fs-5" id="termek{{$index}}">{{x.termekNev}}</h1>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="termek{{$index}}">{{x.termekNev}}</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						{{x.termekLeiras}}
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégsem</button>
+						<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Kosárba</button>
+					</div>
 				</div>
-				<div class="modal-body">
-					{{x.termekLeiras}}
-				</div>
-				<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégsem</button>
-				<button type="button" class="btn btn-primary">Kosárba</button>
-				</div>
-			</div>
 			</div>
 		</div>
+	-->
 	</div>
 </main>
