@@ -250,11 +250,13 @@
             data: $scope.model
           })
           .then(response => {
-            response.email = $scope.model.email;
+            //response.email = $scope.model.email;
+            alert('A bejelenkezés sikerült!');
           })
           .catch(e => {
             $scope.model.password = null;
-            console.log(e);
+            alert(e);
+            //console.log(e);
           });
         },
 

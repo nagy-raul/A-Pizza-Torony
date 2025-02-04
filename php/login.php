@@ -8,17 +8,17 @@ require_once("./environment.php");
 $args = Util::getArgs();
 
 // Set SQL command
-$query = "SELECT `felhasznaloID`, 
-                 `nev`, 
-				 `email`, 
-				 `orszagkod`, 
-				 `telszam`, 
-				 `lakcim`, 
-				 `jelszo`, 
-				 `letrehozas` 
-          FROM `felhasznalok`
-		  WHERE `email` = ?
-		  LIMIT 1";
+$query =  "SELECT `felhasznaloID`, 
+                 	`nev`, 
+				 					/*`email`, */
+				 					`orszagkod`, 
+				 					`telszam`, 
+				 					`lakcim`, 
+				 					`jelszo`, 
+				 					`letrehozas` 
+          	 FROM `felhasznalok`
+		  		 	WHERE `email` = ?
+		  		 	LIMIT 1";
 
 // Connect to MySQL server
 $db = new Database();
