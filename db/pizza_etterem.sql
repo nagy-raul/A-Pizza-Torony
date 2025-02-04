@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Feb 04. 10:36
+-- Létrehozás ideje: 2025. Feb 04. 12:16
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.1.17
 
@@ -70,10 +70,10 @@ CREATE TABLE `felhasznalok` (
 --
 
 INSERT INTO `felhasznalok` (`felhasznaloID`, `nev`, `jelszo`, `email`, `telszam`) VALUES
-(1, 'Nagy Raul', 'jelszo', 'nagyraul@gmail.com', '+36566575675'),
-(2, 'Balázs Lehel', 'jelszo2', 'balazslehel@gmail.com', '+36321312414'),
-(3, 'Novák Antal', 'kfoprkfprek', 'novantal@gmail.com', '+36209399676'),
-(4, 'Csaba Selmeczi', 'jelszo3', 'csaba-selmeczi', '+36209399676');
+(1, 'Nagy Raul', 'Jelszo1', 'nagyraul@gmail.com', '+36566575675'),
+(2, 'Balázs Lehel', 'Jelszo2', 'balazslehel@gmail.com', '+36321312414'),
+(3, 'Novák Antal', 'Kfoprkfprek', 'novantal@gmail.com', '+36209399676'),
+(4, 'Csaba Selmeczi', 'Jelszo3', 'csaba-selmeczi', '+36209399676');
 
 -- --------------------------------------------------------
 
