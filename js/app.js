@@ -94,8 +94,14 @@
 	// Application run
   .run([
     '$rootScope',
-    function($rootScope) {
-			console.log('Run...');
+    'util',
+    function ($rootScope, util) {
+
+      $rootScope.user = {};
+      $rootScope.user.id = util.localStorage('get', 'felhasznaloID');
+      $rootScope.user.name = util.localStorage('get', 'nev');
+      $rootScope.user.email = util.localStorage('get', 'email');
+
     }
   ])
 
@@ -219,55 +225,53 @@
   
   // Login controller
   .controller('loginController', [
+    '$rootScope',
     '$scope',
-    'form',
     'http',
-    function($scope, form, http) {
+    'util',
+    function ($rootScope, $scope, http, util) {
+      console.log('Login controller...');
 
-      // Set local methods
-      let methods = {
+      $scope.model = {email: util.localStorage('get', 'email')};
 
-        // Initialize
-        init: () => {
+      $scope.login = () => {
+        http.request({
+          url: "./php/login.php",
+          data: $scope.model
+        })
+        .then(response => {
+          $rootScope.user.id = response.felhasznaloID;
+          $rootScope.user.id = response.name;
+          $rootScope.user.email = $scope.model.email;
 
-          console.log('Login Controller...');
+          util.localStorage('set', 'felhasznaloID', $rootScope.user.id);
+          util.localStorage('set', 'nev', $rootScope.user.name);
+          util.localStorage('set', 'email', $rootScope.user.email);
 
+          alert("Sikerült bejelentkezni!");
+        })
+        .catch(e => {
+          $scope.model.password = null
 
-          // Set focus
-					form.focus();
+          alert(e)
+        })
+      }
+
+      $scope.logOut = () => {
+        if (confirm('Biztosan ki szeretne lépni a fiókjából?')) {
+          $rootScope.user.id = null;
+          $rootScope.user.name = null;
+          $rootScope.user.email = null;
+
+          util.localStorage('remove', 'felhasznaloID');
+          util.localStorage('remove', 'email');
+
+          $rootScope.$applyAsync();
+
+          alert("Sikerült kijelentkezni!");
         }
-      };
+      }
 
-      // Set scope methods
-      $scope.methods = {
-
-        // Login
-        login: () => {
-
-          // Set request
-          http.request({
-            url: "./php/login.php",
-            data: $scope.model
-          })
-          .then(response => {
-            //response.email = $scope.model.email;
-            alert('A bejelenkezés sikerült!');
-          })
-          .catch(e => {
-            $scope.model.password = null;
-            alert(e);
-            //console.log(e);
-          });
-        },
-
-        // Cancel
-        cancel: () => {
-          console.log("cancel");
-        }
-      };
-
-      // Initialize
-      methods.init();
     }
   ])
   

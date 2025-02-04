@@ -29,7 +29,7 @@
 						<div class="card-body">
 						  <h5 class="card-title">{{x.termekNev}}</h5>
 						  <p class="card-text">{{x.termekLeiras}}</p>
-						  <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal{{$index}}">Kosárba</a>
+						  <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal{{x.termekID}}">Kosárba</a>
 						</div>
 					</div>
 				</div>
@@ -43,18 +43,18 @@
 		<!-- Modal -->
 		<div class="modal fade p-4 py-md-5" 
 		     tabindex="-1" 
-			 aria-labelledby="termek{{$index}}" 
+			 aria-labelledby="termek{{x.termekID}}" 
 			 role="dialog" 
-			 id="modal{{$index}}">
+			 id="modal{{x.termekID}}">
 			<div class="modal-dialog" role="document">
 			  <div class="modal-content rounded-4 shadow">
 				<div class="modal-header p-5 pb-4 border-bottom-0">
-				  <h1 class="fw-bold mb-0 fs-2" id="termek{{$index}}">{{x.termekNev}}</h1>
+				  <h1 class="fw-bold mb-0 fs-2" id="termek{{x.termekID}}">{{x.termekNev}}</h1>
 				  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 		  
 				<div class="modal-body p-5 pt-0">
-				  <form class="" name="form{{x.termekNev}}" novalidate>
+				  <form class="" name="form{{x.termekID}}" novalidate>
 					<p class="mb-2">Mekkora pizzát szeretne?</p>
 					<div class="form-check form-check-inline">
 						<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
