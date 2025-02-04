@@ -109,11 +109,12 @@
           $rootScope.user.email = null;
 
           util.localStorage('remove', 'felhasznaloID');
+          util.localStorage('remove', 'nev');
           util.localStorage('remove', 'email');
 
           $rootScope.$applyAsync();
 
-          alert("Sikerült kijelentkezni!");
+          alert(`Sikerült kijelentkezni! Felhasználó neve: ${$rootScope.user.name}`);
         }
       }
     }
@@ -262,7 +263,7 @@
           util.localStorage('set', 'nev', $rootScope.user.name);
           util.localStorage('set', 'email', $rootScope.user.email);
 
-          alert(`Sikerült bejelentkezni! Felhasználó neve: ${$rootScope.user.nev}`);
+          alert(`Sikerült bejelentkezni! Felhasználó neve: ${$rootScope.user.name}`);
         })
         .catch(e => {
           $scope.model.password = null
@@ -272,7 +273,7 @@
       }
 
       $scope.cancel = () => {
-        $scope.model.name = null
+        $scope.model.email = null
         $scope.model.password = null
       }
 
@@ -336,7 +337,7 @@
               alert("Sikeres regisztráció!");
             } else alert("Sikertelen regisztráció!");
           })
-          .catch(e => console.log(e));
+          .catch(e => alert(e));
         },
 
         // Cancel
