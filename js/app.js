@@ -7,8 +7,8 @@
     'ui.router',
     'app.common',
     'app.message',
-    'app.user',
-		'app.form'
+		'app.form',
+    'app.user'
 	])
 
 	// Application config
@@ -102,6 +102,20 @@
       $rootScope.user.name = util.localStorage('get', 'nev');
       $rootScope.user.email = util.localStorage('get', 'email');
 
+      $rootScope.logOut = () => {
+        if (confirm('Biztosan ki szeretne lépni a fiókjából?')) {
+          $rootScope.user.id = null;
+          $rootScope.user.name = null;
+          $rootScope.user.email = null;
+
+          util.localStorage('remove', 'felhasznaloID');
+          util.localStorage('remove', 'email');
+
+          $rootScope.$applyAsync();
+
+          alert("Sikerült kijelentkezni!");
+        }
+      }
     }
   ])
 
@@ -241,14 +255,14 @@
         })
         .then(response => {
           $rootScope.user.id = response.felhasznaloID;
-          $rootScope.user.id = response.name;
+          $rootScope.user.name = response.name;
           $rootScope.user.email = $scope.model.email;
 
           util.localStorage('set', 'felhasznaloID', $rootScope.user.id);
           util.localStorage('set', 'nev', $rootScope.user.name);
           util.localStorage('set', 'email', $rootScope.user.email);
 
-          alert("Sikerült bejelentkezni!");
+          alert(`Sikerült bejelentkezni! Felhasználó neve: ${$rootScope.user.name}`);
         })
         .catch(e => {
           $scope.model.password = null
@@ -257,19 +271,9 @@
         })
       }
 
-      $scope.logOut = () => {
-        if (confirm('Biztosan ki szeretne lépni a fiókjából?')) {
-          $rootScope.user.id = null;
-          $rootScope.user.name = null;
-          $rootScope.user.email = null;
-
-          util.localStorage('remove', 'felhasznaloID');
-          util.localStorage('remove', 'email');
-
-          $rootScope.$applyAsync();
-
-          alert("Sikerült kijelentkezni!");
-        }
+      $scope.cancel = () => {
+        $scope.model.name = null
+        $scope.model.password = null
       }
 
     }
