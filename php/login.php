@@ -9,7 +9,8 @@ $args = Util::getArgs();
 
 // Set SQL command
 $query =  "SELECT `felhasznaloID`, 
-                  `nev`
+                  `nev`,
+				  `jelszo`
           	 FROM `felhasznalok`
 		  	WHERE `email` = ?
 		    LIMIT 1";

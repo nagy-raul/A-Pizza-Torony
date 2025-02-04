@@ -255,14 +255,14 @@
         })
         .then(response => {
           $rootScope.user.id = response.felhasznaloID;
-          $rootScope.user.name = response.name;
+          $rootScope.user.name = response.nev;
           $rootScope.user.email = $scope.model.email;
 
           util.localStorage('set', 'felhasznaloID', $rootScope.user.id);
           util.localStorage('set', 'nev', $rootScope.user.name);
           util.localStorage('set', 'email', $rootScope.user.email);
 
-          alert(`Sikerült bejelentkezni! Felhasználó neve: ${$rootScope.user.name}`);
+          alert(`Sikerült bejelentkezni! Felhasználó neve: ${$rootScope.user.nev}`);
         })
         .catch(e => {
           $scope.model.password = null
