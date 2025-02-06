@@ -114,7 +114,7 @@
 
           $rootScope.$applyAsync();
 
-          alert(`Sikerült kijelentkezni! Felhasználó neve: ${$rootScope.user.name}`);
+          alert(`Sikerült kijelentkezni!`);
         }
       }
     }
