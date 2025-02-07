@@ -363,9 +363,153 @@
   
   // Profile controller
   .controller('profileController', [
-    '$scope',
-    function($scope) {
-      console.log('Profile Controller...');
+    /*
+    '$rootScope',
+    '$scope',    
+    'form',
+    'trans',
+    'msg',
+    'util',
+    'http',
+    */
+    function(/*$rootScope, $scope, form, trans, msg, util, http*/) {
+
+      console.log('Profile  Controller...');
+
+      /*
+      // Set helper
+			$scope.helper = {
+        modelStart: null,
+        isModified: false			
+      }
+
+      // Set local methods
+      let methods = {
+
+        // Initialize
+        init: () => {
+
+          // Set model from rootscope model
+          $scope.model = util.objMerge({}, $rootScope.user);
+
+          // Get rest data
+          methods.get();
+        },
+
+        // Get data
+        get: () => {
+
+          // Http request
+          http.request({
+            url: "./php/profile_get.php",
+            data: {id: $rootScope.user.id}
+          })
+          .then(response => {
+
+            // Set model
+            methods.set(response).then(() => {
+
+              // Set events
+              methods.events();
+
+              // Set focus
+					    form.focus();
+            });
+          })
+          .catch(e => msg.error(e));
+        },
+
+        // Set model
+        set: (response) => {
+
+          // Create promise
+          return new Promise((resolve) => {
+
+            // Create new deffered object
+            let set = util.deferredObj();
+
+            // Whait for set completed
+            set.completed.then(() => {
+
+              // Merge model with response, save start model properties,
+              $scope.model = util.objMerge($scope.model, response);
+              $scope.helper.modelStart = util.objMerge({}, $scope.model);
+
+              // Apply change, and resolve
+              $scope.$applyAsync();
+              resolve();
+            })
+          });
+        },
+
+        // Events
+        events: () => {
+
+					// Watch user profile changed
+					$scope.$watch('model', (newValue) => {
+						if (newValue) {
+							$scope.helper.isModified = 
+                  !angular.equals(newValue, $scope.helper.modelStart);
+						}
+					}, true);
+        }
+      };
+
+      // Set scope methods
+      $scope.methods = {
+
+        // Save
+        save: () => {
+
+          // Get only data, that has changed
+          let data = util.objDifference(
+            $scope.helper.modelStart, 
+            $scope.model
+          );
+
+          // Check data has born property
+          if (util.isObjectHasKey(data, 'born') && data.born)
+            data.born = moment(data.born).format('YYYY-MM-DD');
+
+          // Set user identifier
+          data.id = $rootScope.user.id;
+
+          // Http request
+          http.request({
+            method: "POST",
+            url: "./php/profile_set.php",
+            data: data
+          })
+          .then(response => {
+
+            // Check response
+            if (response.affectedRows) {
+
+              // Update user properties
+              $rootScope.user = util.objMerge($rootScope.user, data, true);
+
+              // Show result
+              msg.show({
+                icon      : "text-success fa-solid fa-check",
+                content   : "Az adatokat sikerült módosítani!",
+                callback  : () => {
+
+                  // Go to prevent state
+                  trans.preventState();
+                }
+              });
+            } else msg.error("Az adatokat nem sikerült módosítani!");
+          })
+          .catch(e => msg.error(e));
+        },
+
+        // Cancel
+        cancel: () => trans.preventState()
+      };
+
+      // Initialize
+      methods.init();
+      */
     }
   ]);
 	
