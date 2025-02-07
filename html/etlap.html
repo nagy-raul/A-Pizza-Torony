@@ -56,19 +56,44 @@
 				<div class="modal-body p-5 pt-0 justify-content-center">
 				  <form class="" name="form{{x.termekID}}" novalidate>
 					<img ng-src="./media/image/{{x.kep}}" width="200" height="200" class="img-fluid mx-auto d-block my-3">
-					<p class="mb-2">Mekkora pizzát szeretne?</p>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-						<label class="form-check-label" for="flexRadioDefault1">
-						  24 cm
+					<div class="row">
+						<p class="mb-2">Mekkora pizzát szeretne?</p>
+					</div>
+
+						<div class="form-check form-check-inline">
+							<input class="form-check-input border-black" type="radio" name="meret" id="meret1">
+							<label class="form-check-label" for="meret1">
+							24 cm
+							</label>
+						</div>
+						<div class="form-check form-check-inline mb-4">
+							<input class="form-check-input border-black" type="radio" name="meret" id="meret2" checked>
+							<label class="form-check-label" for="meret2">
+							32 cm
+							</label>
+						</div>
+
+					<div class="row">
+					  <p class="mb-2">Milyenre szeretné a pizza szélét?</p>
+					</div>
+
+					  <div class="form-check form-check-inline">
+						<input class="form-check-input border-black" type="radio" name="szel" id="vekony">
+						<label class="form-check-label" for="vekony">
+						  Vékony
 						</label>
 					  </div>
 					  <div class="form-check form-check-inline mb-4">
-						<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-						<label class="form-check-label" for="flexRadioDefault2">
-						  32 cm
+						<input class="form-check-input border-black" type="radio" name="szel" id="vastag" checked>
+						<label class="form-check-label" for="vastag">
+						  Vastag
 						</label>
 					  </div>
+
+					<div class="row">
+						<p class="mb-2" ng-init="ar = x.termekAr">Ár: {{ar}} Ft</p>
+					</div>
+
 					<button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="button">Rendelés</button>
 					<hr class="my-4">
 				  </form>
