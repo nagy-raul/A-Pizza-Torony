@@ -101,16 +101,26 @@
       $rootScope.user.id = util.localStorage('get', 'felhasznaloID');
       $rootScope.user.name = util.localStorage('get', 'nev');
       $rootScope.user.email = util.localStorage('get', 'email');
+      $rootScope.user.code = util.localStorage('get', 'orszagkod');
+      $rootScope.user.phone = util.localStorage('get', 'telszam');
+      $rootScope.user.address = util.localStorage('get', 'lakcim');
 
       $rootScope.logOut = () => {
         if (confirm('Biztosan ki szeretne lépni a fiókjából?')) {
           $rootScope.user.id = null;
           $rootScope.user.name = null;
           $rootScope.user.email = null;
+          $rootScope.user.code = null;
+          $rootScope.user.phone = null;
+          $rootScope.user.address = null;
+
 
           util.localStorage('remove', 'felhasznaloID');
           util.localStorage('remove', 'nev');
           util.localStorage('remove', 'email');
+          util.localStorage('remove', 'orszagkod');
+          util.localStorage('remove', 'telszam');
+          util.localStorage('remove', 'lakcim');
 
           $rootScope.$applyAsync();
 
