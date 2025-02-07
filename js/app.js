@@ -268,10 +268,16 @@
           $rootScope.user.id = response.felhasznaloID;
           $rootScope.user.name = response.nev;
           $rootScope.user.email = $scope.model.email;
+          $rootScope.user.code = response.orszagkod;
+          $rootScope.user.phone = response.telszam;
+          $rootScope.user.address = response.lakcim;
 
           util.localStorage('set', 'felhasznaloID', $rootScope.user.id);
           util.localStorage('set', 'nev', $rootScope.user.name);
           util.localStorage('set', 'email', $rootScope.user.email);
+          util.localStorage('set', 'orszagkod', $rootScope.user.code);
+          util.localStorage('set', 'telszam', $rootScope.user.phone);
+          util.localStorage('set', 'lakcim', "$rootScope.user.address");
 
           alert(`Sikerült bejelentkezni! Felhasználó neve: ${$rootScope.user.name}`);
         })
@@ -293,29 +299,15 @@
    // Register controller
    .controller('registerController', [
     '$scope',
-    'form',
     'util',
     'http',
-    function($scope, form, util, http) {
+    function($scope, util, http) {
 
-      // Set local methods
-      let methods = {
+      console.log('Register Controller...');
 
-        // Initialize
-        init: () => {
 
-          console.log('Register Controller...');
-
-          // Set focus
-					form.focus();
-        }
-      };
-
-      // Set scope methods
-      $scope.methods = {
-
-        // Register
-        register: () => {
+      // Register method
+      $scope.register = () => {
 
           // Remove unnecessary data
           let data  = util.objFilterByKeys($scope.model, [
@@ -337,11 +329,19 @@
             // Check response
             if (response.affectedRows) {
 
-              // Remove unnecessary data
-              delete data.password;
-
-              // Initialize missing data
-              data.id   = response.lastInsertId;
+              $rootScope.user.id = response.lastInsertId;
+              $rootScope.user.name = $scope.model.nev;
+              $rootScope.user.email = $scope.model.email;
+              $rootScope.user.code = $scope.model.countyCode;
+              $rootScope.user.phone = $scope.model.phone;
+              $rootScope.user.address = "$scope.model.address";
+    
+              util.localStorage('set', 'felhasznaloID', $rootScope.user.id);
+              util.localStorage('set', 'nev', $rootScope.user.name);
+              util.localStorage('set', 'email', $rootScope.user.email);
+              util.localStorage('set', 'orszagkod', $rootScope.user.code);
+              util.localStorage('set', 'telszam', $rootScope.user.phone);
+              util.localStorage('set', 'lakcim', $rootScope.user.address);
 
               // Show result
               alert("Sikeres regisztráció!");
@@ -351,13 +351,15 @@
         },
 
         // Cancel
-        cancel: () => {
-          console.log("cancel")
+        $scope.cancel = () => {
+          $scope.model.nev = "";
+          $scope.model.email = "";
+          $scope.model.countyCode = "";
+          $scope.model.phone = "";
+          $scope.model.password = "";
         }
-      };
 
-      // Initialize
-      methods.init();
+
     }
   ])
   

@@ -8,10 +8,8 @@ require_once("./environment.php");
 $args = Util::getArgs();
 
 // Set SQL command
-$query =  "SELECT `felhasznaloID`, 
-                  `nev`,
-				  `jelszo`
-          	 FROM `felhasznalok`
+$query =  "SELECT `felhasznaloID`, `nev`, `email`, `orszagkod`, `telszam`, `lakcim`
+             FROM `felhasznalok`
 		  	WHERE `email` = ?
 		    LIMIT 1";
 
