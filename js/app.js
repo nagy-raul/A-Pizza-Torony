@@ -252,9 +252,10 @@
   .controller('loginController', [
     '$rootScope',
     '$scope',
+    '$state',
     'http',
     'util',
-    function ($rootScope, $scope, http, util) {
+    function ($rootScope, $scope, $state, http, util) {
       console.log('Login controller...');
 
       $scope.model = {email: util.localStorage('get', 'email')};
@@ -277,7 +278,7 @@
           util.localStorage('set', 'email', $rootScope.user.email);
           util.localStorage('set', 'orszagkod', $rootScope.user.code);
           util.localStorage('set', 'telszam', $rootScope.user.phone);
-          util.localStorage('set', 'lakcim', "$rootScope.user.address");
+          util.localStorage('set', 'lakcim', $rootScope.user.address);
 
           alert(`Sikerült bejelentkezni! Felhasználó neve: ${$rootScope.user.name}`);
         })
@@ -289,8 +290,7 @@
       }
 
       $scope.cancel = () => {
-        $scope.model.email = null
-        $scope.model.password = null
+        $state.go('home')
       }
 
     }
@@ -298,10 +298,12 @@
   
    // Register controller
    .controller('registerController', [
+    '$rootScope',
     '$scope',
+    '$state',
     'util',
     'http',
-    function($scope, util, http) {
+    function($rootScope, $scope, $state, util, http) {
 
       console.log('Register Controller...');
 
@@ -352,11 +354,7 @@
 
         // Cancel
         $scope.cancel = () => {
-          $scope.model.nev = "";
-          $scope.model.email = "";
-          $scope.model.countyCode = "";
-          $scope.model.phone = "";
-          $scope.model.password = "";
+          $state.go('home')
         }
 
 

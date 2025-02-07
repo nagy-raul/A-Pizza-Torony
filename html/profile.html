@@ -136,6 +136,50 @@
 										 ng-clear-icon='{"right":"8px"}'>
 						</div>
 					</div>
+
+					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
+						<span class="fw-bolder text-success"
+									ng-class="{'invisible': profileForm.phone.$invalid && profileForm.countryCode.$invalid}">
+							&check;
+						</span>
+						<span data-bs-toggle="tooltip"
+									data-bs-custom-class="custom-tooltip"
+									data-bs-html="true"
+									data-bs-title="&lt;p class='my-1'>&lt;/p>">
+							<i class="fa-solid fa-circle-info text-primary ms-2"></i>
+						</span>
+					</div>
+				</div>
+
+				<!-- Address -->
+				<div class="row mb-3">
+					<label for="profile-address" 
+								class="col-form-label col-12 col-md-5 text-md-end">
+						<i class="fa-solid fa-star fa-2xs text-danger"></i>
+						<i class="fa-solid fa-house-chimney me-1"></i>
+						<span class="text-capitalize">lakcím:</span>
+					</label>
+					<div class="col-11 col-md-6 position-relative">
+						<input id="profile-address"
+									 class="form-control"
+									 name="address" 
+									 type="text"
+									 placeholder="Lakcím"
+									 spellcheck="false" 
+									 autocomplete="off" 
+									 required
+									 maxlength="100"
+									 ng-init="model.address=null"
+									 ng-model="model.address"
+									 ng-disable-space
+									 ng-clear-icon>
+					</div>
+					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
+						<span class="fw-bolder text-success"
+									ng-class="{'invisible': profile.address.$invalid}">
+							&check;
+						</span>
+					</div>
 				</div>
 
 				<!-- Buttons -->

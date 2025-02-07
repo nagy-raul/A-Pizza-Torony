@@ -157,6 +157,7 @@
 										 spellcheck="false" 
 										 autocomplete="off"
 										 maxlength="10"
+										 ng-init="model.countryCode=null"
 										 ng-model="model.countryCode"
 										 ng-clear-icon='{"left":"100px"}'
 										 style="max-width:100px;"
@@ -170,6 +171,7 @@
 										 spellcheck="false" 
 										 autocomplete="off"
 										 maxlength="10"
+										 ng-init="model.phone=null"
 										 ng-model="model.phone"
 										 ng-pattern="/^$|^(?!(0))[0-9]{7,10}$/"
 										 ng-allow-numbers
@@ -179,7 +181,7 @@
 
 					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
 						<span class="fw-bolder text-success"
-									ng-class="{'invisible': registerForm.phone.$invalid}">
+									ng-class="{'invisible': registerForm.phone.$invalid && registerForm.countryCode.$invalid}">
 							&check;
 						</span>
 						<span data-bs-toggle="tooltip"
@@ -187,6 +189,37 @@
 									data-bs-html="true"
 									data-bs-title="&lt;p class='my-1'>&lt;/p>">
 							<i class="fa-solid fa-circle-info text-primary ms-2"></i>
+						</span>
+					</div>
+				</div>
+
+				<!-- Address -->
+				<div class="row mb-3">
+					<label for="register-address" 
+								class="col-form-label col-12 col-md-5 text-md-end">
+						<i class="fa-solid fa-star fa-2xs text-danger"></i>
+						<i class="fa-solid fa-house-chimney me-1"></i>
+						<span class="text-capitalize">lakcím:</span>
+					</label>
+					<div class="col-11 col-md-6 position-relative">
+						<input id="register-address"
+									 class="form-control"
+									 name="address" 
+									 type="text"
+									 placeholder="Lakcím"
+									 spellcheck="false" 
+									 autocomplete="off" 
+									 required
+									 maxlength="100"
+									 ng-init="model.address=null"
+									 ng-model="model.address"
+									 ng-disable-space
+									 ng-clear-icon>
+					</div>
+					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
+						<span class="fw-bolder text-success"
+									ng-class="{'invisible': registerForm.address.$invalid}">
+							&check;
 						</span>
 					</div>
 				</div>
