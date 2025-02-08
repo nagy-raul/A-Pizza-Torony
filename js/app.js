@@ -98,29 +98,29 @@
     function ($rootScope, util) {
 
       $rootScope.user = {};
-      $rootScope.user.id = util.localStorage('get', 'felhasznaloID');
-      $rootScope.user.name = util.localStorage('get', 'nev');
+      $rootScope.user.id = util.localStorage('get', 'id');
+      $rootScope.user.name = util.localStorage('get', 'name');
       $rootScope.user.email = util.localStorage('get', 'email');
-      $rootScope.user.code = util.localStorage('get', 'orszagkod');
-      $rootScope.user.phone = util.localStorage('get', 'telszam');
-      $rootScope.user.address = util.localStorage('get', 'lakcim');
+      $rootScope.user.countryCode = util.localStorage('get', 'countryCode');
+      $rootScope.user.phone = util.localStorage('get', 'phone');
+      $rootScope.user.address = util.localStorage('get', 'address');
 
       $rootScope.logOut = () => {
         if (confirm('Biztosan ki szeretne lépni a fiókjából?')) {
           $rootScope.user.id = null;
           $rootScope.user.name = null;
           $rootScope.user.email = null;
-          $rootScope.user.code = null;
+          $rootScope.user.countryCode = null;
           $rootScope.user.phone = null;
           $rootScope.user.address = null;
 
 
-          util.localStorage('remove', 'felhasznaloID');
-          util.localStorage('remove', 'nev');
+          util.localStorage('remove', 'id');
+          util.localStorage('remove', 'name');
           util.localStorage('remove', 'email');
-          util.localStorage('remove', 'orszagkod');
-          util.localStorage('remove', 'telszam');
-          util.localStorage('remove', 'lakcim');
+          util.localStorage('remove', 'countryCode');
+          util.localStorage('remove', 'phone');
+          util.localStorage('remove', 'address');
 
           $rootScope.$applyAsync();
 
@@ -266,19 +266,19 @@
           data: $scope.model
         })
         .then(response => {
-          $rootScope.user.id = response.felhasznaloID;
+          $rootScope.user.id = response.id;
           $rootScope.user.name = response.nev;
           $rootScope.user.email = $scope.model.email;
-          $rootScope.user.code = response.orszagkod;
+          $rootScope.user.countryCode = response.orszagkod;
           $rootScope.user.phone = response.telszam;
           $rootScope.user.address = response.lakcim;
 
-          util.localStorage('set', 'felhasznaloID', $rootScope.user.id);
-          util.localStorage('set', 'nev', $rootScope.user.name);
+          util.localStorage('set', 'id', $rootScope.user.id);
+          util.localStorage('set', 'name', $rootScope.user.name);
           util.localStorage('set', 'email', $rootScope.user.email);
-          util.localStorage('set', 'orszagkod', $rootScope.user.code);
-          util.localStorage('set', 'telszam', $rootScope.user.phone);
-          util.localStorage('set', 'lakcim', $rootScope.user.address);
+          util.localStorage('set', 'countryCode', $rootScope.user.countryCode);
+          util.localStorage('set', 'phone', $rootScope.user.phone);
+          util.localStorage('set', 'address', $rootScope.user.address);
 
           alert(`Sikerült bejelentkezni! Felhasználó neve: ${$rootScope.user.name}`);
         })
@@ -334,16 +334,16 @@
               $rootScope.user.id = response.lastInsertId;
               $rootScope.user.name = $scope.model.nev;
               $rootScope.user.email = $scope.model.email;
-              $rootScope.user.code = $scope.model.countyCode;
+              $rootScope.user.countryCode = $scope.model.countyCode;
               $rootScope.user.phone = $scope.model.phone;
-              $rootScope.user.address = "$scope.model.address";
+              $rootScope.user.address = $scope.model.address;
     
-              util.localStorage('set', 'felhasznaloID', $rootScope.user.id);
-              util.localStorage('set', 'nev', $rootScope.user.name);
+              util.localStorage('set', 'id', $rootScope.user.id);
+              util.localStorage('set', 'name', $rootScope.user.name);
               util.localStorage('set', 'email', $rootScope.user.email);
-              util.localStorage('set', 'orszagkod', $rootScope.user.code);
-              util.localStorage('set', 'telszam', $rootScope.user.phone);
-              util.localStorage('set', 'lakcim', $rootScope.user.address);
+              util.localStorage('set', 'countryCode', $rootScope.user.countryCode);
+              util.localStorage('set', 'phone', $rootScope.user.phone);
+              util.localStorage('set', 'address', $rootScope.user.address);
 
               // Show result
               alert("Sikeres regisztráció!");
@@ -365,16 +365,15 @@
   .controller('profileController', [
     /*
     '$rootScope',
-    '$scope',    
-    'form',
-    'trans',
-    'msg',
+    '$scope',
+    '$state',
     'util',
     'http',
     */
-    function(/*$rootScope, $scope, form, trans, msg, util, http*/) {
+    function(/*$rootScope, $scope, $state, util, http*/) {
 
       console.log('Profile  Controller...');
+
 
       /*
       // Set helper
@@ -412,11 +411,9 @@
               // Set events
               methods.events();
 
-              // Set focus
-					    form.focus();
             });
           })
-          .catch(e => msg.error(e));
+          .catch(e => alert(e));
         },
 
         // Set model
@@ -467,12 +464,10 @@
             $scope.model
           );
 
-          // Check data has born property
-          if (util.isObjectHasKey(data, 'born') && data.born)
-            data.born = moment(data.born).format('YYYY-MM-DD');
-
           // Set user identifier
           data.id = $rootScope.user.id;
+
+          console.log(data);
 
           // Http request
           http.request({
@@ -489,26 +484,22 @@
               $rootScope.user = util.objMerge($rootScope.user, data, true);
 
               // Show result
-              msg.show({
-                icon      : "text-success fa-solid fa-check",
-                content   : "Az adatokat sikerült módosítani!",
-                callback  : () => {
+              alert("Az adatokat sikerült módosítani!");
 
-                  // Go to prevent state
-                  trans.preventState();
-                }
-              });
-            } else msg.error("Az adatokat nem sikerült módosítani!");
+              $state.go('home')
+
+            } else alert("Az adatokat nem sikerült módosítani!");
           })
-          .catch(e => msg.error(e));
+          .catch(e => alert(e));
         },
 
         // Cancel
-        cancel: () => trans.preventState()
+        cancel: () => $state.go('home')
       };
 
       // Initialize
       methods.init();
+
       */
     }
   ]);

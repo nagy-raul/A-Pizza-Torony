@@ -11,8 +11,13 @@ $args = Util::getArgs();
 $db = new Database();
 
 // Set SQL command
-$query  = $db->preparateUpdate("felhasznalok", $args, "felhasznaloID");
-$query .= "WHERE `felhasznaloID` = :id;";
+$query  = "UPDATE `felhasznalok` 
+           SET `nev`= :name,
+               `email`= :email,
+               `orszagkod`= :countryCode,
+               `telszam`= :phone,
+               `lakcim`= :address'
+           WHERE `felhasznaloID` = :id;";
 
 // Execute SQL command
 $result = $db->execute($query, $args);
