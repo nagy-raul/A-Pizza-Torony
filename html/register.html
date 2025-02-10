@@ -159,7 +159,6 @@
 								   maxlength="10"
 								   ng-init="model.countryCode=null"
 								   ng-model="model.countryCode"
-								   
 								   style="max-width:100px;"
 								   ng-disable-space>
 							<input id="register-phone"
@@ -172,13 +171,13 @@
 								   maxlength="10"
 								   ng-init="model.phone=null"
 								   ng-model="model.phone"
-								   ng-pattern="/^$|^(?!(0))[0-9]{7,10}$/">
+								   ng-pattern="/^(?!(0))[0-9]{7,10}$/">
 						</div>						
 					</div>
 
 					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
 						<span class="fw-bolder text-success"
-						      ng-class="{'invisible': (registerForm.phone.$invalid || registerForm.countryCode.$invalid)}">
+						      ng-class="{'invisible': (!model.countryCode || !model.phone || registerForm.phone.$invalid || registerForm.countryCode.$invalid)}">
 							&check;
 						</span>
 						<span data-bs-toggle="tooltip"
