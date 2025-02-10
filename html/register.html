@@ -148,40 +148,37 @@
 					</label>
 					<div class="col-11 col-md-7 position-relative">
 						<div class="input-group">
-							<span class="me-2 mt-1">+</span>
+							<span class="input-group-text">+</span>
 							<input id="register-countryCode"
-										 name="countryCode" 
-										 type="text"
-										 placeholder="Kód"
-										 class="form-control"
-										 spellcheck="false" 
-										 autocomplete="off"
-										 maxlength="10"
-										 ng-init="model.countryCode=null"
-										 ng-model="model.countryCode"
-										 ng-clear-icon='{"left":"100px"}'
-										 style="max-width:100px;"
-										 ng-disable-space
-										 ng-clear-icon>
+								   name="countryCode" 
+								   type="text"
+								   placeholder="Kód"
+								   class="form-control"
+								   spellcheck="false" 
+								   autocomplete="off"
+								   maxlength="10"
+								   ng-init="model.countryCode=null"
+								   ng-model="model.countryCode"
+								   
+								   style="max-width:100px;"
+								   ng-disable-space>
 							<input id="register-phone"
-										 name="phone" 
-										 type="tel"
-										 placeholder="Telefon"
-										 class="form-control"
-										 spellcheck="false" 
-										 autocomplete="off"
-										 maxlength="10"
-										 ng-init="model.phone=null"
-										 ng-model="model.phone"
-										 ng-pattern="/^$|^(?!(0))[0-9]{7,10}$/"
-										 ng-allow-numbers
-										 ng-clear-icon='{"right":"8px"}'>
-						</div>
+								   name="phone" 
+								   type="tel"
+								   placeholder="Telefon"
+								   class="form-control"
+								   spellcheck="false" 
+								   autocomplete="off"
+								   maxlength="10"
+								   ng-init="model.phone=null"
+								   ng-model="model.phone"
+								   ng-pattern="/^$|^(?!(0))[0-9]{7,10}$/">
+						</div>						
 					</div>
 
 					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
 						<span class="fw-bolder text-success"
-									ng-class="{'invisible': registerForm.phone.$invalid && registerForm.countryCode.$invalid}">
+						      ng-class="{'invisible': (registerForm.phone.$invalid || registerForm.countryCode.$invalid)}">
 							&check;
 						</span>
 						<span data-bs-toggle="tooltip"
