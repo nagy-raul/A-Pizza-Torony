@@ -281,6 +281,8 @@
           util.localStorage('set', 'address', $rootScope.user.address);
 
           alert(`Sikerült bejelentkezni! Felhasználó neve: ${$rootScope.user.name}`);
+
+          $state.go('home')
         })
         .catch(e => {
           $scope.model.password = null
@@ -347,6 +349,8 @@
 
               // Show result
               alert("Sikeres regisztráció!");
+
+              $state.go('home')
             } else alert("Sikertelen regisztráció!");
           })
           .catch(e => alert(e));
