@@ -273,13 +273,19 @@
 								</span>
 							  </div>
 
-							<div class="col-12">
-								<div class="d-grid">
-									<button class="w-auto btn btn-success btn-lg text-uppercase" 
-									        ng-disabled="bookingForm.$invalid" 
-											ng-click="methods.book()" 
-											type="button">
-										foglalás
+							  <div class="row my-3 justify-content-center">
+								<hr>
+			
+								<div class="w-auto ms-auto">
+			
+									<button class="btn btn-warning btn-lg w-auto me-3 text-uppercase" 
+											type="button" 
+											ng-disabled="bookingForm.$invalid" 
+											ng-click="methods.contact()">foglalás
+									</button>
+									<button class="btn btn-secondary btn-lg w-auto me-3 text-uppercase" 
+											type="button" 
+											ng-click="methods.cancel()">mégsem
 									</button>
 								</div>
 							</div>

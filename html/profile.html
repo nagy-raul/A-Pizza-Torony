@@ -83,7 +83,7 @@
 									class="form-control"
 									name="name" 
 									type="text"
-									placeholder="Név"
+									placeholder="..."
 									spellcheck="false" 
 									autocomplete="off" 
 									required
@@ -114,7 +114,7 @@
 							<input id="profile-countryCode"
 								   name="countryCode" 
 								   type="text"
-								   placeholder="Kód"
+								   placeholder="00"
 								   class="form-control"
 								   spellcheck="false" 
 								   autocomplete="off"
@@ -126,7 +126,7 @@
 							<input id="profile-phone"
 								   name="phone" 
 								   type="tel"
-								   placeholder="Telefon"
+								   placeholder="0000000"
 								   class="form-control"
 								   spellcheck="false" 
 								   autocomplete="off"
@@ -164,7 +164,7 @@
 									 class="form-control"
 									 name="address" 
 									 type="text"
-									 placeholder="Lakcím"
+									 placeholder="1234 Példa u. 13"
 									 spellcheck="false" 
 									 autocomplete="off" 
 									 required
@@ -187,7 +187,7 @@
 					
 					<!-- Save button -->
 					<button type="button"
-									class="btn btn-primary w-auto me-3 text-uppercase"
+									class="btn btn-warning w-auto me-3 text-uppercase"
 									ng-disabled="profileForm.$invalid || !helper.isModified"
 									ng-click="methods.save()">
 						mentés
