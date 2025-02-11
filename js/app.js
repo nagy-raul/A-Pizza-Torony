@@ -163,10 +163,11 @@
   // Kapcsolat controller
   .controller('kapcsolatController', [
     '$scope',
+    '$state',
     'form',
     'util',
     'http',
-    function($scope, form, util, http) {
+    function($scope, $state, form, util, http) {
 
       // Set local methods
       let methods = {
