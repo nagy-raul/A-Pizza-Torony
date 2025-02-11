@@ -155,8 +155,72 @@
   // Foglalas controller
   .controller('foglalasController', [
     '$scope',
-    function($scope) {
-      console.log('Foglalas Controller...');
+    '$state',
+    'form',
+    'util',
+    'http',
+    function($scope, $state, form, util, http) {
+
+      // Set local methods
+      let methods = {
+
+        // Initialize
+        init: () => {
+
+          console.log('Foglalas Controller...');
+
+          $scope.model = {
+            name: util.localStorage('get', 'name'),
+            email: util.localStorage('get', 'email'),
+            countryCode: util.localStorage('get', 'countryCode'),
+            phone: util.localStorage('get', 'phone')
+          };
+
+          // Set focus
+					form.focus();
+        }
+      };
+
+      // Set scope methods
+      $scope.methods = {
+
+        // Book
+        book: () => {
+
+          // Remove unnecessary data
+          let data  = util.objFilterByKeys($scope.model);
+
+          console.log(data);
+
+          // Http request
+          http.request({
+            method: "POST",
+            url: "./php/booking.php",
+            data: data
+          })
+          .then(response => {
+
+            // Check response
+            if (response.affectedRows) {
+
+              // Show result
+              alert("Foglalás elküldve!");
+
+              $state.go('home')
+
+            } else alert("A foglalást nem sikerült elküldeni!");
+          })
+          .catch(e => alert(e));
+        },
+
+        // Cancel
+        cancel: () => {
+          $state.go('home')
+        }
+      };
+
+      // Initialize
+      methods.init();
     }
   ])
 
