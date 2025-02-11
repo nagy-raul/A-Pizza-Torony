@@ -19,5 +19,5 @@ $result = $db->execute($query, $args);
 // Close connection
 $db = null;
 
-// Ser response
+// Set response
 Util::setResponse($result);

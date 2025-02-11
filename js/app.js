@@ -176,6 +176,13 @@
 
           console.log('Kapcsolat Controller...');
 
+          $scope.model = {
+            name: util.localStorage('get', 'name'),
+            email: util.localStorage('get', 'email'),
+            countryCode: util.localStorage('get', 'countryCode'),
+            phone: util.localStorage('get', 'phone')
+          };
+
           // Set focus
 					form.focus();
         }
@@ -203,19 +210,19 @@
             // Check response
             if (response.affectedRows) {
 
-              // Initialize missing data
-              data.kapcsolatID   = response.lastInsertId;
-
               // Show result
-              alert("Sikeres regisztráció!");
-            } else alert("Sikertelen regisztráció!");
+              alert("Üzenet elküldve!");
+
+              $state.go('home')
+
+            } else alert("Az üzenetetet nem sikerült elküldeni!");
           })
-          .catch(e => console.log(e));
+          .catch(e => alert(e));
         },
 
         // Cancel
         cancel: () => {
-          console.log("cancel")
+          $state.go('home')
         }
       };
 
