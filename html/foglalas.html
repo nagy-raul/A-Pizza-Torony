@@ -41,11 +41,13 @@
 									ng-init="model.name=null"
 									ng-model="model.name">
 							</div>
-
-							<div class="col-1 d-flex align-items-center justify-content-start ps-1">
-								<span class="fw-bolder text-success"
-											ng-class="{'invisible': bookingForm.name.$invalid}">
-									&check;
+							<div class="col-12 col-md-6">
+							<label for="booking-email" class="form-label">Email<span class="text-danger">*</span></label>
+							<div class="input-group">
+								<span class="input-group-text">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+									<path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
+								</svg>
 								</span>
 								<input id="booking-email"
 									class="form-control"
@@ -62,15 +64,8 @@
 									ng-disable-space
 									ng-clear-icon>
 							</div>
-							
-							<div class="col-1 col-md-1 d-flex align-items-center justify-content-start ps-1">
-								<span class="fw-bolder text-success"
-											ng-class="{'invisible': bookingForm.email.$invalid}">
-									&check;
-								</span>
-							  </div>
-
-							<div class="col-11 col-md-5">
+							</div>
+							<div class="col-12 col-md-6">
 								<label for="booking-phone-group" class="form-label">
 									Telefon szám <span class="text-danger">*</span>
 								</label>
@@ -86,6 +81,7 @@
 											spellcheck="false" 
 											autocomplete="off"
 											maxlength="10"
+											ng-init="model.countryCode=null"
 											ng-model="model.countryCode"
 											style="max-width:100px;"
 											ng-disable-space>
@@ -98,24 +94,20 @@
 											spellcheck="false" 
 											autocomplete="off"
 											maxlength="10"
+											ng-init="model.phone=null"
 											ng-model="model.phone"
 											ng-pattern="/^(?!(0))[0-9]{7,10}$/">
 								</div>
 							</div>
-
-							<div class="col-1 col-md-1 d-flex align-items-center justify-content-start ps-1">
-								<span class="fw-bolder text-success"
-											ng-class="{'invisible': (!model.countryCode || !model.phone || bookingForm.phone.$invalid || bookingForm.countryCode.$invalid)}">
-									&check;
-								</span>
-							  </div>
 							
 
-							<div class="col-11 col-md-5">
+							<div class="col-12 col-md-6">
+								<!-- Label for the input group -->
 								<label for="booking-datum-group" class="form-label">
 									Érkezés dátuma <span class="text-danger">*</span>
 								</label>
 							
+								<!-- Input group -->
 								<div class="input-group" id="booking-datum-group" aria-labelledby="booking-datum-group">
 									<input id="booking-datum"
 										   class="form-control"
@@ -130,19 +122,14 @@
 										   ng-clear-icon>
 								</div>
 							</div>
-
-							<div class="col-1 col-md-1 d-flex align-items-center justify-content-start ps-1">
-								<span class="fw-bolder text-success"
-											ng-class="{'invisible': bookingForm.datum.$invalid}">
-									&check;
-								</span>
-							  </div>
 							
-							<div class="col-11 col-md-5">
+							<div class="col-12 col-md-6">
+								<!-- Label for the input group -->
 								<label for="booking-ido-group" class="form-label">
 									Érkezés ideje <span class="text-danger">*</span>
 								</label>
 							
+								<!-- Input group for time selection -->
 								<div class="input-group" id="booking-ido-group" aria-labelledby="booking-ido-group">
 									<input id="booking-ido"
 										   class="form-control"
@@ -157,16 +144,9 @@
 										   ng-clear-icon>
 								</div>
 							</div>
-
-							<div class="col-1 col-md-1 d-flex align-items-center justify-content-start ps-1">
-								<span class="fw-bolder text-success"
-											ng-class="{'invisible': bookingForm.ido.$invalid}">
-									&check;
-								</span>
-							  </div>
 							
 
-							<div class="col-11 col-md-5">
+							<div class="col-12 col-md-6">
 								<label for="booking-orak" class="form-label" style="font-family: 'ABeeZee'; src: url(../css/ABeeZee-Regular.ttf);">Hány órát szeretnél maradni<span class="text-danger">*</span></label>
 								<div class="input-group">
 									<input id="booking-orak"
@@ -183,15 +163,7 @@
 												ng-clear-icon>
 								</div>
 							</div>
-
-							<div class="col-1 col-md-1 d-flex align-items-center justify-content-start ps-1">
-								<span class="fw-bolder text-success"
-											ng-class="{'invisible': bookingForm.ido.$invalid}">
-									&check;
-								</span>
-							  </div>
-
-							<div class="col-11 col-md-5">
+							<div class="col-12 col-md-6">
 								<label for="booking-vendegek" class="form-label">Vendégek száma<span class="text-danger">*</span></label>
 								<div class="input-group">
 									<input id="booking-vendegek"
@@ -208,15 +180,8 @@
 												ng-clear-icon>
 								</div>
 							</div>
-
-							<div class="col-1 col-md-1 d-flex align-items-center justify-content-start ps-1">
-								<span class="fw-bolder text-success"
-											ng-class="{'invisible': bookingForm.vendegek.$invalid}">
-									&check;
-								</span>
-							  </div>
 							
-							<div class="col-11">
+							<div class="col-12">
 							<label for="booking-megjegyzes" class="form-label">Megjegyzés<span class="text-danger">*</span></label>
 							<textarea id="booking-megjegyzes"
 									class="form-control"
@@ -228,19 +193,14 @@
 									autocomplete="off" 
 									required
 									maxlength="1000"
+									ng-init="model.megjegyzes=null"
 									ng-model="model.megjegyzes"
-									ng-init="model.megjegyzes=null">
+									ng-disable-space
+									ng-clear-icon>
 							</textarea>
 							</div>
 
-							<div class="col-1 d-flex align-items-center justify-content-start ps-1">
-								<span class="fw-bolder text-success"
-											ng-class="{'invisible': bookingForm.megjegyzes.$invalid}">
-									&check;
-								</span>
-							  </div>
-
-							<div class="col-11">
+							<div class="col-12">
 								<label for="booking-igeny" class="form-label">Asztal igény megjegyzés<span class="text-danger">*</span></label>
 								<textarea id="booking-igeny"
 										class="form-control"
@@ -253,18 +213,12 @@
 										required
 										maxlength="1000"
 										ng-init="model.igeny=null"
-										ng-model="model.igeny">
+										ng-model="model.igeny"
+										ng-disable-space
+										ng-clear-icon>
 								</textarea>
 							</div>
-
-							<div class="col-1 d-flex align-items-center justify-content-start ps-1">
-								<span class="fw-bolder text-success"
-											ng-class="{'invisible': bookingForm.igeny.$invalid}">
-									&check;
-								</span>
-							  </div>
-
-							<div class="col-11">
+							<div class="col-12">
 								<div class="d-grid">
 									<button class="w-auto btn btn-success btn-lg text-uppercase" 
 									        ng-disabled="bookingForm.$invalid" 
