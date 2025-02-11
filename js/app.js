@@ -187,6 +187,8 @@
         // Book
         book: () => {
 
+          console.log("book")
+
           // Remove unnecessary data
           let data  = util.objFilterByKeys($scope.model);
 
