@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Feb 06. 08:41
+-- Létrehozás ideje: 2025. Feb 11. 11:24
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.1.17
 
@@ -31,6 +31,7 @@ CREATE TABLE `asztalfoglalasok` (
   `foglalasID` int(10) NOT NULL,
   `nev` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
+  `orszagkod` varchar(2) NOT NULL,
   `telszam` varchar(100) NOT NULL,
   `datum` date NOT NULL,
   `ido` time NOT NULL,
@@ -44,12 +45,12 @@ CREATE TABLE `asztalfoglalasok` (
 -- A tábla adatainak kiíratása `asztalfoglalasok`
 --
 
-INSERT INTO `asztalfoglalasok` (`foglalasID`, `nev`, `email`, `telszam`, `datum`, `ido`, `orak`, `vendegek`, `megjegyzes`, `igeny`) VALUES
-(1, 'Nagy Raul', 'nagyraul@gmail.com', '+36566575675', '2024-11-21', '09:00:00', 2, 2, 'megjegyzés', 'nincs'),
-(2, 'Rútka Pál', 'rutkapal@gmail.com', '+36209399676', '2025-02-19', '10:30:00', 1, 0, 'megyjegzés', 'nincs'),
-(3, 'Luc Feri', 'balraamasodikajto@gmail.com', '+36209399676', '2025-02-26', '11:20:00', 2, 3, 'megjegyzés', 'nincs'),
-(4, 'Kolom Pál', 'kolompal@gmail.com', '+36209399676', '2025-03-12', '14:06:00', 4, 6, 'megjegyzés', 'igény'),
-(5, 'Miklós Róbert', 'mikrobi@gmail.com', '+36209399676', '2025-02-11', '16:00:00', 4, 9, 'fléksdkfsdléf', 'fkdlfklséfl');
+INSERT INTO `asztalfoglalasok` (`foglalasID`, `nev`, `email`, `orszagkod`, `telszam`, `datum`, `ido`, `orak`, `vendegek`, `megjegyzes`, `igeny`) VALUES
+(1, 'Nagy Raul', 'nagyraul@gmail.com', '', '+36566575675', '2024-11-21', '09:00:00', 2, 2, 'megjegyzés', 'nincs'),
+(2, 'Rútka Pál', 'rutkapal@gmail.com', '', '+36209399676', '2025-02-19', '10:30:00', 1, 0, 'megyjegzés', 'nincs'),
+(3, 'Luc Feri', 'balraamasodikajto@gmail.com', '', '+36209399676', '2025-02-26', '11:20:00', 2, 3, 'megjegyzés', 'nincs'),
+(4, 'Kolom Pál', 'kolompal@gmail.com', '', '+36209399676', '2025-03-12', '14:06:00', 4, 6, 'megjegyzés', 'igény'),
+(5, 'Miklós Róbert', 'mikrobi@gmail.com', '', '+36209399676', '2025-02-11', '16:00:00', 4, 9, 'fléksdkfsdléf', 'fkdlfklséfl');
 
 -- --------------------------------------------------------
 
@@ -76,7 +77,9 @@ INSERT INTO `felhasznalok` (`felhasznaloID`, `nev`, `email`, `orszagkod`, `telsz
 (1, 'Nagy Raul', 'nagyraul@gmail.com', '36', '566575675', '6900 Makó, Hagyma u. 32', 'Jelszo1', '2025-02-06 07:11:43'),
 (2, 'Balázs Lehel', 'balazslehel@gmail.com', '36', '321312414', '6900 Makó, Liget u. 8', 'Jelszo2', '2025-02-06 07:11:43'),
 (3, 'Novák Antal', 'novantal@gmail.com', '36', '209399676', '6900 Makó, Kálvin u. 18', 'Kfoprkfprek', '2025-02-06 07:11:43'),
-(4, 'Csaba Selmeczi', 'csabaselmeczi@gmail.com', '36', '209399676', '1108 Budapest, Kozma u. 13  ', 'Jelszo3', '2025-02-06 07:11:43');
+(4, 'Csaba Selmeczi', 'csabaselmeczi@gmail.com', '36', '209399676', '1108 Budapest, Kozma u. 13  ', 'Jelszo3', '2025-02-06 07:11:43'),
+(5, 'Raul', 'raul@gmail.com', '36', '8659864', '6900Makó', 'Jelszo0', '2025-02-10 12:05:17'),
+(6, 'Raul', 'paul@gmail.com', '36', '8659864', '6900Makó', 'Jelszo0', '2025-02-10 12:05:47');
 
 -- --------------------------------------------------------
 
@@ -256,7 +259,7 @@ ALTER TABLE `asztalfoglalasok`
 -- AUTO_INCREMENT a táblához `felhasznalok`
 --
 ALTER TABLE `felhasznalok`
-  MODIFY `felhasznaloID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `felhasznaloID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT a táblához `kapcsolat`
