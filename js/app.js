@@ -340,7 +340,7 @@
           data: $scope.model
         })
         .then(response => {
-          $rootScope.user.id = response.id;
+          $rootScope.user.id = response.felhasznaloID;
           $rootScope.user.name = response.nev;
           $rootScope.user.email = $scope.model.email;
           $rootScope.user.countryCode = response.orszagkod;
