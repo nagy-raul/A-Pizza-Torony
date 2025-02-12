@@ -123,6 +123,15 @@
 	cursor: default !important;
 }
 
+input, textarea, .input-group-text {
+	border: 1px solid black !important;
+	outline: none !important;
+}
+
+input, textarea{
+	border-radius: 0.375rem;
+}
+
 /*home.html*/
 
 #background-video {
