@@ -136,11 +136,14 @@ input, textarea{
 
 #background-video {
     position: relative;
+    display: flex;
+    justify-content: center; /* This ensures the video is centered horizontally */
 }
 
 #background-video video {
-    width: 100%;
+    width: 60%; /* You can adjust this percentage as needed */
     height: auto;
+    margin: 0 auto; /* Centers the video horizontally */
 }
 
 #background-video-content {
@@ -171,6 +174,7 @@ input, textarea{
     position: relative;
     z-index: 1;
 }
+
 
 /* MARKETING CONTENT
 -------------------------------------------------- */
