@@ -185,7 +185,7 @@
       $scope.methods = {
 
         // Book
-        book: () => {
+        booking: () => {
 
           console.log("book")
 
