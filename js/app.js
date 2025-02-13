@@ -329,14 +329,6 @@
       console.log('Rolunk Controller...');
     }
   ])
-
-  // Foglalas controller
-  .controller('foglalasController', [
-    '$scope',
-    function($scope) {
-      console.log('Foglalas Controller...');
-    }
-  ])
   
   // Login controller
   .controller('loginController', [
