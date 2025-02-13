@@ -6,234 +6,71 @@
 	</h1>
 </div>
 
-<div class="container">
+<div class="container" ng-app="pizzaApp" ng-controller="OrderController">
 	<div class="row mt-5">
 	  <div class="container">
 		<main>
 		  <div class="row g-5">
-			<div class="col-md-5 col-lg-4 order-md-last" 
-				 style="font-family: 'Aboreto'; src: url(../css/Aboreto-Regular.ttf);">
+			<div class="col-md-5 col-lg-4 order-md-last">
 			  <h4 class="d-flex justify-content-between align-items-center mb-3">
-				<span class="text-warning">Kosár</span>
-				<span class="badge bg-warning rounded-pill">3</span>
+				<span class="text-primary">Kosár</span>
+				<span class="badge bg-primary rounded-pill">{{cart.length}}</span>
 			  </h4>
 			  <ul class="list-group mb-3">
-				<li class="list-group-item d-flex justify-content-between lh-sm">
+				<li class="list-group-item d-flex justify-content-between lh-sm" ng-repeat="item in cart">
 				  <div>
-					<h6 class="my-0">Első termék</h6>
-					<small class="text-body-secondary">Brief description</small>
+					<h6 class="my-0">{{item.name}}</h6>
+					<small class="text-body-secondary">{{item.description}}</small>
 				  </div>
-				  <span class="text-body-secondary">$12</span>
-				</li>
-				<li class="list-group-item d-flex justify-content-between lh-sm">
-				  <div>
-					<h6 class="my-0">Második termék</h6>
-					<small class="text-body-secondary">Brief description</small>
-				  </div>
-				  <span class="text-body-secondary">$8</span>
-				</li>
-				<li class="list-group-item d-flex justify-content-between lh-sm">
-				  <div>
-					<h6 class="my-0">Harmadik termék</h6>
-					<small class="text-body-secondary">Brief description</small>
-				  </div>
-				  <span class="text-body-secondary">$5</span>
-				</li>
-				<li class="list-group-item d-flex justify-content-between bg-body-tertiary">
-				  <div class="text-success">
-					<h6 class="my-0">Promó kód</h6>
-					<small>PÉLDAKÓD</small>
-				  </div>
-				  <span class="text-success">−$5</span>
-				</li>
-				<li class="list-group-item d-flex justify-content-between">
-				  <span>Végösszeg (HUF)</span>
-				  <strong>$20</strong>
+				  <span class="text-body-secondary">{{item.price}} HUF</span>
 				</li>
 			  </ul>
-	  
-			  <form class="card p-2">
-				<div class="input-group">
-				  <input type="text" 
-				  		 class="form-control" 
-						 placeholder="Promó kód">
-				  <button type="submit" 
-				  		  class="btn btn-secondary">Bevált</button>
-				</div>
-			  </form>
 			</div>
 			<div class="col-md-7 col-lg-8 text-warning">
 			  <h4 class="mb-3">Számlázási cím</h4>
-			  <form class="needs-validation" novalidate name="orderForm">
+			  <form name="orderForm" ng-submit="submitOrder()">
 				<div class="row g-3">
-	  
-				  <div class="col-12" 
-				  	   style="font-family: 'ABeeZee'; src: url(../css/ABeeZee-Regular.ttf);">
-					<label for="name" 
-						   class="form-label">Név</label>
-					<div class="input-group has-validation">
-					  <input type="text" 
-					  		 class="form-control" 
-							 id="name" 
-							 placeholder="..." 
-							 required>
-					<div class="invalid-feedback">
-						Nevet kötelező megadni.
-					  </div>
-					</div>
+				  <div class="col-12">
+					<label for="name" class="form-label">Név</label>
+					<input type="text" class="form-control" id="name" ng-model="order.name" required>
 				  </div>
-	  
-				  <div class="col-12" 
-				  	   style="font-family: 'ABeeZee'; src: url(../css/ABeeZee-Regular.ttf);">
-					<label for="email" 
-						   class="form-label">
-						   Email cím 
-						<span class="text-body-secondary">
-							(Opcionális)
-						</span>
-					</label>
-					<input type="email" 
-						   class="form-control" 
-						   id="email" 
-						   placeholder="te@példa.com">
-					<div class="invalid-feedback">
-					  Kérem adjon meg egy érvényes email címet kézbesítéshez.
-					</div>
+				  <div class="col-12">
+					<label for="email" class="form-label">Email cím (Opcionális)</label>
+					<input type="email" class="form-control" id="email" ng-model="order.email">
 				  </div>
-	  
-				  <div class="col-12" 
-				  	   style="font-family: 'ABeeZee'; src: url(../css/ABeeZee-Regular.ttf);">
-					<label for="address" 
-						   class="form-label">
-						   Kézbesítési cím
-					</label>
-					<input type="text" 
-						   class="form-control" 
-						   id="address" 
-						   placeholder="1234 Példa u." 
-						   required>
-					<div class="invalid-feedback">
-					  Kérem adjon meg egy címet kézbesítéshez.
-					</div>
-				  </div>
-	  
-				</div>
-				<hr class="my-4" 
-					style="color: white;">
-	  
-				<h4 class="mb-3" 
-					style="font-family: 'Abel'; src: url(../css/Abel-Regular.ttf);">
-					Fizetés
-				</h4>
-	  
-				<div class="my-3" 
-					 style="font-family: 'ABeeZee'; src: url(../css/ABeeZee-Regular.ttf);">
-				  <div class="form-check">
-					<input id="credit" 
-						   name="paymentMethod" 
-						   type="radio" 
-						   class="form-check-input" 
-						   checked 
-						   required>
-					<label class="form-check-label" 
-						   for="credit">
-						   Bankkártya
-					</label>
-				  </div>
-				  <div class="form-check">
-					<input id="debit" 
-						   name="paymentMethod" 
-						   type="radio" 
-						   class="form-check-input" 
-						   required>
-					<label class="form-check-label" 
-						   for="debit">
-						   Betéti kártya
-					</label>
-				  </div>
-				  <div class="form-check">
-					<input id="paypal" 
-						   name="paymentMethod" 
-						   type="radio" 
-						   class="form-check-input" 
-						   required>
-					<label class="form-check-label" 
-						   for="paypal">
-						   PayPal
-					</label>
+				  <div class="col-12">
+					<label for="address" class="form-label">Kézbesítési cím</label>
+					<input type="text" class="form-control" id="address" ng-model="order.address" required>
 				  </div>
 				</div>
-	  
-				<div class="row gy-3" 
-					 style="font-family: 'ABeeZee'; src: url(../css/ABeeZee-Regular.ttf);">
-				  <div class="col-md-6">
-					<label for="cc-name" 
-					       class="form-label">
-						   Név a kártyán
-					</label>
-					<input type="text" 
-						   class="form-control" 
-						   id="cc-name" 
-						   placeholder="NÉV" 
-						   required>
-					<small class="text-body-secondary">
-						A kártyán látható teljes név
-					</small>
-					<div class="invalid-feedback">
-					  A kártya nevet kötelező megadni
-					</div>
-				  </div>
-	  
-				  <div class="col-md-6 ">
-					<label for="cc-number" 
-						   class="form-label">
-						   Bankkártya szám
-					</label>
-					<input type="text" 
-						   class="form-control" 
-						   id="cc-number" 
-						   placeholder="4000 1234 5678 9010" 
-						   required>
-					<div class="invalid-feedback">
-					  Bankkártya szám kötelező
-					</div>
-				  </div>
-	  
-				  <div class="col-md-3">
-					<label for="cc-expiration" 
-						   class="form-label">
-						   Lejárta
-					</label>
-					<input type="date" 
-						   class="form-control" 
-						   id="cc-expiration" 
-						   placeholder="31. 12. 2026." 
-						   required>
-					<div class="invalid-feedback">
-					  Lejárati dátum kötelező
-					</div>
-				  </div>
-	  
-				  <div class="col-md-3">
-					<label for="cc-cvv" 
-						   class="form-label">
-						   CVV
-					</label>
-					<input type="text" 
-						   class="form-control" 
-						   id="cc-cvv" 
-						   placeholder="CVV" 
-						   required>
-					<div class="invalid-feedback">
-					  Biztonsági kód kötelező
-					</div>
-				  </div>
-				</div>
-	  
 				<hr class="my-4">
-	  
-				<button class="w-100 btn btn-warning btn-lg" 
-						type="submit">Folytatni a fizetést</button>
+				<h4 class="mb-3">Fizetés</h4>
+				<div class="my-3">
+				  <div class="form-check" ng-repeat="method in paymentMethods">
+					<input id="{{method.id}}" name="paymentMethod" type="radio" class="form-check-input" ng-model="order.paymentMethod" value="{{method.value}}" required>
+					<label class="form-check-label" for="{{method.id}}">{{method.label}}</label>
+				  </div>
+				</div>
+				<div class="row gy-3" ng-show="order.paymentMethod !== 'paypal'">
+				  <div class="col-md-6">
+					<label for="cc-name" class="form-label">Név a kártyán</label>
+					<input type="text" class="form-control" id="cc-name" ng-model="order.cardName" required>
+				  </div>
+				  <div class="col-md-6">
+					<label for="cc-number" class="form-label">Bankkártya szám</label>
+					<input type="text" class="form-control" id="cc-number" ng-model="order.cardNumber" required>
+				  </div>
+				  <div class="col-md-3">
+					<label for="cc-expiration" class="form-label">Lejárata</label>
+					<input type="date" class="form-control" id="cc-expiration" ng-model="order.cardExpiry" required>
+				  </div>
+				  <div class="col-md-3">
+					<label for="cc-cvv" class="form-label">CVV</label>
+					<input type="text" class="form-control" id="cc-cvv" ng-model="order.cardCVV" required>
+				  </div>
+				</div>
+				<hr class="my-4">
+				<button class="w-100 btn btn-warning btn-lg" type="submit">Folytatni a fizetést</button>
 			  </form>
 			</div>
 		  </div>
