@@ -97,6 +97,9 @@
     'util',
     function ($rootScope, util) {
 
+      // Initialize cart as an empty array
+      $rootScope.cart = [];
+
       $rootScope.user = {};
       $rootScope.user.id = util.localStorage('get', 'id');
       $rootScope.user.name = util.localStorage('get', 'name');
@@ -140,15 +143,28 @@
 
   // Etlap controller
   .controller('etlapController', [
-    '$scope',
-    'http',
-    function($scope, http) {
-      http.request('./php/etlap.php')
-      .then(response => {
-        $scope.data = response;
-        $scope.$applyAsync();
-      })
-      .catch(e => console.log(e));
+    '$scope', '$rootScope', 'http',
+    function($scope, $rootScope, http) {
+
+        http.request('./php/etlap.php')
+        .then(response => {
+            $scope.data = response;
+            $scope.$applyAsync();
+        })
+        .catch(e => console.log(e));
+
+        // Function to add items to cart
+        $scope.methods = {
+            addToCart: (name, description, price) => {
+                $rootScope.cart.push({
+                    name: name,
+                    description: description,
+                    price: price
+                });
+                console.log("Cart updated:", $rootScope.cart);
+                alert(`${name} hozzáadva a kosárhoz!`);
+            }
+        };
     }
   ])
 
