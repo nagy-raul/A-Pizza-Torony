@@ -31,7 +31,7 @@
 				<!-- Identifier/Type -->
 				<div class="row mb-3">
 					<label for="profile-id" 
-								class="col-form-label col-md-4 text-md-end">
+						   class="col-form-label col-md-4 text-md-end">
 						<i class="fa-solid fa-fingerprint me-1"></i>
 						<span class="text-capitalize">azonosító:</span>
 					</label>
@@ -39,13 +39,13 @@
 						<div class="row">
 							<div class="col-md-2">
 								<input id="profile-id"
-											 class="form-control form-control-disabled"
-											 name="id" 
-											 type="text"
-											 spellcheck="false" 
-									 		 autocomplete="off"
-											 ng-model="model.id"
-											 disabled>
+									   class="form-control form-control-disabled"
+									   name="id" 
+									   type="text"
+									   spellcheck="false" 
+									   autocomplete="off"
+									   ng-model="model.id"
+									   disabled>
 							</div>
 						</div>
 					</div>
@@ -54,46 +54,50 @@
 				<!-- Email -->
 				<div class="row mb-3">
 					<label for="profile-email" 
-								class="col-form-label col-12 col-md-4 text-md-end">
+						   class="col-form-label col-12 col-md-4 text-md-end">
 						<i class="fa-solid fa-envelope me-1"></i>
-						<span class="text-capitalize">email:</span>
+						<span class="text-capitalize">
+							email:
+						</span>
 					</label>
 					<div class="col-11 col-md-7 position-relative">
 						<input id="profile-email"
-									class="form-control form-control-disabled"
-									name="email" 
-									type="text"
-									spellcheck="false" 
-									autocomplete="off"
-									ng-model="model.email"
-									disabled>
+							   class="form-control form-control-disabled"
+							   name="email" 
+							   type="text"
+							   spellcheck="false" 
+							   autocomplete="off"
+							   ng-model="model.email"
+							   disabled>
 					</div>
 				</div>
 
 				<!-- First name -->
 				<div class="row mb-3">
 					<label for="profile-name" 
-								 class="col-form-label col-12 col-md-4 text-md-end">
+						   class="col-form-label col-12 col-md-4 text-md-end">
 						<i class="fa-solid fa-user me-1"></i>
 						<i class="fa-solid fa-star fa-2xs text-danger"></i>
-						<span class="text-capitalize">név:</span>
+						<span class="text-capitalize">
+							név:
+						</span>
 					</label>
 					<div class="col-11 col-md-7 position-relative">
 						<input id="profile-name"
-									class="form-control"
-									name="name" 
-									type="text"
-									placeholder="..."
-									spellcheck="false" 
-									autocomplete="off" 
-									required
-									maxlength="100"
-									ng-model="model.name"
-									ng-clear-icon>
+							   class="form-control"
+							   name="name" 
+							   type="text"
+							   placeholder="..."
+							   spellcheck="false" 
+							   autocomplete="off" 
+							   required
+							   maxlength="100"
+							   ng-model="model.name"
+							   ng-clear-icon>
 					</div>
 					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
 						<span class="fw-bolder text-success"
-									ng-class="{'invisible': profileForm.name.$invalid}">
+							  ng-class="{'invisible': profileForm.name.$invalid}">
 							&check;
 						</span>
 					</div>
@@ -102,7 +106,7 @@
 				<!-- Phone (Country code / Phone) -->
 				<div class="row input-row mb-3">
 					<label for="profile-phone" 
-								class="col-form-label col-12 col-md-4 text-md-end">
+						   class="col-form-label col-12 col-md-4 text-md-end">
 						<i class="fa-solid fa-mobile-screen me-1"></i>
 						<span class="text-capitalize">
 							telefon szám:
@@ -143,9 +147,9 @@
 							&check;
 						</span>
 						<span data-bs-toggle="tooltip"
-									data-bs-custom-class="custom-tooltip"
-									data-bs-html="true"
-									data-bs-title="&lt;p class='my-1'>&lt;/p>">
+							  data-bs-custom-class="custom-tooltip"
+							  data-bs-html="true"
+							  data-bs-title="&lt;p class='my-1'>&lt;/p>">
 							<i class="fa-solid fa-circle-info text-primary ms-2"></i>
 						</span>
 					</div>
@@ -154,28 +158,28 @@
 				<!-- Address -->
 				<div class="row mb-3">
 					<label for="profile-address" 
-								class="col-form-label col-12 col-md-5 text-md-end">
+						   class="col-form-label col-12 col-md-5 text-md-end">
 						<i class="fa-solid fa-star fa-2xs text-danger"></i>
 						<i class="fa-solid fa-house-chimney me-1"></i>
 						<span class="text-capitalize">lakcím:</span>
 					</label>
 					<div class="col-11 col-md-6 position-relative">
 						<input id="profile-address"
-									 class="form-control"
-									 name="address" 
-									 type="text"
-									 placeholder="1234 Példa u. 13"
-									 spellcheck="false" 
-									 autocomplete="off" 
-									 required
-									 maxlength="100"
-									 ng-init="model.address=null"
-									 ng-model="model.address"
-									 ng-clear-icon>
+							   class="form-control"
+							   name="address" 
+							   type="text"
+							   placeholder="1234 Példa u. 13"
+							   spellcheck="false" 
+							   autocomplete="off" 
+							   required
+							   maxlength="100"
+							   ng-init="model.address=null"
+							   ng-model="model.address"
+							   ng-clear-icon>
 					</div>
 					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
 						<span class="fw-bolder text-success"
-									ng-class="{'invisible': profile.address.$invalid}">
+							  ng-class="{'invisible': profile.address.$invalid}">
 							&check;
 						</span>
 					</div>
@@ -187,16 +191,16 @@
 					
 					<!-- Save button -->
 					<button type="button"
-									class="btn btn-warning w-auto me-3 text-uppercase"
-									ng-disabled="profileForm.$invalid || !helper.isModified"
-									ng-click="methods.save()">
+							class="btn btn-warning w-auto me-3 text-uppercase"
+							ng-disabled="profileForm.$invalid || !helper.isModified"
+							ng-click="methods.save()">
 						mentés
 					</button>
 
 					<!-- Cancel button -->
 					<button type="button"
-									class="btn btn-secondary w-auto me-3 text-uppercase"
-									ng-click="methods.cancel()">
+							class="btn btn-secondary w-auto me-3 text-uppercase"
+							ng-click="methods.cancel()">
 						mégsem
 					</button>
 				</div>
