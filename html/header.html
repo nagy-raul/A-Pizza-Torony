@@ -1,90 +1,98 @@
 <div class="container-fluid">
-	<div class="row">
-		<nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary">
-			<div class="container-fluid">
-			  <a class="navbar-brand text-danger" ui-sref="home" ui-sref-active="active">
-					<img src="./media/image/navbar-icon.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
-					A Pizza Torony
-			  </a>
-			  <button class="navbar-toggler" 
-			  		  type="button" 
-					    data-bs-toggle="collapse" 
-					    data-bs-target="#navbarNav" 
-					    aria-controls="navbarNav" 
-					    aria-expanded="false" 
-					    aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			  </button>
-			  <div class="collapse navbar-collapse" 
-			  	   id="navbarNav">
-				<ul class="navbar-nav">
-				  <li class="nav-item">
-					<a class="nav-link" 
-					   ui-sref="rolunk" 
-					   ui-sref-active="active">
-					   Rólunk
-					</a>
-				  </li>
-				  <li class="nav-item">
-					<a class="nav-link" 
-					   ui-sref="etlap" 
-					   ui-sref-active="active">
-					   Étlap
-					</a>
-				  </li>
-				  <li class="nav-item">
-					<a class="nav-link" 
-					   ng-disabled="!cart.length" 
-					   ui-sref="rendeles" 
-					   ui-sref-active="active">
-					   Rendelés
-					</a>
-				  </li>
-				  <li class="nav-item">
-					<a class="nav-link" 
-					   ui-sref="kapcsolat" 
-					   ui-sref-active="active">
-					   Kapcsolat
-					</a>
-				  </li>
-				  <li class="nav-item">
-					<a class="nav-link" 
-					   ui-sref="foglalas" 
-					   ui-sref-active="active">
-					   Asztalfoglalás
-					</a>
-				  </li>
-				  <li class="nav-item" ng-show="!user.id">
-					<a class="nav-link" 
-					   ui-sref="login" 
-					   ui-sref-active="active">
-					   Bejelentkezés
-					</a>
-				  </li>
-				  <li class="nav-item" ng-show="!user.id">
-					<a class="nav-link" 
-					   ui-sref="register" 
-					   ui-sref-active="active">
-					   Regisztráció
-					</a>
-				  </li>
-				  <li class="nav-item" ng-show="user.id">
-					<a class="nav-link" 
-					   ng-click="logOut()">
-					   Kijelentkezés
-					</a>
-				  </li>				  
-				  <li class="nav-item" ng-show="user.id">
-					<a class="nav-link" 
-					   ui-sref="profile" 
-					   ui-sref-active="active">
-					   Profil
-					</a>
-				  </li>		  
-				</ul>
-			  </div>
-			</div>
-		  </nav>
-	</div>
+    <div class="row">
+        <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand text-danger" ui-sref="home" ui-sref-active="active">
+                    <img src="./media/image/navbar-icon.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+                    A Pizza Torony
+                </a>
+                <button class="navbar-toggler" 
+                        type="button" 
+                        data-bs-toggle="collapse" 
+                        data-bs-target="#navbarNav" 
+                        aria-controls="navbarNav" 
+                        aria-expanded="false" 
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+							<a class="nav-link" 
+							   ui-sref="rolunk"
+							   ui-sref-active="active">
+								Rólunk
+							</a>
+						</li>
+                        <li class="nav-item">
+							<a class="nav-link" 
+							   ui-sref="etlap" 
+							   ui-sref-active="active">
+								Étlap
+							</a>
+						</li>
+                        <li class="nav-item">
+							<a class="nav-link" 
+							   ng-disabled="!cart.length" 
+							   ui-sref="rendeles" 
+							   ui-sref-active="active">
+								Rendelés
+							</a>
+						</li>
+                        <li class="nav-item">
+							<a class="nav-link" 
+							   ui-sref="kapcsolat" 
+							   ui-sref-active="active">
+							   Kapcsolat
+							</a>
+						</li>
+                        <li class="nav-item">
+							<a class="nav-link" 
+							   ui-sref="foglalas" 
+							   ui-sref-active="active">
+							   Asztalfoglalás
+							</a>
+						</li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item" 
+						    ng-show="!user.id">
+                            <a class="nav-link" ui-sref="login" ui-sref-active="active">
+								Bejelentkezés
+							</a>
+                        </li>
+                        <li class="nav-item" 
+						    ng-show="!user.id">
+                            <a class="nav-link" 
+							   ui-sref="register" 
+							   ui-sref-active="active">
+							   Regisztráció
+							</a>
+                        </li>
+                        <li class="nav-item dropdown" 
+						    ng-show="user.id">
+                            <a class="nav-link dropdown-toggle" 
+							   href="#" 
+							   role="button" 
+							   data-bs-toggle="dropdown" 
+							   aria-expanded="false">
+                                {{user.name}}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+									<a class="dropdown-item" ui-sref="profile" ui-sref-active="active">
+										Profil</a>
+									</li>
+                                <li>
+									<a class="dropdown-item" ng-click="logOut()">
+										Kijelentkezés
+									</a>
+								</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
 </div>
-
