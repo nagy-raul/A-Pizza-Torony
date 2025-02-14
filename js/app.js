@@ -317,8 +317,71 @@
   // Rendeles controller
   .controller('rendelesController', [
     '$scope',
-    function($scope) {
-      console.log('Rendeles Controller...');
+    '$state',
+    'form',
+    'util',
+    'http',
+    function($scope, $state, form, util, http) {
+
+      // Set local methods
+      let methods = {
+
+        // Initialize
+        init: () => {
+
+          console.log('Rendeles Controller...');
+
+          $scope.model = {
+            name: util.localStorage('get', 'name'),
+            email: util.localStorage('get', 'email'),
+            address: util.localStorage('get', 'address')          
+          };
+
+          // Set focus
+					form.focus();
+        }
+      };
+
+      // Set scope methods
+      $scope.methods = {
+
+        // Contact
+        order: () => {
+
+          // Remove unnecessary data
+          let data  = util.objFilterByKeys($scope.model);
+
+          console.log(data);
+
+          // Http request
+          http.request({
+            method: "POST",
+            url: "./php/order.php",
+            data: data
+          })
+          .then(response => {
+
+            // Check response
+            if (response.affectedRows) {
+
+              // Show result
+              alert("Rendelés elküldve!");
+
+              $state.go('home')
+
+            } else alert("Az rendelést nem sikerült elküldeni!");
+          })
+          .catch(e => alert(e));
+        },
+
+        // Cancel
+        cancel: () => {
+          $state.go('home')
+        }
+      };
+
+      // Initialize
+      methods.init();
     }
   ])
 
