@@ -185,13 +185,15 @@
 
           console.log('Foglalas Controller...');
 
+          /*
           $scope.model = {
             name: util.localStorage('get', 'name'),
             email: util.localStorage('get', 'email'),
             countryCode: util.localStorage('get', 'countryCode'),
             phone: util.localStorage('get', 'phone')
           };
-
+          */
+                   
           // Set focus
 					form.focus();
         }
