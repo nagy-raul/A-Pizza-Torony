@@ -348,6 +348,8 @@
             address: util.localStorage('get', 'address')          
           };
 
+          $scope
+
           // Set focus
 					form.focus();
         }

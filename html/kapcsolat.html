@@ -8,17 +8,17 @@
 
 <div class="position-relative rotateCarouselRightIn my-5" style="font-family: 'ABeeZee'; src: url(../css/ABeeZee-Regular.ttf);">
 	<div class="row mt-5 justify-content-center">
-				<div class="text-dark border-5 border-warning bg-light
+				<div class="text-dark border-5 border-warning
 							shadow-bottom-end
 							col-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7"
-					 style="border-style: double;">
+					 style="border-style: double; background-color: #2B2B2B">
 					
 
 					<!-- Title -->
 					<div class="row my-4">
 						<h3 class="text-center">
 							<i class="fa-regular fa-envelope"></i>
-							<span class="text-capitalize text-small-caps ms-2">
+							<span class="text-capitalize text-small-caps ms-2 text-warning">
 								kapcsolat
 							</span>
 						</h3>
@@ -27,19 +27,19 @@
 				  <form name="contactForm" class="needs-validation" novalidate>
 					<div class="row gy-3 gy-xl-4 p-4 p-xl-5">
 					  <div class="col-11">
-						<label for="contact-name" class="form-label">Név<span class="text-danger">*</span></label>
+						<label for="contact-name" class="form-label text-warning">Név<span class="text-danger">*</span></label>
 						<input id="contact-name"
-								class="form-control"
-								name="name" 
-								type="text"
-								placeholder="..."
-								spellcheck="false" 
-								autocomplete="off" 
-								required
-								maxlength="100"
-								ng-init="model.name=null"
-								ng-model="model.name"
-								ng-disable-space>
+							   class="form-control text-warning"
+							   name="name" 
+							   type="text"
+							   placeholder="..."
+							   spellcheck="false" 
+							   autocomplete="off" 
+							   required
+							   maxlength="100"
+							   ng-init="model.name=null"
+							   ng-model="model.name"
+							   ng-disable-space>
 					  </div>
 					  <div class="col-1 d-flex align-items-center justify-content-start ps-1">
 						<span class="fw-bolder text-success"
@@ -48,7 +48,7 @@
 						</span>
 					  </div>
 					  <div class="col-11 col-md-5">
-						<label for="contact-email" class="form-label">
+						<label for="contact-email" class="form-label text-warning">
 							Email <span class="text-danger">*</span>
 						</label>
 					
@@ -60,7 +60,7 @@
 							</span>
 							
 							<input id="contact-email"
-								   class="form-control"
+								   class="form-control text-warning"
 								   name="email" 
 								   type="text"
 								   placeholder="te@példa.com"
@@ -87,7 +87,7 @@
 					<div class="col-11 col-md-5">
 						<label for="contact-phone" class="form-label">
 							<i class="fa-solid fa-mobile-screen"></i>
-							<span class="text-capitalize">telefon szám:</span>
+							<span class="text-capitalize text-warning">telefon szám:</span>
 						</label>
 
 						<div class="input-group" id="contact-phone-group" aria-labelledby="contact-phone-group">
@@ -97,7 +97,7 @@
 								name="countryCode" 
 								type="text"
 								placeholder="00"
-								class="form-control"
+								class="form-control text-warning"
 								spellcheck="false" 
 								autocomplete="off"
 								maxlength="10"
@@ -110,7 +110,7 @@
 								name="phone" 
 								type="tel"
 								placeholder="0000000"
-								class="form-control"
+								class="form-control text-warning"
 								spellcheck="false" 
 								autocomplete="off"
 								maxlength="10"
@@ -128,10 +128,10 @@
 				  </div>
 				
 					  <div class="col-11">
-						<label for="contact-targy" class="form-label">Tárgy<span class="text-danger">*</label>
+						<label for="contact-targy" class="form-label text-warning">Tárgy<span class="text-danger">*</label>
 						<div class="input-group">
 							<input id="contact-targy"
-								class="form-control"
+								class="form-control text-warning"
 								name="targy" 
 								type="text"
 								placeholder="..."
@@ -152,9 +152,9 @@
 					  </div>
 
 					  <div class="col-11">
-						<label for="contact-uzenet" class="form-label">Üzenet<span class="text-danger">*</span></label>
+						<label for="contact-uzenet" class="form-label text-warning">Üzenet<span class="text-danger">*</span></label>
 						<textarea id="contact-uzenet"
-								class="form-control"
+								class="form-control text-warning"
 								name="uzenet" 
 								type="text"
 								rows="3"

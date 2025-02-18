@@ -176,6 +176,8 @@ input, textarea{
 }
 
 
+/*rolunk.html*/
+
 /* MARKETING CONTENT
 -------------------------------------------------- */
 
@@ -223,9 +225,6 @@ input, textarea{
 	}
   }
 
-
-/*rolunk.html*/
-
 #raul{
     width: 258px;
     height: 257px;
@@ -270,7 +269,7 @@ input, textarea{
 	border-top-right-radius: 0;
   }
 
-/*Étlap*/
+/*etlap.html*/
 .modal-sheet .modal-dialog {
 	width: 380px;
 	transition: bottom .75s ease-in-out;
@@ -278,4 +277,21 @@ input, textarea{
   .modal-sheet .modal-footer {
 	padding-bottom: 2rem;
   }
+
+.modal-body {
+    display: flex;
+    align-items: center;  /* Vertically centers the content */
+    justify-content: start;
+}
+
+.modal-body img {
+    margin-right: 20px;  /* Adds space between the image and the form */
+    max-width: 200px;
+    height: auto;
+}
+
+.modal-body form {
+    max-width: 350px;  /* Limits form width */
+    flex-grow: 1;  /* Form takes remaining space */
+}
   
