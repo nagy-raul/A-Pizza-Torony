@@ -111,6 +111,8 @@
 
       $rootScope.logOut = () => {
         if (confirm('Biztosan ki szeretne lépni a fiókjából?')) {
+          $rootScope.cart = [];
+
           $rootScope.user.id = null;
           $rootScope.user.name = null;
           $rootScope.user.email = null;
@@ -377,6 +379,8 @@
               alert("Rendelés elküldve!");
 
               $state.go('home')
+
+              $rootScope.cart = [];
 
             } else alert("Az rendelést nem sikerült elküldeni!");
           })
