@@ -158,7 +158,7 @@
             $scope.data = response;
             $scope.$applyAsync();
         })
-        .catch(e => console.log(e));
+        .catch(e => alert(e));
 
         // Function to add items to cart
         $scope.methods = {
@@ -434,7 +434,14 @@
           util.localStorage('set', 'phone', $rootScope.user.phone);
           util.localStorage('set', 'address', $rootScope.user.address);
 
-          alert(`Sikerült bejelentkezni! Felhasználó neve: ${$rootScope.user.name}`);
+          alert(`Sikerült bejelentkezni!
+            Felhasználói adatok:
+            ID: ${$rootScope.user.id}
+            Név: ${$rootScope.user.name}
+            Email: ${$rootScope.user.email}
+            Országkód: ${$rootScope.user.countryCode}
+            Telefon: ${$rootScope.user.phone}
+            Lakcím: ${$rootScope.user.address}`);
 
           $state.go('home')
         })
@@ -521,19 +528,16 @@
   
   // Profile controller
   .controller('profileController', [
-    /*
     '$rootScope',
     '$scope',
     '$state',
     'util',
     'http',
-    */
-    function(/*$rootScope, $scope, $state, util, http*/) {
+    function($rootScope, $scope, $state, util, http) {
 
       console.log('Profile  Controller...');
 
 
-      /*
       // Set helper
 			$scope.helper = {
         modelStart: null,
@@ -563,6 +567,9 @@
           })
           .then(response => {
 
+            console.log(response);
+
+
             // Set model
             methods.set(response).then(() => {
 
@@ -586,9 +593,16 @@
             // Whait for set completed
             set.completed.then(() => {
 
+              console.log(response);
+
               // Merge model with response, save start model properties,
               $scope.model = util.objMerge($scope.model, response);
+
+              console.log($scope.model);
+
               $scope.helper.modelStart = util.objMerge({}, $scope.model);
+
+              console.log($scope.helper.modelStart);
 
               // Apply change, and resolve
               $scope.$applyAsync();
@@ -658,7 +672,6 @@
       // Initialize
       methods.init();
 
-      */
     }
   ]);
 	
