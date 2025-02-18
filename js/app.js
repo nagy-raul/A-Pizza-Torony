@@ -94,8 +94,9 @@
 	// Application run
   .run([
     '$rootScope',
+    '$state',
     'util',
-    function ($rootScope, util) {
+    function ($rootScope, $state, util) {
 
       // Initialize cart as an empty array
       $rootScope.cart = [];
@@ -127,9 +128,15 @@
 
           $rootScope.$applyAsync();
 
+          $state.go('home')
+
           alert(`Sikerült kijelentkezni!`);
         }
       }
+
+      $rootScope.isActive = function(viewLocation) {
+        return $state.includes(viewLocation);
+      };
     }
   ])
 

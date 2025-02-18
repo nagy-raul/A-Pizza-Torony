@@ -18,76 +18,83 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-							<a class="nav-link" 
-							   ui-sref="rolunk"
-							   ui-sref-active="active">
-								Rólunk
-							</a>
-						</li>
+                            <a class="nav-link" 
+                               ui-sref="rolunk"
+                               ui-sref-active="active"
+                               ng-class="{'text-danger': isActive('rolunk')}">
+                                Rólunk
+                            </a>
+                        </li>
                         <li class="nav-item">
-							<a class="nav-link" 
-							   ui-sref="etlap" 
-							   ui-sref-active="active">
-								Étlap
-							</a>
-						</li>
+                            <a class="nav-link" 
+                               ui-sref="etlap" 
+                               ui-sref-active="active"
+                               ng-class="{'text-danger': isActive('etlap')}">
+                                Étlap
+                            </a>
+                        </li>
                         <li class="nav-item">
-							<a class="nav-link" 
-							   ng-disabled="!cart.length" 
-							   ui-sref="rendeles" 
-							   ui-sref-active="active">
-								Rendelés
-							</a>
-						</li>
+                            <a class="nav-link" 
+                               ng-disabled="!cart.length" 
+                               ui-sref="rendeles" 
+                               ui-sref-active="active"
+                               ng-class="{'text-danger': isActive('rendeles'), 'text-muted': !cart.length}">
+                                Rendelés
+                            </a>
+                        </li>
                         <li class="nav-item">
-							<a class="nav-link" 
-							   ui-sref="kapcsolat" 
-							   ui-sref-active="active">
-							   Kapcsolat
-							</a>
-						</li>
+                            <a class="nav-link" 
+                               ui-sref="kapcsolat" 
+                               ui-sref-active="active"
+                               ng-class="{'text-danger': isActive('kapcsolat')}">
+                               Kapcsolat
+                            </a>
+                        </li>
                         <li class="nav-item">
-							<a class="nav-link" 
-							   ui-sref="foglalas" 
-							   ui-sref-active="active">
-							   Asztalfoglalás
-							</a>
-						</li>
+                            <a class="nav-link" 
+                               ui-sref="foglalas" 
+                               ui-sref-active="active"
+                               ng-class="{'text-danger': isActive('foglalas')}">
+                               Asztalfoglalás
+                            </a>
+                        </li>
                     </ul>
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item" 
-						    ng-show="!user.id">
-                            <a class="nav-link" ui-sref="login" ui-sref-active="active">
-								Bejelentkezés
-							</a>
-                        </li>
-                        <li class="nav-item" 
-						    ng-show="!user.id">
+                        <li class="nav-item" ng-show="!user.id">
                             <a class="nav-link" 
-							   ui-sref="register" 
-							   ui-sref-active="active">
-							   Regisztráció
-							</a>
+                               ui-sref="login" 
+                               ui-sref-active="active"
+                               ng-class="{'text-danger': isActive('login')}">
+                                Bejelentkezés
+                            </a>
                         </li>
-                        <li class="nav-item dropdown" 
-						    ng-show="user.id">
+                        <li class="nav-item" ng-show="!user.id">
+                            <a class="nav-link" 
+                               ui-sref="register" 
+                               ui-sref-active="active"
+                               ng-class="{'text-danger': isActive('register')}">
+                               Regisztráció
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown" ng-show="user.id">
                             <a class="nav-link dropdown-toggle" 
-							   href="#" 
-							   role="button" 
-							   data-bs-toggle="dropdown" 
-							   aria-expanded="false">
+                               href="#" 
+                               role="button" 
+                               data-bs-toggle="dropdown" 
+                               aria-expanded="false">
                                 {{user.name}}
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-									<a class="dropdown-item" ui-sref="profile" ui-sref-active="active">
-										Profil</a>
-									</li>
+                                    <a class="dropdown-item" ui-sref="profile" ui-sref-active="active">
+                                        Profil
+                                    </a>
+                                </li>
                                 <li>
-									<a class="dropdown-item" ng-click="logOut()">
-										Kijelentkezés
-									</a>
-								</li>
+                                    <a class="dropdown-item" ng-click="logOut()">
+                                        Kijelentkezés
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
