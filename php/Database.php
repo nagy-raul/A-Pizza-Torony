@@ -63,7 +63,10 @@ class Database {
 	}
 
 	// Get query type
-	private function get_type(string $query): string {
+	private function get_type(string $query, string $type=null): string {
+		if (is_string($type) && 
+				!empty(($type = trim(strtoupper($type)))))
+			return $type;
     $query = trim(preg_replace('!\s+!', ' ', $query));
 		return strtoupper(strtok($query, " "));
 	}
@@ -105,13 +108,13 @@ class Database {
 	}
 
 	// Execute
-	public function execute(string $query, $params=null): ?array {
+	public function execute(string $query, $params=null, $type=null): ?array {
 
 		// Set result
 		$result = null;
 
-		// Get query type
-		$type = $this->get_type($query);
+		// Check/Get query type
+		$type = $this->get_type($query, $type);
 
 		// Check parameters
 		if (!is_null($params) && 
@@ -164,8 +167,10 @@ class Database {
 			// Return result
 			return $result;
 
+		} catch (PDOException $e) {
+			Util::setError($e->getMessage());
 		} catch (Exception $e) {
-			Util::setError("Unable to execute query!");
+			Util::setError($e->getMessage());
 		}
 	}
 }

@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 // Include require file
-require_once("./Util.php");
+require_once("Util.php");
 
 class Env {
 
@@ -245,8 +245,13 @@ class Env {
       $args = array('subFolder' => trim($args));
     if (is_bool($args))
       $args = array('isRecursive' => $args);
+		if (!is_array($args))
+			$args = array(
+				'subFolder' 	=> null,
+      	'isRecursive' => true
+			);
 
-    // Merge arguments with default
+		// Merge arguments with default
     $args = Util::objMerge(array(
       'subFolder' 	=> null,
       'isRecursive' => true

@@ -12,8 +12,8 @@
     '$timeout',
     ($timeout) => {
 
-      // Set service
-      let service = {
+      // Set form
+      let form = {
 
         // Focus
 				focus: () => {
@@ -26,8 +26,8 @@
 				},
       };
 
-      // Return service
-      return service;
+      // Return form
+      return form;
     }
   ])
 

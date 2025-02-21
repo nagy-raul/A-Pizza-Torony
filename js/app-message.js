@@ -79,8 +79,8 @@
 				}
       };
 
-			// Set service
-			let service = {
+			// Set message
+			let msg = {
 
 				// Show
 				show: (options) => {
@@ -105,15 +105,15 @@
 
 				// Error
 				error: (content) => {
-					service.show({
+					msg.show({
             icon    : "text-danger fa-solid fa-circle-exclamation",
             content : content
           });
 				}
 			};
 
-			// Return service
-      return service;
+			// Return message
+      return msg;
 		}
 	])
 
