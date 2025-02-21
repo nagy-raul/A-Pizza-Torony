@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 // Include environment
-require_once("./environment.php");
+require_once("../../common/php/environment.php");
 
 $db = new Database();
 
