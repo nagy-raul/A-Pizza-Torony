@@ -94,8 +94,12 @@
 	// Application run
   .run([
     '$rootScope',
+    '$state',
     'util',
-    function ($rootScope, util) {
+    function ($rootScope, $state, util) {
+
+      // Initialize cart as an empty array
+      $rootScope.cart = [];
 
       $rootScope.user = {};
       $rootScope.user.id = util.localStorage('get', 'id');
@@ -107,6 +111,8 @@
 
       $rootScope.logOut = () => {
         if (confirm('Biztosan ki szeretne lépni a fiókjából?')) {
+          $rootScope.cart = [];
+
           $rootScope.user.id = null;
           $rootScope.user.name = null;
           $rootScope.user.email = null;
@@ -124,9 +130,15 @@
 
           $rootScope.$applyAsync();
 
+          $state.go('home')
+
           alert(`Sikerült kijelentkezni!`);
         }
       }
+
+      $rootScope.isActive = function(viewLocation) {
+        return $state.includes(viewLocation);
+      };
     }
   ])
 
@@ -140,15 +152,28 @@
 
   // Etlap controller
   .controller('etlapController', [
-    '$scope',
-    'http',
-    function($scope, http) {
-      http.request('./php/etlap.php')
-      .then(response => {
-        $scope.data = response;
-        $scope.$applyAsync();
-      })
-      .catch(e => console.log(e));
+    '$scope', '$rootScope', 'http',
+    function($scope, $rootScope, http) {
+
+        http.request('./php/etlap.php')
+        .then(response => {
+            $scope.data = response;
+            $scope.$applyAsync();
+        })
+        .catch(e => alert(e));
+
+        // Function to add items to cart
+        $scope.methods = {
+            addToCart: (name, description, price) => {
+                $rootScope.cart.push({
+                    name: name,
+                    description: description,
+                    price: price
+                });
+                console.log("Cart updated:", $rootScope.cart);
+                alert(`${name} hozzáadva a kosárhoz!`);
+            }
+        };
     }
   ])
 
@@ -169,13 +194,15 @@
 
           console.log('Foglalas Controller...');
 
+          /*
           $scope.model = {
             name: util.localStorage('get', 'name'),
             email: util.localStorage('get', 'email'),
             countryCode: util.localStorage('get', 'countryCode'),
             phone: util.localStorage('get', 'phone')
           };
-
+          */
+                   
           // Set focus
 					form.focus();
         }
@@ -301,8 +328,75 @@
   // Rendeles controller
   .controller('rendelesController', [
     '$scope',
-    function($scope) {
-      console.log('Rendeles Controller...');
+    '$state',
+    'form',
+    'util',
+    'http',
+    function($scope, $state, form, util, http) {
+
+      // Set local methods
+      let methods = {
+
+        // Initialize
+        init: () => {
+
+          console.log('Rendeles Controller...');
+
+          $scope.model = {
+            name: util.localStorage('get', 'name'),
+            email: util.localStorage('get', 'email'),
+            address: util.localStorage('get', 'address')          
+          };
+
+          $scope
+
+          // Set focus
+					form.focus();
+        }
+      };
+
+      // Set scope methods
+      $scope.methods = {
+
+        // Contact
+        order: () => {
+
+          // Remove unnecessary data
+          let data  = util.objFilterByKeys($scope.model);
+
+          console.log(data);
+
+          // Http request
+          http.request({
+            method: "POST",
+            url: "./php/order.php",
+            data: data
+          })
+          .then(response => {
+
+            // Check response
+            if (response.affectedRows) {
+
+              // Show result
+              alert("Rendelés elküldve!");
+
+              $state.go('home')
+
+              $rootScope.cart = [];
+
+            } else alert("Az rendelést nem sikerült elküldeni!");
+          })
+          .catch(e => alert(e));
+        },
+
+        // Cancel
+        cancel: () => {
+          $state.go('home')
+        }
+      };
+
+      // Initialize
+      methods.init();
     }
   ])
 
@@ -311,14 +405,6 @@
     '$scope',
     function($scope) {
       console.log('Rolunk Controller...');
-    }
-  ])
-
-  // Foglalas controller
-  .controller('foglalasController', [
-    '$scope',
-    function($scope) {
-      console.log('Foglalas Controller...');
     }
   ])
   
@@ -354,7 +440,14 @@
           util.localStorage('set', 'phone', $rootScope.user.phone);
           util.localStorage('set', 'address', $rootScope.user.address);
 
-          alert(`Sikerült bejelentkezni! Felhasználó neve: ${$rootScope.user.name}`);
+          alert(`Sikerült bejelentkezni!
+            Felhasználói adatok:
+            ID: ${$rootScope.user.id}
+            Név: ${$rootScope.user.name}
+            Email: ${$rootScope.user.email}
+            Országkód: ${$rootScope.user.countryCode}
+            Telefon: ${$rootScope.user.phone}
+            Lakcím: ${$rootScope.user.address}`);
 
           $state.go('home')
         })
@@ -441,19 +534,16 @@
   
   // Profile controller
   .controller('profileController', [
-    /*
     '$rootScope',
     '$scope',
     '$state',
     'util',
     'http',
-    */
-    function(/*$rootScope, $scope, $state, util, http*/) {
+    function($rootScope, $scope, $state, util, http) {
 
       console.log('Profile  Controller...');
 
 
-      /*
       // Set helper
 			$scope.helper = {
         modelStart: null,
@@ -483,6 +573,9 @@
           })
           .then(response => {
 
+            console.log(response);
+
+
             // Set model
             methods.set(response).then(() => {
 
@@ -506,9 +599,16 @@
             // Whait for set completed
             set.completed.then(() => {
 
+              console.log(response);
+
               // Merge model with response, save start model properties,
               $scope.model = util.objMerge($scope.model, response);
+
+              console.log($scope.model);
+
               $scope.helper.modelStart = util.objMerge({}, $scope.model);
+
+              console.log($scope.helper.modelStart);
 
               // Apply change, and resolve
               $scope.$applyAsync();
@@ -578,7 +678,6 @@
       // Initialize
       methods.init();
 
-      */
     }
   ]);
 	

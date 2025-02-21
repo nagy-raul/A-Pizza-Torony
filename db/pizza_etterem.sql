@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Feb 11. 11:24
+-- Létrehozás ideje: 2025. Feb 14. 12:00
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.1.17
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `asztalfoglalasok` (
-  `foglalasID` int(10) NOT NULL,
+  `foglalasID` int(11) NOT NULL,
   `nev` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `orszagkod` varchar(2) NOT NULL,
@@ -38,19 +38,20 @@ CREATE TABLE `asztalfoglalasok` (
   `orak` tinyint(4) NOT NULL,
   `vendegek` tinyint(4) NOT NULL,
   `megjegyzes` text NOT NULL,
-  `igeny` text NOT NULL
+  `igeny` text NOT NULL,
+  `letrehozas` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- A tábla adatainak kiíratása `asztalfoglalasok`
 --
 
-INSERT INTO `asztalfoglalasok` (`foglalasID`, `nev`, `email`, `orszagkod`, `telszam`, `datum`, `ido`, `orak`, `vendegek`, `megjegyzes`, `igeny`) VALUES
-(1, 'Nagy Raul', 'nagyraul@gmail.com', '', '+36566575675', '2024-11-21', '09:00:00', 2, 2, 'megjegyzés', 'nincs'),
-(2, 'Rútka Pál', 'rutkapal@gmail.com', '', '+36209399676', '2025-02-19', '10:30:00', 1, 0, 'megyjegzés', 'nincs'),
-(3, 'Luc Feri', 'balraamasodikajto@gmail.com', '', '+36209399676', '2025-02-26', '11:20:00', 2, 3, 'megjegyzés', 'nincs'),
-(4, 'Kolom Pál', 'kolompal@gmail.com', '', '+36209399676', '2025-03-12', '14:06:00', 4, 6, 'megjegyzés', 'igény'),
-(5, 'Miklós Róbert', 'mikrobi@gmail.com', '', '+36209399676', '2025-02-11', '16:00:00', 4, 9, 'fléksdkfsdléf', 'fkdlfklséfl');
+INSERT INTO `asztalfoglalasok` (`foglalasID`, `nev`, `email`, `orszagkod`, `telszam`, `datum`, `ido`, `orak`, `vendegek`, `megjegyzes`, `igeny`, `letrehozas`) VALUES
+(1, 'Nagy Raul', 'nagyraul@gmail.com', '36', '566575675', '2024-11-21', '09:00:00', 2, 2, 'megjegyzés', 'nincs', '2025-02-14 10:32:14'),
+(2, 'Rútka Pál', 'rutkapal@gmail.com', '36', '209399676', '2025-02-19', '10:30:00', 1, 0, 'megyjegzés', 'nincs', '2025-02-14 10:32:14'),
+(3, 'Luc Feri', 'balraamasodikajto@gmail.com', '36', '209399676', '2025-02-26', '11:20:00', 2, 3, 'megjegyzés', 'nincs', '2025-02-14 10:32:14'),
+(4, 'Kolom Pál', 'kolompal@gmail.com', '36', '209399676', '2025-03-12', '14:06:00', 4, 6, 'megjegyzés', 'igény', '2025-02-14 10:32:14'),
+(36, 'Miklós Róbert', 'mikrobi@gmail.com', '36', '209399676', '2025-02-11', '16:00:00', 4, 9, 'fléksdkfsdléf', 'fkdlfklséfl', '2025-02-14 10:32:14');
 
 -- --------------------------------------------------------
 
@@ -94,17 +95,18 @@ CREATE TABLE `kapcsolat` (
   `orszagkod` varchar(2) NOT NULL,
   `telszam` varchar(100) NOT NULL,
   `targy` varchar(100) NOT NULL,
-  `uzenet` text NOT NULL
+  `uzenet` text NOT NULL,
+  `letrehozas` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- A tábla adatainak kiíratása `kapcsolat`
 --
 
-INSERT INTO `kapcsolat` (`kapcsolatID`, `nev`, `email`, `orszagkod`, `telszam`, `targy`, `uzenet`) VALUES
-(1, 'Balázs Lehel', 'balazslehel@gmail.com', '36', '321312414', 'A pizzát nem kaptam meg.', 'A pizzát nem sikerült megkapnom'),
-(2, 'Németh Szilárd', 'NSzilard@gmail.com', '36', '209399676', 'Patkány van a pizzás dobozban', 'Én csak egy pizzát rendeltem, patkányt nem.'),
-(3, 'Méreg Attila', 'mattila@gmail.com', '36', '209399676', 'Hol van a pizza?', 'Már vagy egy órája várok arra az átkozott pizzára, de még mindig nincs itt!!! Mi tart ilyen sokáig!??!?! ');
+INSERT INTO `kapcsolat` (`kapcsolatID`, `nev`, `email`, `orszagkod`, `telszam`, `targy`, `uzenet`, `letrehozas`) VALUES
+(1, 'Balázs Lehel', 'balazslehel@gmail.com', '36', '321312414', 'A pizzát nem kaptam meg.', 'A pizzát nem sikerült megkapnom', '2025-02-14 10:33:21'),
+(2, 'Németh Szilárd', 'NSzilard@gmail.com', '36', '209399676', 'Patkány van a pizzás dobozban', 'Én csak egy pizzát rendeltem, patkányt nem.', '2025-02-14 10:33:21'),
+(3, 'Méreg Attila', 'mattila@gmail.com', '36', '209399676', 'Hol van a pizza?', 'Már vagy egy órája várok arra az átkozott pizzára, de még mindig nincs itt!!! Mi tart ilyen sokáig!??!?! ', '2025-02-14 10:33:21');
 
 -- --------------------------------------------------------
 
@@ -253,7 +255,7 @@ ALTER TABLE `rendeles_elemei`
 -- AUTO_INCREMENT a táblához `asztalfoglalasok`
 --
 ALTER TABLE `asztalfoglalasok`
-  MODIFY `foglalasID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `foglalasID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT a táblához `felhasznalok`

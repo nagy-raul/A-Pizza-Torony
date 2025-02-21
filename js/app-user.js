@@ -22,12 +22,12 @@
         // Default user properties
         default: () => {
           return {
-            id          : null,
-            type        : null,
-            first_name  : null,
-            middle_name : null,
-            last_name   : null,
-            gender      : null
+            id           : null,
+            name         : null,
+            email        : null,
+            countryCode  : null,
+            phone        : null,
+            address      : null
           };
         }
       };

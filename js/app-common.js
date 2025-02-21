@@ -3,22 +3,19 @@
 	'use strict';
 
 	// Sort array randomly
-  Array.prototype.random = function() {
-    return this.sort((a, b) => Math.random() - 0.5);
-  };
+  Array.prototype.random = () => this.sort((a, b) => Math.random() - 0.5);
   
   // Unique array
-  Array.prototype.unique = function(key=null) {
+  Array.prototype.unique = (key=null) => {
     let arr = this;
     if (Object.prototype.toString.call(key) === '[object String]')
-          return [...new Map(arr.filter(obj => key in obj).map(obj => [obj[key], obj])).values()];
+          return [...new Map(arr.filter(obj => key in obj).map(obj => 
+                 [obj[key], obj])).values()];
     else 	return [...new Set(arr)];
   };
 
   // Convert day to string format (YYYY-mm-dd)
-  Date.prototype.toISOFormat = function() {
-    return this.toISOString().split('T')[0];
-  }
+  Date.prototype.toISOFormat = () => this.toISOString().split('T')[0];
 
   // Application common module
   angular.module('app.common', [])
@@ -43,27 +40,44 @@
     }
   ])
 
+  // Number leading zero
+  .filter('numPad', [
+    'util',
+    (util) => {
+      return (number, len) => {
+      
+		  	// Check parameters
+		  	if (!util.isNumber(number)) number = 0;
+        if (!util.isNumber(len) || len < 2) len = 2;
+        return ('0'.repeat(len) + number.toString()).slice (-1 * len);
+      };
+    }
+  ])
+
 	// Utilities factory
   .factory('util', [
     '$q',
-    ($q) => {
+    '$interval',
+    ($q, $interval) => {
 
       // Set utilities
       let util = {
-				variableType: checkedVar => Object.prototype.toString.call(checkedVar).slice(8, -1).toLowerCase(),
-				isUndefined: checkedVar => Object.prototype.toString.call(checkedVar) === '[object Undefined]',
-    		isNull: checkedVar => Object.prototype.toString.call(checkedVar) === '[object Null]',
-    		isBoolean: checkedVar => 	Object.prototype.toString.call(checkedVar) === '[object Boolean]',
-    		isNumber: checkedVar =>	Object.prototype.toString.call(checkedVar) === '[object Number]',
+				getType: checkedVar => Object.prototype.toString.call(checkedVar)
+                                               .slice(8, -1).toLowerCase(),
+				isUndefined: checkedVar =>  util.getType(checkedVar) === 'undefined',
+    		isNull: checkedVar => util.getType(checkedVar) === 'null',
+    		isBoolean: checkedVar => 	util.getType(checkedVar) === 'boolean',
+    		isNumber: checkedVar =>	util.getType(checkedVar) === 'number',
     		isInt: checkedVar => util.isNumber(checkedVar) && checkedVar % 1 === 0,
     		isFloat: checkedVar => util.isNumber(checkedVar) && checkedVar % 1 !== 0,
     		isVarNumber: checkedVar => util.isNumber(checkedVar) ||
-    		                          (util.isString(checkedVar) && !isNaN(Number(checkedVar))),
-    		isString: checkedVar => 	Object.prototype.toString.call(checkedVar) === '[object String]',
-    		isDate: checkedVar =>	Object.prototype.toString.call(checkedVar) === '[object Date]',
-    		isArray: checkedVar =>	Object.prototype.toString.call(checkedVar) === '[object Array]',
-    		isObject: checkedVar =>	Object.prototype.toString.call(checkedVar) === '[object Object]',
-        isFunction: checkedVar =>	Object.prototype.toString.call(checkedVar) === '[object Function]',
+    		                          (util.isString(checkedVar) && 
+                                  !isNaN(Number(checkedVar))),
+    		isString: checkedVar => 	util.getType(checkedVar) === 'string',
+    		isDate: checkedVar =>	util.getType(checkedVar) === 'date',
+    		isArray: checkedVar =>	util.getType(checkedVar) === 'array',
+    		isObject: checkedVar =>	util.getType(checkedVar) === 'object',
+        isFunction: checkedVar =>	util.getType(checkedVar) === 'function',
         isNodeElement: checkedVar =>	checkedVar instanceof Element || 
   			                              checkedVar instanceof HTMLElement,
 				cloneVariable: variable => {
@@ -74,14 +88,16 @@
 					} else      return undefined;
 				},
 				hasKey: (checkedVar, key) => util.isString(key) && key in checkedVar,
-				isObjectHasKey: (checkedVar, key) => util.isObject(checkedVar) && util.hasKey(checkedVar, key),
-        isFile: checkedVar =>	Object.prototype.toString.call(checkedVar) === '[object File]',
+				isObjectHasKey: (checkedVar, key) =>  util.isObject(checkedVar) && 
+                                              util.hasKey(checkedVar, key),
+        isFile: checkedVar =>	util.getType(checkedVar) === 'file',
 				isJson: checkedVar => {
 					if (util.isString(checkedVar)) {
 							try       {return !util.isUndefined(JSON.parse(checkedVar));} 
 							catch (e) {return false;}	
 					} else return false;
 				},
+        indexByKeyValue: (a, k, v) => a.findIndex(o => o[k] === v),
 				objFilterByKeys: (obj, filter, isExist=true, isSortKeys=false) => {
 					if (!util.isObject(obj)) return obj;
 					if (util.isString(filter)) {
@@ -291,6 +307,27 @@
               break;
           }
           return result;
+        },
+        waitUntil: (callback, delay, maxWaitingTime) => {
+          return new Promise((resolve, reject) => {
+            if (!util.isFunction(callback))
+              return reject('Callback function is required (waitUntil)!');
+            else if (callback()) return resolve();
+            if (!util.isInt(delay) || delay < 0) delay = 1;
+            if (!util.isInt(maxWaitingTime) || maxWaitingTime < delay)
+              maxWaitingTime = 5000;
+            let startTime = new Date(),
+                interval  = 
+            $interval(() => {
+              if (callback()) {
+                $interval.cancel(interval);
+                return resolve();
+              } else if ((new Date()) - startTime > maxWaitingTime) {
+                $interval.cancel(interval);
+                return reject('Time overflow (waitUntil)!');
+              }
+            }, delay);
+          });
         }
 			};
 
@@ -359,8 +396,8 @@
         }
       };
 
-      // Set service
-      let service = {
+      // Set transaction
+      let transaction = {
 
         // Events
         events: (options=null, callback=null) => {
@@ -409,6 +446,7 @@
         },
 
         // Check prevent state exist, and not disabled
+        // Go to checked state
         preventState: () => {
           if (!$rootScope.state.prev ||
                 $rootScope.state.disabled.includes($rootScope.state.prev))
@@ -417,8 +455,8 @@
         }
       };
 
-      // Return service
-      return service;
+      // Return transaction
+      return transaction;
     }
   ])
 
@@ -551,7 +589,21 @@
 
               // Check response
               check: response => {
-                if (util.isUndefined(response)) return;
+                if (util.isUndefined(response)) {
+                  resolve(null);
+                  return;
+                }
+                if (response.includes('error') &&
+                    response.includes('</span>') &&
+                    response.includes('</th>')) {
+                  let regex = /<\/span>(.*?)<\/th>/,
+                      match = response.match(regex);
+                  if (match && match.length >= 1) {
+                    match[1] = match[1].replace("<i>", "");
+                    match[1] = match[1].replace("</i>", "");
+                    response = {error: match[1].trim()};
+                  }
+                }
                 if (util.isJson(response)) response = JSON.parse(response);
                 if (util.isObjectHasKey(response, "error") && 
                    !util.isNull(response.error))

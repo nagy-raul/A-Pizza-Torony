@@ -11,7 +11,7 @@ $args = Util::getArgs();
 $db = new Database();
 
 // Set SQL command
-$query = "INSERT INTO `kapcsolat`(`nev`, `email`, `orszagkod`, `telszam`, `targy`, `uzenet`) 
+$query = "INSERT INTO `rendeles`(`nev`, `email`, `orszagkod`, `telszam`, `targy`, `uzenet`) 
           VALUES (:name, :email, :countryCode, :phone, :targy, :uzenet)";
 
 // Execute SQL command
