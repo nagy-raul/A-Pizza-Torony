@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Feb 14. 12:00
+-- Létrehozás ideje: 2025. Feb 21. 11:52
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.1.17
 
@@ -29,16 +29,17 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `asztalfoglalasok` (
   `foglalasID` int(11) NOT NULL,
-  `nev` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `orszagkod` varchar(2) NOT NULL,
-  `telszam` varchar(100) NOT NULL,
-  `datum` date NOT NULL,
-  `ido` time NOT NULL,
-  `orak` tinyint(4) NOT NULL,
-  `vendegek` tinyint(4) NOT NULL,
-  `megjegyzes` text NOT NULL,
-  `igeny` text NOT NULL,
+  `felhasznaloID` int(11) DEFAULT NULL,
+  `nev` varchar(100) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `orszagkod` varchar(2) DEFAULT NULL,
+  `telszam` varchar(100) DEFAULT NULL,
+  `datum` date DEFAULT NULL,
+  `ido` time DEFAULT NULL,
+  `orak` tinyint(4) DEFAULT NULL,
+  `vendegek` tinyint(4) DEFAULT NULL,
+  `megjegyzes` text DEFAULT NULL,
+  `igeny` text DEFAULT NULL,
   `letrehozas` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -46,12 +47,14 @@ CREATE TABLE `asztalfoglalasok` (
 -- A tábla adatainak kiíratása `asztalfoglalasok`
 --
 
-INSERT INTO `asztalfoglalasok` (`foglalasID`, `nev`, `email`, `orszagkod`, `telszam`, `datum`, `ido`, `orak`, `vendegek`, `megjegyzes`, `igeny`, `letrehozas`) VALUES
-(1, 'Nagy Raul', 'nagyraul@gmail.com', '36', '566575675', '2024-11-21', '09:00:00', 2, 2, 'megjegyzés', 'nincs', '2025-02-14 10:32:14'),
-(2, 'Rútka Pál', 'rutkapal@gmail.com', '36', '209399676', '2025-02-19', '10:30:00', 1, 0, 'megyjegzés', 'nincs', '2025-02-14 10:32:14'),
-(3, 'Luc Feri', 'balraamasodikajto@gmail.com', '36', '209399676', '2025-02-26', '11:20:00', 2, 3, 'megjegyzés', 'nincs', '2025-02-14 10:32:14'),
-(4, 'Kolom Pál', 'kolompal@gmail.com', '36', '209399676', '2025-03-12', '14:06:00', 4, 6, 'megjegyzés', 'igény', '2025-02-14 10:32:14'),
-(36, 'Miklós Róbert', 'mikrobi@gmail.com', '36', '209399676', '2025-02-11', '16:00:00', 4, 9, 'fléksdkfsdléf', 'fkdlfklséfl', '2025-02-14 10:32:14');
+INSERT INTO `asztalfoglalasok` (`foglalasID`, `felhasznaloID`, `nev`, `email`, `orszagkod`, `telszam`, `datum`, `ido`, `orak`, `vendegek`, `megjegyzes`, `igeny`, `letrehozas`) VALUES
+(1, 1, 'Nagy Raul', 'nagyraul@gmail.com', '36', '566575675', '2024-11-21', '09:00:00', 2, 2, 'megjegyzés', 'nincs', '2025-02-14 10:32:14'),
+(2, NULL, 'Rútka Pál', 'rutkapal@gmail.com', '36', '209399676', '2025-02-19', '10:30:00', 1, 0, 'megyjegzés', 'nincs', '2025-02-14 10:32:14'),
+(3, NULL, 'Luc Feri', 'balraamasodikajto@gmail.com', '36', '209399676', '2025-02-26', '11:20:00', 2, 3, 'megjegyzés', 'nincs', '2025-02-14 10:32:14'),
+(4, NULL, 'Kolom Pál', 'kolompal@gmail.com', '36', '209399676', '2025-03-12', '14:06:00', 4, 6, 'megjegyzés', 'igény', '2025-02-14 10:32:14'),
+(36, NULL, 'Miklós Róbert', 'mikrobi@gmail.com', '36', '209399676', '2025-02-11', '16:00:00', 4, 9, 'fléksdkfsdléf', 'fkdlfklséfl', '2025-02-14 10:32:14'),
+(38, NULL, 'A', 'a@gmail.com', '36', '5454536', '2025-02-21', '13:28:00', 3, 2, 'A', 'AAAAAAAAAAAAA', '2025-02-14 11:24:12'),
+(39, NULL, 'A', 'a@gmail.com', '36', '4554353', '2025-02-21', '12:16:00', 1, 4, 'A', 'AAAAAAAAAAAAAAAAAAAAAA', '2025-02-21 10:12:40');
 
 -- --------------------------------------------------------
 
@@ -211,7 +214,8 @@ INSERT INTO `rendeles_elemei` (`rendelesElemeID`, `rendelesID`, `termekID`, `dar
 -- A tábla indexei `asztalfoglalasok`
 --
 ALTER TABLE `asztalfoglalasok`
-  ADD PRIMARY KEY (`foglalasID`);
+  ADD PRIMARY KEY (`foglalasID`),
+  ADD KEY `felhasznaloID` (`felhasznaloID`);
 
 --
 -- A tábla indexei `felhasznalok`
@@ -255,7 +259,7 @@ ALTER TABLE `rendeles_elemei`
 -- AUTO_INCREMENT a táblához `asztalfoglalasok`
 --
 ALTER TABLE `asztalfoglalasok`
-  MODIFY `foglalasID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `foglalasID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT a táblához `felhasznalok`
@@ -286,6 +290,16 @@ ALTER TABLE `rendelesek`
 --
 ALTER TABLE `rendeles_elemei`
   MODIFY `rendelesElemeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- Megkötések a kiírt táblákhoz
+--
+
+--
+-- Megkötések a táblához `rendelesek`
+--
+ALTER TABLE `rendelesek`
+  ADD CONSTRAINT `fk_rendelesek_felhasznaloID` FOREIGN KEY (`felhasznaloID`) REFERENCES `felhasznalok` (`felhasznaloID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
