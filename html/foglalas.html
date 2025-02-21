@@ -237,7 +237,13 @@
 						</span>
 					</div>
 					<div class="col-11">
-						<label for="booking-igeny" class="form-label">Asztal igény megjegyzés<span class="text-danger">*</span></label>
+						<label for="booking-igeny" 
+							   class="form-label">
+							   Asztal igény megjegyzés
+							<span class="text-danger">
+								*
+							</span>
+						</label>
 						<textarea id="booking-igeny"
 								class="form-control"
 								name="igeny" 
@@ -255,7 +261,7 @@
 					
 					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
 						<span class="fw-bolder text-success"
-									ng-class="{'invisible': bookingForm.igeny.$invalid}">
+							  ng-class="{'invisible': bookingForm.igeny.$invalid}">
 							&check;
 						</span>
 					</div>
