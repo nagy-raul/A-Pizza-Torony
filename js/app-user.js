@@ -16,39 +16,51 @@
     'msg',
     ($rootScope, $state, util, msg) => {
 
+      // Set user properties
+      let properties;
+
       // Set local methods
       let methods = {
 
         // Default user properties
         default: () => {
           return {
-            id           : null,
-            name         : null,
-            email        : null,
-            countryCode  : null,
-            phone        : null,
-            address      : null
+            id          : null,
+            type        : null,
+            first_name  : null,
+            middle_name : null,
+            last_name   : null,
+            gender      : null,
+            email       : null 
           };
         }
       };
 
-      // Set service
-      let service = {
+      // Set user
+      let user = {
 
         // Initialize
-        init: () => {
+        init: (prop=null) => {
+
+          // Check user properties
+          if (util.isObject(prop))
+                properties = util.objMerge({}, prop);
+          else  properties = util.objMerge({}, methods.default());
 
           // Set user default properties
-          $rootScope.user = util.objMerge({}, methods.default());
+          $rootScope.user = util.objMerge({}, properties);
         },
 
         // Set
         set: (data) => {
-          Object.keys(methods.default()).forEach(key => {
+          Object.keys(properties).forEach(key => {
             if (util.hasKey(data, key)) $rootScope.user[key] = data[key];
           });
           $rootScope.$applyAsync();
         },
+
+        // Get
+        get: () => properties,
 
         // Reset
         reset: (filter=null) => {
@@ -69,16 +81,17 @@
           isConfirm	: true,
           callback  : (response) => {
             if (response === 'ok') {
-              service.reset('email');
-              if ($rootScope.state.disabled.includes($rootScope.state.id))
+              user.reset('email');
+              if (util.isObjectHasKey($rootScope, 'state') &&
+                  $rootScope.state.disabled.includes($rootScope.state.id))
                 $state.go($rootScope.state.default);
             }
           }
         });
       };
 
-      // Return service
-      return service;
+      // Return user
+      return user;
     }
   ]);
 
