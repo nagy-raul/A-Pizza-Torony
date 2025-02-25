@@ -325,7 +325,6 @@
     }
   ])
 
-  // Rendeles controller
   .controller('rendelesController', [
     '$scope',
     '$state',
@@ -333,72 +332,66 @@
     'util',
     'http',
     function($scope, $state, form, util, http) {
-
+  
+      // Initialize the total amount variable
+      $scope.osszeg = 0;
+  
+      // Function to calculate total price
+      $scope.calculateTotal = function() {
+        $scope.osszeg = $scope.cart.reduce((total, item) => total + item.price, 0);
+      };
+  
+      // Watch for cart changes and update the total
+      $scope.$watch('cart', function(newCart) {
+        $scope.calculateTotal();
+      }, true);
+  
       // Set local methods
       let methods = {
-
-        // Initialize
         init: () => {
-
           console.log('Rendeles Controller...');
-
           $scope.model = {
             name: util.localStorage('get', 'name'),
             email: util.localStorage('get', 'email'),
-            address: util.localStorage('get', 'address')          
+            address: util.localStorage('get', 'address')
           };
-
-          $scope
-
-          // Set focus
-					form.focus();
+          form.focus();
         }
       };
-
+  
       // Set scope methods
       $scope.methods = {
-
-        // Contact
         order: () => {
-
-          // Remove unnecessary data
-          let data  = util.objFilterByKeys($scope.model);
-
+          let data = util.objFilterByKeys($scope.model);
           console.log(data);
-
-          // Http request
+  
           http.request({
             method: "POST",
             url: "./php/order.php",
             data: data
           })
           .then(response => {
-
-            // Check response
             if (response.affectedRows) {
-
-              // Show result
               alert("Rendelés elküldve!");
-
-              $state.go('home')
-
+              $state.go('home');
               $rootScope.cart = [];
-
-            } else alert("Az rendelést nem sikerült elküldeni!");
+              $scope.osszeg = 0; // Reset total after order
+            } else {
+              alert("A rendelést nem sikerült elküldeni!");
+            }
           })
           .catch(e => alert(e));
         },
-
-        // Cancel
         cancel: () => {
-          $state.go('home')
+          $state.go('home');
         }
       };
-
+  
       // Initialize
       methods.init();
     }
   ])
+  
 
   // Rolunk controller
   .controller('rolunkController', [
