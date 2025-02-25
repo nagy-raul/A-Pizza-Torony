@@ -155,4 +155,12 @@
 		  </div>
 		</main>
 	</div>
+	<script>
+		let now = new Date();
+		let year = now.getFullYear();
+		let month = String(now.getMonth() + 1).padStart(2, '0');
+		let day = String(now.getDate()).padStart(2, '0');
+		let lejarta = document.getElementById("cc-expiration");
+		lejarta.min = `${year}-${month}-${day}`;
+	</script>
 </div>
