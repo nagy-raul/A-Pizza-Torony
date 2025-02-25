@@ -42,43 +42,43 @@
 					</ul>
 				</div>
 				<div class="col-md-7 col-lg-8 text-warning">
-						<h4 class="mb-3">
+					<h4 class="mb-3">
 						Számlázási cím
 					</h4>
 					<form name="orderForm" 
-							  ng-submit="submitOrder()">
+						  ng-submit="submitOrder()">
 						<div class="row g-3">
 							<div class="col-12">
 								<label for="name" 
-											class="form-label">
-										Név
+									   class="form-label">
+									   Név
 								</label>
 								<input type="text" 
-											 class="form-control" 
-											 id="name" 
-											 ng-model="name" 
-											 required>
+									   class="form-control" 
+									   id="name" 
+									   ng-model="name" 
+									   required>
 								</div>
 								<div class="col-12">
 								<label for="email" 
-											 class="form-label">
-										Email cím (Opcionális)
+									   class="form-label">
+									   Email cím (Opcionális)
 								</label>
 								<input type="email" 
-											 class="form-control" 
-											 id="email" 
-											 ng-model="email">
+									   class="form-control" 
+									   id="email" 
+									   ng-model="email">
 							</div>
 							<div class="col-12">
 								<label for="address" 
-											 class="form-label">
-										Kézbesítési cím
+									   class="form-label">
+									   Kézbesítési cím
 								</label>
 								<input type="text" 
-											 class="form-control" 
-											 id="address" 
-											 ng-model="address" 
-											 required>
+									   class="form-control" 
+									   id="address" 
+									   ng-model="address" 
+									   required>
 							</div>
 						</div>
 						<hr class="my-4">
@@ -87,71 +87,71 @@
 						</h4>
 						<div class="my-3">
 							<div class="form-check" 
-									 ng-repeat="method in paymentMethods">
+								 ng-repeat="method in paymentMethods">
 								<input id="{{method.id}}" 
-											 name="paymentMethod" 
-											 type="radio" 
-											 class="form-check-input" 
-											 ng-model="paymentMethod" 
-											 value="{{method.value}}" 
-											 required>
+									   name="paymentMethod" 
+									   type="radio" 
+									   class="form-check-input" 
+									   ng-model="paymentMethod" 
+									   value="{{method.value}}" 
+									   required>
 								<label class="form-check-label" 
-											 for="{{method.id}}">
-										{{method.label}}
+									   for="{{method.id}}">
+									   {{method.label}}
 								</label>
 							</div>
 						</div>
 						<div class="row gy-3" 
-								 ng-show="paymentMethod !== 'paypal'">
+							 ng-show="paymentMethod !== 'paypal'">
 							<div class="col-md-6">
 								<label for="cc-name" 
-											 class="form-label">
-										Név a kártyán
+									   class="form-label">
+									   Név a kártyán
 								</label>
 								<input type="text" 
-											 class="form-control" 
-											 id="cc-name" 
-											 ng-model="cardName" 
-											 required>
+									   class="form-control" 
+									   id="cc-name" 
+									   ng-model="cardName" 
+									   required>
 							</div>
 							<div class="col-md-6">
 								<label for="cc-number" 
-											 class="form-label">
+									   class="form-label">
 										Bankkártya szám
 								</label>
 								<input type="text" 
-											 class="form-control" 
-											 id="cc-number" 
-											 ng-model="cardNumber" 
-											 required>
+									   class="form-control" 
+									   id="cc-number" 
+									   ng-model="cardNumber" 
+									   required>
 							</div>
 							<div class="col-md-3">
 								<label for="cc-expiration" 
-											 class="form-label">
-										Lejárata
+									   class="form-label">
+									   Lejárata
 								</label>
 								<input type="date" 
-											 class="form-control" 
-											 id="cc-expiration" 
-											 ng-model="cardExpiry" 
-											 required>
+									   class="form-control" 
+									   id="cc-expiration" 
+									   ng-model="cardExpiry" 
+									   required>
 							</div>
 							<div class="col-md-3">
 								<label for="cc-cvv" 
-											 class="form-label">
-										CVV
+									   class="form-label">
+									   CVV
 								</label>
 								<input type="text" 
-											 class="form-control" 
-											 id="cc-cvv" 
-											 ng-model="cardCVV" 
-											 required>
+									   class="form-control" 
+									   id="cc-cvv" 
+									   ng-model="cardCVV" 
+									   required>
 							</div>
 						</div>
 						<hr class="my-4">
 						<button class="w-100 btn btn-warning btn-lg" 
-										type="button"
-										ng-click="methods.order()">
+							    type="button"
+							    ng-click="methods.order()">
 								Rendelés
 						</button>
 					</form>
