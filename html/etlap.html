@@ -131,6 +131,15 @@
 									Vastag
 								</label>
 							</div>
+
+							<div class="row">
+								<label for="darabszam{{x.termekID}}" class="form-label">Hány darabot szeretne?</label>
+								<input type="number" id="darabszam{{x.termekID}}" 
+									   class="form-control text-center w-50 mx-auto" 
+									   ng-model="darabszam" 
+									   min="1" value="1">
+							</div>
+							
 	
 							<div class="row">
 								<p class="mb-2" 
@@ -142,11 +151,12 @@
 							<hr class="my-4">
 
 							<button class="w-100 mb-2 btn btn-lg rounded-3 btn-danger" 
-								    type="button"
-								    ng-click="methods.addToCart(x.termekNev, x.termekLeiras, x.termekAr)"
-								    data-bs-dismiss="modal">
-								Rendelés
-						    </button>
+									type="button"
+									ng-click="methods.addToCart(x.termekNev, x.termekLeiras, x.termekAr, darabszam)"
+									data-bs-dismiss="modal">
+									Rendelés
+							</button>
+					
 						</form>
 					</div>
 				</div>
