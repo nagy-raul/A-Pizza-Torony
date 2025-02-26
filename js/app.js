@@ -202,7 +202,12 @@
             phone: util.localStorage('get', 'phone')
           };
           */
-                   
+          let now = new Date();
+          let year = now.getFullYear();
+          let month = String(now.getMonth() + 1).padStart(2, '0');
+          let day = String(now.getDate()).padStart(2, '0');
+          let lejarta = document.getElementById("booking-datum");
+          lejarta.min = `${year}-${month}-${day}`;
           // Set focus
 					form.focus();
         }
@@ -356,6 +361,12 @@
             address: util.localStorage('get', 'address')
           };
           form.focus();
+          let now = new Date();
+          let year = now.getFullYear();
+          let month = String(now.getMonth() + 1).padStart(2, '0');
+          let day = String(now.getDate()).padStart(2, '0');
+          let lejarta = document.getElementById("cc-expiration");
+          lejarta.min = `${year}-${month}-${day}`;
         }
       };
   
