@@ -7,7 +7,8 @@
 </div>
 
 
-<div class="position-relative rotateCarouselRightIn my-5" style="font-family: 'ABeeZee'; src: url(../css/ABeeZee-Regular.ttf);">
+<div class="position-relative rotateCarouselRightIn my-5" 
+	 style="font-family: 'ABeeZee'; src: url(../css/ABeeZee-Regular.ttf);">
 	<div class="row mt-5 justify-content-center">
 		<div class="text-warning border-5 border-warning
 					shadow-bottom-end
@@ -56,7 +57,10 @@
 					<div class="col-11 col-md-5">
 						<label for="booking-email" 
 						       class="form-label">
-							Email<span class="text-danger">*</span>
+							Email
+							<span class="text-danger">
+								*
+							</span>
 						</label>
 						<div class="input-group">
 							<span class="input-group-text">
@@ -94,7 +98,10 @@
 					<div class="col-11 col-md-5">
 						<label for="booking-phone" 
 						       class="form-label">
-							Telefon szám <span class="text-danger">*</span>
+							Telefon szám 
+							<span class="text-danger">
+								*
+							</span>
 						</label>
 					
 						<div class="input-group" 
@@ -129,7 +136,8 @@
 					</div>
 					<div class="col-1 col-md-1 d-flex align-items-center justify-content-start ps-1">
 						<span class="fw-bolder text-success"
-							  ng-class="{'invisible': (!model.countryCode || !model.phone || bookingForm.phone.$invalid || bookingForm.countryCode.$invalid)}">
+							  ng-class="{'invisible': (!model.countryCode || !model.phone 
+							  				|| bookingForm.phone.$invalid || bookingForm.countryCode.$invalid)}">
 							&check;
 						</span>
 					  </div>
@@ -137,7 +145,10 @@
 					<div class="col-11 col-md-5">
 						<label for="booking-datum" 
 						       class="form-label">
-							Érkezés dátuma <span class="text-danger">*</span>
+							Érkezés dátuma 
+							<span class="text-danger">
+								*
+							</span>
 						</label>
 					
 						<div class="input-group" 
@@ -164,7 +175,10 @@
 					
 					<div class="col-11 col-md-5">
 						<label for="booking-ido" class="form-label">
-							Érkezés ideje <span class="text-danger">*</span>
+							Érkezés ideje 
+							<span class="text-danger">
+								*
+							</span>
 						</label>
 					
 						<div class="input-group" 
@@ -184,7 +198,7 @@
 					</div>
 					<div class="col-1 col-md-1 d-flex align-items-center justify-content-start ps-1">
 						<span class="fw-bolder text-success"
-									ng-class="{'invisible': bookingForm.ido.$invalid}">
+							  ng-class="{'invisible': bookingForm.ido.$invalid}">
 							&check;
 						</span>
 					  </div>
@@ -193,7 +207,10 @@
 						<label for="booking-orak" 
 						       class="form-label" 
 							   style="font-family: 'ABeeZee'; src: url(../css/ABeeZee-Regular.ttf);">
-							Hány órát szeretnél maradni<span class="text-danger">*</span>
+							Hány órát szeretnél maradni
+							<span class="text-danger">
+								*
+							</span>
 						</label>
 						<div class="input-group">
 							<input id="booking-orak"
@@ -219,7 +236,10 @@
 					<div class="col-11 col-md-5">
 						<label for="booking-vendegek" 
 						       class="form-label">
-							Vendégek száma<span class="text-danger">*</span>
+							Vendégek száma
+							<span class="text-danger">
+								*
+							</span>
 						</label>
 						<div class="input-group">
 							<input id="booking-vendegek"
