@@ -6,7 +6,8 @@
 	</h1>
 </div>
 
-<div class="position-relative rotateCarouselRightIn my-5" style="font-family: 'ABeeZee'; src: url(../css/ABeeZee-Regular.ttf);">
+<div class="position-relative rotateCarouselRightIn my-5" 
+	 style="font-family: 'ABeeZee'; src: url(../css/ABeeZee-Regular.ttf);">
 	<div class="row mt-5 justify-content-center">
 				<div class="text-warning border-5 border-warning
 							shadow-bottom-end
@@ -24,10 +25,18 @@
 						</h3>
 					</div>
 		
-				  <form name="contactForm" class="needs-validation" novalidate>
+				  <form name="contactForm" 
+				  		class="needs-validation" 
+						novalidate>
 					<div class="row gy-3 gy-xl-4 p-4 p-xl-5">
 					  <div class="col-11">
-						<label for="contact-name" class="form-label">Név<span class="text-danger">*</span></label>
+						<label for="contact-name" 
+							   class="form-label">
+							   Név
+							   <span class="text-danger">
+								*
+							</span>
+						</label>
 						<input id="contact-name"
 							   class="form-control"
 							   name="name" 
@@ -43,18 +52,29 @@
 					  </div>
 					  <div class="col-1 d-flex align-items-center justify-content-start ps-1">
 						<span class="fw-bolder text-success"
-									ng-class="{'invisible': contactForm.name.$invalid}">
+							  ng-class="{'invisible': contactForm.name.$invalid}">
 							&check;
 						</span>
 					  </div>
 					  <div class="col-11 col-md-5">
-						<label for="contact-email" class="form-label">
-							Email <span class="text-danger">*</span>
+						<label for="contact-email" 
+							   class="form-label">
+							Email 
+							<span class="text-danger">
+								*
+							</span>
 						</label>
 					
-						<div class="input-group" id="contact-email-group" aria-labelledby="contact-email-group">
+						<div class="input-group" 
+							 id="contact-email-group" 
+							 aria-labelledby="contact-email-group">
 							<span class="input-group-text">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+								<svg xmlns="http://www.w3.org/2000/svg" 
+									 width="16" 
+									 height="16" 
+									 fill="currentColor" 
+									 class="bi bi-envelope" 
+									 viewBox="0 0 16 16">
 									<path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
 								</svg>
 							</span>
@@ -85,13 +105,18 @@
 
 					<!-- Phone number -->
 					<div class="col-11 col-md-5">
-						<label for="contact-phone" class="form-label">
+						<label for="contact-phone" 
+							   class="form-label">
 							<i class="fa-solid fa-mobile-screen"></i>
 							<span class="text-capitalize">telefon szám:</span>
 						</label>
 
-						<div class="input-group" id="contact-phone-group" aria-labelledby="contact-phone-group">
-							<span class="input-group-text">+</span>
+						<div class="input-group" 
+							 id="contact-phone-group" 
+							 aria-labelledby="contact-phone-group">
+							<span class="input-group-text">
+								+
+							</span>
 							
 							<input id="contact-countryCode"
 								name="countryCode" 
@@ -122,55 +147,68 @@
 
 				<div class="col-1 col-md-1 d-flex align-items-center justify-content-start ps-1">
 					<span class="fw-bolder text-success"
-					      ng-class="{'invisible': (!model.countryCode || !model.phone || contactForm.phone.$invalid || contactForm.countryCode.$invalid)}">
+					      ng-class="{'invisible': (!model.countryCode || !model.phone 
+						  				|| contactForm.phone.$invalid || contactForm.countryCode.$invalid)}">
 						&check;
 					</span>
 				  </div>
 				
 					  <div class="col-11">
-						<label for="contact-targy" class="form-label">Tárgy<span class="text-danger">*</label>
+						<label for="contact-targy" 
+							   class="form-label">
+							   Tárgy
+							   <span class="text-danger">
+								*
+							   </span>
+							</label>
 						<div class="input-group">
 							<input id="contact-targy"
-								class="form-control"
-								name="targy" 
-								type="text"
-								placeholder="..."
-								spellcheck="false" 
-								autocomplete="off" 
-								required
-								maxlength="100"
-								ng-init="model.targy=null"
-								ng-model="model.targy"
-								ng-clear-icon>
+								   class="form-control"
+								   name="targy" 
+								   type="text"
+								   placeholder="..."
+								   spellcheck="false" 
+								   autocomplete="off" 
+								   required
+								   maxlength="100"
+								   ng-init="model.targy=null"
+								   ng-model="model.targy"
+								   ng-clear-icon>
 						</div>
 					  </div>
 					  <div class="col-1 col-md-1 d-flex align-items-center justify-content-start ps-1">
 						<span class="fw-bolder text-success"
-									ng-class="{'invisible': contactForm.targy.$invalid}">
+							  ng-class="{'invisible': contactForm.targy.$invalid}">
 							&check;
 						</span>
 					  </div>
 
 					  <div class="col-11">
-						<label for="contact-uzenet" class="form-label">Üzenet<span class="text-danger">*</span></label>
+						<label for="contact-uzenet" 
+						       class="form-label">
+							   Üzenet
+							   <span class="text-danger">
+								*
+							   </span>
+						</label>
 						<textarea id="contact-uzenet"
-								class="form-control"
-								name="uzenet" 
-								type="text"
-								rows="3"
-								placeholder="..."
-								spellcheck="false" 
-								autocomplete="off" 
-								required
-								maxlength="100"
-								ng-init="model.uzenet=null"
-								ng-model="model.uzenet"
-								ng-clear-icon>
+								  class="form-control"
+								  name="uzenet" 
+								  type="text"
+								  rows="3"
+								  placeholder="..."
+								  spellcheck="false" 
+								  autocomplete="off" 
+								  required
+								  maxlength="100"
+								  ng-init="model.uzenet=null"
+								  ng-model="model.uzenet"
+								  ng-clear-icon>
 						</textarea>
 					  </div>
 					  <div class="col-1 col-md-1 d-flex align-items-center justify-content-start ps-1">
 						<span class="fw-bolder text-success"
-									ng-class="{'invisible': contactForm.uzenet.$invalid}">
+							  ng-class="{'invisible': contactForm.uzenet.$invalid}">
 							&check;
 						</span>
 					  </div>
@@ -182,11 +220,13 @@
 							<button class="btn btn-warning btn-lg w-auto me-3 text-uppercase" 
 									type="button" 
 									ng-disabled="contactForm.$invalid" 
-									ng-click="methods.contact()">küldés
+									ng-click="methods.contact()">
+									küldés
 							</button>
 							<button class="btn btn-secondary btn-lg w-auto me-3 text-uppercase" 
 									type="button" 
-									ng-click="methods.cancel()">mégsem
+									ng-click="methods.cancel()">
+									mégsem
 							</button>
 						</div>
 					</div>

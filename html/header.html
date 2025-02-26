@@ -2,8 +2,14 @@
     <div class="row">
         <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand text-danger" ui-sref="home" ui-sref-active="active">
-                    <img src="./media/image/navbar-icon.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+                <a class="navbar-brand text-danger" 
+                   ui-sref="home" 
+                   ui-sref-active="active">
+                    <img src="./media/image/navbar-icon.png" 
+                         alt="Logo" 
+                         width="30" 
+                         height="30" 
+                         class="d-inline-block align-text-top">
                     A Pizza Torony
                 </a>
                 <button class="navbar-toggler" 
@@ -22,7 +28,7 @@
                                ui-sref="rolunk"
                                ui-sref-active="active"
                                ng-class="{'text-danger': isActive('rolunk')}">
-                                Rólunk
+                               Rólunk
                             </a>
                         </li>
                         <li class="nav-item">
@@ -30,7 +36,7 @@
                                ui-sref="etlap" 
                                ui-sref-active="active"
                                ng-class="{'text-danger': isActive('etlap')}">
-                                Étlap
+                               Étlap
                             </a>
                         </li>
                         <li class="nav-item">
@@ -39,7 +45,7 @@
                                ui-sref="rendeles" 
                                ui-sref-active="active"
                                ng-class="{'text-danger': isActive('rendeles'), 'text-muted': !cart.length}">
-                                Rendelés
+                               Rendelés
                             </a>
                         </li>
                         <li class="nav-item">
@@ -65,7 +71,7 @@
                                ui-sref="login" 
                                ui-sref-active="active"
                                ng-class="{'text-danger': isActive('login')}">
-                                Bejelentkezés
+                               Bejelentkezés
                             </a>
                         </li>
                         <li class="nav-item" ng-show="!user.id">
@@ -82,7 +88,7 @@
                                role="button" 
                                data-bs-toggle="dropdown" 
                                aria-expanded="false">
-                                {{user.name}}
+                               {{user.name}}
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
