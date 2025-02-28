@@ -1,361 +1,371 @@
+<!-- Fejléc szakasz a regisztrációs oldalhoz -->
 <div class="row text-center hero-image"
      style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./media/image/pizza-seamless-pattern-260nw-755.png');">
-	<h1 class="display-5 fw-bold text-light my-auto" 
-		style="font-family: 'Julee'; src: url(../css/Julee-Regular.ttf);;">
-		REGISZTRÁCIÓ
-	</h1>
+    <!-- Oldal címének megjelenítése -->
+    <h1 class="display-5 fw-bold text-light my-auto" 
+        style="font-family: 'Julee'; src: url(../css/Julee-Regular.ttf);;">
+        REGISZTRÁCIÓ
+    </h1>
 </div>
 
-
+<!-- Regisztrációs űrlap elrendezése -->
 <div class="container position-relative rotateCarouselRightIn my-5">
-	<div class="row justify-content-center">
+    <div class="row justify-content-center">
 
-		<!-- Dialog -->
-		<div class="text-warning border-5 border-warning
-					shadow-bottom-end
-					col-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7"
-			style="border-style: double; background-color: #2B2B2B">
+        <!-- Az űrlap formázása és stílusozása -->
+        <div class="text-warning border-5 border-warning
+                    shadow-bottom-end
+                    col-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7"
+             style="border-style: double; background-color: #2B2B2B">
 
-			<!-- Title -->
-			<div class="row my-4">
-				<h3 class="text-center">
-					<i class="fa-solid fa-id-card"></i>
-					<span class="text-capitalize text-small-caps ms-2">
-						regisztráció
-					</span>
-				</h3>
-			</div>
+            <!-- Űrlap címe -->
+            <div class="row my-4">
+                <h3 class="text-center">
+                    <i class="fa-solid fa-id-card"></i>
+                    <span class="text-capitalize text-small-caps ms-2">
+                        regisztráció
+                    </span>
+                </h3>
+            </div>
 
-			<!-- Form -->
-			<form name="registerForm" class="needs-validation" novalidate>
+            <!-- Regisztrációs űrlap -->
+            <form name="registerForm" class="needs-validation" novalidate>
 
-				<!-- Name -->
-				<div class="row mb-3">
-					<label for="register-name" 
-						   class="col-form-label col-12 col-md-5 text-md-end">
-						<i class="fa-solid fa-star fa-2xs text-danger"></i>
-						<i class="fa-solid fa-user me-1"></i>
-						<span class="text-capitalize">név:</span>
-					</label>
-					<div class="col-11 col-md-6 position-relative">
-						<input id="register-name"
-							   class="form-control"
-							   name="name" 
-							   type="text"
-							   placeholder="Név"
-							   spellcheck="false" 
-							   autocomplete="off" 
-							   required
-							   maxlength="100"
-							   ng-init="model.name=null"
-							   ng-model="model.name"
-							   ng-disable-space
-							   ng-clear-icon>
-					</div>
-					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
-						<span class="fw-bolder text-success"
-							  ng-class="{'invisible': registerForm.name.$invalid}">
-							&check;
-						</span>
-					</div>
-				</div>
+                <!-- Név mező -->
+                <div class="row mb-3">
+                    <label for="register-name" 
+                           class="col-form-label col-12 col-md-5 text-md-end">
+                        <i class="fa-solid fa-star fa-2xs text-danger"></i>
+                        <i class="fa-solid fa-user me-1"></i>
+                        <span class="text-capitalize">név:</span>
+                    </label>
+                    <div class="col-11 col-md-6 position-relative">
+                        <!-- Szöveges input mező a névhez -->
+                        <input id="register-name"
+                               class="form-control"
+                               name="name" 
+                               type="text"
+                               placeholder="Név"
+                               spellcheck="false" 
+                               autocomplete="off" 
+                               required
+                               maxlength="100"
+                               ng-init="model.name=null"
+                               ng-model="model.name"
+                               ng-disable-space
+                               ng-clear-icon>
+                    </div>
+                    <div class="col-1 d-flex align-items-center justify-content-start ps-1">
+                        <!-- Ellenőrzés ikon, ha érvényes a név -->
+                        <span class="fw-bolder text-success"
+                              ng-class="{'invisible': registerForm.name.$invalid}">
+                            &check;
+                        </span>
+                    </div>
+                </div>
 
-				<!-- Email -->
-				<div class="row mb-3">
-					<label for="register-email" 
-						   class="col-form-label col-12 col-md-5 text-md-end">
-						<i class="fa-solid fa-star fa-2xs text-danger"></i>
-						<i class="fa-solid fa-envelope me-1"></i>
-						<span class="text-capitalize">email:</span>
-					</label>
-					<div class="col-11 col-md-6 position-relative">
-						<input id="register-email"
-							   class="form-control"
-							   name="email" 
-							   type="text"
-							   placeholder="Email"
-							   spellcheck="false" 
-							   autocomplete="off" 
-							   required
-							   maxlength="50"
-							   ng-init="model.email=null"
-							   ng-model="model.email"
-							   ng-pattern="/^([a-z0-9_.+-])+\@(([a-z0-9-])+\.)+([a-z0-9]{2,4})+$/"
-							   ng-disable-space
-							   ng-clear-icon>
-					</div>
-					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
-						<span class="fw-bolder text-success"
-							  ng-class="{'invisible': registerForm.email.$invalid}">
-							&check;
-						</span>
-						<span data-bs-toggle="tooltip"
-							  data-bs-custom-class="custom-tooltip"
-							  data-bs-html="true"
-							  data-bs-title="&lt;p class='my-1'>The email address verification is required!&lt;/p>">
-							<i class="fa-solid fa-circle-info text-primary ms-2"></i>
-						</span>
-					</div>
-				</div>
+                <!-- Email mező -->
+                <div class="row mb-3">
+                    <label for="register-email" 
+                           class="col-form-label col-12 col-md-5 text-md-end">
+                        <i class="fa-solid fa-star fa-2xs text-danger"></i>
+                        <i class="fa-solid fa-envelope me-1"></i>
+                        <span class="text-capitalize">email:</span>
+                    </label>
+                    <div class="col-11 col-md-6 position-relative">
+                        <!-- Szöveges input mező az emailhez -->
+                        <input id="register-email"
+                               class="form-control"
+                               name="email" 
+                               type="text"
+                               placeholder="Email"
+                               spellcheck="false" 
+                               autocomplete="off" 
+                               required
+                               maxlength="50"
+                               ng-init="model.email=null"
+                               ng-model="model.email"
+                               ng-pattern="/^([a-z0-9_.+-])+\@(([a-z0-9-])+\.)+([a-z0-9]{2,4})+$/"
+                               ng-disable-space
+                               ng-clear-icon>
+                    </div>
+                    <div class="col-1 d-flex align-items-center justify-content-start ps-1">
+                        <!-- Email érvényesség ellenőrző ikon és infó tooltip -->
+                        <span class="fw-bolder text-success"
+                              ng-class="{'invisible': registerForm.email.$invalid}">
+                            &check;
+                        </span>
+                        <span data-bs-toggle="tooltip"
+                              data-bs-custom-class="custom-tooltip"
+                              data-bs-html="true"
+                              data-bs-title="&lt;p class='my-1'>The email address verification is required!&lt;/p>">
+                            <i class="fa-solid fa-circle-info text-primary ms-2"></i>
+                        </span>
+                    </div>
+                </div>
 
-				<!-- Email confirmation -->
-				<div class="row mb-3">
-					<label for="register-emailConfirm" 
-						   class="col-form-label col-12 col-md-5 text-md-end">
-						<i class="fa-solid fa-star fa-2xs text-danger"></i>
-						<i class="fa-regular fa-envelope me-1"></i>
-						<span class="text-capitalize">
-							email megerősítés:
-						</span>
-					</label>
-					<div class="col-11 col-md-6 position-relative">
-						<input id="register-emailConfirm"
-							   class="form-control"
-							   name="emailConfirm" 
-							   type="text"
-							   placeholder="Email megerősítése"
-							   spellcheck="false" 
-							   autocomplete="off" 
-							   required
-							   maxlength="50"
-							   ng-init="model.emailConfirm=null"
-							   ng-model="model.emailConfirm"
-							   ng-compare-model="model.email"
-							   ng-pattern="/^([a-z0-9_.+-])+\@(([a-z0-9-])+\.)+([a-z0-9]{2,4})+$/"
-							   ng-disable-space
-							   ng-clear-icon>
-					</div>
-					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
-						<span class="fw-bolder text-success"
-							  ng-class="{'invisible': registerForm.emailConfirm.$invalid}">
-							&check;
-						</span>
-						<span data-bs-toggle="tooltip"
-							  data-bs-custom-class="custom-tooltip"
-							  data-bs-html="true"
-							  data-bs-title="&lt;p class='my-1'>Adja meg újra az email címét a biztonsága érdekében!&lt;/p>">
-							<i class="fa-solid fa-circle-info text-primary ms-2"></i>
-						</span>
-					</div>
-				</div>
+                <!-- Email megerősítés mező -->
+                <div class="row mb-3">
+                    <label for="register-emailConfirm" 
+                           class="col-form-label col-12 col-md-5 text-md-end">
+                        <i class="fa-solid fa-star fa-2xs text-danger"></i>
+                        <i class="fa-regular fa-envelope me-1"></i>
+                        <span class="text-capitalize">
+                            email megerősítés:
+                        </span>
+                    </label>
+                    <div class="col-11 col-md-6 position-relative">
+                        <!-- Email megerősítés input mező -->
+                        <input id="register-emailConfirm"
+                               class="form-control"
+                               name="emailConfirm" 
+                               type="text"
+                               placeholder="Email megerősítése"
+                               spellcheck="false" 
+                               autocomplete="off" 
+                               required
+                               maxlength="50"
+                               ng-init="model.emailConfirm=null"
+                               ng-model="model.emailConfirm"
+                               ng-compare-model="model.email"
+                               ng-pattern="/^([a-z0-9_.+-])+\@(([a-z0-9-])+\.)+([a-z0-9]{2,4})+$/"
+                               ng-disable-space
+                               ng-clear-icon>
+                    </div>
+                    <div class="col-1 d-flex align-items-center justify-content-start ps-1">
+                        <!-- Email megerősítés érvényesség ellenőrzés -->
+                        <span class="fw-bolder text-success"
+                              ng-class="{'invisible': registerForm.emailConfirm.$invalid}">&check;</span>
+                        <span data-bs-toggle="tooltip"
+                              data-bs-custom-class="custom-tooltip"
+                              data-bs-html="true"
+                              data-bs-title="&lt;p class='my-1'>Adja meg újra az email címét a biztonsága érdekében!&lt;/p>">
+                            <i class="fa-solid fa-circle-info text-primary ms-2"></i>
+                        </span>
+                    </div>
+                </div>
 
-				<!-- Phone number -->
-				<div class="row input-row mb-3">
-					<label for="register-phone"  
-						   class="col-form-label col-12 col-md-4 text-md-end">
-						<i class="fa-solid fa-mobile-screen me-1"></i>
-						<span class="text-capitalize">
-							telefon szám:
-						</span>
-					</label>
-					<div class="col-11 col-md-7 position-relative">
-						<div class="input-group" 
-							 id="register-phone-group" 
-							 aria-labelledby="register-phone-group">
-							<span class="input-group-text">+</span>
-							<input id="register-countryCode"
-								   name="countryCode" 
-								   type="text"
-								   placeholder="Kód"
-								   class="form-control"
-								   spellcheck="false" 
-								   autocomplete="off"
-								   maxlength="10"
-								   ng-init="model.countryCode=null"
-								   ng-model="model.countryCode"
-								   style="max-width:100px;"
-								   ng-disable-space>
-							<input id="register-phone"
-								   name="phone" 
-								   type="tel"
-								   placeholder="Telefon"
-								   class="form-control"
-								   spellcheck="false" 
-								   autocomplete="off"
-								   maxlength="10"
-								   ng-init="model.phone=null"
-								   ng-model="model.phone"
-								   ng-pattern="/^(?!(0))[0-9]{7,10}$/">
-						</div>						
-					</div>
+                <!-- Telefon szám mező -->
+                <div class="row input-row mb-3">
+                    <label for="register-phone"  
+                           class="col-form-label col-12 col-md-4 text-md-end">
+                        <i class="fa-solid fa-mobile-screen me-1"></i>
+                        <span class="text-capitalize">
+                            telefon szám:
+                        </span>
+                    </label>
+                    <div class="col-11 col-md-7 position-relative">
+                        <!-- Telefon mező és ország kód mező -->
+                        <div class="input-group" 
+                             id="register-phone-group" 
+                             aria-labelledby="register-phone-group">
+                            <span class="input-group-text">+</span>
+                            <input id="register-countryCode"
+                                   name="countryCode" 
+                                   type="text"
+                                   placeholder="Kód"
+                                   class="form-control"
+                                   spellcheck="false" 
+                                   autocomplete="off"
+                                   maxlength="10"
+                                   ng-init="model.countryCode=null"
+                                   ng-model="model.countryCode"
+                                   style="max-width:100px;"
+                                   ng-disable-space>
+                            <input id="register-phone"
+                                   name="phone" 
+                                   type="tel"
+                                   placeholder="Telefon"
+                                   class="form-control"
+                                   spellcheck="false" 
+                                   autocomplete="off"
+                                   maxlength="10"
+                                   ng-init="model.phone=null"
+                                   ng-model="model.phone"
+                                   ng-pattern="/^(?!(0))[0-9]{7,10}$/">
+                        </div>						
+                    </div>
 
-					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
-						<span class="fw-bolder text-success"
-						      ng-class="{'invisible': (!model.countryCode || !model.phone || registerForm.phone.$invalid || registerForm.countryCode.$invalid)}">
-							&check;
-						</span>
-						<span data-bs-toggle="tooltip"
-							  data-bs-custom-class="custom-tooltip"
-							  data-bs-html="true"
-							  data-bs-title="&lt;p class='my-1'>&lt;/p>">
-							<i class="fa-solid fa-circle-info text-primary ms-2"></i>
-						</span>
-					</div>
-				</div>
+                    <div class="col-1 d-flex align-items-center justify-content-start ps-1">
+                        <!-- Telefon érvényesség ellenőrzése -->
+                        <span class="fw-bolder text-success"
+                            ng-class="{'invisible': (!model.countryCode || !model.phone || registerForm.phone.$invalid || registerForm.countryCode.$invalid)}">
+                            &check;
+                        </span>
+                        <span data-bs-toggle="tooltip"
+                              data-bs-custom-class="custom-tooltip"
+                              data-bs-html="true"
+                              data-bs-title="&lt;p class='my-1'>&lt;/p>">
+                            <i class="fa-solid fa-circle-info text-primary ms-2"></i>
+                        </span>
+                    </div>
+                </div>
 
-				<!-- Address -->
-				<div class="row mb-3">
-					<label for="register-address" 
-						   class="col-form-label col-12 col-md-5 text-md-end">
-						<i class="fa-solid fa-star fa-2xs text-danger"></i>
-						<i class="fa-solid fa-house-chimney me-1"></i>
-						<span class="text-capitalize">lakcím:</span>
-					</label>
-					<div class="col-11 col-md-6 position-relative">
-						<input id="register-address"
-							   class="form-control"
-							   name="address" 
-							   type="text"
-							   placeholder="Lakcím"
-							   spellcheck="false" 
-							   autocomplete="off" 
-							   required
-							   maxlength="100"
-							   ng-init="model.address=null"
-							   ng-model="model.address"
-							   ng-clear-icon>
-					</div>
-					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
-						<span class="fw-bolder text-success"
-							  ng-class="{'invisible': registerForm.address.$invalid}">
-							&check;
-						</span>
-					</div>
-				</div>
+                <!-- Lakcím mező -->
+                <div class="row mb-3">
+                    <label for="register-address" 
+                           class="col-form-label col-12 col-md-5 text-md-end">
+                        <i class="fa-solid fa-star fa-2xs text-danger"></i>
+                        <i class="fa-solid fa-house-chimney me-1"></i>
+                        <span class="text-capitalize">lakcím:</span>
+                    </label>
+                    <div class="col-11 col-md-6 position-relative">
+                        <!-- Lakcím input mező -->
+                        <input id="register-address"
+                               class="form-control"
+                               name="address" 
+                               type="text"
+                               placeholder="Lakcím"
+                               spellcheck="false" 
+                               autocomplete="off" 
+                               required
+                               maxlength="100"
+                               ng-init="model.address=null"
+                               ng-model="model.address"
+                               ng-clear-icon>
+                    </div>
+                    <div class="col-1 d-flex align-items-center justify-content-start ps-1">
+                        <!-- Lakcím érvényességi ellenőrzés -->
+                        <span class="fw-bolder text-success"
+                              ng-class="{'invisible': registerForm.address.$invalid}">
+                            &check;
+                        </span>
+                    </div>
+                </div>
 
-				<!-- Password -->
-				<div class="row mb-3">
-					<label for="register-password" 
-						   class="col-form-label col-12 col-md-5 text-md-end">
-						<i class="fa-solid fa-star fa-2xs text-danger"></i>
-						<i class="fa-solid fa-key me-1"></i>
-						<span class="text-capitalize">jelszó:</span>
-					</label>
-					<div class="col-11 col-md-6 position-relative">
-						<input id="register-password"
-							   class="form-control"
-							   name="password" 
-							   type="{{model.showPassword ? 'text' : 'password'}}"
-							   placeholder="Jelszó"
-							   spellcheck="false" 
-							   autocomplete="off" 
-							   required
-							   minlength="6"
-							   maxlength="20"
-							   ng-init="model.password=null"
-							   ng-model="model.password"
-							   ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/"
-							   ng-disable-space
-							   ng-clear-icon>
-					</div>
-					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
-						<span class="fw-bolder text-success"
-							  ng-class="{'invisible': registerForm.password.$invalid}">
-							&check;
-						</span>
-						<span data-bs-toggle="tooltip"
-							  data-bs-custom-class="custom-tooltip"
-							  data-bs-html="true"
-							  data-bs-title="&lt;p class='my-1'>6-20 karakter&lt;/br>
-											 &lt;small>(legyen benne nagybetű, kisbetű és szám)&lt;/small>&lt;/p>">
-							<i class="fa-solid fa-circle-info text-primary ms-2"></i>
-						</span>
-					</div>
-				</div>
+                <!-- Jelszó mező -->
+                <div class="row mb-3">
+                    <label for="register-password" 
+                           class="col-form-label col-12 col-md-5 text-md-end">
+                        <i class="fa-solid fa-star fa-2xs text-danger"></i>
+                        <i class="fa-solid fa-key me-1"></i>
+                        <span class="text-capitalize">jelszó:</span>
+                    </label>
+                    <div class="col-11 col-md-6 position-relative">
+                        <!-- Jelszó input mező (látható vagy nem) -->
+                        <input id="register-password"
+                               class="form-control"
+                               name="password" 
+                               type="{{model.showPassword ? 'text' : 'password'}}"
+                               placeholder="Jelszó"
+                               spellcheck="false" 
+                               autocomplete="off" 
+                               required
+                               minlength="6"
+                               maxlength="20"
+                               ng-init="model.password=null"
+                               ng-model="model.password"
+                               ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/"
+                               ng-disable-space
+                               ng-clear-icon>
+                    </div>
+                    <div class="col-1 d-flex align-items-center justify-content-start ps-1">
+                        <!-- Jelszó érvényességi ellenőrzés -->
+                        <span class="fw-bolder text-success"
+                              ng-class="{'invisible': registerForm.password.$invalid}">&check;</span>
+                        <span data-bs-toggle="tooltip"
+                              data-bs-custom-class="custom-tooltip"
+                              data-bs-html="true"
+                              data-bs-title="&lt;p class='my-1'>6-20 karakter&lt;/br>
+                                               &lt;small>(legyen benne nagybetű, kisbetű és szám)&lt;/small>&lt;/p>">
+                            <i class="fa-solid fa-circle-info text-primary ms-2"></i>
+                        </span>
+                    </div>
+                </div>
 
-				<!-- Password confirmation -->
-				<div class="row mb-3">
-					<label for="register-passwordConfirm" 
-								class="col-form-label col-12 col-md-5 text-md-end">
-						<i class="fa-solid fa-star fa-2xs text-danger"></i>
-						<i class="fa-solid fa-unlock-keyhole me-1"></i>
-						<span class="text-capitalize">
-							jelszó megerősítés:
-						</span>
-					</label>
-					<div class="col-11 col-md-6 position-relative">
-						<input id="register-passwordConfirm"
-							   class="form-control"
-							   name="passwordConfirm" 
-							   type="{{model.showPassword ? 'text' : 'password'}}"
-							   placeholder="Jelszó megerősítése"
-							   spellcheck="false" 
-							   autocomplete="off" 
-							   required
-							   minlength="6"
-							   maxlength="20"
-							   ng-init="model.passwordConfirm=null"
-							   ng-model="model.passwordConfirm"
-							   ng-compare-model="model.password"
-							   ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/"
-							   ng-disable-space
-							   ng-clear-icon>
-					</div>
-					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
-						<span class="fw-bolder text-success"
-							  ng-class="{'invisible': registerForm.passwordConfirm.$invalid}">
-							&check;
-						</span>
-						<span data-bs-toggle="tooltip"
-							  data-bs-custom-class="custom-tooltip"
-							  data-bs-html="true"
-							  data-bs-title="&lt;p class='my-1'>Adja meg újra a jelszavát a biztonsága érdekében!&lt;/p>">
-							<i class="fa-solid fa-circle-info text-primary ms-2"></i>
-						</span>
-					</div>
-				</div>
+                <!-- Jelszó megerősítés -->
+                <div class="row mb-3">
+                    <label for="register-passwordConfirm" 
+                           class="col-form-label col-12 col-md-5 text-md-end">
+                        <i class="fa-solid fa-star fa-2xs text-danger"></i>
+                        <i class="fa-solid fa-unlock-keyhole me-1"></i>
+                        <span class="text-capitalize">
+                            jelszó megerősítés:
+                        </span>
+                    </label>
+                    <div class="col-11 col-md-6 position-relative">
+                        <!-- Jelszó megerősítő input mező -->
+                        <input id="register-passwordConfirm"
+                               class="form-control"
+                               name="passwordConfirm" 
+                               type="{{model.showPassword ? 'text' : 'password'}}"
+                               placeholder="Jelszó megerősítése"
+                               spellcheck="false" 
+                               autocomplete="off" 
+                               required
+                               minlength="6"
+                               maxlength="20"
+                               ng-init="model.passwordConfirm=null"
+                               ng-model="model.passwordConfirm"
+                               ng-compare-model="model.password"
+                               ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/"
+                               ng-disable-space
+                               ng-clear-icon>
+                    </div>
+                    <div class="col-1 d-flex align-items-center justify-content-start ps-1">
+                        <!-- Jelszó megerősítés ellenőrzése -->
+                        <span class="fw-bolder text-success"
+                              ng-class="{'invisible': registerForm.passwordConfirm.$invalid}">&check;</span>
+                        <span data-bs-toggle="tooltip"
+                              data-bs-custom-class="custom-tooltip"
+                              data-bs-html="true"
+                              data-bs-title="&lt;p class='my-1'>Adja meg újra a jelszavát a biztonsá érdekében!&lt;/p>">
+                            <i class="fa-solid fa-circle-info text-primary ms-2"></i>
+                        </span>
+                    </div>
+                </div>
 
-				<!-- Show/Hide password -->
-				<div class="row mb-4">
-					<div class="col-form-label d-none d-md-block col-md-5 text-md-end"></div>
-					<div class="col-12 col-md-7">
-						<input id="register-showPassword"
-							   class="form-check-input"
-							   type="checkbox"
-							   ng-init="model.showPassword=false"
-							   ng-model="model.showPassword">
-						<label for="register-showPassword"
-							   class="form-check-label ms-1">
-							jelszó megjelenítése
-						</label>
-					</div>
-				</div>
+                <!-- Jelszó megjelenítése / elrejtése checkbox -->
+                <div class="row mb-4">
+                    <div class="col-form-label d-none d-md-block col-md-5 text-md-end"></div>
+                    <div class="col-12 col-md-7">
+                        <input id="register-showPassword"
+                               class="form-check-input"
+                               type="checkbox"
+                               ng-init="model.showPassword=false"
+                               ng-model="model.showPassword">
+                        <label for="register-showPassword"
+                               class="form-check-label ms-1">
+                            jelszó megjelenítése
+                        </label>
+                    </div>
+                </div>
 
-				<!-- Register button -->
-				<div class="row mb-3 justify-content-end">
-					<hr>
-					
-					<!-- Hyperlink LEFT -->
-					<div class="pt-2 w-auto ms-3 me-auto">
-						<a class="nav-link fs-6 text-primary" 
-						   ui-sref="login">
-							<i class="fa-solid fa-right-to-bracket me-1"></i>
-							<span class="text-capitalize text-small-caps">
-								bejelentkezés
-							</span>
-						</a>
-					</div>
+                <!-- Regisztráció gomb -->
+                <div class="row mb-3 justify-content-end">
+                    <hr>
+                    
+                    <!-- Bejelentkezés hivatkozás -->
+                    <div class="pt-2 w-auto ms-3 me-auto">
+                        <a class="nav-link fs-6 text-primary" 
+                           ui-sref="login">
+                            <i class="fa-solid fa-right-to-bracket me-1"></i>
+                            <span class="text-capitalize text-small-caps">
+                                bejelentkezés
+                            </span>
+                        </a>
+                    </div>
 
-					<!-- Buttons RIGHT -->
-					<div class="w-auto ms-auto">
+                    <!-- Gombok -->
+                    <div class="w-auto ms-auto">
 
-						<!-- Register button -->
-						<button type="button"
-								class="btn btn-warning w-auto me-3 text-capitalize"
-								ng-disabled="registerForm.$invalid"
-								ng-click="register()">
-							regisztráció
-						</button>
+                        <!-- Regisztráció gomb -->
+                        <button type="button"
+                                class="btn btn-warning w-auto me-3 text-capitalize"
+                                ng-disabled="registerForm.$invalid"
+                                ng-click="register()">
+                            regisztráció
+                        </button>
 
-						<!-- Cancel button -->
-						<button type="button"
-								class="btn btn-secondary w-auto me-3 text-capitalize"
-								ng-click="cancel()">
-							mégsem
-						</button>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
+                        <!-- Mégsem gomb -->
+                        <button type="button"
+                                class="btn btn-secondary w-auto me-3 text-capitalize"
+                                ng-click="cancel()">
+                            mégsem
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

@@ -1,26 +1,32 @@
+<!-- A hős kép és a cím rész -->
 <div class="row text-center hero-image"
      style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./media/image/pizza_hatter.jpg');">
+	<!-- A rendelés cím megjelenítése, egyedi betűtípussal -->
 	<h1 class="display-5 fw-bold text-light my-auto" 
 		style="font-family: 'Julee'; src: url(../css/Julee-Regular.ttf);">
 		RENDELÉS
 	</h1>
 </div>
 
+<!-- A rendelési form és kosár rész -->
 <div class="container">
 	<div class="row mt-5">
 	  <div class="container">
 		<main>
 		  <div class="row g-5">
+				<!-- Kosár megjelenítése -->
 				<div class="col-md-5 col-lg-4 order-md-last">
 					<h4 class="d-flex justify-content-between align-items-center mb-3">
 					<span class="text-warning">
 						Kosár
 					</span>
+					<!-- Kosár elemek száma -->
 					<span class="badge bg-warning rounded-pill">
 						{{cart.length}}
 					</span>
 					</h4>
 					<ul class="list-group mb-3">
+						<!-- Kosár elemeinek listázása -->
 						<li class="list-group-item d-flex justify-content-between lh-sm" 
 								ng-repeat="item in cart">
 							<div>
@@ -35,19 +41,24 @@
 								{{item.price}} HUF
 							</span>
 						</li>
+						<!-- Végösszeg megjelenítése -->
 						<li class="list-group-item d-flex justify-content-between">
 							<span><strong>Végösszeg:</strong></span>
 							<strong>{{osszeg}} HUF</strong>
 						</li>
 					</ul>
 				</div>
+
+				<!-- Számlázási cím és fizetési mód rész -->
 				<div class="col-md-7 col-lg-8 text-warning">
 					<h4 class="mb-3">
 						Számlázási cím
 					</h4>
+					<!-- A rendelési űrlap -->
 					<form name="orderForm" 
 						  ng-submit="submitOrder()">
 						<div class="row g-3">
+							<!-- Név mező -->
 							<div class="col-12">
 								<label for="name" 
 									   class="form-label">
@@ -59,6 +70,8 @@
 									   ng-model="name" 
 									   required>
 								</div>
+								
+								<!-- Email cím (opcionális) mező -->
 								<div class="col-12">
 								<label for="email" 
 									   class="form-label">
@@ -69,6 +82,8 @@
 									   id="email" 
 									   ng-model="email">
 							</div>
+							
+							<!-- Kézbesítési cím mező -->
 							<div class="col-12">
 								<label for="address" 
 									   class="form-label">
@@ -81,11 +96,15 @@
 									   required>
 							</div>
 						</div>
+						
 						<hr class="my-4">
+						
+						<!-- Fizetési mód rész -->
 						<h4 class="mb-3">
 							Fizetés
 						</h4>
 						<div class="my-3">
+							<!-- Fizetési módok kiválasztása (például PayPal, kártyás fizetés) -->
 							<div class="form-check" 
 								 ng-repeat="method in paymentMethods">
 								<input id="{{method.id}}" 
@@ -101,8 +120,11 @@
 								</label>
 							</div>
 						</div>
+						
+						<!-- Bankkártya adatok, ha nem PayPal-t választanak -->
 						<div class="row gy-3" 
 							 ng-show="paymentMethod !== 'paypal'">
+							<!-- Név a kártyán -->
 							<div class="col-md-6">
 								<label for="cc-name" 
 									   class="form-label">
@@ -114,6 +136,7 @@
 									   ng-model="cardName" 
 									   required>
 							</div>
+							<!-- Bankkártya szám -->
 							<div class="col-md-6">
 								<label for="cc-number" 
 									   class="form-label">
@@ -125,6 +148,7 @@
 									   ng-model="cardNumber" 
 									   required>
 							</div>
+							<!-- Lejárati dátum -->
 							<div class="col-md-3">
 								<label for="cc-expiration" 
 									   class="form-label">
@@ -136,6 +160,7 @@
 									   ng-model="cardExpiry" 
 									   required>
 							</div>
+							<!-- CVV -->
 							<div class="col-md-3">
 								<label for="cc-cvv" 
 									   class="form-label">
@@ -148,7 +173,10 @@
 									   required>
 							</div>
 						</div>
+						
 						<hr class="my-4">
+						
+						<!-- A rendelés gomb -->
 						<button class="w-100 btn btn-warning btn-lg" 
 							    type="button"
 							    ng-click="methods.order()">
