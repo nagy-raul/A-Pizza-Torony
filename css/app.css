@@ -227,10 +227,12 @@ input, textarea{
 
 #raul{
     background: cover no-repeat;
+	width: 30%;
 }
 
 #lehel{
     background: cover no-repeat;
+	width: 30%;
 }
 
 .rolunk{
