@@ -1,3 +1,4 @@
+<!-- Hero szekció háttérképpel és címmel -->
 <div class="row text-center hero-image"
      style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./media/image/kapcsolat_banner.jpg');">
 	<h1 class="display-5 fw-bold text-light my-auto" 
@@ -6,231 +7,108 @@
 	</h1>
 </div>
 
+<!-- Kapcsolati űrlap szekció -->
 <div class="position-relative rotateCarouselRightIn my-5" 
 	 style="font-family: 'ABeeZee'; src: url(../css/ABeeZee-Regular.ttf);">
 	<div class="row mt-5 justify-content-center">
-				<div class="text-warning border-5 border-warning
-							shadow-bottom-end
-							col-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7"
-					 style="border-style: double; background-color: #2B2B2B">
-					
-
-					<!-- Title -->
-					<div class="row my-4">
-						<h3 class="text-center">
-							<i class="fa-regular fa-envelope"></i>
-							<span class="text-capitalize text-small-caps ms-2">
-								kapcsolat
-							</span>
-						</h3>
-					</div>
-		
-				  <form name="contactForm" 
-				  		class="needs-validation" 
-						novalidate>
-					<div class="row gy-3 gy-xl-4 p-4 p-xl-5">
-					  <div class="col-11">
-						<label for="contact-name" 
-							   class="form-label">
-							   Név
-							   <span class="text-danger">
-								*
-							</span>
-						</label>
-						<input id="contact-name"
-							   class="form-control"
-							   name="name" 
-							   type="text"
-							   placeholder="..."
-							   spellcheck="false" 
-							   autocomplete="off" 
-							   required
-							   maxlength="100"
-							   ng-init="model.name=null"
-							   ng-model="model.name"
-							   ng-disable-space>
-					  </div>
-					  <div class="col-1 d-flex align-items-center justify-content-start ps-1">
-						<span class="fw-bolder text-success"
-							  ng-class="{'invisible': contactForm.name.$invalid}">
-							&check;
-						</span>
-					  </div>
-					  <div class="col-11 col-md-5">
-						<label for="contact-email" 
-							   class="form-label">
-							Email 
-							<span class="text-danger">
-								*
-							</span>
-						</label>
-					
-						<div class="input-group" 
-							 id="contact-email-group" 
-							 aria-labelledby="contact-email-group">
-							<span class="input-group-text">
-								<svg xmlns="http://www.w3.org/2000/svg" 
-									 width="16" 
-									 height="16" 
-									 fill="currentColor" 
-									 class="bi bi-envelope" 
-									 viewBox="0 0 16 16">
-									<path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
-								</svg>
-							</span>
-							
-							<input id="contact-email"
-								   class="form-control"
-								   name="email" 
-								   type="text"
-								   placeholder="te@példa.com"
-								   spellcheck="false" 
-								   autocomplete="off" 
-								   required
-								   maxlength="50"
-								   ng-init="model.email=null"
-								   ng-model="model.email"
-								   ng-pattern="/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/"
-								   ng-disable-space
-								   ng-clear-icon>
-						</div>
-					</div>
-					
-					  <div class="col-1 col-md-1 d-flex align-items-center justify-content-start ps-1">
-						<span class="fw-bolder text-success"
-									ng-class="{'invisible': contactForm.email.$invalid}">
-							&check;
-						</span>
-					  </div>
-
-					<!-- Phone number -->
-					<div class="col-11 col-md-5">
-						<label for="contact-phone" 
-							   class="form-label">
-							<i class="fa-solid fa-mobile-screen"></i>
-							<span class="text-capitalize">telefon szám:</span>
-						</label>
-
-						<div class="input-group" 
-							 id="contact-phone-group" 
-							 aria-labelledby="contact-phone-group">
-							<span class="input-group-text">
-								+
-							</span>
-							
-							<input id="contact-countryCode"
-								name="countryCode" 
-								type="text"
-								placeholder="00"
-								class="form-control"
-								spellcheck="false" 
-								autocomplete="off"
-								maxlength="10"
-								ng-init="model.countryCode=null"
-								ng-model="model.countryCode"
-								style="max-width:100px;"
-								ng-disable-space>
-
-							<input id="contact-phone"
-								name="phone" 
-								type="tel"
-								placeholder="0000000"
-								class="form-control"
-								spellcheck="false" 
-								autocomplete="off"
-								maxlength="10"
-								ng-init="model.phone=null"
-								ng-model="model.phone"
-								ng-pattern="/^(?!(0))[0-9]{7,10}$/">
-						</div>                        
-					</div>
-
-				<div class="col-1 col-md-1 d-flex align-items-center justify-content-start ps-1">
-					<span class="fw-bolder text-success"
-					      ng-class="{'invisible': (!model.countryCode || !model.phone 
-						  				|| contactForm.phone.$invalid || contactForm.countryCode.$invalid)}">
-						&check;
+		<!-- Formát tartalmazó doboz -->
+		<div class="text-warning border-5 border-warning
+								shadow-bottom-end
+								col-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7"
+			 style="border-style: double; background-color: #2B2B2B">
+			
+			<!-- Cím -->
+			<div class="row my-4">
+				<h3 class="text-center">
+					<i class="fa-regular fa-envelope"></i>
+					<span class="text-capitalize text-small-caps ms-2">
+						kapcsolat
 					</span>
-				  </div>
-				
-					  <div class="col-11">
-						<label for="contact-targy" 
-							   class="form-label">
-							   Tárgy
-							   <span class="text-danger">
-								*
-							   </span>
-							</label>
-						<div class="input-group">
-							<input id="contact-targy"
-								   class="form-control"
-								   name="targy" 
-								   type="text"
-								   placeholder="..."
-								   spellcheck="false" 
-								   autocomplete="off" 
-								   required
-								   maxlength="100"
-								   ng-init="model.targy=null"
-								   ng-model="model.targy"
-								   ng-clear-icon>
-						</div>
-					  </div>
-					  <div class="col-1 col-md-1 d-flex align-items-center justify-content-start ps-1">
-						<span class="fw-bolder text-success"
-							  ng-class="{'invisible': contactForm.targy.$invalid}">
-							&check;
-						</span>
-					  </div>
+				</h3>
+			</div>
 
-					  <div class="col-11">
-						<label for="contact-uzenet" 
-						       class="form-label">
-							   Üzenet
-							   <span class="text-danger">
-								*
-							   </span>
+			<!-- Űrlap -->
+			<form name="contactForm" 
+				  class="needs-validation" 
+				  novalidate>
+				<div class="row gy-3 gy-xl-4 p-4 p-xl-5">
+					
+					<!-- Név mező -->
+					<div class="col-11">
+						<label for="contact-name" class="form-label">
+							Név <span class="text-danger">*</span>
 						</label>
-						<textarea id="contact-uzenet"
-								  class="form-control"
-								  name="uzenet" 
-								  type="text"
-								  rows="3"
-								  placeholder="..."
-								  spellcheck="false" 
-								  autocomplete="off" 
-								  required
-								  maxlength="100"
-								  ng-init="model.uzenet=null"
-								  ng-model="model.uzenet"
-								  ng-clear-icon>
-						</textarea>
-					  </div>
-					  <div class="col-1 col-md-1 d-flex align-items-center justify-content-start ps-1">
-						<span class="fw-bolder text-success"
-							  ng-class="{'invisible': contactForm.uzenet.$invalid}">
+						<input id="contact-name" class="form-control" name="name" type="text"
+							   placeholder="..." spellcheck="false" autocomplete="off" required
+							   maxlength="100" ng-init="model.name=null" ng-model="model.name"
+							   ng-disable-space>
+					</div>
+					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
+						<span class="fw-bolder text-success" ng-class="{'invisible': contactForm.name.$invalid}">
 							&check;
 						</span>
-					  </div>
-					  <div class="row my-3 justify-content-center">
+					</div>
+
+					<!-- Email mező -->
+					<div class="col-11 col-md-5">
+						<label for="contact-email" class="form-label">
+							Email <span class="text-danger">*</span>
+						</label>
+						<div class="input-group">
+							<span class="input-group-text">
+								<i class="bi bi-envelope"></i>
+							</span>
+							<input id="contact-email" class="form-control" name="email" type="text"
+								   placeholder="te@példa.com" spellcheck="false" autocomplete="off" required
+								   maxlength="50" ng-init="model.email=null" ng-model="model.email"
+								   ng-pattern="/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/">
+						</div>
+					</div>
+
+					<!-- Telefonszám mező -->
+					<div class="col-11 col-md-5">
+						<label for="contact-phone" class="form-label">
+							<i class="fa-solid fa-mobile-screen"></i>
+							Telefon szám:
+						</label>
+						<div class="input-group">
+							<span class="input-group-text">+</span>
+							<input id="contact-countryCode" name="countryCode" type="text"
+								   placeholder="00" class="form-control" maxlength="10"
+								   ng-init="model.countryCode=null" ng-model="model.countryCode"
+								   style="max-width:100px;">
+							<input id="contact-phone" name="phone" type="tel"
+								   placeholder="0000000" class="form-control" maxlength="10"
+								   ng-init="model.phone=null" ng-model="model.phone"
+								   ng-pattern="/^(?!(0))[0-9]{7,10}$/">
+						</div>
+					</div>
+
+					<!-- Üzenet mező -->
+					<div class="col-11">
+						<label for="contact-uzenet" class="form-label">
+							Üzenet <span class="text-danger">*</span>
+						</label>
+						<textarea id="contact-uzenet" class="form-control" name="uzenet" type="text"
+							  rows="3" placeholder="..." spellcheck="false" autocomplete="off" required
+							  maxlength="100" ng-init="model.uzenet=null" ng-model="model.uzenet"></textarea>
+					</div>
+
+					<!-- Gombok -->
+					<div class="row my-3 justify-content-center">
 						<hr>
-		
 						<div class="w-auto ms-auto">
-		
 							<button class="btn btn-warning btn-lg w-auto me-3 text-uppercase" 
-									type="button" 
-									ng-disabled="contactForm.$invalid" 
+									type="button" ng-disabled="contactForm.$invalid" 
 									ng-click="methods.contact()">
-									küldés
+								Küldés
 							</button>
 							<button class="btn btn-secondary btn-lg w-auto me-3 text-uppercase" 
-									type="button" 
-									ng-click="methods.cancel()">
-									mégsem
+									type="button" ng-click="methods.cancel()">
+								Mégsem
 							</button>
 						</div>
 					</div>
-			    </div>
 			</form>
 		</div>
 	</div>

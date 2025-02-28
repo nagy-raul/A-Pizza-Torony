@@ -1,3 +1,4 @@
+<!-- Főcím és háttérkép -->
 <div class="row text-center hero-image" 
 	style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./media/image/pizza_hatter3.jpg');">
 	<h1 class="display-5 fw-bold text-light my-auto" 
@@ -7,18 +8,22 @@
 </div>
 
 <main>
+	<!-- Termékek listázása -->
 	<div class="album py-5 mt-5">
 		<div class="container">
 			<div class="row row-cols-1 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 g-3 justify-content-center">
+				<!-- AngularJS ismétlés: minden terméket megjelenít -->
 				<div class="col text-center" 
 				     ng-repeat="x in data track by $index">
 					<div class="card p-4 mb-3 text-center border-4 w-auto border-danger" 
 					     style="max-width: 19rem;">
+						<!-- Termékkép -->
 						<img ng-src="./media/image/{{x.kep}}" 
 						     alt="{{x.termekNev}}">
-							 
+						 
 						<hr class="my-2" 
 						    style="color: white;">
+						<!-- Termék információk -->
 						<div class="card-body">
 						  	<h5 class="card-title">
 								{{x.termekNev}}
@@ -27,6 +32,7 @@
 								{{x.termekLeiras}}
 							</p>
 
+							<!-- Kosárba gomb, amely egy modált nyit meg -->
 							<a class="btn btn-danger" 
 							   data-bs-toggle="modal" 
 							   data-bs-target="#modal{{x.termekID}}">
@@ -39,10 +45,8 @@
 		</div>
 	</div>
 	
-	
-	
+	<!-- Termék részletes nézete modálban -->
 	<div ng-repeat="x in data track by $index">
-		<!-- Modal -->
 		<div class="modal fade p-4 py-md-5 text-center" 
 			 tabindex="-1" 
 			 aria-labelledby="termek{{x.termekID}}" 
@@ -62,126 +66,63 @@
 								aria-label="Close">
 						</button>
 					</div>
-	
+
 					<div class="modal-body p-5 pt-0 justify-content-center d-flex">
-						<!-- Image Section -->
+						<!-- Termékkép a modálban -->
 						<img ng-src="./media/image/{{x.kep}}" 
 							 width="200" 
 							 height="200" 
 							 class="img-fluid me-4">
-	
-						<!-- Form Section -->
-						<form class="" 
-							  name="form{{x.termekID}}" 
-							  novalidate>
-	
-							<div class="row">
-								<p class="mb-2">
-									Mekkora pizzát szeretne?
-								</p>
-							</div>
-	
+
+						<!-- Termék rendelési beállítások -->
+						<form name="form{{x.termekID}}" 
+						      novalidate>
+
+							<!-- Pizza méret választás -->
+							<p class="mb-2">Mekkora pizzát szeretne?</p>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input border-black" 
-									   type="radio" 
-									   name="meret" 
-									   id="meret1">
-								<label class="form-check-label" 
-									   for="meret1">
-									24 cm
-								</label>
-							</div>
-	
-							<div class="form-check form-check-inline mb-4">
-								<input class="form-check-input border-black" 
-									   type="radio" 
-									   name="meret" 
-									   id="meret2" 
-									   checked>
-								<label class="form-check-label" 
-									   for="meret2">
-									32 cm
-								</label>
-							</div>
-	
-							<div class="row">
-								<p class="mb-2">
-									Milyenre szeretné a pizza szélét?
-								</p>
-							</div>
-	
-							<div class="form-check form-check-inline">
-								<input class="form-check-input border-black" 
-									   type="radio" 
-									   name="szel" 
-									   id="vekony">
-								<label class="form-check-label" 
-									   for="vekony">
-									Vékony
-								</label>
+								<input class="form-check-input border-black" type="radio" name="meret" id="meret1">
+								<label class="form-check-label" for="meret1">24 cm</label>
 							</div>
 							<div class="form-check form-check-inline mb-4">
-								<input class="form-check-input border-black" 
-									   type="radio" 
-									   name="szel" 
-									   id="vastag" 
-									   checked>
-								<label class="form-check-label" 
-									   for="vastag">
-									Vastag
-								</label>
+								<input class="form-check-input border-black" type="radio" name="meret" id="meret2" checked>
+								<label class="form-check-label" for="meret2">32 cm</label>
 							</div>
 
-							<div class="row">
-								<label for="darabszam{{x.termekID}}" class="form-label">Hány darabot szeretne?</label>
-								<input type="number" id="darabszam{{x.termekID}}" 
-									   class="form-control text-center w-50 mx-auto" 
-									   ng-model="darabszam" 
-									   min="1" value="1">
+							<!-- Pizza szél választás -->
+							<p class="mb-2">Milyenre szeretné a pizza szélét?</p>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input border-black" type="radio" name="szel" id="vekony">
+								<label class="form-check-label" for="vekony">Vékony</label>
 							</div>
-							
-	
-							<div class="row">
-								<p class="mb-2" 
-								   ng-init="ar = x.termekAr">
-								   Ár: {{ar}} Ft
-								</p>
+							<div class="form-check form-check-inline mb-4">
+								<input class="form-check-input border-black" type="radio" name="szel" id="vastag" checked>
+								<label class="form-check-label" for="vastag">Vastag</label>
 							</div>
-	
+
+							<!-- Darabszám beállítása -->
+							<label for="darabszam{{x.termekID}}" class="form-label">Hány darabot szeretne?</label>
+							<input type="number" id="darabszam{{x.termekID}}" 
+								   class="form-control text-center w-50 mx-auto" 
+								   ng-model="darabszam" 
+								   min="1" value="1">
+
+							<!-- Ár megjelenítés -->
+							<p class="mb-2" ng-init="ar = x.termekAr">Ár: {{ar}} Ft</p>
+
 							<hr class="my-4">
 
+							<!-- Rendelés gomb -->
 							<button class="w-100 mb-2 btn btn-lg rounded-3 btn-danger" 
 									type="button"
 									ng-click="methods.addToCart(x.termekNev, x.termekLeiras, x.termekAr, darabszam)"
 									data-bs-dismiss="modal">
-									Rendelés
+								Rendelés
 							</button>
-					
 						</form>
 					</div>
 				</div>
 			</div>
-		</div>	
-
-
-		<!--	
-		<div class="modal fade" id="modal{{$index}}" tabindex="-1" aria-labelledby="termek{{$index}}" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h1 class="modal-title fs-5" id="termek{{$index}}">{{x.termekNev}}</h1>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						{{x.termekLeiras}}
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégsem</button>
-						<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Kosárba</button>
-					</div>
-				</div>
-			</div>
 		</div>
-	-->
 	</div>
 </main>

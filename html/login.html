@@ -1,219 +1,160 @@
+<!-- Első div: Hero Image -->
 <div class="row text-center hero-image"
-	style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-		   url('./media/image/pizza-seamless-hand-drawn-doodle.png');">
-	<h1 class="display-5 fw-bold text-light my-auto" 
-		style="font-family: 'Julee'; src: url(../css/Julee-Regular.ttf);">
-		BEJELENTKEZÉS
-	</h1>
+    style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+           url('./media/image/pizza-seamless-hand-drawn-doodle.png');">
+    <!-- Fejléc, amely a Bejelentkezés szöveget tartalmazza -->
+    <h1 class="display-5 fw-bold text-light my-auto" 
+        style="font-family: 'Julee'; src: url(../css/Julee-Regular.ttf);">
+        BEJELENTKEZÉS
+    </h1>
 </div>
 
+<!-- Második div: A bejelentkezési form -->
 <div class="container position-relative rotateCarouselRightIn my-5">
-	<div class="row mt-5 justify-content-center">
+    <div class="row mt-5 justify-content-center">
 
-		<!-- Dialog -->
-		<div class="text-warning border-5 border-warning
-					shadow-bottom-end
-					col-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7"
-			style="border-style: double; background-color: #2B2B2B">
+        <!-- Form típusú div, amely tartalmazza a bejelentkezési adatokat -->
+        <div class="text-warning border-5 border-warning
+                    shadow-bottom-end
+                    col-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7"
+            style="border-style: double; background-color: #2B2B2B">
 
-			<!-- Title -->
-			<div class="row my-4">
-				<h3 class="text-center">
-					<i class="fa-solid fa-right-to-bracket"></i>
-					<span class="text-capitalize text-small-caps ms-2">
-						bejelentkezés
-					</span>
-				</h3>
-			</div>
+            <!-- Cím -->
+            <div class="row my-4">
+                <h3 class="text-center">
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    <span class="text-capitalize text-small-caps ms-2">
+                        bejelentkezés
+                    </span>
+                </h3>
+            </div>
 
-			<!-- Form -->
-			<form name="loginForm" novalidate>
+            <!-- Form -->
+            <form name="loginForm" novalidate>
 
-				<!-- Email -->
-				<div class="row mb-3">
-					<label for="login-email" 
-						   class="col-form-label col-12 col-md-5 text-md-end">
-						<i class="fa-solid fa-star fa-2xs text-danger"></i>
-						<i class="fa-solid fa-envelope me-1"></i>
-						<span class="text-capitalize">email:</span>
-					</label>
-					<div class="col-11 col-md-6 position-relative">
-						<input id="login-email"
-							   class="form-control"
-							   name="email" 
-							   type="text"
-							   placeholder="email"
-							   spellcheck="false" 
-							   autocomplete="off" 
-							   required
-							   maxlength="50"
-							   ng-model="model.email"
-							   ng-pattern="/^([a-z0-9_.+-])+\@(([a-z0-9-])+\.)+([a-z0-9]{2,4})+$/">
-					</div>
-					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
-						<span class="fw-bolder text-success"
-							  ng-class="{'invisible': loginForm.email.$invalid}">
-							&check;
-						</span>
-					</div>
-				</div>
+                <!-- Email mező -->
+                <div class="row mb-3">
+                    <label for="login-email" 
+                           class="col-form-label col-12 col-md-5 text-md-end">
+                        <!-- Hibajelzés ikonok -->
+                        <i class="fa-solid fa-star fa-2xs text-danger"></i>
+                        <i class="fa-solid fa-envelope me-1"></i>
+                        <span class="text-capitalize">email:</span>
+                    </label>
+                    <div class="col-11 col-md-6 position-relative">
+                        <!-- Email input mező, validációval -->
+                        <input id="login-email"
+                               class="form-control"
+                               name="email" 
+                               type="text"
+                               placeholder="email"
+                               spellcheck="false" 
+                               autocomplete="off" 
+                               required
+                               maxlength="50"
+                               ng-model="model.email"
+                               ng-pattern="/^([a-z0-9_.+-])+\@(([a-z0-9-])+\.)+([a-z0-9]{2,4})+$/">
+                    </div>
+                    <div class="col-1 d-flex align-items-center justify-content-start ps-1">
+                        <!-- Email validálás ikonjának megjelenítése -->
+                        <span class="fw-bolder text-success"
+                              ng-class="{'invisible': loginForm.email.$invalid}">
+                            &check;
+                        </span>
+                    </div>
+                </div>
 
-				<!-- Password -->
-				<div class="row mb-2">
-					<label for="login-password" 
-						   class="col-form-label col-12 col-md-5 text-md-end">
-						<i class="fa-solid fa-star fa-2xs text-danger"></i>
-						<i class="fa-solid fa-key me-1"></i>
-						<span class="text-capitalize">jelszó:</span>
-					</label>
-					<div class="col-11 col-md-6 position-relative">
-						<input id="login-password"
-							   class="form-control"
-							   name="password" 
-							   type="{{model.showPassword ? 'text' : 'password'}}"
-							   placeholder="jelszó"
-							   spellcheck="false" 
-							   autocomplete="off" 
-							   required
-							   minlength="6"
-							   maxlength="20"
-							   ng-init="model.password=null"
-							   ng-model="model.password"
-							   ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/">
-					</div>
-					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
-						<span class="fw-bolder text-success"
-							  ng-class="{'invisible': loginForm.password.$invalid}">
-							&check;
-						</span>
-						<span data-bs-toggle="tooltip"
-							  data-bs-custom-class="custom-tooltip"
-							  data-bs-html="true"
-							  data-bs-title="&lt;p class='my-1'>6-20 karakter&lt;/br>
-							  				 &lt;small>(legyen benne nagybetű, kisbetű és szám)&lt;/small>&lt;/p>">
-							<i class="fa-solid fa-circle-info text-primary ms-2"></i>
-						</span>
-					</div>
-				</div>
+                <!-- Jelszó mező -->
+                <div class="row mb-2">
+                    <label for="login-password" 
+                           class="col-form-label col-12 col-md-5 text-md-end">
+                        <!-- Hibajelzés ikonok -->
+                        <i class="fa-solid fa-star fa-2xs text-danger"></i>
+                        <i class="fa-solid fa-key me-1"></i>
+                        <span class="text-capitalize">jelszó:</span>
+                    </label>
+                    <div class="col-11 col-md-6 position-relative">
+                        <!-- Jelszó input mező, a láthatóságát egy checkbox befolyásolja -->
+                        <input id="login-password"
+                               class="form-control"
+                               name="password" 
+                               type="{{model.showPassword ? 'text' : 'password'}}"
+                               placeholder="jelszó"
+                               spellcheck="false" 
+                               autocomplete="off" 
+                               required
+                               minlength="6"
+                               maxlength="20"
+                               ng-init="model.password=null"
+                               ng-model="model.password"
+                               ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/">
+                    </div>
+                    <div class="col-1 d-flex align-items-center justify-content-start ps-1">
+                        <!-- Jelszó validálás ikonjának megjelenítése -->
+                        <span class="fw-bolder text-success"
+                              ng-class="{'invisible': loginForm.password.$invalid}"> 
+                            &check;
+                        </span>
+                        <!-- Tooltip a jelszó erősségére vonatkozó információval -->
+                        <span data-bs-toggle="tooltip"
+                              data-bs-custom-class="custom-tooltip"
+                              data-bs-html="true"
+                              data-bs-title="&lt;p class='my-1'>6-20 karakter&lt;/br>
+                                           &lt;small>(legyen benne nagybetű, kisbetű és szám)&lt;/small>&lt;/p>">
+                            <i class="fa-solid fa-circle-info text-primary ms-2"></i>
+                        </span>
+                    </div>
+                </div>
 
-				<!-- Show/Hide password -->
-				<div class="row mb-4">
-					<div class="col-form-label d-none d-md-block col-md-5 text-md-end"></div>
-					<div class="col-12 col-md-7">
-						<input id="login-showPassword"
-							   class="form-check-input"
-							   type="checkbox"
-							   ng-init="model.showPassword=false"
-							   ng-model="model.showPassword">
-						<label for="login-showPassword"
-							   class="form-check-label ms-1">
-							Jelszó megjelenítése
-						</label>
-					</div>
-				</div>
+                <!-- Jelszó megjelenítése kapcsoló -->
+                <div class="row mb-4">
+                    <div class="col-form-label d-none d-md-block col-md-5 text-md-end"></div>
+                    <div class="col-12 col-md-7">
+                        <input id="login-showPassword"
+                               class="form-check-input"
+                               type="checkbox"
+                               ng-init="model.showPassword=false"
+                               ng-model="model.showPassword">
+                        <label for="login-showPassword"
+                               class="form-check-label ms-1">
+                            Jelszó megjelenítése
+                        </label>
+                    </div>
+                </div>
 
-				<!-- Buttons -->
-				<div class="row mb-3">
-					<hr class="mb-2">
+                <!-- Gombok -->
+                <div class="row mb-3">
+                    <hr class="mb-2">
 
-					<!-- Hyperlink LEFT -->
-					<div class="pt-2 w-auto ms-3 me-auto">
+                    <!-- Regisztráció hivatkozás -->
+                    <div class="pt-2 w-auto ms-3 me-auto">
+                        <a class="nav-link fs-6 text-primary" 
+                           ui-sref="register">
+                            <i class="fa-solid fa-id-card me-1"></i>
+                            <span class="text-capitalize text-small-caps">
+                                regisztráció
+                            </span>
+                        </a>
+                    </div>
 
-						<!-- Registration -->
-						<a class="nav-link fs-6 text-primary" 
-						   ui-sref="register">
-							<i class="fa-solid fa-id-card me-1"></i>
-							<span class="text-capitalize text-small-caps">
-								regisztráció
-							</span>
-						</a>
-					</div>
-
-					<!-- Buttons RIGHT -->
-					<div class="mt-2 w-auto ms-auto">
-
-						<!-- Login button -->
-						<button type="button"
-								class="btn btn-warning w-auto me-3 text-uppercase"
-								ng-disabled="loginForm.$invalid"
-								ng-click="login()">
-							bejelentkezés
-						</button>
-						<!-- logOut button -->
-						<button type="button"
-								class="btn btn-secondary w-auto me-3 text-uppercase"
-								ng-click="cancel()">
-							mégsem
-						</button>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
+                    <!-- Bejelentkezés és Mégsem gombok -->
+                    <div class="mt-2 w-auto ms-auto">
+                        <!-- Bejelentkezés gomb -->
+                        <button type="button"
+                                class="btn btn-warning w-auto me-3 text-uppercase"
+                                ng-disabled="loginForm.$invalid"
+                                ng-click="login()">
+                            bejelentkezés
+                        </button>
+                        <!-- Mégsem gomb -->
+                        <button type="button"
+                                class="btn btn-secondary w-auto me-3 text-uppercase"
+                                ng-click="cancel()">
+                            mégsem
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
-
-
-<!--
-<div class="container">
-	<div class="row justify-content-center my-5">
-		<form name="loginForm" class="form-signin w-auto border border-3 rounded-5 p-5 bg-body-tertiary">
-			<div class="form-floating">
-				<input type="email" 
-					   class="form-control"
-					   id="loginInput" 
-					   placeholder="nev@pelda.com"
-					   name="email"
-					   spellcheck="false" 
-					   autocomplete="off" 
-					   required
-					   maxlength="50"
-					   ng-model="model.email"
-					   ng-pattern="/^([a-z0-9_.+-])+\@(([a-z0-9-])+\.)+([a-z0-9]{2,4})+$/">
-				<label for="loginInput" class="text-capitalize">email cím</label>
-			</div>
-			<div class="form-floating">
-				<input type="{{model.showPassword ? 'text' : 'password'}}" 
-					   class="form-control" 
-					   id="loginPassword" 
-					   placeholder="Jelszo"
-					   name="password"
-					   spellcheck="false" 
-					   autocomplete="off" 
-					   required
-					   minlength="6"
-					   maxlength="20"
-					   ng-init="model.password=null"
-					   ng-model="model.password"
-					   ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/">
-				<label for="loginPassword" class="text-capitalize">jelszó</label>
-			</div>
-		
-			<div class="form-check text-start my-3">
-				<input class="form-check-input" 
-					   type="checkbox" 
-					   id="loginShowPassword"
-					   ng-init="model.showPassword=false"
-					   ng-model="model.showPassword">
-				<label class="form-check-label text-capitalize" for="loginShowPassword">	
-					jelszó megjelenítése
-				</label>
-			</div>
-
-			<div class="mt-2 w-auto justify-content-center">
-				<button type="button"
-						class="btn btn-primary w-auto text-capitalize"
-						ng-disabled="loginForm.$invalid"
-						ng-click="methods.login()">
-					bejelentkezés
-				</button>
-
-				<button type="button"
-						class="btn btn-secondary w-auto text-capitalize"
-						ng-click="methods.cancel()">
-					mégsem
-				</button>
-			</div>
-		</form>
-	</div>
-</div>
--->

@@ -1,22 +1,24 @@
+<!-- Hero image szakasz háttérképpel és címkével -->
 <div class="row text-center hero-image"
      style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./media/image/pizza_hatter2.png');">
+	<!-- Cím a profil oldal tetején egyedi betűtípussal -->
 	<h1 class="display-5 fw-bold text-light my-auto" 
 		style="font-family: 'Julee'; src: url(../css/Julee-Regular.ttf);">
 		PROFIL
 	</h1>
 </div>
 
+<!-- Fő konténer a profil űrlaphoz -->
 <div class="container position-relative rotateCarouselRightIn my-3">
 	<div class="row justify-content-center">
 
-		<!-- Dialog -->
+		<!-- Profil űrlap tartalmazó konténer -->
 		<div class="text-warning border-5 border-warning
 					shadow-bottom-end
 					col-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7"
 			style="border-style: double; background-color: #2B2B2B">
 
-
-			<!-- Title -->
+			<!-- Űrlap címe -->
 			<div class="row my-4">
 				<h3 class="text-center">
 					<i class="fa-regular fa-address-card"></i>
@@ -26,10 +28,10 @@
 				</h3>
 			</div>
 
-			<!-- Form -->
+			<!-- Profil űrlap -->
 			<form name="profileForm" novalidate>
 
-				<!-- Identifier/Type -->
+				<!-- Azonosító mező (nem szerkeszthető, letiltott) -->
 				<div class="row mb-3">
 					<label for="profile-id" 
 						   class="col-form-label col-md-4 text-md-end">
@@ -52,7 +54,7 @@
 					</div>
 				</div>
 
-				<!-- Email -->
+				<!-- E-mail mező (nem szerkeszthető) -->
 				<div class="row mb-3">
 					<label for="profile-email" 
 						   class="col-form-label col-12 col-md-4 text-md-end">
@@ -73,7 +75,7 @@
 					</div>
 				</div>
 
-				<!-- First name -->
+				<!-- Név mező (kötelező) -->
 				<div class="row mb-3">
 					<label for="profile-name" 
 						   class="col-form-label col-12 col-md-4 text-md-end">
@@ -97,6 +99,7 @@
 							   ng-clear-icon>
 					</div>
 					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
+						<!-- Pipa ikon a név érvényességének jelzésére -->
 						<span class="fw-bolder text-success"
 							  ng-class="{'invisible': profileForm.name.$invalid}">
 							&check;
@@ -104,7 +107,7 @@
 					</div>
 				</div>
 
-				<!-- Phone (Country code / Phone) -->
+				<!-- Telefonszám mező (országkód és telefonszám) -->
 				<div class="row input-row mb-3">
 					<label for="profile-phone" 
 						   class="col-form-label col-12 col-md-4 text-md-end">
@@ -115,6 +118,7 @@
 					</label>
 					<div class="col-11 col-md-7 position-relative">
 						<div class="input-group">
+							<!-- Országkód mező -->
 							<span class="input-group-text">+</span>
 							<input id="profile-countryCode"
 								   name="countryCode" 
@@ -128,6 +132,7 @@
 								   ng-model="model.countryCode"
 								   style="max-width:100px;"
 								   ng-disable-space>
+							<!-- Telefonszám mező -->
 							<input id="profile-phone"
 								   name="phone" 
 								   type="tel"
@@ -141,7 +146,7 @@
 								   ng-pattern="/^(?!(0))[0-9]{7,10}$/">
 						</div>						
 					</div>
-
+					<!-- Pipa ikon a telefonszám érvényességének jelzésére -->
 					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
 						<span class="fw-bolder text-success"
 						      ng-class="{'invisible': (!model.countryCode || !model.phone 
@@ -157,7 +162,7 @@
 					</div>
 				</div>
 
-				<!-- Address -->
+				<!-- Lakcím mező (kötelező) -->
 				<div class="row mb-3">
 					<label for="profile-address" 
 						   class="col-form-label col-12 col-md-5 text-md-end">
@@ -180,6 +185,7 @@
 							   ng-clear-icon>
 					</div>
 					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
+						<!-- Pipa ikon a lakcím érvényességének jelzésére -->
 						<span class="fw-bolder text-success"
 							  ng-class="{'invisible': profile.address.$invalid}">
 							&check;
@@ -187,11 +193,11 @@
 					</div>
 				</div>
 
-				<!-- Buttons -->
+				<!-- Gombok szakasz -->
 				<div class="row mb-3 justify-content-end">
 					<hr>
 					
-					<!-- Save button -->
+					<!-- Mentés gomb (csak akkor elérhető, ha az űrlap érvényes és módosítva lett) -->
 					<button type="button"
 							class="btn btn-warning w-auto me-3 text-uppercase"
 							ng-disabled="profileForm.$invalid || !helper.isModified"
@@ -199,7 +205,7 @@
 						mentés
 					</button>
 
-					<!-- Cancel button -->
+					<!-- Mégsem gomb -->
 					<button type="button"
 							class="btn btn-secondary w-auto me-3 text-uppercase"
 							ng-click="methods.cancel()">
