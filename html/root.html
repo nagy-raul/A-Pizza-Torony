@@ -1,6 +1,13 @@
+<!-- Az egész alkalmazás konténere, amely a teljes képernyőt lefedi -->
 <div class="app-container position-relative
 			d-flex flex-column vh-100 overflow-y-auto overflow-x-hidden">
+	
+	<!-- Fejléc szakasz, amely dinamikusan betöltődik az "header" nézetbe -->
 	<header ui-view="header" class="sticky-top"></header>
-	<main 	ui-view="" class="position-relative flex-fill"></main>
+	
+	<!-- Fő tartalom szakasz, amely a dinamikus tartalmat jeleníti meg -->
+	<main ui-view="" class="position-relative flex-fill"></main>
+	
+	<!-- Lábléc szakasz, amely dinamikusan betöltődik a "footer" nézetbe -->
 	<footer ui-view="footer"></footer>
 </div>
