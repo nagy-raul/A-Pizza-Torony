@@ -91,16 +91,16 @@
     }
   ])
 
-	// Application run
   .run([
     '$rootScope',
     '$state',
     'util',
-    function ($rootScope, $state, util) {
-
+    '$timeout',
+    function ($rootScope, $state, util, $timeout) {
+  
       // Initialize cart as an empty array
       $rootScope.cart = [];
-
+  
       $rootScope.user = {};
       $rootScope.user.id = util.localStorage('get', 'id');
       $rootScope.user.name = util.localStorage('get', 'name');
@@ -108,43 +108,55 @@
       $rootScope.user.countryCode = util.localStorage('get', 'countryCode');
       $rootScope.user.phone = util.localStorage('get', 'phone');
       $rootScope.user.address = util.localStorage('get', 'address');
-
-      // Initalize tooltips
-      let tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-      if (tooltips.length) [...tooltips].map(e => new bootstrap.Tooltip(e));
-
+  
+      // Function to initialize tooltips
+      function initTooltips() {
+        $timeout(() => {
+          let tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+          if (tooltips.length) {
+            tooltips.forEach(e => new bootstrap.Tooltip(e));
+          }
+        }, 500); // Slight delay to ensure DOM update
+      }
+  
+      // Run tooltip initialization on route change
+      $rootScope.$on('$viewContentLoaded', function() {
+        initTooltips();
+      });
+  
+      // Also initialize tooltips manually when needed
+      initTooltips();
+  
       $rootScope.logOut = () => {
         if (confirm('Biztosan ki szeretne lépni a fiókjából?')) {
           $rootScope.cart = [];
-
+  
           $rootScope.user.id = null;
           $rootScope.user.name = null;
           $rootScope.user.email = null;
           $rootScope.user.countryCode = null;
           $rootScope.user.phone = null;
           $rootScope.user.address = null;
-
-
+  
           util.localStorage('remove', 'id');
           util.localStorage('remove', 'name');
           util.localStorage('remove', 'email');
           util.localStorage('remove', 'countryCode');
           util.localStorage('remove', 'phone');
           util.localStorage('remove', 'address');
-
+  
           $rootScope.$applyAsync();
-
-          $state.go('home')
-
+          $state.go('home');
           alert(`Sikerült kijelentkezni!`);
         }
-      }
-
+      };
+  
       $rootScope.isActive = function(viewLocation) {
         return $state.includes(viewLocation);
       };
     }
   ])
+  
 
   // Home controller
   .controller('homeController', [
