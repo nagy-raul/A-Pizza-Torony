@@ -29,49 +29,49 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto">
                         <!-- Rólunk oldal linkje -->
-                        <li class="nav-item">
+                        <li class="nav-item me-2">
                             <a class="nav-link" 
                                ui-sref="rolunk"
                                ui-sref-active="active"
                                ng-class="{'text-danger': isActive('rolunk')}">
-                               Rólunk
+                               <i class="fa-solid fa-circle-info"></i> Rólunk
                             </a>
                         </li>
                         <!-- Étlap oldal linkje -->
-                        <li class="nav-item">
+                        <li class="nav-item me-2">
                             <a class="nav-link" 
                                ui-sref="etlap" 
                                ui-sref-active="active"
                                ng-class="{'text-danger': isActive('etlap')}">
-                               Étlap
+                               <i class="fa-solid fa-utensils"></i> Étlap
                             </a>
                         </li>
                         <!-- Kapcsolat oldal linkje -->
-                        <li class="nav-item">
+                        <li class="nav-item me-2">
                             <a class="nav-link" 
                                ui-sref="kapcsolat" 
                                ui-sref-active="active"
                                ng-class="{'text-danger': isActive('kapcsolat')}">
-                               Kapcsolat
+                               <i class="fa-solid fa-envelope"></i> Kapcsolat
                             </a>
                         </li>
                         <!-- Asztalfoglalás oldal linkje -->
-                        <li class="nav-item">
+                        <li class="nav-item me-2">
                             <a class="nav-link" 
                                ui-sref="foglalas" 
                                ui-sref-active="active"
                                ng-class="{'text-danger': isActive('foglalas')}">
-                               Asztalfoglalás
+                               <i class="fa-solid fa-chair"></i> Asztalfoglalás
                             </a>
                         </li>
                         <!-- Rendelés oldal linkje, inaktív ha a kosár üres -->
-                        <li class="nav-item">
+                        <li class="nav-item me-2">
                             <a class="nav-link" 
                                ng-show="cart.length" 
                                ui-sref="rendeles" 
                                ui-sref-active="active"
                                ng-class="{'text-danger': isActive('rendeles'), 'text-muted': !cart.length}">
-                               Rendelés
+                               <i class="fa-solid fa-cart-shopping"></i> Rendelés
                             </a>
                         </li>
                     </ul>
