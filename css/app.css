@@ -8,36 +8,34 @@
 
 *:not(input):not(textarea) {
 	-webkit-touch-callout:none !important;
-		-webkit-user-select:none !important;
-						  user-select:none !important;
-					  outline-style:none !important;
+	-webkit-user-select:none !important;
+			user-select:none !important;
+			outline-style:none !important;
+}
+  
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+	font-size: 3.5rem;
   }
+}
   
-	@media (min-width: 768px) {
-	  .bd-placeholder-img-lg {
-		font-size: 3.5rem;
-	  }
-	}
+.bi {
+  vertical-align: -.125em;
+  fill: currentColor;
+}
   
-	.bi {
-	  vertical-align: -.125em;
-	  fill: currentColor;
-	}
-  
-	.hero-image {
-		background-position: center;
-		background-repeat: repeat;
-		/*background-size: cover;*/
-		position: relative;
-		/*animation: backdrop_roll linear 12s infinite;*/
-		height: 200px;
-	}
+.hero-image {
+	background-position: center;
+	background-repeat: repeat;
+	position: relative;
+	height: 200px;
+}
 
-	@keyframes backdrop_roll { from { right: 0px; } to { right: 320px; } }
+@keyframes backdrop_roll { from { right: 0px; } to { right: 320px; } }
 	  
-  .navbar{
+.navbar {
 	background-color: #ffc107 !important;
-  }
+}
 
 .nav-item a.active {
 	cursor: default;
@@ -49,7 +47,7 @@
 }
 .custom-tooltip {
   --bs-tooltip-bg: var(--bs-primary);
-	--bs-tooltip-color: var(--bs-light);
+  --bs-tooltip-color: var(--bs-light);
 }
 .form-control-disabled {
 	border: 0 !important;
@@ -119,45 +117,45 @@ input, textarea{
 .marketing .col-lg-4 {
 	margin-bottom: 1.5rem;
 	text-align: center;
-  }
+}
   /* rtl:begin:ignore */
-  .marketing .col-lg-4 p {
+.marketing .col-lg-4 p {
 	margin-right: .75rem;
 	margin-left: .75rem;
-  }
+}
   /* rtl:end:ignore */
   
   
   /* Featurettes
   ------------------------- */
   
-  .featurette-divider {
+.featurette-divider {
 	margin: 5rem 0; /* Space out the Bootstrap <hr> more */
-  }
+}
   
   /* Thin out the marketing headings */
   /* rtl:begin:remove */
-  .featurette-heading {
+.featurette-heading {
 	letter-spacing: -.05rem;
-  }
+}
   
   /* rtl:end:remove */
   
   /* RESPONSIVE CSS
   -------------------------------------------------- */
   
-  @media (min-width: 40em) {
-  
+@media (min-width: 40em) {
+
 	.featurette-heading {
 	  font-size: 50px;
 	}
-  }
+}
   
-  @media (min-width: 62em) {
+@media (min-width: 62em) {
 	.featurette-heading {
 	  margin-top: 7rem;
 	}
-  }
+}
 
 #raul{
     background: cover no-repeat;
@@ -183,10 +181,10 @@ input, textarea{
 .modal-sheet .modal-dialog {
 	width: 380px;
 	transition: bottom .75s ease-in-out;
-  }
-  .modal-sheet .modal-footer {
+}
+.modal-sheet .modal-footer {
 	padding-bottom: 2rem;
-  }
+}
 
 .modal-body {
     display: flex;
