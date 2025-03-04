@@ -109,6 +109,10 @@
       $rootScope.user.phone = util.localStorage('get', 'phone');
       $rootScope.user.address = util.localStorage('get', 'address');
 
+      // Initalize tooltips
+      let tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+      if (tooltips.length) [...tooltips].map(e => new bootstrap.Tooltip(e));
+
       $rootScope.logOut = () => {
         if (confirm('Biztosan ki szeretne lépni a fiókjából?')) {
           $rootScope.cart = [];
