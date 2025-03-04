@@ -9,9 +9,9 @@ $args = Util::getArgs();
 
 // Set SQL command
 $query = "SELECT 	`felhasznaloID`
-						 FROM `felhasznalok` 
-						WHERE `email` = ?
-						LIMIT 1";
+		  FROM `felhasznalok` 
+		  WHERE `email` = ?
+		  LIMIT 1";
 
 // Connect to MySQL server
 $db = new Database();
@@ -24,7 +24,8 @@ if (!is_null($result))
 	Util::setError("Felhasználó már létezik ezen az e-mail címen!");
 
 // Set SQL command
-$query = "INSERT INTO `felhasznalok` (`nev`, `email`, `orszagkod`, `telszam`, `lakcim`, `jelszo`) VALUES (:name, :email, :countryCode, :phone, :address, :password);";
+$query = "INSERT INTO `felhasznalok` (`nev`, `email`, `orszagkod`, `telszam`, `lakcim`, `jelszo`) 
+		  VALUES (:name, :email, :countryCode, :phone, :address, :password);";
 
 // Execute SQL command
 $result = $db->execute($query, $args);
