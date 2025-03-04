@@ -1,6 +1,6 @@
 <!-- Főcím és háttérkép -->
 <div class="row text-center hero-image" 
-	style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./media/image/pizza_hatter3.jpg');">
+	 style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./media/image/pizza_hatter3.jpg');">
 	<h1 class="display-5 fw-bold text-light my-auto" 
 		style="font-family: 'Julee'; src: url(../css/Julee-Regular.ttf);">
 		ÉTLAP
@@ -81,34 +81,68 @@
 							<!-- Pizza méret választás -->
 							<p class="mb-2">Mekkora pizzát szeretne?</p>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input border-black" type="radio" name="meret" id="meret1">
-								<label class="form-check-label" for="meret1">24 cm</label>
+								<input class="form-check-input border-black" 
+									   type="radio" 
+									   name="meret" 
+									   id="meret1">
+								<label class="form-check-label" 
+									   for="meret1">
+									   24 cm
+								</label>
 							</div>
 							<div class="form-check form-check-inline mb-4">
-								<input class="form-check-input border-black" type="radio" name="meret" id="meret2" checked>
-								<label class="form-check-label" for="meret2">32 cm</label>
+								<input class="form-check-input border-black" 
+									   type="radio" 
+									   name="meret" 
+									   id="meret2" 
+									   checked>
+								<label class="form-check-label" 
+									   for="meret2">
+									   32 cm
+								</label>
 							</div>
 
 							<!-- Pizza szél választás -->
 							<p class="mb-2">Milyenre szeretné a pizza szélét?</p>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input border-black" type="radio" name="szel" id="vekony">
-								<label class="form-check-label" for="vekony">Vékony</label>
+								<input class="form-check-input border-black" 
+									   type="radio" 
+									   name="szel" 
+									   id="vekony">
+								<label class="form-check-label" 
+									   for="vekony">
+									   Vékony
+								</label>
 							</div>
 							<div class="form-check form-check-inline mb-4">
-								<input class="form-check-input border-black" type="radio" name="szel" id="vastag" checked>
-								<label class="form-check-label" for="vastag">Vastag</label>
+								<input class="form-check-input border-black" 
+									   type="radio" 
+									   name="szel" 
+									   id="vastag" 
+									   checked>
+								<label class="form-check-label" 
+									   for="vastag">
+									   Vastag
+								</label>
 							</div>
 
 							<!-- Darabszám beállítása -->
-							<label for="darabszam{{x.termekID}}" class="form-label">Hány darabot szeretne?</label>
-							<input type="number" id="darabszam{{x.termekID}}" 
+							<label for="darabszam{{x.termekID}}" 
+								   class="form-label">
+								   Hány darabot szeretne?
+							</label>
+							<input type="number" 
+								   id="darabszam{{x.termekID}}" 
 								   class="form-control text-center w-50 mx-auto" 
 								   ng-model="darabszam" 
-								   min="1" value="1">
+								   min="1" 
+								   value="1">
 
 							<!-- Ár megjelenítés -->
-							<p class="mb-2" ng-init="ar = x.termekAr">Ár: {{ar}} Ft</p>
+							<p class="mb-2" 
+							   ng-init="ar = x.termekAr">
+							   Ár: {{ar}} Ft
+							</p>
 
 							<hr class="my-4">
 

@@ -33,63 +33,113 @@
 					
 					<!-- Név mező -->
 					<div class="col-11">
-						<label for="contact-name" class="form-label">
-							Név <span class="text-danger">*</span>
+						<label for="contact-name" 
+							   class="form-label">
+							Név 
+							<span class="text-danger">
+								*
+							</span>
 						</label>
-						<input id="contact-name" class="form-control" name="name" type="text"
-							   placeholder="..." spellcheck="false" autocomplete="off" required
-							   maxlength="100" ng-init="model.name=null" ng-model="model.name"
+						<input id="contact-name" 
+							   class="form-control" 
+							   name="name" 
+							   type="text"
+							   placeholder="..." 
+							   spellcheck="false" 
+							   autocomplete="off" 
+							   required
+							   maxlength="100" 
+							   ng-init="model.name=null" 
+							   ng-model="model.name"
 							   ng-disable-space>
 					</div>
 					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
-						<span class="fw-bolder text-success" ng-class="{'invisible': contactForm.name.$invalid}">
+						<span class="fw-bolder text-success" 
+							  ng-class="{'invisible': contactForm.name.$invalid}">
 							&check;
 						</span>
 					</div>
 
 					<!-- Email mező -->
 					<div class="col-11 col-md-5">
-						<label for="contact-email" class="form-label">
-							Email <span class="text-danger">*</span>
+						<label for="contact-email" 
+							   class="form-label">
+							Email 
+							<span class="text-danger">
+								*
+							</span>
 						</label>
 						<div class="input-group">
 							<span class="input-group-text">
 								<i class="bi bi-envelope"></i>
 							</span>
-							<input id="contact-email" class="form-control" name="email" type="text"
-								   placeholder="te@példa.com" spellcheck="false" autocomplete="off" required
-								   maxlength="50" ng-init="model.email=null" ng-model="model.email"
+							<input id="contact-email" 
+								   class="form-control" 
+								   name="email" 
+								   type="text"
+								   placeholder="te@példa.com" 
+								   spellcheck="false" 
+								   autocomplete="off" 
+								   required
+								   maxlength="50" 
+								   ng-init="model.email=null" 
+								   ng-model="model.email"
 								   ng-pattern="/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/">
 						</div>
 					</div>
 
 					<!-- Telefonszám mező -->
 					<div class="col-11 col-md-5">
-						<label for="contact-phone" class="form-label">
+						<label for="contact-phone" 
+							   class="form-label">
 							<i class="fa-solid fa-mobile-screen"></i>
 							Telefon szám:
 						</label>
 						<div class="input-group">
 							<span class="input-group-text">+</span>
-							<input id="contact-countryCode" name="countryCode" type="text"
-								   placeholder="00" class="form-control" maxlength="10"
-								   ng-init="model.countryCode=null" ng-model="model.countryCode"
+							<input id="contact-countryCode" 
+								   name="countryCode" 
+								   type="text"
+								   placeholder="00" 
+								   class="form-control" 
+								   maxlength="10"
+								   ng-init="model.countryCode=null" 
+								   ng-model="model.countryCode"
 								   style="max-width:100px;">
-							<input id="contact-phone" name="phone" type="tel"
-								   placeholder="0000000" class="form-control" maxlength="10"
-								   ng-init="model.phone=null" ng-model="model.phone"
+							<input id="contact-phone" 
+								   name="phone" 
+								   type="tel"
+								   placeholder="0000000" 
+								   class="form-control" 
+								   maxlength="10"
+								   ng-init="model.phone=null" 
+								   ng-model="model.phone"
 								   ng-pattern="/^(?!(0))[0-9]{7,10}$/">
 						</div>
 					</div>
 
 					<!-- Üzenet mező -->
 					<div class="col-11">
-						<label for="contact-uzenet" class="form-label">
-							Üzenet <span class="text-danger">*</span>
+						<label for="contact-uzenet" 
+							   class="form-label">
+							Üzenet 
+							<span class="text-danger">
+								*
+							</span>
 						</label>
-						<textarea id="contact-uzenet" class="form-control" name="uzenet" type="text"
-							  rows="3" placeholder="..." spellcheck="false" autocomplete="off" required
-							  maxlength="100" ng-init="model.uzenet=null" ng-model="model.uzenet"></textarea>
+						<textarea id="contact-uzenet" 
+								  class="form-control" 
+								  name="uzenet" 
+								  type="text"
+							  	  rows="3" 
+								  placeholder="..." 
+								  spellcheck="false" 
+								  autocomplete="off" 
+								  required
+							  	  maxlength="100" 
+								  ng-init="model.uzenet=null" 
+								  ng-model="model.uzenet">
+						</textarea>
 					</div>
 
 					<!-- Gombok -->
@@ -97,12 +147,14 @@
 						<hr>
 						<div class="w-auto ms-auto">
 							<button class="btn btn-warning btn-lg w-auto me-3 text-uppercase" 
-									type="button" ng-disabled="contactForm.$invalid" 
+									type="button" 
+									ng-disabled="contactForm.$invalid" 
 									ng-click="methods.contact()">
 								Küldés
 							</button>
 							<button class="btn btn-secondary btn-lg w-auto me-3 text-uppercase" 
-									type="button" ng-click="methods.cancel()">
+									type="button" 
+									ng-click="methods.cancel()">
 								Mégsem
 							</button>
 						</div>

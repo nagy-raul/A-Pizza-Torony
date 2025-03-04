@@ -26,7 +26,8 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <!-- Navigációs menü -->
-                <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="collapse navbar-collapse" 
+                     id="navbarNav">
                     <ul class="navbar-nav me-auto">
                         <!-- Rólunk oldal linkje -->
                         <li class="nav-item me-2">
@@ -95,7 +96,8 @@
                             </a>
                         </li>
                         <!-- Felhasználói profil és kijelentkezés opció, ha be van jelentkezve -->
-                        <li class="nav-item dropdown" ng-show="user.id">
+                        <li class="nav-item dropdown" 
+                            ng-show="user.id">
                             <a class="nav-link dropdown-toggle" 
                                href="#" 
                                role="button" 
@@ -105,12 +107,15 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item" ui-sref="profile" ui-sref-active="active">
+                                    <a class="dropdown-item" 
+                                       ui-sref="profile" 
+                                       ui-sref-active="active">
                                         Profil
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" ng-click="logOut()">
+                                    <a class="dropdown-item" 
+                                       ng-click="logOut()">
                                         Kijelentkezés
                                     </a>
                                 </li>

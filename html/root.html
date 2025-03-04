@@ -3,11 +3,16 @@
 			d-flex flex-column vh-100 overflow-y-auto overflow-x-hidden">
 	
 	<!-- Fejléc szakasz, amely dinamikusan betöltődik az "header" nézetbe -->
-	<header ui-view="header" class="sticky-top"></header>
+	<header ui-view="header" 
+			class="sticky-top">
+	</header>
 	
 	<!-- Fő tartalom szakasz, amely a dinamikus tartalmat jeleníti meg -->
-	<main ui-view="" class="position-relative flex-fill"></main>
+	<main ui-view="" 
+		  class="position-relative flex-fill">
+	</main>
 	
 	<!-- Lábléc szakasz, amely dinamikusan betöltődik a "footer" nézetbe -->
-	<footer ui-view="footer"></footer>
+	<footer ui-view="footer">
+	</footer>
 </div>
