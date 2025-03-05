@@ -87,6 +87,17 @@
 								   ng-pattern="/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/">
 						</div>
 					</div>
+					<div class="col-1 col-md-1 d-flex align-items-center justify-content-start ps-1">
+                        <!-- Email megerősítés érvényesség ellenőrzés -->
+                        <span class="fw-bolder text-success"
+                              ng-class="{'invisible': registerForm.emailConfirm.$invalid}">&check;</span>
+                        <span data-bs-toggle="tooltip"
+                              data-bs-custom-class="custom-tooltip"
+                              data-bs-html="true"
+                              data-bs-title="&lt;p class='my-1'>Az e-mail cím ellenőrzése szükséges!!&lt;/p>">
+                            <i class="fa-solid fa-circle-info text-primary ms-2"></i>
+                        </span>
+                    </div>
 
 					<!-- Telefonszám mező -->
 					<div class="col-11 col-md-5">
@@ -117,6 +128,18 @@
 								   ng-pattern="/^(?!(0))[0-9]{7,10}$/">
 						</div>
 					</div>
+
+					<div class="col-1 col-md-1 d-flex align-items-center justify-content-start ps-1">
+                        <!-- Email megerősítés érvényesség ellenőrzés -->
+                        <span class="fw-bolder text-success"
+                              ng-class="{'invisible': registerForm.emailConfirm.$invalid}">&check;</span>
+                        <span data-bs-toggle="tooltip"
+                              data-bs-custom-class="custom-tooltip"
+                              data-bs-html="true"
+                              data-bs-title="&lt;p class='my-1'>Adja meg újra az email címét a biztonsága érdekében!&lt;/p>">
+                            <i class="fa-solid fa-circle-info text-primary ms-2"></i>
+                        </span>
+                    </div>
 
 					<!-- Üzenet mező -->
 					<div class="col-11">
