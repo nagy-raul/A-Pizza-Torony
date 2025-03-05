@@ -100,7 +100,7 @@
                         <span data-bs-toggle="tooltip"
                               data-bs-custom-class="custom-tooltip"
                               data-bs-html="true"
-                              data-bs-title="&lt;p class='my-1'>The email address verification is required!&lt;/p>">
+                              data-bs-title="&lt;p class='my-1'>Az e-mail cím ellenőrzése szükséges!&lt;/p>">
                             <i class="fa-solid fa-circle-info text-primary ms-2"></i>
                         </span>
                     </div>
@@ -149,18 +149,12 @@
 
                 <!-- Telefon szám mező -->
                 <div class="row input-row mb-3">
-                    <label for="register-phone"  
-                           class="col-form-label col-12 col-md-4 text-md-end">
+                    <label for="register-phone" class="col-form-label col-12 col-md-4 text-md-end">
                         <i class="fa-solid fa-mobile-screen me-1"></i>
-                        <span class="text-capitalize">
-                            telefon szám:
-                        </span>
+                        <span class="text-capitalize">telefon szám:</span>
                     </label>
                     <div class="col-11 col-md-7 position-relative">
-                        <!-- Telefon mező és ország kód mező -->
-                        <div class="input-group" 
-                             id="register-phone-group" 
-                             aria-labelledby="register-phone-group">
+                        <div class="input-group" id="register-phone-group" aria-labelledby="register-phone-group">
                             <span class="input-group-text">+</span>
                             <input id="register-countryCode"
                                    name="countryCode" 
@@ -169,9 +163,10 @@
                                    class="form-control"
                                    spellcheck="false" 
                                    autocomplete="off"
-                                   maxlength="10"
+                                   maxlength="4"
                                    ng-init="model.countryCode=null"
                                    ng-model="model.countryCode"
+                                   ng-pattern="/^\d{1,4}$/"
                                    style="max-width:100px;"
                                    ng-disable-space>
                             <input id="register-phone"
@@ -187,9 +182,8 @@
                                    ng-pattern="/^(?!(0))[0-9]{7,10}$/">
                         </div>						
                     </div>
-
+                
                     <div class="col-1 d-flex align-items-center justify-content-start ps-1">
-                        <!-- Telefon érvényesség ellenőrzése -->
                         <span class="fw-bolder text-success"
                               ng-class="{'invisible': (!model.countryCode || !model.phone || registerForm.phone.$invalid || registerForm.countryCode.$invalid)}">
                             &check;
@@ -197,22 +191,21 @@
                         <span data-bs-toggle="tooltip"
                               data-bs-custom-class="custom-tooltip"
                               data-bs-html="true"
-                              data-bs-title="&lt;p class='my-1'>&lt;/p>">
+                              data-bs-title="&lt;p class='my-1'> Az országkód csak számokat tartalmazhat, és 1-4 karakter hosszú lehet.
+                                             A telefonszámnak 7-10 számjegyből kell állnia, és nem kezdődhet 0-val.&lt;/p>">
                             <i class="fa-solid fa-circle-info text-primary ms-2"></i>
                         </span>
                     </div>
                 </div>
-
+                
                 <!-- Lakcím mező -->
                 <div class="row mb-3">
-                    <label for="register-address" 
-                           class="col-form-label col-12 col-md-5 text-md-end">
+                    <label for="register-address" class="col-form-label col-12 col-md-5 text-md-end">
                         <i class="fa-solid fa-star fa-2xs text-danger"></i>
                         <i class="fa-solid fa-house-chimney me-1"></i>
                         <span class="text-capitalize">lakcím:</span>
                     </label>
                     <div class="col-11 col-md-6 position-relative">
-                        <!-- Lakcím input mező -->
                         <input id="register-address"
                                class="form-control"
                                name="address" 
@@ -224,16 +217,23 @@
                                maxlength="100"
                                ng-init="model.address=null"
                                ng-model="model.address"
+                               ng-pattern="/^[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű0-9\s,.-]+$/"
                                ng-clear-icon>
                     </div>
                     <div class="col-1 d-flex align-items-center justify-content-start ps-1">
-                        <!-- Lakcím érvényességi ellenőrzés -->
                         <span class="fw-bolder text-success"
                               ng-class="{'invisible': registerForm.address.$invalid}">
                             &check;
                         </span>
+                        <span data-bs-toggle="tooltip"
+                              data-bs-custom-class="custom-tooltip"
+                              data-bs-html="true"
+                              data-bs-title="&lt;p class='my-1'>A lakcímnek tartalmaznia kell az utca nevét, házszámot és egyéb szükséges adatokat.&lt;/p>">
+                            <i class="fa-solid fa-circle-info text-primary ms-2"></i>
+                        </span>
                     </div>
                 </div>
+                
 
                 <!-- Jelszó mező -->
                 <div class="row mb-3">
@@ -311,7 +311,7 @@
                         <span data-bs-toggle="tooltip"
                               data-bs-custom-class="custom-tooltip"
                               data-bs-html="true"
-                              data-bs-title="&lt;p class='my-1'>Adja meg újra a jelszavát a biztonsá érdekében!&lt;/p>">
+                              data-bs-title="&lt;p class='my-1'>Adja meg újra a jelszavát a biztonsága érdekében!&lt;/p>">
                             <i class="fa-solid fa-circle-info text-primary ms-2"></i>
                         </span>
                     </div>
