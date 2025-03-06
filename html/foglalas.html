@@ -70,7 +70,7 @@
                     <div class="col-1 d-flex align-items-center justify-content-start ps-1">
                         <!-- Email megerősítés érvényesség ellenőrzés -->
                         <span class="fw-bolder text-success"
-                              ng-class="{'invisible': registerForm.emailConfirm.$invalid}">&check;</span>
+                              ng-class="{'invisible': bookingForm.email.$invalid}">&check;</span>
                         <span data-bs-toggle="tooltip"
                               data-bs-custom-class="custom-tooltip"
                               data-bs-html="true"
@@ -84,9 +84,6 @@
                         <label for="booking-phone" 
 							   class="form-label">
                             Telefon szám
-							<span class="text-danger">
-								*
-							</span>
                         </label>
                         <div class="input-group">
                             <span class="input-group-text">
@@ -113,9 +110,6 @@
                         </div>
                     </div>
                     <div class="col-1 d-flex align-items-center justify-content-start ps-1">
-                        <!-- Email megerősítés érvényesség ellenőrzés -->
-                        <span class="fw-bolder text-success"
-                              ng-class="{'invisible': registerForm.emailConfirm.$invalid}">&check;</span>
                         <span data-bs-toggle="tooltip"
                               data-bs-custom-class="custom-tooltip"
                               data-bs-html="true"
@@ -141,6 +135,14 @@
                                required 
 							   ng-model="model.datum">
                     </div>
+                    <div class="col-1 d-flex align-items-center justify-content-start ps-1">
+                        <span data-bs-toggle="tooltip"
+                              data-bs-custom-class="custom-tooltip"
+                              data-bs-html="true"
+                              data-bs-title="&lt;p class='my-1'>A dátum mező kitöltése kötelező!&lt;/p>">
+                            <i class="fa-solid fa-circle-info text-primary ms-2"></i>
+                        </span>
+                    </div>
 
                     <div class="col-11 col-md-5">
                         <label for="booking-ido" 
@@ -156,6 +158,14 @@
 							   type="time"
                                required 
 							   ng-model="model.ido">
+                    </div>
+                    <div class="col-1 d-flex align-items-center justify-content-start ps-1">
+                        <span data-bs-toggle="tooltip"
+                              data-bs-custom-class="custom-tooltip"
+                              data-bs-html="true"
+                              data-bs-title="&lt;p class='my-1'>Az idő mező kitöltése kötelező!&lt;/p>">
+                            <i class="fa-solid fa-circle-info text-primary ms-2"></i>
+                        </span>
                     </div>
 
                     <!-- Vendégek száma és megjegyzések -->
@@ -177,9 +187,8 @@
 							   ng-model="model.vendegek">
                     </div>
                     <div class="col-1 d-flex align-items-center justify-content-start ps-1">
-                        <!-- Email megerősítés érvényesség ellenőrzés -->
                         <span class="fw-bolder text-success"
-                              ng-class="{'invisible': registerForm.emailConfirm.$invalid}">&check;</span>
+                              ng-class="{'invisible': bookingForm.vendegek.$invalid}">&check;</span>
                         <span data-bs-toggle="tooltip"
                               data-bs-custom-class="custom-tooltip"
                               data-bs-html="true"

@@ -70,9 +70,9 @@
 							</span>
 						</label>
 						<div class="input-group">
-							<span class="input-group-text">
-								<i class="bi bi-envelope"></i>
-							</span>
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-envelope"></i>
+                            </span>
 							<input id="contact-email" 
 								   class="form-control" 
 								   name="email" 
@@ -90,7 +90,7 @@
 					<div class="col-1 col-md-1 d-flex align-items-center justify-content-start ps-1">
                         <!-- Email megerősítés érvényesség ellenőrzés -->
                         <span class="fw-bolder text-success"
-                              ng-class="{'invisible': registerForm.emailConfirm.$invalid}">&check;</span>
+                              ng-class="{'invisible': contactForm.email.$invalid}">&check;</span>
                         <span data-bs-toggle="tooltip"
                               data-bs-custom-class="custom-tooltip"
                               data-bs-html="true"
@@ -130,9 +130,6 @@
 					</div>
 
 					<div class="col-1 col-md-1 d-flex align-items-center justify-content-start ps-1">
-                        <!-- Email megerősítés érvényesség ellenőrzés -->
-                        <span class="fw-bolder text-success"
-                              ng-class="{'invisible': registerForm.emailConfirm.$invalid}">&check;</span>
                         <span data-bs-toggle="tooltip"
                               data-bs-custom-class="custom-tooltip"
                               data-bs-html="true"
