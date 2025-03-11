@@ -18,11 +18,11 @@ var_dump($args);
 
 // Set SQL command
 $query ="SELECT `felhasznaloID` AS `id`, 
-                `nev` AS `name`, 
-                `email` AS `email`, 
-                `orszagkod` AS `countryCode`, 
-                `telszam` AS `phone`, 
-                `lakcim` AS `address`
+                `nev`           AS `name`, 
+                `email`         AS `email`, 
+                `orszagkod`     AS `countryCode`, 
+                `telszam`       AS `phone`, 
+                `lakcim`        AS `address`
          FROM `felhasznalok`
          WHERE `felhasznaloID` = :id
 	  LIMIT 1";
@@ -43,5 +43,5 @@ if (is_null($result))
 // Simplifying the result
 $result = $result[0];
 
-// Ser response
+// Set response
 Util::setResponse($result);
