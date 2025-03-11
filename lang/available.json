@@ -1,0 +1,23 @@
+[
+  {
+    "id":"de",
+    "name":"german",
+    "local_name":"deutsch",
+    "img":"de.png",
+    "valid":true
+  },
+  {
+    "id":"en",
+    "name":"english",
+    "local_name":"english",
+    "img":"us.png",
+    "valid":true
+  },
+  {
+    "id":"hu",
+    "name":"hungarian",
+    "local_name":"magyar",
+    "img":"hu.png",
+    "valid":true
+  }
+]
