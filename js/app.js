@@ -641,7 +641,7 @@
         events: () => {
 
 					// Watch user profile changed
-					$scope.$watch('model', (newValue) => {
+					$scope.$watch('model', (newValue, oldValue) => {
 						if (newValue) {
 							$scope.helper.isModified = 
                   !angular.equals(newValue, $scope.helper.modelStart);
@@ -661,6 +661,8 @@
             $scope.helper.modelStart, 
             $scope.model
           );
+
+          console.log("Stored ID:", util.localStorage('get', 'id'));
 
           // Set user identifier
           data.id = $rootScope.user.id;

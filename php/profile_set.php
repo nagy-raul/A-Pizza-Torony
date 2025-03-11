@@ -16,7 +16,7 @@ $query  = "UPDATE `felhasznalok`
                `email`= :email,
                `orszagkod`= :countryCode,
                `telszam`= :phone,
-               `lakcim`= :address'
+               `lakcim`= :address
            WHERE `felhasznaloID` = :id;";
 
 // Execute SQL command
