@@ -656,6 +656,9 @@
         // Save
         save: () => {
 
+          console.log($scope.helper.modelStart);
+          console.log($scope.model);
+
           // Get only data, that has changed
           let data = util.objDifference(
             $scope.helper.modelStart, 
