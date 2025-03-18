@@ -48,7 +48,7 @@
                                class="form-control"
                                name="email" 
                                type="text"
-                               placeholder="email"
+                               placeholder="{{translations.email}}"
                                spellcheck="false" 
                                autocomplete="off" 
                                required
@@ -86,7 +86,7 @@
                                class="form-control"
                                name="password" 
                                type="{{model.showPassword ? 'text' : 'password'}}"
-                               placeholder="jelszó"
+                               placeholder="{{translations.password}}"
                                spellcheck="false" 
                                autocomplete="off" 
                                required
@@ -124,7 +124,7 @@
                                ng-model="model.showPassword">
                         <label for="login-showPassword"
                                class="form-check-label ms-1">
-                            {{translations.password_show}}
+                            {{translations.show_password}}
                         </label>
                     </div>
                 </div>
@@ -139,7 +139,7 @@
                            ui-sref="register">
                             <i class="fa-solid fa-id-card me-1"></i>
                             <span class="text-capitalize text-small-caps">
-                                {{translations.register}}
+                                {{translations.registration}}
                             </span>
                         </a>
                     </div>
@@ -151,7 +151,7 @@
                                 class="btn btn-warning w-auto me-3 text-uppercase"
                                 ng-disabled="loginForm.$invalid"
                                 ng-click="login()">
-                            {{translations.login}}
+                            {{translations.send}}
                         </button>
                         <!-- Mégsem gomb -->
                         <button type="button"
