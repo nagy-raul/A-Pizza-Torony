@@ -8,7 +8,6 @@
   "login":"Bejelentkezés",
   "logout": "Kijelentkezés",
   "registration":"Regisztráció",
-  "register": "REGISZTRÁCIÓ",
   "profile":"Profil",
   "welkome":"Üdvözöljük a Pizza Toronyban!",
   "advert_1":"Élvezze a Pizza Torony ínycsiklandó pizzáit otthonában! Könnyedén rendelhet online, és házhoz szállítjuk a friss és finom ételt.",
@@ -117,5 +116,7 @@
   "pick_a_date": "Kérlek, válassz egy dátumot az érkezéshez",
   "arrival_time": "Érkezés ideje",
   "guests": "Vendégek száma",
-  "booking": "foglalás"
+  "booking": "foglalás",
+  "code": "Kód",
+  "example_email": "te@példa.com"
 }

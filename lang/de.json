@@ -113,5 +113,7 @@
   "pick_a_date": "Bitte wählen Sie ein Anreisedatum aus.",
   "arrival_time": "Das richtige Timing",
   "guests": "Anzahl der Gäste",
-  "booking": "reservierung"
+  "booking": "reservierung",
+  "code": "Code",
+  "example_email": "du@beispiel.com"
 }

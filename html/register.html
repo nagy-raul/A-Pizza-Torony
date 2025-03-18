@@ -4,7 +4,7 @@
     <!-- Oldal címének megjelenítése -->
     <h1 class="display-5 fw-bold text-light my-auto" 
         style="font-family: 'Julee'; src: url(../css/Julee-Regular.ttf);;">
-        {{translations.register}}
+        {{translations.registration}}
     </h1>
 </div>
 
@@ -23,7 +23,7 @@
                 <h3 class="text-center">
                     <i class="fa-solid fa-id-card"></i>
                     <span class="text-capitalize text-small-caps ms-2">
-                        {{translations.register}}
+                        {{translations.registration}}
                     </span>
                 </h3>
             </div>
@@ -47,7 +47,7 @@
                                class="form-control"
                                name="name" 
                                type="text"
-                               placeholder="Név"
+                               placeholder="{{translations.name}}"
                                spellcheck="false" 
                                autocomplete="off" 
                                required
@@ -80,7 +80,7 @@
                                class="form-control"
                                name="email" 
                                type="text"
-                               placeholder="Email"
+                               placeholder="{{translations.email}}"
                                spellcheck="false" 
                                autocomplete="off" 
                                required
@@ -122,7 +122,7 @@
                                class="form-control"
                                name="emailConfirm" 
                                type="text"
-                               placeholder="Email megerősítése"
+                               placeholder="{{translations.password}}"
                                spellcheck="false" 
                                autocomplete="off" 
                                required
@@ -159,7 +159,7 @@
                             <input id="register-countryCode"
                                    name="countryCode" 
                                    type="text"
-                                   placeholder="Kód"
+                                   placeholder="{{translations.code}}"
                                    class="form-control"
                                    spellcheck="false" 
                                    autocomplete="off"
@@ -172,7 +172,7 @@
                             <input id="register-phone"
                                    name="phone" 
                                    type="tel"
-                                   placeholder="Telefon"
+                                   placeholder="{{translations.phone_num}}"
                                    class="form-control"
                                    spellcheck="false" 
                                    autocomplete="off"
@@ -203,14 +203,14 @@
                     <label for="register-address" class="col-form-label col-12 col-md-5 text-md-end">
                         <i class="fa-solid fa-star fa-2xs text-danger"></i>
                         <i class="fa-solid fa-house-chimney me-1"></i>
-                        <span class="text-capitalize">{{translations.rAddress}}:</span>
+                        <span class="text-capitalize">{{translations.rAdress}}:</span>
                     </label>
                     <div class="col-11 col-md-6 position-relative">
                         <input id="register-address"
                                class="form-control"
                                name="address" 
                                type="text"
-                               placeholder="Lakcím"
+                               placeholder="{{translations.rAdress}}"
                                spellcheck="false" 
                                autocomplete="off" 
                                required
@@ -249,7 +249,7 @@
                                class="form-control"
                                name="password" 
                                type="{{model.showPassword ? 'text' : 'password'}}"
-                               placeholder="Jelszó"
+                               placeholder="{{translations.password}}"
                                spellcheck="false" 
                                autocomplete="off" 
                                required
@@ -291,7 +291,7 @@
                                class="form-control"
                                name="passwordConfirm" 
                                type="{{model.showPassword ? 'text' : 'password'}}"
-                               placeholder="Jelszó megerősítése"
+                               placeholder="{{translations.confirm_password}}"
                                spellcheck="false" 
                                autocomplete="off" 
                                required
@@ -356,7 +356,7 @@
                                 class="btn btn-warning w-auto me-3 text-capitalize"
                                 ng-disabled="registerForm.$invalid"
                                 ng-click="register()">
-                            {{translations.register}}
+                            {{translations.send}}
                         </button>
 
                         <!-- Mégsem gomb -->

@@ -114,5 +114,7 @@
   "pick_a_date": "Please select a date for arrival",
   "arrival_time": "Arrival time",
   "guests": "Number of guests",
-  "booking": "reservation"
+  "booking": "reservation",
+  "code": "Code",
+  "example_email": "you@example.com"
 }
