@@ -648,8 +648,12 @@
         // Set model
         set: (response) => {
 
+          console.log(response);
+
           // Create promise
           return new Promise((resolve) => {
+
+            console.log("set");
 
             // Create new deffered object
             let set = util.deferredObj();
