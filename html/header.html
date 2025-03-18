@@ -13,7 +13,7 @@
                          width="30" 
                          height="30" 
                          class="d-inline-block align-text-top">
-                    A Pizza Torony
+                    {{translations.title}}
                 </a>
                 <!-- Gomb a navigációs menü összehúzásához/kibontásához kisebb képernyőkön -->
                 <button class="navbar-toggler" 
@@ -35,7 +35,7 @@
                                ui-sref="rolunk"
                                ui-sref-active="active"
                                ng-class="{'text-danger': isActive('rolunk')}">
-                               <i class="fa-solid fa-circle-info"></i> Rólunk
+                               <i class="fa-solid fa-circle-info"></i> {{translations.about_us}}
                             </a>
                         </li>
                         <!-- Étlap oldal linkje -->
@@ -44,7 +44,7 @@
                                ui-sref="etlap" 
                                ui-sref-active="active"
                                ng-class="{'text-danger': isActive('etlap')}">
-                               <i class="fa-solid fa-utensils"></i> Étlap
+                               <i class="fa-solid fa-utensils"></i> {{translations.menu}}
                             </a>
                         </li>
                         <!-- Kapcsolat oldal linkje -->
@@ -53,7 +53,7 @@
                                ui-sref="kapcsolat" 
                                ui-sref-active="active"
                                ng-class="{'text-danger': isActive('kapcsolat')}">
-                               <i class="fa-solid fa-envelope"></i> Kapcsolat
+                               <i class="fa-solid fa-envelope"></i> {{translations.contact}}
                             </a>
                         </li>
                         <!-- Asztalfoglalás oldal linkje -->
@@ -62,7 +62,7 @@
                                ui-sref="foglalas" 
                                ui-sref-active="active"
                                ng-class="{'text-danger': isActive('foglalas')}">
-                               <i class="fa-solid fa-chair"></i> Asztalfoglalás
+                               <i class="fa-solid fa-chair"></i> {{translations.reservation}}
                             </a>
                         </li>
                         <!-- Rendelés oldal linkje, inaktív ha a kosár üres -->
@@ -72,7 +72,7 @@
                                ui-sref="rendeles" 
                                ui-sref-active="active"
                                ng-class="{'text-danger': isActive('rendeles'), 'text-muted': !cart.length}">
-                               <i class="fa-solid fa-cart-shopping"></i> Rendelés
+                               <i class="fa-solid fa-cart-shopping"></i> {{translations.order}}
                             </a>
                         </li>
                     </ul>
@@ -83,7 +83,7 @@
                                ui-sref="login" 
                                ui-sref-active="active"
                                ng-class="{'text-danger': isActive('login')}">
-                               <i class="fa-solid fa-sign-in-alt"></i> Bejelentkezés
+                               <i class="fa-solid fa-sign-in-alt"></i> {{translations.login}}
                             </a>
                         </li>
                         <!-- Regisztráció linkje, ha nincs bejelentkezve a felhasználó -->
@@ -92,7 +92,7 @@
                                ui-sref="register" 
                                ui-sref-active="active"
                                ng-class="{'text-danger': isActive('register')}">
-                               <i class="fa-solid fa-user-plus"></i> Regisztráció
+                               <i class="fa-solid fa-user-plus"></i> {{translations.registration}}
                             </a>
                         </li>
 
@@ -102,9 +102,9 @@
                               {{ translations[language] }}
                             </button>
                             <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" ng-click="loadLanguage('hu')">Magyar</a></li>
-                              <li><a class="dropdown-item" ng-click="loadLanguage('de')">Deutsch</a></li>
-                              <li><a class="dropdown-item" ng-click="loadLanguage('en')">English</a></li>
+                              <li><a class="dropdown-item" ng-click="loadLanguage('hu')">{{translations.hu}}</a></li>
+                              <li><a class="dropdown-item" ng-click="loadLanguage('de')">{{translations.de}}</a></li>
+                              <li><a class="dropdown-item" ng-click="loadLanguage('en')">{{translations.en}}</a></li>
                             </ul>
                         </div>
 
@@ -123,13 +123,13 @@
                                     <a class="dropdown-item" 
                                        ui-sref="profile" 
                                        ui-sref-active="active">
-                                       <i class="fa-solid fa-user"></i> Profil
+                                       <i class="fa-solid fa-user"></i> {{translations.profile}}
                                     </a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item" 
                                        ng-click="logOut()">
-                                       <i class="fa-solid fa-sign-out-alt"></i> Kijelentkezés
+                                       <i class="fa-solid fa-sign-out-alt"></i> {{translations.lougout}}
                                     </a>
                                 </li>
                             </ul>

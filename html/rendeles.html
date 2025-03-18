@@ -4,7 +4,7 @@
 	<!-- A rendelés cím megjelenítése, egyedi betűtípussal -->
 	<h1 class="display-5 fw-bold text-light my-auto" 
 		style="font-family: 'Julee'; src: url(../css/Julee-Regular.ttf);">
-		RENDELÉS
+		{{translations.order}}
 	</h1>
 </div>
 
@@ -18,7 +18,7 @@
 				<div class="col-md-5 col-lg-4 order-md-last">
 					<h4 class="d-flex justify-content-between align-items-center mb-3">
 					<span class="text-warning">
-						Kosár
+						{{translations.cart}}
 					</span>
 					<!-- Kosár elemek száma -->
 					<span class="badge bg-warning rounded-pill">
@@ -52,7 +52,7 @@
 				<!-- Számlázási cím és fizetési mód rész -->
 				<div class="col-md-7 col-lg-8 text-warning">
 					<h4 class="mb-3">
-						Számlázási cím
+						{{translations.billing_add}}
 					</h4>
 					<!-- A rendelési űrlap -->
 					<form name="orderForm" 
@@ -62,7 +62,7 @@
 							<div class="col-12">
 								<label for="name" 
 									   class="form-label">
-									   Név
+									   {{translations.name}}
 								</label>
 								<input type="text" 
 									   class="form-control" 
@@ -75,7 +75,7 @@
 								<div class="col-12">
 								<label for="email" 
 									   class="form-label">
-									   Email cím (Opcionális)
+									   {{translations.email}} ({{translations.optional}})
 								</label>
 								<input type="email" 
 									   class="form-control" 
@@ -87,7 +87,7 @@
 							<div class="col-12">
 								<label for="address" 
 									   class="form-label">
-									   Kézbesítési cím
+									   {{translations.delivery_add}}
 								</label>
 								<input type="text" 
 									   class="form-control" 
@@ -101,7 +101,7 @@
 						
 						<!-- Fizetési mód rész -->
 						<h4 class="mb-3">
-							Fizetés
+							{{translations.pay}}
 						</h4>
 						<div class="my-3">
 							<!-- Fizetési módok kiválasztása (például PayPal, kártyás fizetés) -->
@@ -128,7 +128,7 @@
 							<div class="col-md-6">
 								<label for="cc-name" 
 									   class="form-label">
-									   Név a kártyán
+									   {{translations.card_name}}
 								</label>
 								<input type="text" 
 									   class="form-control" 
@@ -140,7 +140,7 @@
 							<div class="col-md-6">
 								<label for="cc-number" 
 									   class="form-label">
-										Bankkártya szám
+										{{translations.card_num}}
 								</label>
 								<input type="text" 
 									   class="form-control" 
@@ -152,7 +152,7 @@
 							<div class="col-md-3">
 								<label for="cc-expiration" 
 									   class="form-label">
-									   Lejárata
+									   {{translations.card_expiration_date}}
 								</label>
 								<input type="date" 
 									   class="form-control" 
@@ -164,7 +164,7 @@
 							<div class="col-md-3">
 								<label for="cc-cvv" 
 									   class="form-label">
-									   CVV
+									   {{translations.cvv}}
 								</label>
 								<input type="text" 
 									   class="form-control" 
@@ -180,7 +180,7 @@
 						<button class="w-100 btn btn-warning btn-lg" 
 							    type="button"
 							    ng-click="methods.order()">
-								Rendelés
+								{{translations.order}}
 						</button>
 					</form>
 				</div>

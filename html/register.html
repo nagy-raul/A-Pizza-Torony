@@ -4,7 +4,7 @@
     <!-- Oldal címének megjelenítése -->
     <h1 class="display-5 fw-bold text-light my-auto" 
         style="font-family: 'Julee'; src: url(../css/Julee-Regular.ttf);;">
-        REGISZTRÁCIÓ
+        {{translations.register}}
     </h1>
 </div>
 
@@ -23,7 +23,7 @@
                 <h3 class="text-center">
                     <i class="fa-solid fa-id-card"></i>
                     <span class="text-capitalize text-small-caps ms-2">
-                        regisztráció
+                        {{translations.register}}
                     </span>
                 </h3>
             </div>
@@ -39,7 +39,7 @@
                            class="col-form-label col-12 col-md-5 text-md-end">
                         <i class="fa-solid fa-star fa-2xs text-danger"></i>
                         <i class="fa-solid fa-user me-1"></i>
-                        <span class="text-capitalize">név:</span>
+                        <span class="text-capitalize">{{translations.name}}:</span>
                     </label>
                     <div class="col-11 col-md-6 position-relative">
                         <!-- Szöveges input mező a névhez -->
@@ -72,7 +72,7 @@
                            class="col-form-label col-12 col-md-5 text-md-end">
                         <i class="fa-solid fa-star fa-2xs text-danger"></i>
                         <i class="fa-solid fa-envelope me-1"></i>
-                        <span class="text-capitalize">email:</span>
+                        <span class="text-capitalize">{{translations.email}}:</span>
                     </label>
                     <div class="col-11 col-md-6 position-relative">
                         <!-- Szöveges input mező az emailhez -->
@@ -113,7 +113,7 @@
                         <i class="fa-solid fa-star fa-2xs text-danger"></i>
                         <i class="fa-regular fa-envelope me-1"></i>
                         <span class="text-capitalize">
-                            email megerősítés:
+                            {{translations.confirm_password}}:
                         </span>
                     </label>
                     <div class="col-11 col-md-6 position-relative">
@@ -151,7 +151,7 @@
                 <div class="row input-row mb-3">
                     <label for="register-phone" class="col-form-label col-12 col-md-4 text-md-end">
                         <i class="fa-solid fa-mobile-screen me-1"></i>
-                        <span class="text-capitalize">telefon szám:</span>
+                        <span class="text-capitalize">{{translations.phone_num}}:</span>
                     </label>
                     <div class="col-11 col-md-7 position-relative">
                         <div class="input-group" id="register-phone-group" aria-labelledby="register-phone-group">
@@ -203,7 +203,7 @@
                     <label for="register-address" class="col-form-label col-12 col-md-5 text-md-end">
                         <i class="fa-solid fa-star fa-2xs text-danger"></i>
                         <i class="fa-solid fa-house-chimney me-1"></i>
-                        <span class="text-capitalize">lakcím:</span>
+                        <span class="text-capitalize">{{translations.rAddress}}:</span>
                     </label>
                     <div class="col-11 col-md-6 position-relative">
                         <input id="register-address"
@@ -241,7 +241,7 @@
                            class="col-form-label col-12 col-md-5 text-md-end">
                         <i class="fa-solid fa-star fa-2xs text-danger"></i>
                         <i class="fa-solid fa-key me-1"></i>
-                        <span class="text-capitalize">jelszó:</span>
+                        <span class="text-capitalize">{{translations.password}}:</span>
                     </label>
                     <div class="col-11 col-md-6 position-relative">
                         <!-- Jelszó input mező (látható vagy nem) -->
@@ -282,7 +282,7 @@
                         <i class="fa-solid fa-star fa-2xs text-danger"></i>
                         <i class="fa-solid fa-unlock-keyhole me-1"></i>
                         <span class="text-capitalize">
-                            jelszó megerősítés:
+                            {{translations.confirm_password}}:
                         </span>
                     </label>
                     <div class="col-11 col-md-6 position-relative">
@@ -328,7 +328,7 @@
                                ng-model="model.showPassword">
                         <label for="register-showPassword"
                                class="form-check-label ms-1">
-                            jelszó megjelenítése
+                            {{translations.password_show}}
                         </label>
                     </div>
                 </div>
@@ -343,7 +343,7 @@
                            ui-sref="login">
                             <i class="fa-solid fa-right-to-bracket me-1"></i>
                             <span class="text-capitalize text-small-caps">
-                                bejelentkezés
+                                {{translations.login}}
                             </span>
                         </a>
                     </div>
@@ -356,14 +356,14 @@
                                 class="btn btn-warning w-auto me-3 text-capitalize"
                                 ng-disabled="registerForm.$invalid"
                                 ng-click="register()">
-                            regisztráció
+                            {{translations.register}}
                         </button>
 
                         <!-- Mégsem gomb -->
                         <button type="button"
                                 class="btn btn-secondary w-auto me-3 text-capitalize"
                                 ng-click="cancel()">
-                            mégsem
+                            {{translations.cancel}}
                         </button>
                     </div>
                 </div>

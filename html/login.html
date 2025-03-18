@@ -5,7 +5,7 @@
     <!-- Fejléc, amely a Bejelentkezés szöveget tartalmazza -->
     <h1 class="display-5 fw-bold text-light my-auto" 
         style="font-family: 'Julee'; src: url(../css/Julee-Regular.ttf);">
-        BEJELENTKEZÉS
+        {{translations.login}}
     </h1>
 </div>
 
@@ -24,7 +24,7 @@
                 <h3 class="text-center">
                     <i class="fa-solid fa-right-to-bracket"></i>
                     <span class="text-capitalize text-small-caps ms-2">
-                        bejelentkezés
+                        {{translations.login}}
                     </span>
                 </h3>
             </div>
@@ -40,7 +40,7 @@
                         <!-- Hibajelzés ikonok -->
                         <i class="fa-solid fa-star fa-2xs text-danger"></i>
                         <i class="fa-solid fa-envelope me-1"></i>
-                        <span class="text-capitalize">email:</span>
+                        <span class="text-capitalize">{{translations.email}}:</span>
                     </label>
                     <div class="col-11 col-md-6 position-relative">
                         <!-- Email input mező, validációval -->
@@ -78,7 +78,7 @@
                         <!-- Hibajelzés ikonok -->
                         <i class="fa-solid fa-star fa-2xs text-danger"></i>
                         <i class="fa-solid fa-key me-1"></i>
-                        <span class="text-capitalize">jelszó:</span>
+                        <span class="text-capitalize">{{translations.password}}:</span>
                     </label>
                     <div class="col-11 col-md-6 position-relative">
                         <!-- Jelszó input mező, a láthatóságát egy checkbox befolyásolja -->
@@ -124,7 +124,7 @@
                                ng-model="model.showPassword">
                         <label for="login-showPassword"
                                class="form-check-label ms-1">
-                            Jelszó megjelenítése
+                            {{translations.password_show}}
                         </label>
                     </div>
                 </div>
@@ -139,7 +139,7 @@
                            ui-sref="register">
                             <i class="fa-solid fa-id-card me-1"></i>
                             <span class="text-capitalize text-small-caps">
-                                regisztráció
+                                {{translations.register}}
                             </span>
                         </a>
                     </div>
@@ -151,13 +151,13 @@
                                 class="btn btn-warning w-auto me-3 text-uppercase"
                                 ng-disabled="loginForm.$invalid"
                                 ng-click="login()">
-                            bejelentkezés
+                            {{translations.login}}
                         </button>
                         <!-- Mégsem gomb -->
                         <button type="button"
                                 class="btn btn-secondary w-auto me-3 text-uppercase"
                                 ng-click="cancel()">
-                            mégsem
+                            {{translations.cancel}}
                         </button>
                     </div>
                 </div>

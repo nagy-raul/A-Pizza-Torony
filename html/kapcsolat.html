@@ -3,7 +3,7 @@
      style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./media/image/kapcsolat_banner.jpg');">
 	<h1 class="display-5 fw-bold text-light my-auto" 
 		style="font-family: 'Julee'; src: url(../css/Julee-Regular.ttf);">
-		KAPCSOLAT
+		{{translations.contact}}
 	</h1>
 </div>
 
@@ -20,7 +20,7 @@
 				<h3 class="text-center">
 					<i class="fa-regular fa-envelope"></i>
 					<span class="text-capitalize text-small-caps ms-2">
-						kapcsolat
+						{{translations.contact}}
 					</span>
 				</h3>
 			</div>
@@ -35,7 +35,7 @@
 					<div class="col-11">
 						<label for="contact-name" 
 							   class="form-label">
-							Név 
+							{{translations.name}}
 							<span class="text-danger">
 								*
 							</span>
@@ -64,7 +64,7 @@
 					<div class="col-12 col-md-6">
 						<label for="contact-email" 
 							   class="form-label">
-							Email 
+							{{translations.email}} 
 							<span class="text-danger">
 								*
 							</span>
@@ -105,7 +105,7 @@
 						<label for="contact-phone" 
 							   class="form-label">
 							<i class="fa-solid fa-mobile-screen"></i>
-							Telefon szám <span class="text-danger">*</span>
+							{{translations.phone_num}} <span class="text-danger">*</span>
 						</label>
 						<div class="input-group">
 							<span class="input-group-text">+</span>
@@ -143,7 +143,7 @@
 					<div class="col-11">
 						<label for="contact-uzenet" 
 							   class="form-label">
-							Üzenet 
+							{{translations.message}} 
 							<span class="text-danger">
 								*
 							</span>
@@ -171,12 +171,12 @@
 									type="button" 
 									ng-disabled="contactForm.$invalid" 
 									ng-click="methods.contact()">
-								Küldés
+								{{translations.send}}
 							</button>
 							<button class="btn btn-secondary btn-lg w-auto me-3 text-uppercase" 
 									type="button" 
 									ng-click="methods.cancel()">
-								Mégsem
+								{{translations.cancel}}
 							</button>
 						</div>
 					</div>
