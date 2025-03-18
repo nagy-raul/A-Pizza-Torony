@@ -102,5 +102,13 @@
   "price":"Preis",
   "hu":"Ungarisch",
   "de":"Geutsch",
-  "en":"Englisch"
+  "en":"Englisch",
+  "thin": "Dünn",
+  "thick": "Dick",
+  "give_email": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+  "arrival": "Anreisedatum",
+  "pick_a_date": "Bitte wählen Sie ein Anreisedatum aus.",
+  "arrival_time": "Das richtige Timing",
+  "guests": "Anzahl der Gäste",
+  "booking": "reservierung"
 }

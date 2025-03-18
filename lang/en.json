@@ -103,5 +103,13 @@
   "price":"Price",
   "hu":"Hungarian",
   "de":"German",
-  "en":"English"
+  "en":"English",
+  "thin": "Thin",
+  "thick": "Thick",
+  "give_email": "Please enter a valid email address.",
+  "arrival": "Arrival date",
+  "pick_a_date": "Please select a date for arrival",
+  "arrival_time": "Arrival time",
+  "guests": "Number of guests",
+  "booking": "reservation"
 }

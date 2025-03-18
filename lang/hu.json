@@ -103,5 +103,13 @@
   "price":"Ár",
   "hu":"Magyar",
   "de":"Német",
-  "en":"Angol"
+  "en":"Angol",
+  "thin": "Vékony",
+  "thick": "Vastag",
+  "give_email": "Adjon meg egy érvényes email címet",
+  "arrival": "Érkezés dátuma",
+  "pick_a_date": "Kérlek, válassz egy dátumot az érkezéshez",
+  "arrival_time": "Érkezés ideje",
+  "guests": "Vendégek száma",
+  "booking": "foglalás"
 }

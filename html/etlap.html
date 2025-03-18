@@ -3,7 +3,7 @@
 	 style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./media/image/pizza_hatter3.jpg');">
 	<h1 class="display-5 fw-bold text-light my-auto" 
 		style="font-family: 'Julee'; src: url(../css/Julee-Regular.ttf);">
-		ÉTLAP
+		{{translations.menu}}
 	</h1>
 </div>
 
@@ -79,7 +79,7 @@
 						      novalidate>
 
 							<!-- Pizza méret választás -->
-							<p class="mb-2">Mekkora pizzát szeretne?</p>
+							<p class="mb-2">{{translations.pizza_size}}</p>
 							<div class="form-check form-check-inline">
 								<input class="form-check-input border-black" 
 									   type="radio" 
@@ -103,7 +103,7 @@
 							</div>
 
 							<!-- Pizza szél választás -->
-							<p class="mb-2">Milyenre szeretné a pizza szélét?</p>
+							<p class="mb-2">{{translations.pizzaCorner_type}}</p>
 							<div class="form-check form-check-inline">
 								<input class="form-check-input border-black" 
 									   type="radio" 
@@ -111,7 +111,7 @@
 									   id="vekony">
 								<label class="form-check-label" 
 									   for="vekony">
-									   Vékony
+									   {{translations.thin}}
 								</label>
 							</div>
 							<div class="form-check form-check-inline mb-4">
@@ -122,14 +122,14 @@
 									   checked>
 								<label class="form-check-label" 
 									   for="vastag">
-									   Vastag
+									   {{translations.thick}}
 								</label>
 							</div>
 
 							<!-- Darabszám beállítása -->
 							<label for="darabszam{{x.termekID}}" 
 								   class="form-label">
-								   Hány darabot szeretne?
+								   {{translations.amount}}
 							</label>
 							<input type="number" 
 								   id="darabszam{{x.termekID}}" 
@@ -141,7 +141,7 @@
 							<!-- Ár megjelenítés -->
 							<p class="mb-2" 
 							   ng-init="ar = x.termekAr">
-							   Ár: {{ar}} Ft
+							   {{translations.price}}: {{ar}} Ft
 							</p>
 
 							<hr class="my-4">
@@ -151,7 +151,7 @@
 									type="button"
 									ng-click="methods.addToCart(x.termekNev, x.termekLeiras, x.termekAr, darabszam)"
 									data-bs-dismiss="modal">
-								Rendelés
+								{{translations.order}}
 							</button>
 						</form>
 					</div>
