@@ -156,6 +156,8 @@
     const htmlElement = document.documentElement;
     $rootScope.language = htmlElement.getAttribute('lang') || 'hu';
 
+    console.log($rootScope.language);
+
       // Load the selected language file
       $rootScope.loadLanguage = (lang) => {
         fetch(`./lang/${lang}.json`)
@@ -171,10 +173,7 @@
           $rootScope.$applyAsync();
 
           htmlElement.setAttribute('lang', lang); // Update the lang attribute
-
-          console.log($rootScope.translations[$rootScope.language])
-          console.log($rootScope.translations)
-          console.log($rootScope.language);
+          
         })
         .catch(error => {
           console.error(error);
@@ -620,10 +619,15 @@
         // Get data
         get: () => {
 
+          console.log($rootScope.user.id);
+
+
           // Http request
           http.request({
             url: "./php/profile_get.php",
-            data: {id: $rootScope.user.id}
+            data: {
+              id: $rootScope.user.id
+            }
           })
           .then(response => {
 
@@ -650,7 +654,7 @@
             // Create new deffered object
             let set = util.deferredObj();
 
-            // Whait for set completed
+            // Wait for set completed
             set.completed.then(() => {
 
               console.log(response);

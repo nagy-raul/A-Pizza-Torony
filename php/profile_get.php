@@ -4,17 +4,8 @@ declare(strict_types=1);
 // Include environment
 require_once("../../common/php/environment.php");
 
-
 // Get arguments
 $args = Util::getArgs();
-
-/*
-$args = array(
-       'id' => 1
-);
-*/
-
-var_dump($args);
 
 // Set SQL command
 $query ="SELECT `felhasznaloID` AS `id`, 
@@ -37,8 +28,9 @@ $result = $db->execute($query, $args);
 $db = null;
 
 // Check result
-if (is_null($result))
-	Util::setError("A felhasználó nem létezik!");
+if (is_null($result)){
+    Util::setError("A felhasználó nem létezik!"); 
+}
 
 // Simplifying the result
 $result = $result[0];
