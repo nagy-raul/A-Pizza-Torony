@@ -93,10 +93,11 @@
 
   .run([
     '$rootScope',
+    'http',
     '$state',
     'util',
     '$timeout',
-    function ($rootScope, $state, util, $timeout) {
+    function ($rootScope, http, $state, util, $timeout) {
   
       // Initialize cart as an empty array
       $rootScope.cart = [];
@@ -150,7 +151,40 @@
           alert(`Sikerült kijelentkezni!`);
         }
       };
-  
+
+    // Read initial language from the HTML lang attribute
+    const htmlElement = document.documentElement;
+    $rootScope.language = htmlElement.getAttribute('lang') || 'hu';
+
+      // Load the selected language file
+      $rootScope.loadLanguage = (lang) => {
+        fetch(`./lang/${lang}.json`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Hiba a nyelvi fájl betöltésekor: ${response.statusText}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          $rootScope.translations = data;
+          $rootScope.language = lang;
+          $rootScope.$applyAsync();
+
+          htmlElement.setAttribute('lang', lang); // Update the lang attribute
+
+          console.log($rootScope.translations[$rootScope.language])
+          console.log($rootScope.translations)
+          console.log($rootScope.language);
+        })
+        .catch(error => {
+          console.error(error);
+          alert('Nem sikerült betölteni a nyelvi fájlt.');
+        });
+      };
+
+      // Load the default language at startup
+      $rootScope.loadLanguage($rootScope.language);
+
       $rootScope.isActive = function(viewLocation) {
         return $state.includes(viewLocation);
       };

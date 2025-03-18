@@ -95,6 +95,19 @@
                                <i class="fa-solid fa-user-plus"></i> Regisztráció
                             </a>
                         </li>
+
+                        <!-- Nyelvválasztó legördülő menü -->
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                              {{ translations[language] }}
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" ng-click="loadLanguage('hu')">Magyar</a></li>
+                              <li><a class="dropdown-item" ng-click="loadLanguage('de')">Deutsch</a></li>
+                              <li><a class="dropdown-item" ng-click="loadLanguage('en')">English</a></li>
+                            </ul>
+                        </div>
+
                         <!-- Felhasználói profil és kijelentkezés opció, ha be van jelentkezve -->
                         <li class="nav-item dropdown" 
                             ng-show="user.id">
