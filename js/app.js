@@ -152,11 +152,11 @@
         }
       };
 
-    // Read initial language from the HTML lang attribute
-    const htmlElement = document.documentElement;
-    $rootScope.language = htmlElement.getAttribute('lang') || 'hu';
-
-    console.log($rootScope.language);
+      // Read initial language from the HTML lang attribute
+      const htmlElement = document.documentElement;
+      $rootScope.language = htmlElement.getAttribute('lang') || 'hu';
+      
+      console.log($rootScope.language);
 
       // Load the selected language file
       $rootScope.loadLanguage = (lang) => {
