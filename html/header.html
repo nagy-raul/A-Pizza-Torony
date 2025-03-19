@@ -96,18 +96,6 @@
                             </a>
                         </li>
 
-                        <!-- Nyelvválasztó legördülő menü -->
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                              {{ translations[language] }}
-                            </button>
-                            <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" ng-click="loadLanguage('hu')">{{translations.hu}}</a></li>
-                              <li><a class="dropdown-item" ng-click="loadLanguage('de')">{{translations.de}}</a></li>
-                              <li><a class="dropdown-item" ng-click="loadLanguage('en')">{{translations.en}}</a></li>
-                            </ul>
-                        </div>
-
                         <!-- Felhasználói profil és kijelentkezés opció, ha be van jelentkezve -->
                         <li class="nav-item dropdown" 
                             ng-show="user.id">
@@ -134,6 +122,18 @@
                                 </li>
                             </ul>
                         </li>
+
+                        <!-- Nyelvválasztó legördülő menü -->
+                        <div class="dropdown">
+                            <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                              {{ translations[language] }}
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" ng-click="loadLanguage('hu')">{{translations.hu}}</a></li>
+                              <li><a class="dropdown-item" ng-click="loadLanguage('de')">{{translations.de}}</a></li>
+                              <li><a class="dropdown-item" ng-click="loadLanguage('en')">{{translations.en}}</a></li>
+                            </ul>
+                        </div>
                     </ul>
                 </div>
             </div>
