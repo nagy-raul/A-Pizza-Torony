@@ -118,5 +118,12 @@
   "guests": "Number of guests",
   "booking": "reservation",
   "code": "Code",
-  "example_email": "you@example.com"
+  "example_email": "you@example.com",
+  "monday": "Mon",
+  "sunday": "Sun",
+  "thursday": "Thu",
+  "friday": "Fri",
+  "wednesday": "Wed",
+  "saturday": "Sat",
+  "teli": "Phone"
 }
