@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Feb 28. 12:22
+-- Létrehozás ideje: 2025. Már 21. 09:30
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.1.17
 
@@ -76,12 +76,13 @@ CREATE TABLE `felhasznalok` (
 --
 
 INSERT INTO `felhasznalok` (`felhasznaloID`, `nev`, `email`, `orszagkod`, `telszam`, `lakcim`, `jelszo`, `letrehozas`) VALUES
-(1, 'Nagy Raul', 'nagyraul@gmail.com', '36', '566575675', '6900 Makó, Hagyma u. 32', 'Jelszo1', '2025-02-06 07:11:43'),
-(2, 'Balázs Lehel', 'balazslehel@gmail.com', '36', '321312414', '6900 Makó, Liget u. 8', 'Jelszo2', '2025-02-06 07:11:43'),
-(3, 'Novák Antal', 'novantal@gmail.com', '36', '209399676', '6900 Makó, Kálvin u. 18', 'Kfoprkfprek', '2025-02-06 07:11:43'),
-(4, 'Csaba Selmeczi', 'csabaselmeczi@gmail.com', '36', '209399676', '1108 Budapest, Kozma u. 13  ', 'Jelszo3', '2025-02-06 07:11:43'),
-(5, 'Raul', 'raul@gmail.com', '36', '8659864', '6900Makó', 'Jelszo0', '2025-02-10 12:05:17'),
-(7, 'TesztElek', 'tesztelek@gmail.com', '36', '4783924723', '6900, Makó, Gyöngy u. 8', 'Jelszo6', '2025-02-27 13:28:47');
+(1, 'Nagy Raul', 'nagyraul@gmail.com', '36', '2034567', '6900 Makó, Hagyma u. 32', 'Jelszo1', '2025-02-06 07:11:43'),
+(2, 'Balázs Lehel', 'balazslehel@gmail.com', '36', '30987654', '6900 Makó, Liget u. 8', 'Jelszo2', '2025-02-06 07:11:43'),
+(3, 'Novák Antal', 'novantal@gmail.com', '36', '702345678', '6900 Makó, Kálvin u. 18', 'Jelszo4', '2025-02-06 07:11:43'),
+(4, 'Csaba Selmeczi', 'csabaselmeczi@gmail.com', '36', '2087654321', '1108 Budapest, Kozma u. 13  ', 'Jelszo3', '2025-02-06 07:11:43'),
+(5, 'Raul', 'raul@gmail.com', '36', '301234567', '6900 Makó, Árpád u. 5', 'Jelszo0', '2025-02-10 12:05:17'),
+(7, 'Teszt Elek', 'tesztelek@gmail.com', '36', '7034567890', '6900, Makó, Gyöngy u. 8', 'Jelszo6', '2025-02-27 13:28:47'),
+(8, 'Tokai Gergő', 'tokaig@gmail.com', '36', '209399676', '6900 Barkó u. 12', 'Jelszo5', '2025-03-11 09:02:16');
 
 -- --------------------------------------------------------
 
@@ -136,22 +137,22 @@ CREATE TABLE `pizza` (
 --
 
 INSERT INTO `pizza` (`termekID`, `termekNev`, `termekLeiras`, `termekAr`, `meret`, `hej`, `szosz`, `sajt`, `feltetek`, `kep`, `learazas`, `keszlet`, `letrehozas`) VALUES
-(1, 'Sonkás pizza', 'paradicsomos alap, sonka, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'sonka', 'sonkas.png', NULL, 50, '2025-02-06 07:11:43'),
-(2, 'Margaréta', 'paradicsomos alap, paradicsomkarika, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'paradicsomkarika', 'margareta.png', NULL, 50, '2025-02-06 07:11:43'),
-(3, 'Szalámis pizza', 'paradicsomos alap, szalámi, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsomos', 'mozzarella, trappista', 'szalámi', 'szalamis.png', NULL, 50, '2025-02-06 07:11:43'),
-(4, 'Tarjás pizza', 'paradicsomos alap, tarja, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'tarja', 'tarjas.jpg', NULL, 50, '2025-02-06 07:11:43'),
-(5, 'Kolbászos pizza', 'paradicsomos alap, kolbász, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'kolbász', 'kolbaszos.png', NULL, 50, '2025-02-06 07:11:43'),
-(6, 'Spartacus pizza', 'paradicsomos alap, csípős pepperoni, paprikás szalámi, gyöngyhagyma, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'hagyma', 'spartacus.png', NULL, 50, '2025-02-27 13:00:04'),
-(7, 'Gombás pizza', 'paradicsomos alap, gomba, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'gomba', 'gombas.png', NULL, 50, '2025-02-27 13:03:25'),
-(8, 'Vegetáriánus pizza', 'paradicsomos alap, gomba, borsó, kukorica, ananász, bab, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'bab, borsó, gomba', 'vegetarianus.png', NULL, 50, '2025-02-27 13:05:33'),
-(12, 'Bolognai pizza', 'paradicsomos alap, bolognai ragu, hagyma, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'bolognai ragu, hagyma', 'bolognai.png', NULL, 50, '2025-02-06 07:11:43'),
-(14, 'TNT pizza', 'Füstölt tarja, bacon, kolbász, bab, hagyma, chili, mozzarella, trappista', 1990, 24, 'vastag', 'chili', 'füstölt', 'bab', 'TNT.png', NULL, 50, '2025-02-27 12:58:00'),
-(15, 'Csirkemelles pizza', 'tejfölös-fokhagymás alap, csirkemell, mozzarella, trappista', 1990, 24, 'vastag', 'hagymás tejföl', 'mozzarella, trappista', 'csirkemell', 'csirkemelles.png', NULL, 50, '2025-02-06 07:11:43'),
-(16, 'Húsimádó pizza', 'paradicsomos alap, szalonna, pick szalámi, sonka, kolbász, mozzarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'pick szalámi, sonka, kolbász', 'husimado.png', NULL, 50, '2025-02-06 07:11:43'),
-(17, 'Sistergős pizza', 'paradicsomos alap, chili, kolbász, csemege szalámi, lilahagyma, hegyes erős paprika, mozarella, trappista', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'paprika', 'sistergos.png', NULL, 50, '2025-02-26 08:19:52'),
-(18, 'Négy íz pizza', 'paradicsomos alap, pick szalámi, ananász, sonka, mozzarella, trappista, gomba,', 1990, 24, 'vastag', 'paradicsom', 'mozzarella, trappista', 'gomba, ananász, sonka', 'negy-iz.png', NULL, 50, '2025-02-06 07:11:43'),
-(19, 'QQRIQ pizza', 'paradicsomos alap, paradicsom, paprika, csirkehús, bazsalikom,', 1990, 24, 'vastag', 'paradicsom', 'nincs', 'paradicsom, paprika, csirkehús, bazsalikom', 'qqriq.png', NULL, 50, '2025-02-06 07:11:43'),
-(20, 'Nagyravágyó pizza', 'tejfölös mustáros alap, kolbász, bacon, pipi hús, virsli, lilahagyma, mozarella, trappista', 1990, 24, 'vastag', 'tejfölös', 'mozzarella, trappista', 'lilahagyma', 'nagyravagyo.png', NULL, 50, '2025-02-26 08:24:45');
+(1, 'Sonkás pizza', 'paradicsomos alap, sonka, mozzarella, trappista', 1990, NULL, 'vastag', 'paradicsom', 'mozzarella, trappista', 'sonka', 'sonkas.png', NULL, 50, '2025-02-06 07:11:43'),
+(2, 'Margaréta', 'paradicsomos alap, paradicsomkarika, mozzarella, trappista', 1990, NULL, 'vastag', 'paradicsom', 'mozzarella, trappista', 'paradicsomkarika', 'margareta.png', NULL, 50, '2025-02-06 07:11:43'),
+(3, 'Szalámis pizza', 'paradicsomos alap, szalámi, mozzarella, trappista', 1990, NULL, 'vastag', 'paradicsomos', 'mozzarella, trappista', 'szalámi', 'szalamis.png', NULL, 50, '2025-02-06 07:11:43'),
+(4, 'Tarjás pizza', 'paradicsomos alap, tarja, mozzarella, trappista', 1990, NULL, 'vastag', 'paradicsom', 'mozzarella, trappista', 'tarja', 'tarjas.jpg', NULL, 50, '2025-02-06 07:11:43'),
+(5, 'Kolbászos pizza', 'paradicsomos alap, kolbász, mozzarella, trappista', 1990, NULL, 'vastag', 'paradicsom', 'mozzarella, trappista', 'kolbász', 'kolbaszos.png', NULL, 50, '2025-02-06 07:11:43'),
+(6, 'Spartacus pizza', 'paradicsomos alap, csípős pepperoni, paprikás szalámi, gyöngyhagyma, mozzarella, trappista', 1990, NULL, 'vastag', 'paradicsom', 'mozzarella, trappista', 'hagyma', 'spartacus.png', NULL, 50, '2025-02-27 13:00:04'),
+(7, 'Gombás pizza', 'paradicsomos alap, gomba, mozzarella, trappista', 1990, NULL, 'vastag', 'paradicsom', 'mozzarella, trappista', 'gomba', 'gombas.png', NULL, 50, '2025-02-27 13:03:25'),
+(8, 'Vegetáriánus pizza', 'paradicsomos alap, gomba, borsó, kukorica, ananász, bab, mozzarella, trappista', 1990, NULL, 'vastag', 'paradicsom', 'mozzarella, trappista', 'bab, borsó, gomba', 'vegetarianus.png', NULL, 50, '2025-02-27 13:05:33'),
+(12, 'Bolognai pizza', 'paradicsomos alap, bolognai ragu, hagyma, mozzarella, trappista', 1990, NULL, 'vastag', 'paradicsom', 'mozzarella, trappista', 'bolognai ragu, hagyma', 'bolognai.png', NULL, 50, '2025-02-06 07:11:43'),
+(14, 'TNT pizza', 'Füstölt tarja, bacon, kolbász, bab, hagyma, chili, mozzarella, trappista', 1990, NULL, 'vastag', 'chili', 'füstölt', 'bab', 'TNT.png', NULL, 50, '2025-02-27 12:58:00'),
+(15, 'Csirkemelles pizza', 'tejfölös-fokhagymás alap, csirkemell, mozzarella, trappista', 1990, NULL, 'vastag', 'hagymás tejföl', 'mozzarella, trappista', 'csirkemell', 'csirkemelles.png', NULL, 50, '2025-02-06 07:11:43'),
+(16, 'Húsimádó pizza', 'paradicsomos alap, szalonna, pick szalámi, sonka, kolbász, mozzarella, trappista', 1990, NULL, 'vastag', 'paradicsom', 'mozzarella, trappista', 'pick szalámi, sonka, kolbász', 'husimado.png', NULL, 50, '2025-02-06 07:11:43'),
+(17, 'Sistergős pizza', 'paradicsomos alap, chili, kolbász, csemege szalámi, lilahagyma, hegyes erős paprika, mozarella, trappista', 1990, NULL, 'vastag', 'paradicsom', 'mozzarella, trappista', 'paprika', 'sistergos.png', NULL, 50, '2025-02-26 08:19:52'),
+(18, 'Négy íz pizza', 'paradicsomos alap, pick szalámi, ananász, sonka, mozzarella, trappista, gomba,', 1990, NULL, 'vastag', 'paradicsom', 'mozzarella, trappista', 'gomba, ananász, sonka', 'negy-iz.png', NULL, 50, '2025-02-06 07:11:43'),
+(19, 'QQRIQ pizza', 'paradicsomos alap, paradicsom, paprika, csirkehús, bazsalikom,', 1990, NULL, 'vastag', 'paradicsom', 'nincs', 'paradicsom, paprika, csirkehús, bazsalikom', 'qqriq.png', NULL, 50, '2025-02-06 07:11:43'),
+(20, 'Nagyravágyó pizza', 'tejfölös mustáros alap, kolbász, bacon, pipi hús, virsli, lilahagyma, mozarella, trappista', 1990, NULL, 'vastag', 'tejfölös', 'mozzarella, trappista', 'lilahagyma', 'nagyravagyo.png', NULL, 50, '2025-02-26 08:24:45');
 
 -- --------------------------------------------------------
 
@@ -268,7 +269,7 @@ ALTER TABLE `asztalfoglalasok`
 -- AUTO_INCREMENT a táblához `felhasznalok`
 --
 ALTER TABLE `felhasznalok`
-  MODIFY `felhasznaloID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `felhasznaloID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT a táblához `kapcsolat`
