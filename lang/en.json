@@ -86,7 +86,7 @@
   "card_num":"Bank card number",
   "card_expiration_date":"Expiration date",
   "cvv":"CVV",
-  "cart":"Cart",
+  "cart":"To Cart",
   "total":"Total",
   "password":"Password",
   "help_password":"6-20 characters (must include uppercase, lowercase, and numbers)",
