@@ -170,6 +170,7 @@
         .then(data => {
           $rootScope.translations = data;
           $rootScope.language = lang;
+          document.title = data.title;
           $rootScope.$applyAsync();
 
           htmlElement.setAttribute('lang', lang); // Update the lang attribute
@@ -653,10 +654,10 @@
           // Create promise
           return new Promise((resolve) => {
 
-            console.log("set");
-
             // Create new deffered object
             let set = util.deferredObj();
+
+            console.log(set);
 
             // Wait for set completed
             set.completed.then(() => {
