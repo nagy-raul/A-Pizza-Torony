@@ -620,9 +620,6 @@
         // Get data
         get: () => {
 
-          console.log($rootScope.user.id);
-
-
           // Http request
           http.request({
             url: "./php/profile_get.php",
@@ -631,9 +628,6 @@
             }
           })
           .then(response => {
-
-            console.log(response);
-
 
             // Set model
             methods.set(response).then(() => {
@@ -648,8 +642,6 @@
 
         // Set model
         set: (response) => {
-
-          console.log(response);
 
           // Create promise
           return new Promise((resolve) => {
@@ -693,21 +685,11 @@
         // Save
         save: () => {
 
-          console.log($scope.helper.modelStart);
-          console.log($scope.model);
-
           // Get only data, that has changed
-          let data = util.objDifference(
-            $scope.helper.modelStart, 
-            $scope.model
-          );
-
-          console.log("Stored ID:", util.localStorage('get', 'id'));
+          let data = $scope.model
 
           // Set user identifier
           data.id = $rootScope.user.id;
-
-          console.log(data);
 
           // Http request
           http.request({
