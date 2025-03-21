@@ -76,6 +76,7 @@
   "phone_num":"Phone number",
   "msgs":"Message",
   "send":"SEND",
+  "save": "SAVE",
   "cancel":"CANCEL",
   "billing_add":"Billing address",
   "email_add":"Email address",
