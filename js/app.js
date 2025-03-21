@@ -748,5 +748,4 @@
 
     }
   ]);
-	
 })(window, angular);

@@ -76,6 +76,7 @@
   "phone_num":"Telefonnummer",
   "msgs":"Nachricht",
   "send":"SENDEN",
+  "save": "SPEICHERN",
   "cancel":"STORNIEREN",
   "billing_add":"Rechnungsadresse",
   "optional":"optional",
