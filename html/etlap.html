@@ -36,7 +36,7 @@
 							<a class="btn btn-danger" 
 							   data-bs-toggle="modal" 
 							   data-bs-target="#modal{{x.termekID}}">
-							   Kosárba
+							   {{translations.cart}}
 							</a>
 						</div>
 					</div>
@@ -151,7 +151,7 @@
 									type="button"
 									ng-click="methods.addToCart(x.termekNev, x.termekLeiras, x.termekAr, darabszam)"
 									data-bs-dismiss="modal">
-								{{translations.order}}
+								{{translations.cart}}
 							</button>
 						</form>
 					</div>

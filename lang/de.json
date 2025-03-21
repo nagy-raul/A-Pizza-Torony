@@ -85,7 +85,7 @@
   "card_num":"Bankkartennummer",
   "card_expiration_date":"Ablaufdatum der Karte",
   "cvv":"CVV",
-  "cart":"Einkaufswagen",
+  "cart":"In den Warenkorb",
   "total":"Endgültiger Betrag",
   "password":"Passwort",
   "help_password":"6-20 Zeichen (muss Großbuchstaben, Kleinbuchstaben und Zahlen enthalten)",

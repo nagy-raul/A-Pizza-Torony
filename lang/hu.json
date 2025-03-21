@@ -89,7 +89,7 @@
   "card_num":"Bankkártya szám",
   "card_expiration_date":"Lejárata",
   "cvv":"CVV",
-  "cart":"Kosár",
+  "cart":"Kosárba",
   "total":"Végösszeg",
   "password":"Jelszó",
   "help_password":"6-20 karakter (legyen benne nagybetű, kisbetű és szám)",
@@ -121,12 +121,5 @@
   "guests": "Vendégek száma",
   "booking": "foglalás",
   "code": "Kód",
-  "example_email": "te@példa.com",
-  "monday": "H",
-  "sunday": "V",
-  "thursday": "CS",
-  "friday": "P",
-  "wednesday": "Sze",
-  "saturday": "Szo",
-  "teli": "Tel"
+  "example_email": "te@példa.com"
 }
