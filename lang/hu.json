@@ -78,6 +78,7 @@
   "phone_num":"Telefon szám",
   "msgs":"Üzenet",
   "send":"KÜLDÉS",
+  "save": "MENTÉS",
   "cancel":"MÉGSEM",
   "billing_add":"Számlázási cím",
   "email_add":"Email cím",
