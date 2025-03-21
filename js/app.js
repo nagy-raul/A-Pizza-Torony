@@ -657,21 +657,15 @@
             // Create new deffered object
             let set = util.deferredObj();
 
-            console.log(set);
+            set.promise.resolve()
 
             // Wait for set completed
             set.completed.then(() => {
 
-              console.log(response);
-
               // Merge model with response, save start model properties,
               $scope.model = util.objMerge($scope.model, response);
 
-              console.log($scope.model);
-
               $scope.helper.modelStart = util.objMerge({}, $scope.model);
-
-              console.log($scope.helper.modelStart);
 
               // Apply change, and resolve
               $scope.$applyAsync();
