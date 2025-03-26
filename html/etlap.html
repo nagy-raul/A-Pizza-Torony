@@ -15,7 +15,7 @@
 				<!-- AngularJS ismétlés: minden terméket megjelenít -->
 				<div class="col text-center" 
 				     ng-repeat="x in data track by $index">
-					<div class="card p-4 mb-3 text-center border-4 w-auto border-danger" 
+					<div class="card p-4 mb-3 text-center border-4 w-auto border-danger h-100 d-flex flex-column" 
 					     style="max-width: 19rem;">
 						<!-- Termékkép -->
 						<img ng-src="./media/image/{{x.kep}}" 
@@ -24,7 +24,7 @@
 						<hr class="my-2" 
 						    style="color: white;">
 						<!-- Termék információk -->
-						<div class="card-body">
+						<div class="card-body d-flex flex-column">
 						  	<h5 class="card-title">
 								{{x.termekNev}}
 							</h5>
@@ -33,7 +33,7 @@
 							</p>
 
 							<!-- Kosárba gomb, amely egy modált nyit meg -->
-							<a class="btn btn-danger" 
+							<a class="btn btn-danger mt-auto" 
 							   data-bs-toggle="modal" 
 							   data-bs-target="#modal{{x.termekID}}">
 							   {{translations.cart}}
