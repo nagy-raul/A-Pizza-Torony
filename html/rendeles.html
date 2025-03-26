@@ -43,7 +43,7 @@
 						</li>
 						<!-- Végösszeg megjelenítése -->
 						<li class="list-group-item d-flex justify-content-between">
-							<span><strong>Végösszeg:</strong></span>
+							<span><strong>{{translations.total}}:</strong></span>
 							<strong>{{osszeg}} HUF</strong>
 						</li>
 					</ul>
@@ -177,7 +177,7 @@
 						<hr class="my-4">
 						
 						<!-- A rendelés gomb -->
-						<button class="w-100 btn btn-warning btn-lg" 
+						<button class="w-100 btn btn-outline-warning btn-lg" 
 							    type="button"
 							    ng-click="methods.order()">
 								{{translations.order}}

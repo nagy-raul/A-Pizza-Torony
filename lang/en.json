@@ -82,7 +82,7 @@
   "email_add":"Email address",
   "optional":"optional",
   "delivery_add":"Delivery address",
-  "pay":"payment",
+  "pay":"Payment",
   "card_name":"Name on the card",
   "card_num":"Bank card number",
   "card_expiration_date":"Expiration date",
