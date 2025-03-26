@@ -705,6 +705,13 @@
               // Update user properties
               $rootScope.user = util.objMerge($rootScope.user, data, true);
 
+              // Update local storage
+              util.localStorage('set', 'name', $rootScope.user.name);
+              util.localStorage('set', 'countryCode', $rootScope.user.countryCode);
+              util.localStorage('set', 'phone', $rootScope.user.phone);
+              util.localStorage('set', 'address', $rootScope.user.address);
+
+
               // Show result
               alert("Az adatokat sikerült módosítani!");
 
