@@ -556,7 +556,7 @@
       $scope.register = () => {
 
           // Remove unnecessary data
-          let data  = removeKeysFromObject($scope.model, [
+          let data  = $rootScope.removeKeysFromObject($scope.model, [
                         'showPassword', 
                         'emailConfirm', 
                         'passwordConfirm'
@@ -576,7 +576,7 @@
             if (response.affectedRows) {
 
               $rootScope.user.id = response.lastInsertId;
-              $rootScope.user.name = $scope.model.nev;
+              $rootScope.user.name = $scope.model.name;
               $rootScope.user.email = $scope.model.email;
               $rootScope.user.countryCode = $scope.model.countyCode;
               $rootScope.user.phone = $scope.model.phone;
