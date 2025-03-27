@@ -97,12 +97,12 @@
       $rootScope.cart = [];
   
       $rootScope.user = {};
-      $rootScope.user.id = $rootScope.getFromLocalStorage('id');
-      $rootScope.user.name = $rootScope.getFromLocalStorage('name');
-      $rootScope.user.email = $rootScope.getFromLocalStorage('email');
-      $rootScope.user.countryCode = $rootScope.getFromLocalStorage('countryCode');
-      $rootScope.user.phone = $rootScope.getFromLocalStorage('phone');
-      $rootScope.user.address = $rootScope.getFromLocalStorage('address');
+      $rootScope.user.id = localStorage.getItem('id');
+      $rootScope.user.name = localStorage.getItem('name');
+      $rootScope.user.email = localStorage.getItem('email');
+      $rootScope.user.countryCode = localStorage.getItem('countryCode');
+      $rootScope.user.phone = localStorage.getItem('phone');
+      $rootScope.user.address = localStorage.getItem('address');
   
       // Function to initialize tooltips
       function initTooltips() {
@@ -148,11 +148,6 @@
 
       $rootScope.saveToLocalStorage = (id, value) => {
         localStorage.setItem(id, JSON.stringify(value));
-      }
-
-      $rootScope.getFromLocalStorage = (key) => {
-        const item = localStorage.getItem(key);
-        return item ? JSON.parse(item) : null;
       }
 
       $rootScope.removeKeysFromObject = (obj, keysToRemove = []) => {
@@ -251,10 +246,11 @@
 
   // Foglalas controller
   .controller('foglalasController', [
+    '$rootScope',
     '$scope',
     '$state',
     '$http',
-    function($scope, $state, $http) {
+    function($rootScope, $scope, $state, $http) {
 
       // Set local methods
       let methods = {
@@ -266,10 +262,10 @@
 
           /*
           $scope.model = {
-            name: $rootScope.getFromLocalStorage('name'),
-            email: $rootScope.getFromLocalStorage('email'),
-            countryCode: $rootScope.getFromLocalStorage('countryCode'),
-            phone: $rootScope.getFromLocalStorage('phone')
+            name: localStorage.getItem('name'),
+            email: localStorage.getItem('email'),
+            countryCode: localStorage.getItem('countryCode'),
+            phone: localStorage.getItem('phone')
           };
           */
           let now = new Date();
@@ -327,10 +323,11 @@
 
   // Kapcsolat controller
   .controller('kapcsolatController', [
+    '$rootScope',
     '$scope',
     '$state',
     '$http',
-    function($scope, $state, $http) {
+    function($rootScope, $scope, $state, $http) {
 
       // Set local methods
       let methods = {
@@ -341,10 +338,10 @@
           console.log('Kapcsolat Controller...');
 
           $scope.model = {
-            name: $rootScope.getFromLocalStorage('name'),
-            email: $rootScope.getFromLocalStorage('email'),
-            countryCode: $rootScope.getFromLocalStorage('countryCode'),
-            phone: $rootScope.getFromLocalStorage('phone')
+            name: localStorage.getItem('name'),
+            email: localStorage.getItem('email'),
+            countryCode: localStorage.getItem('countryCode'),
+            phone: localStorage.getItem('phone')
           };
 
           // Set focus
@@ -393,10 +390,11 @@
   ])
 
   .controller('rendelesController', [
+    '$rootScope',
     '$scope',
     '$state',
     '$http',
-    function($scope, $state, $http) {
+    function($rootScope, $scope, $state, $http) {
   
       // Initialize the total amount variable
       $scope.osszeg = 0;
@@ -416,9 +414,9 @@
         init: () => {
           console.log('Rendeles Controller...');
           $scope.model = {
-            name: $rootScope.getFromLocalStorage('name'),
-            email: $rootScope.getFromLocalStorage('email'),
-            address: $rootScope.getFromLocalStorage('address')
+            name: localStorage.getItem('name'),
+            email: localStorage.getItem('email'),
+            address: localStorage.getItem('address')
           };
 
           // Set focus
@@ -481,7 +479,7 @@
     function ($rootScope, $scope, $state, $http) {
       console.log('Login controller...');
 
-      $scope.model = {email: $rootScope.getFromLocalStorage('email')};
+      $scope.model = {email: localStorage.getItem('email')};
 
       $scope.login = () => {
         $http.get("./php/login.php", $scope.model)
