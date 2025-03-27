@@ -146,7 +146,7 @@
         }
       };
 
-      $rootScope.saveToLocalStorage = (id, value) => {
+      $rootScope.setToLocalStorage = (id, value) => {
         localStorage.setItem(id, JSON.stringify(value));
       }
 
