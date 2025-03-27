@@ -1,49 +1,24 @@
 <?php
 declare(strict_types=1);
 
-// Database connection settings
-$host = 'localhost';
-$dbname = 'pizza_etterem';
-$username = 'root';
-$password = '';
+// Include environment
+require_once("../../common/php/environment.php");
 
-try {
-    // Connect to MySQL using PDO
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password, [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    ]);
+// Get arguments
+$args = Util::getArgs();
 
-    // Get input arguments safely
-    $input = json_decode(file_get_contents('php://input'), true);
+// Connect to MySQL server
+$db = new Database();
 
-    if (!$input) {
-        throw new Exception("Invalid input data.");
-    }
+// Set SQL command
+$query = "INSERT INTO `kapcsolat`(`nev`, `email`, `orszagkod`, `telszam`, `targy`, `uzenet`) 
+          VALUES (:name, :email, :countryCode, :phone, :targy, :uzenet)";
 
-    // Prepare SQL command
-    $query = "INSERT INTO `kapcsolat`(`nev`, `email`, `orszagkod`, `telszam`, `targy`, `uzenet`) 
-              VALUES (:name, :email, :countryCode, :phone, :targy, :uzenet)";
+// Execute SQL command
+$result = $db->execute($query, $args);
 
-    $stmt = $pdo->prepare($query);
+// Close connection
+$db = null;
 
-    // Execute query with sanitized inputs
-    $result = $stmt->execute([
-        ':name' => $input['name'] ?? null,
-        ':email' => $input['email'] ?? null,
-        ':countryCode' => $input['countryCode'] ?? null,
-        ':phone' => $input['phone'] ?? null,
-        ':targy' => $input['targy'] ?? null,
-        ':uzenet' => $input['uzenet'] ?? null
-    ]);
-
-    // Close connection
-    $pdo = null;
-
-    // Set response
-    echo json_encode(['success' => $result]);
-
-} catch (Exception $e) {
-    echo json_encode(['error' => $e->getMessage()]);
-}
-?>
+// Set response
+Util::setResponse($result);
