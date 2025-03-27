@@ -670,20 +670,20 @@
             // Create new deferred object
             let set = $q.defer();
 
-            set.promise.resolve()
+            // Correct way to resolve the promise
+            set.resolve(); 
 
             // Wait for set completed
-            set.completed.then(() => {
-
-              // Merge model with response, save start model properties,
-              $scope.model = $scope.model = { ...$scope.model, ...response };
-
+            set.promise.then(() => {
+              
+              // Merge model with response, save start model properties
+              $scope.model = { ...$scope.model, ...response };
               $scope.helper.modelStart = JSON.parse(JSON.stringify($scope.model));
 
-              // Apply change, and resolve
+              // Apply change, and resolve outer promise
               $scope.$applyAsync();
               resolve();
-            })
+            });
           });
         },
 
