@@ -298,7 +298,8 @@
           http.request({
             method: "POST", 
             url: "./php/booking.php", 
-            data: data})
+            data: data
+          })
           .then(response => {
 
             // Check response
@@ -369,7 +370,8 @@
           http.request({
             method: "POST", 
             url: "./php/contact.php", 
-            data: data})
+            data: data
+          })
           .then(response => {
 
             // Check response
@@ -448,7 +450,8 @@
           http.request({
             method: "POST", 
             url: "./php/order.php", 
-            data: data})
+            data: data
+          })
           .then(response => {
             if (response.affectedRows) {
               alert("Rendelés elküldve!");
@@ -492,9 +495,12 @@
       $scope.model = {email: localStorage.getItem('email')};
 
       $scope.login = () => {
+
+
         http.request({
           url: "./php/login.php", 
-          method: $scope.model})
+          data: $scope.model
+        })
         .then(response => {
           $rootScope.user.id = response.felhasznaloID;
           $rootScope.user.name = response.nev;
@@ -562,7 +568,8 @@
           http.request({
             method: "POST", 
             url: "./php/register.php", 
-            data: data})
+            data: data
+          })
           .then(response => {
 
             // Check response
@@ -704,6 +711,8 @@
 
           // Set user identifier
           data.id = $rootScope.user.id;
+
+          console.log(data)
 
           // Http request
           http.request({
