@@ -4,7 +4,8 @@
 
   // Application module
 	angular.module('app', [
-    'ui.router'
+    'ui.router',
+    'app.common'
 	])
 
 	// Application config
@@ -218,13 +219,13 @@
   .controller('etlapController', [
     '$scope', 
     '$rootScope', 
-    '$http',
-    function($scope, $rootScope, $http) {
+    'http',
+    function($scope, $rootScope, http) {
       console.log('Etlap controller...');
         
-      $http.get('./php/etlap.php')
+      http.request('./php/etlap.php')
       .then(response => {
-          $scope.data = response.data;
+          $scope.data = response;
           $scope.$applyAsync();
       })
       .catch(e => alert(e));
@@ -249,8 +250,8 @@
     '$rootScope',
     '$scope',
     '$state',
-    '$http',
-    function($rootScope, $scope, $state, $http) {
+    'http',
+    function($rootScope, $scope, $state, http) {
 
       // Set local methods
       let methods = {
@@ -294,11 +295,14 @@
           console.log(data);
 
           // Http request
-          $http.post("./php/booking.php", data)
+          http.request({
+            method: "POST", 
+            url: "./php/booking.php", 
+            data: data})
           .then(response => {
 
             // Check response
-            if (response.data.affectedRows) {
+            if (response.affectedRows) {
 
               // Show result
               alert("Foglalás elküldve!");
@@ -326,8 +330,8 @@
     '$rootScope',
     '$scope',
     '$state',
-    '$http',
-    function($rootScope, $scope, $state, $http) {
+    'http',
+    function($rootScope, $scope, $state, http) {
 
       // Set local methods
       let methods = {
@@ -362,11 +366,14 @@
           console.log(data);
 
           // Http request
-          $http.post("./php/contact.php", data)
+          http.request({
+            method: "POST", 
+            url: "./php/contact.php", 
+            data: data})
           .then(response => {
 
             // Check response
-            if (response.data.affectedRows) {
+            if (response.affectedRows) {
 
               // Show result
               alert("Üzenet elküldve!");
@@ -393,8 +400,8 @@
     '$rootScope',
     '$scope',
     '$state',
-    '$http',
-    function($rootScope, $scope, $state, $http) {
+    'http',
+    function($rootScope, $scope, $state, http) {
   
       // Initialize the total amount variable
       $scope.osszeg = 0;
@@ -438,9 +445,12 @@
           let data = Object.assign({}, $scope.model);
           console.log(data);
   
-          $http.post("./php/order.php", data)
+          http.request({
+            method: "POST", 
+            url: "./php/order.php", 
+            data: data})
           .then(response => {
-            if (response.data.affectedRows) {
+            if (response.affectedRows) {
               alert("Rendelés elküldve!");
               $state.go('home');
               $rootScope.cart = [];
@@ -475,21 +485,23 @@
     '$rootScope',
     '$scope',
     '$state',
-    '$http',
-    function ($rootScope, $scope, $state, $http) {
+    'http',
+    function ($rootScope, $scope, $state, http) {
       console.log('Login controller...');
 
       $scope.model = {email: localStorage.getItem('email')};
 
       $scope.login = () => {
-        $http.get("./php/login.php", $scope.model)
+        http.request({
+          url: "./php/login.php", 
+          method: $scope.model})
         .then(response => {
-          $rootScope.user.id = response.data.felhasznaloID;
-          $rootScope.user.name = response.data.nev;
+          $rootScope.user.id = response.felhasznaloID;
+          $rootScope.user.name = response.nev;
           $rootScope.user.email = $scope.model.email;
-          $rootScope.user.countryCode = response.data.orszagkod;
-          $rootScope.user.phone = response.data.telszam;
-          $rootScope.user.address = response.data.lakcim;
+          $rootScope.user.countryCode = response.orszagkod;
+          $rootScope.user.phone = response.telszam;
+          $rootScope.user.address = response.lakcim;
 
           $rootScope.setToLocalStorage('id', $rootScope.user.id);
           $rootScope.setToLocalStorage('name', $rootScope.user.name);
@@ -528,8 +540,8 @@
     '$rootScope',
     '$scope',
     '$state',
-    '$http',
-    function($rootScope, $scope, $state, $http) {
+    'http',
+    function($rootScope, $scope, $state, http) {
 
       console.log('Register Controller...');
 
@@ -547,13 +559,16 @@
           console.log(data);
 
           // Http request
-          $http.post("./php/register.php", data)
+          http.request({
+            method: "POST", 
+            url: "./php/register.php", 
+            data: data})
           .then(response => {
 
             // Check response
             if (response.affectedRows) {
 
-              $rootScope.user.id = response.data.lastInsertId;
+              $rootScope.user.id = response.lastInsertId;
               $rootScope.user.name = $scope.model.nev;
               $rootScope.user.email = $scope.model.email;
               $rootScope.user.countryCode = $scope.model.countyCode;
@@ -590,9 +605,9 @@
     '$rootScope',
     '$scope',
     '$state',
-    '$http',
+    'http',
     '$q',
-    function($rootScope, $scope, $state, $http, $q) {
+    function($rootScope, $scope, $state, http, $q) {
 
       console.log('Profile  Controller...');
 
@@ -620,7 +635,7 @@
         get: () => {
 
           // Http request
-          $http.get({
+          http.request({
             url: "./php/profile_get.php",
             data: {
               id: $rootScope.user.id
@@ -629,7 +644,7 @@
           .then(response => {
 
             // Set model
-            methods.set(response.data).then(() => {
+            methods.set(response).then(() => {
 
               // Set events
               methods.events();
@@ -691,11 +706,15 @@
           data.id = $rootScope.user.id;
 
           // Http request
-          $http.post("./php/profile_set.php", data)
+          http.request({
+            method: "POST", 
+            url: "./php/profile_set.php", 
+            data: data
+          })
           .then(response => {
 
             // Check response
-            if (response.data.affectedRows) {
+            if (response.affectedRows) {
 
               // Update user properties
               $rootScope.user = $rootScope.objMerge($rootScope.user, data, true);
