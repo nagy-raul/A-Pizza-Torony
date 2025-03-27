@@ -227,10 +227,9 @@
   .controller('foglalasController', [
     '$scope',
     '$state',
-    'form',
     'util',
     '$http',
-    function($scope, $state, form, util, $http) {
+    function($scope, $state, util, $http) {
 
       // Set local methods
       let methods = {
@@ -255,7 +254,10 @@
           let lejarta = document.getElementById("booking-datum");
           lejarta.min = `${year}-${month}-${day}`;
           // Set focus
-					form.focus();
+          const activeElement = document.activeElement;
+          if (activeElement && activeElement.id) {
+              document.getElementById(activeElement.id).focus();
+          }
         }
       };
 
@@ -304,10 +306,9 @@
   .controller('kapcsolatController', [
     '$scope',
     '$state',
-    'form',
     'util',
     '$http',
-    function($scope, $state, form, util, $http) {
+    function($scope, $state, util, $http) {
 
       // Set local methods
       let methods = {
@@ -325,7 +326,10 @@
           };
 
           // Set focus
-					form.focus();
+          const activeElement = document.activeElement;
+          if (activeElement && activeElement.id) {
+              document.getElementById(activeElement.id).focus();
+          }
         }
       };
 
@@ -371,10 +375,9 @@
   .controller('rendelesController', [
     '$scope',
     '$state',
-    'form',
     'util',
     '$http',
-    function($scope, $state, form, util, $http) {
+    function($scope, $state, util, $http) {
   
       // Initialize the total amount variable
       $scope.osszeg = 0;
@@ -398,7 +401,13 @@
             email: util.localStorage('get', 'email'),
             address: util.localStorage('get', 'address')
           };
-          form.focus();
+
+          // Set focus
+          const activeElement = document.activeElement;
+          if (activeElement && activeElement.id) {
+              document.getElementById(activeElement.id).focus();
+          }
+
           let now = new Date();
           let year = now.getFullYear();
           let month = String(now.getMonth() + 1).padStart(2, '0');
