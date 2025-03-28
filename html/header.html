@@ -126,12 +126,28 @@
                         <!-- Nyelvválasztó legördülő menü -->
                         <div class="dropdown">
                             <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                              {{ translations[language] }}
+                                <img ng-src="./media/image/{{language}}.png" alt="{{language}}" width="24" height="24" class="me-2">
+                                {{ translations[language] }}
                             </button>
                             <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" ng-click="loadLanguage('hu')">{{translations.hu}}</a></li>
-                              <li><a class="dropdown-item" ng-click="loadLanguage('de')">{{translations.de}}</a></li>
-                              <li><a class="dropdown-item" ng-click="loadLanguage('en')">{{translations.en}}</a></li>
+                                <li>
+                                    <a class="dropdown-item" ng-click="loadLanguage('hu')">
+                                        <img src="./media/image/hu.png" alt="HU" width="24" height="24" class="me-2">
+                                        {{translations.hu}}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" ng-click="loadLanguage('de')">
+                                        <img src="./media/image/de.png" alt="DE" width="24" height="24" class="me-2">
+                                        {{translations.de}}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" ng-click="loadLanguage('en')">
+                                        <img src="./media/image/en.png" alt="EN" width="24" height="24" class="me-2">
+                                        {{translations.en}}
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </ul>

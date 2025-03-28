@@ -93,36 +93,7 @@
     '$state',
     '$timeout',
     function ($rootScope, $state, $timeout) {
-  
-      // Initialize cart as an empty array
-      $rootScope.cart = [];
-  
-      $rootScope.user = {};
-      $rootScope.user.id = localStorage.getItem('id');
-      $rootScope.user.name = localStorage.getItem('name');
-      $rootScope.user.email = localStorage.getItem('email');
-      $rootScope.user.countryCode = localStorage.getItem('countryCode');
-      $rootScope.user.phone = localStorage.getItem('phone');
-      $rootScope.user.address = localStorage.getItem('address');
-  
-      // Function to initialize tooltips
-      function initTooltips() {
-        $timeout(() => {
-          let tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-          if (tooltips.length) {
-            tooltips.forEach(e => new bootstrap.Tooltip(e));
-          }
-        }, 500); // Slight delay to ensure DOM update
-      }
-  
-      // Run tooltip initialization on route change
-      $rootScope.$on('$viewContentLoaded', function() {
-        initTooltips();
-      });
-  
-      // Also initialize tooltips manually when needed
-      initTooltips();
-  
+
       $rootScope.logOut = () => {
         if (confirm('Biztosan ki szeretne lépni a fiókjából?')) {
           $rootScope.cart = [];
@@ -151,6 +122,10 @@
         localStorage.setItem(id, JSON.stringify(value));
       }
 
+      $rootScope.getFromLocalStorage = (id) => {
+        JSON.parse(localStorage.getItem(id) || "{}");
+      }
+
       $rootScope.removeKeysFromObject = (obj, keysToRemove = []) => {
         let newObj = { ...obj };
         keysToRemove.forEach(key => delete newObj[key]);
@@ -166,6 +141,35 @@
         }
         return newObj;
       }
+  
+      // Initialize cart as an empty array
+      $rootScope.cart = [];
+  
+      $rootScope.user = {};
+      $rootScope.user.id = $rootScope.getFromLocalStorage('id');
+      $rootScope.user.name = $rootScope.getFromLocalStorage('name');
+      $rootScope.user.email = $rootScope.getFromLocalStorage('email');
+      $rootScope.user.countryCode = $rootScope.getFromLocalStorage('countryCode');
+      $rootScope.user.phone = $rootScope.getFromLocalStorage('phone');
+      $rootScope.user.address = $rootScope.getFromLocalStorage('address');
+  
+      // Function to initialize tooltips
+      function initTooltips() {
+        $timeout(() => {
+          let tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+          if (tooltips.length) {
+            tooltips.forEach(e => new bootstrap.Tooltip(e));
+          }
+        }, 500); // Slight delay to ensure DOM update
+      }
+  
+      // Run tooltip initialization on route change
+      $rootScope.$on('$viewContentLoaded', function() {
+        initTooltips();
+      });
+  
+      // Also initialize tooltips manually when needed
+      initTooltips();
 
       // Read initial language from the HTML lang attribute
       const htmlElement = document.documentElement;
@@ -263,10 +267,10 @@
 
           /*
           $scope.model = {
-            name: localStorage.getItem('name'),
-            email: localStorage.getItem('email'),
-            countryCode: localStorage.getItem('countryCode'),
-            phone: localStorage.getItem('phone')
+            name: $rootScope.getFromLocalStorage('name'),
+            email: $rootScope.getFromLocalStorage('email'),
+            countryCode: $rootScope.getFromLocalStorage('countryCode'),
+            phone: $rootScope.getFromLocalStorage('phone')
           };
           */
           let now = new Date();
@@ -343,10 +347,10 @@
           console.log('Kapcsolat Controller...');
 
           $scope.model = {
-            name: localStorage.getItem('name'),
-            email: localStorage.getItem('email'),
-            countryCode: localStorage.getItem('countryCode'),
-            phone: localStorage.getItem('phone')
+            name: $rootScope.getFromLocalStorage('name'),
+            email: $rootScope.getFromLocalStorage('email'),
+            countryCode: $rootScope.getFromLocalStorage('countryCode'),
+            phone: $rootScope.getFromLocalStorage('phone')
           };
 
           // Set focus
@@ -423,9 +427,9 @@
         init: () => {
           console.log('Rendeles Controller...');
           $scope.model = {
-            name: localStorage.getItem('name'),
-            email: localStorage.getItem('email'),
-            address: localStorage.getItem('address')
+            name: $rootScope.getFromLocalStorage('name'),
+            email: $rootScope.getFromLocalStorage('email'),
+            address: $rootScope.getFromLocalStorage('address')
           };
 
           // Set focus
@@ -492,7 +496,7 @@
     function ($rootScope, $scope, $state, http) {
       console.log('Login controller...');
 
-      $scope.model = {email: localStorage.getItem('email')};
+      $scope.model = {email: $rootScope.getFromLocalStorage('email')};
 
       $scope.login = () => {
 
@@ -670,17 +674,18 @@
             // Create new deferred object
             let set = $q.defer();
 
-            // Correct way to resolve the promise
-            set.resolve(); 
+            // Resolve the promise
+            set.resolve();
 
             // Wait for set completed
             set.promise.then(() => {
-              
-              // Merge model with response, save start model properties
+
+              // Merge model with response, save start model properties,
               $scope.model = { ...$scope.model, ...response };
+
               $scope.helper.modelStart = JSON.parse(JSON.stringify($scope.model));
 
-              // Apply change, and resolve outer promise
+              // Apply change, and resolve
               $scope.$applyAsync();
               resolve();
             });
