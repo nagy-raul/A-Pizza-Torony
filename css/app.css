@@ -74,6 +74,23 @@ input, textarea{
 	border-radius: 0.375rem;
 }
 
+/*header.html*/
+.dropdown-menu {
+  max-width: 200px; /* Korlátozza a szélességet, ha szükséges */
+  position: absolute;
+  right: 0; /* Menüt igazítja a jobb oldalra */
+  z-index: 1050; /* Mindig a többi elem fölé kerül */
+}
+
+@media (max-width: 576px) {
+  .dropdown-menu {
+      left: auto !important;
+      right: 0 !important;
+      min-width: 150px; /* Kis képernyőkön kisebb szélesség */
+  }
+}
+
+
 /*home.html*/
 
 #background-video {
