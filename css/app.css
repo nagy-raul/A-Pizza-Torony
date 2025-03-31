@@ -5,27 +5,6 @@
 @import url('https://fonts.cdnfonts.com/css/crimson-text');
 @import url('https://fonts.cdnfonts.com/css/roboto-mono');
 @import url('https://fonts.cdnfonts.com/css/finger-paint');
-
-:root {
-  --xs-font-size: 0.6rem;
-  --sm-font-size: 0.7rem;
-  --md-font-size: 0.8rem;
-  --lg-font-size: 0.9rem;
-}
-
-*:not(input):not(textarea) {
-		user-select:none !important;
-	outline-style:none !important;
-}
-
-.shadow-bottom-end {
-  -webkit-box-shadow: 0.6rem 0.6rem 0.3rem 0 rgba(0,0,0,0.3);
-          box-shadow: 0.6rem 0.6rem 0.3rem 0 rgba(0,0,0,0.3);
-}
-
-.text-small-caps {
-	font-variant: small-caps !important;
-}
   
 @media (min-width: 768px) {
   .bd-placeholder-img-lg {
