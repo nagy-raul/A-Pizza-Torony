@@ -5,7 +5,10 @@
   // Application module
 	angular.module('app', [
     'ui.router',
-    'app.common'
+    'app.common',
+    'app.message',
+		'app.form',
+    'app.user'
 	])
 
 	// Application config
@@ -90,92 +93,11 @@
 
   .run([
     '$rootScope',
+    'http',
     '$state',
+    'util',
     '$timeout',
-    function ($rootScope, $state, $timeout) {
-
-      $rootScope.logOut = () => {
-        if (confirm('Biztosan ki szeretne lépni a fiókjából?')) {
-          $rootScope.cart = [];
-  
-          $rootScope.user.id = null;
-          $rootScope.user.name = null;
-          $rootScope.user.email = null;
-          $rootScope.user.countryCode = null;
-          $rootScope.user.phone = null;
-          $rootScope.user.address = null;
-  
-          localStorage.removeItem('id');
-          localStorage.removeItem('name');
-          localStorage.removeItem('email');
-          localStorage.removeItem('countryCode');
-          localStorage.removeItem('phone');
-          localStorage.removeItem('address');
-  
-          $rootScope.$applyAsync();
-          $state.go('home');
-          alert(`Sikerült kijelentkezni!`);
-        }
-      };
-
-      $rootScope.setToLocalStorage = (id, value) => {
-        localStorage.setItem(id, JSON.stringify(value));
-      }
-
-      $rootScope.getFromLocalStorage = (id) => {
-        JSON.parse(localStorage.getItem(id) || "{}");
-      }
-
-      $rootScope.removeKeysFromObject = (obj, keysToRemove = []) => {
-        let newObj = { ...obj };
-        keysToRemove.forEach(key => delete newObj[key]);
-        return newObj;
-      }
-
-      $rootScope.objMerge = (obj1, obj2, overwrite = false) => {
-        let newObj = { ...obj1 };
-        for (let key in obj2) {
-          if (overwrite || newObj[key] === undefined) {
-            newObj[key] = obj2[key];
-          }
-        }
-        return newObj;
-      }
-  
-      // Initialize cart as an empty array
-      $rootScope.cart = [];
-  
-      $rootScope.user = {};
-      $rootScope.user.id = $rootScope.getFromLocalStorage('id');
-      $rootScope.user.name = $rootScope.getFromLocalStorage('name');
-      $rootScope.user.email = $rootScope.getFromLocalStorage('email');
-      $rootScope.user.countryCode = $rootScope.getFromLocalStorage('countryCode');
-      $rootScope.user.phone = $rootScope.getFromLocalStorage('phone');
-      $rootScope.user.address = $rootScope.getFromLocalStorage('address');
-  
-      // Function to initialize tooltips
-      function initTooltips() {
-        $timeout(() => {
-          let tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-          if (tooltips.length) {
-            tooltips.forEach(e => new bootstrap.Tooltip(e));
-          }
-        }, 500); // Slight delay to ensure DOM update
-      }
-  
-      // Run tooltip initialization on route change
-      $rootScope.$on('$viewContentLoaded', function() {
-        initTooltips();
-      });
-  
-      // Also initialize tooltips manually when needed
-      initTooltips();
-
-      // Read initial language from the HTML lang attribute
-      const htmlElement = document.documentElement;
-      $rootScope.language = htmlElement.getAttribute('lang') || 'hu';
-      
-      console.log($rootScope.language);
+    function ($rootScope, http, $state, util, $timeout) {
 
       // Load the selected language file
       $rootScope.loadLanguage = (lang) => {
@@ -207,6 +129,65 @@
       $rootScope.isActive = function(viewLocation) {
         return $state.includes(viewLocation);
       };
+
+      // Function to initialize tooltips
+      function initTooltips() {
+        $timeout(() => {
+          let tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+          if (tooltips.length) {
+            tooltips.forEach(e => new bootstrap.Tooltip(e));
+          }
+        }, 500); // Slight delay to ensure DOM update
+      }
+
+      // Run tooltip initialization on route change
+      $rootScope.$on('$viewContentLoaded', function() {
+        initTooltips();
+      });
+
+      // Also initialize tooltips manually when needed
+      initTooltips();
+  
+      $rootScope.logOut = () => {
+        if (confirm('Biztosan ki szeretne lépni a fiókjából?')) {
+          $rootScope.cart = [];
+  
+          $rootScope.user.id = null;
+          $rootScope.user.name = null;
+          $rootScope.user.email = null;
+          $rootScope.user.countryCode = null;
+          $rootScope.user.phone = null;
+          $rootScope.user.address = null;
+  
+          util.localStorage('remove', 'id');
+          util.localStorage('remove', 'name');
+          util.localStorage('remove', 'email');
+          util.localStorage('remove', 'countryCode');
+          util.localStorage('remove', 'phone');
+          util.localStorage('remove', 'address');
+  
+          $rootScope.$applyAsync();
+          $state.go('home');
+          alert(`Sikerült kijelentkezni!`);
+        }
+      };
+  
+      // Initialize cart as an empty array
+      $rootScope.cart = [];
+  
+      $rootScope.user = {};
+      $rootScope.user.id = util.localStorage('get', 'id');
+      $rootScope.user.name = util.localStorage('get', 'name');
+      $rootScope.user.email = util.localStorage('get', 'email');
+      $rootScope.user.countryCode = util.localStorage('get', 'countryCode');
+      $rootScope.user.phone = util.localStorage('get', 'phone');
+      $rootScope.user.address = util.localStorage('get', 'address');
+
+      // Read initial language from the HTML lang attribute
+      const htmlElement = document.documentElement;
+      $rootScope.language = htmlElement.getAttribute('lang') || 'hu';
+      
+      console.log($rootScope.language);
     }
   ])
   
@@ -221,41 +202,39 @@
 
   // Etlap controller
   .controller('etlapController', [
-    '$scope', 
-    '$rootScope', 
-    'http',
+    '$scope', '$rootScope', 'http',
     function($scope, $rootScope, http) {
-      console.log('Etlap controller...');
-        
-      http.request('./php/etlap.php')
-      .then(response => {
-          $scope.data = response;
-          $scope.$applyAsync();
-      })
-      .catch(e => alert(e));
 
-      // Function to add items to cart
-      $scope.methods = {
-          addToCart: (name, description, price) => {
-              $rootScope.cart.push({
-                  name: name,
-                  description: description,
-                  price: price
-              });
-              console.log("Cart updated:", $rootScope.cart);
-              alert(`${name} hozzáadva a kosárhoz!`);
-          }
-      };
+        http.request('./php/etlap.php')
+        .then(response => {
+            $scope.data = response;
+            $scope.$applyAsync();
+        })
+        .catch(e => alert(e));
+
+        // Function to add items to cart
+        $scope.methods = {
+            addToCart: (name, description, price) => {
+                $rootScope.cart.push({
+                    name: name,
+                    description: description,
+                    price: price
+                });
+                console.log("Cart updated:", $rootScope.cart);
+                alert(`${name} hozzáadva a kosárhoz!`);
+            }
+        };
     }
   ])
 
   // Foglalas controller
   .controller('foglalasController', [
-    '$rootScope',
     '$scope',
     '$state',
+    'form',
+    'util',
     'http',
-    function($rootScope, $scope, $state, http) {
+    function($scope, $state, form, util, http) {
 
       // Set local methods
       let methods = {
@@ -267,10 +246,10 @@
 
           /*
           $scope.model = {
-            name: $rootScope.getFromLocalStorage('name'),
-            email: $rootScope.getFromLocalStorage('email'),
-            countryCode: $rootScope.getFromLocalStorage('countryCode'),
-            phone: $rootScope.getFromLocalStorage('phone')
+            name: util.localStorage('get', 'name'),
+            email: util.localStorage('get', 'email'),
+            countryCode: util.localStorage('get', 'countryCode'),
+            phone: util.localStorage('get', 'phone')
           };
           */
           let now = new Date();
@@ -280,8 +259,7 @@
           let lejarta = document.getElementById("booking-datum");
           lejarta.min = `${year}-${month}-${day}`;
           // Set focus
-          window.focus();
-
+					form.focus();
         }
       };
 
@@ -294,14 +272,14 @@
           console.log("book")
 
           // Remove unnecessary data
-          let data  = Object.assign({}, $scope.model);
+          let data  = util.objFilterByKeys($scope.model);
 
           console.log(data);
 
           // Http request
           http.request({
-            method: "POST", 
-            url: "./php/booking.php", 
+            method: "POST",
+            url: "./php/booking.php",
             data: data
           })
           .then(response => {
@@ -332,11 +310,12 @@
 
   // Kapcsolat controller
   .controller('kapcsolatController', [
-    '$rootScope',
     '$scope',
     '$state',
+    'form',
+    'util',
     'http',
-    function($rootScope, $scope, $state, http) {
+    function($scope, $state, form, util, http) {
 
       // Set local methods
       let methods = {
@@ -347,15 +326,14 @@
           console.log('Kapcsolat Controller...');
 
           $scope.model = {
-            name: $rootScope.getFromLocalStorage('name'),
-            email: $rootScope.getFromLocalStorage('email'),
-            countryCode: $rootScope.getFromLocalStorage('countryCode'),
-            phone: $rootScope.getFromLocalStorage('phone')
+            name: util.localStorage('get', 'name'),
+            email: util.localStorage('get', 'email'),
+            countryCode: util.localStorage('get', 'countryCode'),
+            phone: util.localStorage('get', 'phone')
           };
 
           // Set focus
-          window.focus();
-
+					form.focus();
         }
       };
 
@@ -366,14 +344,14 @@
         contact: () => {
 
           // Remove unnecessary data
-          let data  = Object.assign({}, $scope.model);
+          let data  = util.objFilterByKeys($scope.model);
 
           console.log(data);
 
           // Http request
           http.request({
-            method: "POST", 
-            url: "./php/contact.php", 
+            method: "POST",
+            url: "./php/contact.php",
             data: data
           })
           .then(response => {
@@ -403,11 +381,12 @@
   ])
 
   .controller('rendelesController', [
-    '$rootScope',
     '$scope',
     '$state',
+    'form',
+    'util',
     'http',
-    function($rootScope, $scope, $state, http) {
+    function($scope, $state, form, util, http) {
   
       // Initialize the total amount variable
       $scope.osszeg = 0;
@@ -427,15 +406,11 @@
         init: () => {
           console.log('Rendeles Controller...');
           $scope.model = {
-            name: $rootScope.getFromLocalStorage('name'),
-            email: $rootScope.getFromLocalStorage('email'),
-            address: $rootScope.getFromLocalStorage('address')
+            name: util.localStorage('get', 'name'),
+            email: util.localStorage('get', 'email'),
+            address: util.localStorage('get', 'address')
           };
-
-          // Set focus
-          window.focus();
-
-
+          form.focus();
           let now = new Date();
           let year = now.getFullYear();
           let month = String(now.getMonth() + 1).padStart(2, '0');
@@ -448,12 +423,12 @@
       // Set scope methods
       $scope.methods = {
         order: () => {
-          let data = Object.assign({}, $scope.model);
+          let data = util.objFilterByKeys($scope.model);
           console.log(data);
   
           http.request({
-            method: "POST", 
-            url: "./php/order.php", 
+            method: "POST",
+            url: "./php/order.php",
             data: data
           })
           .then(response => {
@@ -493,16 +468,15 @@
     '$scope',
     '$state',
     'http',
-    function ($rootScope, $scope, $state, http) {
+    'util',
+    function ($rootScope, $scope, $state, http, util) {
       console.log('Login controller...');
 
-      $scope.model = {email: $rootScope.getFromLocalStorage('email')};
+      $scope.model = {email: util.localStorage('get', 'email')};
 
       $scope.login = () => {
-
-
         http.request({
-          url: "./php/login.php", 
+          url: "./php/login.php",
           data: $scope.model
         })
         .then(response => {
@@ -513,12 +487,12 @@
           $rootScope.user.phone = response.telszam;
           $rootScope.user.address = response.lakcim;
 
-          $rootScope.setToLocalStorage('id', $rootScope.user.id);
-          $rootScope.setToLocalStorage('name', $rootScope.user.name);
-          $rootScope.setToLocalStorage('email', $rootScope.user.email);
-          $rootScope.setToLocalStorage('countryCode', $rootScope.user.countryCode);
-          $rootScope.setToLocalStorage('phone', $rootScope.user.phone);
-          $rootScope.setToLocalStorage('address', $rootScope.user.address);
+          util.localStorage('set', 'id', $rootScope.user.id);
+          util.localStorage('set', 'name', $rootScope.user.name);
+          util.localStorage('set', 'email', $rootScope.user.email);
+          util.localStorage('set', 'countryCode', $rootScope.user.countryCode);
+          util.localStorage('set', 'phone', $rootScope.user.phone);
+          util.localStorage('set', 'address', $rootScope.user.address);
 
           alert(`Sikerült bejelentkezni!
             Felhasználói adatok:
@@ -550,8 +524,9 @@
     '$rootScope',
     '$scope',
     '$state',
+    'util',
     'http',
-    function($rootScope, $scope, $state, http) {
+    function($rootScope, $scope, $state, util, http) {
 
       console.log('Register Controller...');
 
@@ -560,18 +535,18 @@
       $scope.register = () => {
 
           // Remove unnecessary data
-          let data  = $rootScope.removeKeysFromObject($scope.model, [
+          let data  = util.objFilterByKeys($scope.model, [
                         'showPassword', 
-                        'emailConfirm', 
+                        'emailConfirm',
                         'passwordConfirm'
-                      ]);
+                      ], false);
 
           console.log(data);
 
           // Http request
           http.request({
-            method: "POST", 
-            url: "./php/register.php", 
+            method: "POST",
+            url: "./php/register.php",
             data: data
           })
           .then(response => {
@@ -580,18 +555,18 @@
             if (response.affectedRows) {
 
               $rootScope.user.id = response.lastInsertId;
-              $rootScope.user.name = $scope.model.name;
+              $rootScope.user.name = $scope.model.nev;
               $rootScope.user.email = $scope.model.email;
               $rootScope.user.countryCode = $scope.model.countyCode;
               $rootScope.user.phone = $scope.model.phone;
               $rootScope.user.address = $scope.model.address;
     
-              $rootScope.setToLocalStorage('id', $rootScope.user.id);
-              $rootScope.setToLocalStorage('name', $rootScope.user.name);
-              $rootScope.setToLocalStorage('email', $rootScope.user.email);
-              $rootScope.setToLocalStorage('countryCode', $rootScope.user.countryCode);
-              $rootScope.setToLocalStorage('phone', $rootScope.user.phone);
-              $rootScope.setToLocalStorage('address', $rootScope.user.address);
+              util.localStorage('set', 'id', $rootScope.user.id);
+              util.localStorage('set', 'name', $rootScope.user.name);
+              util.localStorage('set', 'email', $rootScope.user.email);
+              util.localStorage('set', 'countryCode', $rootScope.user.countryCode);
+              util.localStorage('set', 'phone', $rootScope.user.phone);
+              util.localStorage('set', 'address', $rootScope.user.address);
 
               // Show result
               alert("Sikeres regisztráció!");
@@ -616,9 +591,9 @@
     '$rootScope',
     '$scope',
     '$state',
+    'util',
     'http',
-    '$q',
-    function($rootScope, $scope, $state, http, $q) {
+    function($rootScope, $scope, $state, util, http) {
 
       console.log('Profile  Controller...');
 
@@ -636,7 +611,7 @@
         init: () => {
 
           // Set model from rootscope model
-          $scope.model = JSON.parse(JSON.stringify($rootScope.user));
+          $scope.model = util.objMerge({}, $rootScope.user);
 
           // Get rest data
           methods.get();
@@ -671,24 +646,23 @@
           // Create promise
           return new Promise((resolve) => {
 
-            // Create new deferred object
-            let set = $q.defer();
+            // Create new deffered object
+            let set = util.deferredObj();
 
-            // Resolve the promise
-            set.resolve();
+            set.promise.resolve()
 
             // Wait for set completed
-            set.promise.then(() => {
+            set.completed.then(() => {
 
               // Merge model with response, save start model properties,
-              $scope.model = { ...$scope.model, ...response };
+              $scope.model = util.objMerge($scope.model, response);
 
-              $scope.helper.modelStart = JSON.parse(JSON.stringify($scope.model));
+              $scope.helper.modelStart = util.objMerge({}, $scope.model);
 
               // Apply change, and resolve
               $scope.$applyAsync();
               resolve();
-            });
+            })
           });
         },
 
@@ -717,12 +691,10 @@
           // Set user identifier
           data.id = $rootScope.user.id;
 
-          console.log(data)
-
           // Http request
           http.request({
-            method: "POST", 
-            url: "./php/profile_set.php", 
+            method: "POST",
+            url: "./php/profile_set.php",
             data: data
           })
           .then(response => {
@@ -731,13 +703,13 @@
             if (response.affectedRows) {
 
               // Update user properties
-              $rootScope.user = $rootScope.objMerge($rootScope.user, data, true);
+              $rootScope.user = util.objMerge($rootScope.user, data, true);
 
               // Update local storage
-              $rootScope.setToLocalStorage('name', $rootScope.user.name);
-              $rootScope.setToLocalStorage('countryCode', $rootScope.user.countryCode);
-              $rootScope.setToLocalStorage('phone', $rootScope.user.phone);
-              $rootScope.setToLocalStorage('address', $rootScope.user.address);
+              util.localStorage('set', 'name', $rootScope.user.name);
+              util.localStorage('set', 'countryCode', $rootScope.user.countryCode);
+              util.localStorage('set', 'phone', $rootScope.user.phone);
+              util.localStorage('set', 'address', $rootScope.user.address);
 
 
               // Show result
