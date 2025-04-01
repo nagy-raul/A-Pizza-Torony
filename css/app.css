@@ -13,20 +13,29 @@
 }
   
 .hero-image {
-  background-position: 0 0 !important; 
-  background-repeat: repeat-x !important;
-  background-size: cover !important;
-  position: relative !important;
-  height: 200px !important;
-  animation: moveBackground 10s linear infinite !important;
+  position: relative;
+  height: 200px;
+  overflow: hidden; /* Prevents scrolling issues */
+}
+
+.hero-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%; /* Twice the width for seamless looping */
+  height: 100%;
+  background: url('../media/image/pizza-hatter2.jpg') repeat-x center;
+  background-size: cover; /* Adjust based on image size */
+  animation: moveBackground 10s linear infinite;
 }
 
 @keyframes moveBackground {
   from {
-    background-position: 0 0 !important;
+    transform: translateX(0);
   }
   to {
-    background-position: 100% 0 !important;
+    transform: translateX(-25%);
   }
 }
 	  
