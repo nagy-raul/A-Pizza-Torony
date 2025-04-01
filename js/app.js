@@ -93,11 +93,10 @@
 
   .run([
     '$rootScope',
-    'http',
     '$state',
     'util',
     '$timeout',
-    function ($rootScope, http, $state, util, $timeout) {
+    function ($rootScope, $state, util, $timeout) {
 
       // Load the selected language file
       $rootScope.loadLanguage = (lang) => {
@@ -122,9 +121,6 @@
           alert('Nem sikerült betölteni a nyelvi fájlt.');
         });
       };
-
-      // Load the default language at startup
-      $rootScope.loadLanguage($rootScope.language);
 
       $rootScope.isActive = function(viewLocation) {
         return $state.includes(viewLocation);
@@ -171,6 +167,7 @@
           alert(`Sikerült kijelentkezni!`);
         }
       };
+
   
       // Initialize cart as an empty array
       $rootScope.cart = [];
@@ -186,8 +183,10 @@
       // Read initial language from the HTML lang attribute
       const htmlElement = document.documentElement;
       $rootScope.language = htmlElement.getAttribute('lang') || 'hu';
+
+      // Load the default language at startup
+      $rootScope.loadLanguage($rootScope.language);
       
-      console.log($rootScope.language);
     }
   ])
   
