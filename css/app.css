@@ -13,14 +13,22 @@
 }
   
 .hero-image {
-  /*background-attachment: fixed;*/
-	background-position: center;
-	background-repeat: repeat;
-	position: relative;
-	height: 200px;
+  background-position: 0 0 !important; 
+  background-repeat: repeat-x !important;
+  background-size: cover !important;
+  position: relative !important;
+  height: 200px !important;
+  animation: moveBackground 10s linear infinite !important;
 }
 
-@keyframes backdrop_roll { from { right: 0px; } to { right: 320px; } }
+@keyframes moveBackground {
+  from {
+    background-position: 0 0 !important;
+  }
+  to {
+    background-position: 100% 0 !important;
+  }
+}
 	  
 .navbar {
 	background-color: #ffc107 !important;
@@ -29,11 +37,14 @@
 .nav-item a.active {
 	cursor: default;
 }
+
 .dropdown-item:active,
 .dropdown-item.active,
 .dropdown-item a.active {
 	background-color: transparent !important;
+  
 }
+
 .custom-tooltip {
   --bs-tooltip-bg: var(--bs-primary);
   --bs-tooltip-color: var(--bs-light);

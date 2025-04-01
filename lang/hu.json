@@ -121,5 +121,6 @@
   "guests": "Vendégek száma",
   "booking": "foglalás",
   "code": "Kód",
-  "example_email": "te@példa.com"
+  "example_email": "te@példa.com",
+  "teli": "Tel"
 }
