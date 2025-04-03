@@ -12,32 +12,50 @@
   }
 }
   
-.hero-image {
+.banner-container {
   position: relative;
+  width: 100%;
   height: 200px;
-  overflow: hidden; /* Prevents scrolling issues */
+  overflow: hidden;
 }
 
-.hero-image::before {
-  content: "";
+.banner-background {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 200%; /* Twice the width for seamless looping */
+  width: 200%;
   height: 100%;
-  background: url('../media/image/pizza-hatter2.jpg') repeat-x center;
-  background-size: cover; /* Adjust based on image size */
-  animation: moveBackground 10s linear infinite;
+  background-size: cover;
+  background-position: center;
+  animation: scrollBackground 50s linear infinite;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), 
+            			rgba(0, 0, 0, 0.6)), 
+								    url('../media/image/pattern.png')
 }
 
-@keyframes moveBackground {
+@keyframes scrollBackground {
   from {
-    transform: translateX(0);
+      transform: translateX(0);
   }
   to {
-    transform: translateX(-25%);
+      transform: translateX(-50%);
   }
 }
+
+.banner-text {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Julee'; src: url(Julee-Regular.ttf);
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  z-index: 2;
+}
+
 	  
 .navbar {
 	background-color: #ffc107 !important;
