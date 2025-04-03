@@ -24,8 +24,19 @@ if (!is_null($result))
 	Util::setError("Felhasználó már létezik ezen az e-mail címen!");
 
 // Set SQL command
-$query = "INSERT INTO `felhasznalok` (`nev`, `email`, `orszagkod`, `telszam`, `lakcim`, `jelszo`) 
-		  VALUES (:name, :email, :countryCode, :phone, :address, :password);";
+$query = "INSERT INTO `felhasznalok` 
+					 (`nev`, 
+					  `email`, 
+					  `orszagkod`, 
+					  `telszam`, 
+					  `lakcim`, 
+					  `jelszo`) 
+		  	   VALUES (:name, 
+			   		   :email, 
+					   :countryCode, 
+					   :phone, 
+					   :address, 
+					   :password);";
 
 // Execute SQL command
 $result = $db->execute($query, $args);

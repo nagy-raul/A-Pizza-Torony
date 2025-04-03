@@ -11,8 +11,27 @@ $args = Util::getArgs();
 $db = new Database();
 
 // Set SQL command
-$query = "INSERT INTO `asztalfoglalasok`(`nev`, `email`, `orszagkod`, `telszam`, `datum`, `ido`, `orak`, `vendegek`, `megjegyzes`, `igeny`)
-          VALUES (:name, :email, :countryCode, :phone, :datum, :ido, :orak, :vendegek, :megjegyzes, :igeny)";
+$query = "INSERT INTO `asztalfoglalasok` 
+                     (`nev`, 
+                      `email`, 
+                      `orszagkod`, 
+                      `telszam`, 
+                      `datum`, 
+                      `ido`, 
+                      `orak`, 
+                      `vendegek`, 
+                      `megjegyzes`, 
+                      `igeny`)
+               VALUES (:name, 
+                       :email, 
+                       :countryCode, 
+                       :phone, 
+                       :datum, 
+                       :ido, 
+                       :orak, 
+                       :vendegek, 
+                       :megjegyzes, 
+                       :igeny)";
 
 // Execute SQL command
 $result = $db->execute($query, $args);

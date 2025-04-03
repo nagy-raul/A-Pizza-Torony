@@ -14,9 +14,9 @@ $query ="SELECT `felhasznaloID` AS `id`,
                 `orszagkod`     AS `countryCode`, 
                 `telszam`       AS `phone`, 
                 `lakcim`        AS `address`
-         FROM `felhasznalok`
-         WHERE `felhasznaloID` = :id
-	  LIMIT 1";
+         FROM   `felhasznalok`
+         WHERE  `felhasznaloID` = :id
+	     LIMIT   1";
 
 // Connect to MySQL server
 $db = new Database();
