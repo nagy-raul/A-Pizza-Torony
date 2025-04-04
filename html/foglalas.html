@@ -97,7 +97,7 @@
                                    class="form-control" 
                                    spellcheck="false" 
                                    autocomplete="off"
-                                   maxlength="10" 
+                                   maxlength="2" 
                                    ng-model="model.countryCode">
                             <input id="booking-phone" 
                                    name="phone" 
@@ -106,7 +106,7 @@
                                    class="form-control" 
                                    spellcheck="false" 
                                    autocomplete="off"
-                                   maxlength="10" 
+                                   maxlength="7" 
                                    ng-model="model.phone">
                         </div>
                     </div>                    
@@ -171,9 +171,10 @@
                                class="form-control" 
                                name="vendegek" 
                                type="number"
-                               min="1" 
+                               min="0" 
                                max="20" 
                                required 
+                               ng-init="model.vendegek=0" 
                                ng-model="model.vendegek">
                         <div class="form-text">{{translations.help_patrons}}</div>
                     </div>
@@ -183,10 +184,57 @@
                         <span data-bs-toggle="tooltip"
                               data-bs-custom-class="custom-tooltip"
                               data-bs-html="true"
-                              data-bs-title="&lt;p class='my-1'>A vendégek számának 1 és 20 között kell lennie!&lt;/p>">
+                              data-bs-title="&lt;p class='my-1'>A vendégek számának 0 és 20 között kell lennie!&lt;/p>">
                             <i class="fa-solid fa-circle-info text-primary ms-2"></i>
                         </span>
                     </div>
+
+                    <!-- Órák száma-->
+                    <div class="col-11">
+                        <label for="booking-orak" class="form-label">
+                            Hány órát tervez maradni <span class="text-danger">*</span>
+                        </label>
+                        <input id="booking-orak" 
+                               class="form-control" 
+                               name="orak" 
+                               type="number"
+                               min="1" 
+                               max="8" 
+                               required 
+                               ng-init="model.orak=1" 
+                               ng-model="model.vendegek">
+                        <div class="form-text">Az órák számának 1 és 8 között kell lennie!</div>
+                    </div>
+                    <div class="col-1 d-flex align-items-center justify-content-start ps-1">
+                        <span class="fw-bolder text-success"
+                              ng-class="{'invisible': bookingForm.orak.$invalid}">&check;</span>
+                        <span data-bs-toggle="tooltip"
+                              data-bs-custom-class="custom-tooltip"
+                              data-bs-html="true"
+                              data-bs-title="&lt;p class='my-1'>Az órák számának 1 és 8 között kell lennie!&lt;/p>">
+                            <i class="fa-solid fa-circle-info text-primary ms-2"></i>
+                        </span>
+                    </div>
+
+                    <!-- Asztal igény mező -->
+					<div class="col-11">
+						<label for="contact-uzenet" 
+							   class="form-label">
+							Asztal igényléshez üzenet
+						</label>
+						<textarea id="contact-uzenet" 
+								  class="form-control" 
+								  name="igeny" 
+								  type="text"
+							  	  rows="3" 
+								  placeholder="..." 
+								  spellcheck="false" 
+								  autocomplete="off" 
+							  	  maxlength="100" 
+								  ng-init="model.igeny=null" 
+								  ng-model="model.igeny">
+						</textarea>
+					</div>
                     
                     
 
