@@ -26,8 +26,8 @@
   background-size: cover;
   background-position: center;
   animation: scrollBackground 50s linear infinite;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), 
-            			rgba(0, 0, 0, 0.6)), 
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), 
+            			rgba(0, 0, 0, 0.7)), 
 								    url('../media/image/pattern.png')
 }
 
@@ -55,7 +55,6 @@
   text-align: center;
   z-index: 2;
 }
-
 	  
 .navbar {
 	background-color: #ffc107 !important;
@@ -143,7 +142,7 @@ input, textarea{
     left: 0;
     position: absolute;
     z-index: 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.65);
 }
 
 #background-video-content * {
