@@ -1,35 +1,27 @@
-<!-- Főcím és háttérkép -->
+<!-- Főcím és háttér -->
 <div class="banner-container">
 	<div class="banner-background"></div>
 	<div class="banner-text">{{translations.menu}}</div>
 </div>
 
 <main>
-	<!-- Termékek listázása -->
+	<!-- Termékek listázása rácsos elrendezésben -->
 	<div class="album py-5 mt-5">
 		<div class="container">
 			<div class="row row-cols-1 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 g-3 justify-content-center">
-				<!-- AngularJS ismétlés: minden terméket megjelenít -->
-				<div class="col text-center" 
-				     ng-repeat="x in data track by $index">
-					<div class="card p-4 mb-3 text-center border-4 w-auto border-danger h-100 d-flex flex-column" 
-					     style="max-width: 19rem;">
+				
+				<!-- Egyes termékek megjelenítése AngularJS ng-repeat-tel -->
+				<div class="col text-center" ng-repeat="x in data track by $index">
+					<div class="card p-4 mb-3 text-center border-4 w-auto border-danger h-100 d-flex flex-column">
+						
 						<!-- Termékkép -->
-						<img ng-src="./media/image/{{x.kep}}" 
-						     alt="{{x.termekNev}}">
-						 
-						<hr class="my-2" 
-						    style="color: white;">
-						<!-- Termék információk -->
-						<div class="card-body d-flex flex-column">
-						  	<h5 class="card-title">
-								{{x.termekNev}}
-							</h5>
-							<p class="card-text">
-								{{x.termekLeiras}}
-							</p>
+						<img ng-src="./media/image/{{x.kep}}" alt="{{x.termekNev}}">
+						<hr class="my-2">
 
-							<!-- Kosárba gomb, amely egy modált nyit meg -->
+						<!-- Név, leírás, kosárba gomb -->
+						<div class="card-body d-flex flex-column">
+						  	<h5 class="card-title">{{x.termekNev}}</h5>
+							<p class="card-text">{{x.termekLeiras}}</p>
 							<a class="btn btn-danger mt-auto" 
 							   data-bs-toggle="modal" 
 							   data-bs-target="#modal{{x.termekID}}">
@@ -38,95 +30,52 @@
 						</div>
 					</div>
 				</div>
+
 			</div>
 		</div>
 	</div>
-	
-	<!-- Termék részletes nézete modálban -->
+
+	<!-- Termékek részletes nézete modálban -->
 	<div ng-repeat="x in data track by $index">
 		<div class="modal fade p-4 py-md-5 text-center" 
 			 tabindex="-1" 
 			 aria-labelledby="termek{{x.termekID}}" 
 			 role="dialog"
 			 id="modal{{x.termekID}}">
-			<div class="modal-dialog" 
-				 role="document">
+			<div class="modal-dialog" role="document">
 				<div class="modal-content rounded-4 shadow">
+
+					<!-- Fejléc: terméknév + bezárás -->
 					<div class="modal-header p-5 pb-4 border-bottom-0">
-						<h1 class="fw-bold mb-0 fs-2" 
-							id="termek{{x.termekID}}">
+						<h1 class="fw-bold mb-0 fs-2" id="termek{{x.termekID}}">
 							{{x.termekNev}}
 						</h1>
 						<button type="button" 
 								class="btn-close" 
 								data-bs-dismiss="modal" 
-								aria-label="Close">
-						</button>
+								aria-label="Close"></button>
 					</div>
 
+					<!-- Törzs: termékkép + rendelési űrlap -->
 					<div class="modal-body p-5 pt-0 justify-content-center d-flex">
-						<!-- Termékkép a modálban -->
 						<img ng-src="./media/image/{{x.kep}}" 
 							 width="200" 
 							 height="200" 
 							 class="img-fluid me-4">
 
-						<!-- Termék rendelési beállítások -->
-						<form name="form{{x.termekID}}" 
-						      novalidate>
+						<form name="form{{x.termekID}}" novalidate>
 
-							<!-- Pizza méret választás -->
+							<!-- Méretválasztás -->
 							<p class="mb-2">{{translations.pizza_size}}</p>
-							<div class="form-check form-check-inline">
-								<input class="form-check-input border-black" 
-									   type="radio" 
-									   name="meret" 
-									   id="meret1">
-								<label class="form-check-label" 
-									   for="meret1">
-									   24 cm
-								</label>
-							</div>
-							<div class="form-check form-check-inline mb-4">
-								<input class="form-check-input border-black" 
-									   type="radio" 
-									   name="meret" 
-									   id="meret2" 
-									   checked>
-								<label class="form-check-label" 
-									   for="meret2">
-									   32 cm
-								</label>
-							</div>
+							<!-- Radio gombok: 24 cm, 32 cm -->
 
-							<!-- Pizza szél választás -->
+							<!-- Szélválasztás -->
 							<p class="mb-2">{{translations.pizzaCorner_type}}</p>
-							<div class="form-check form-check-inline">
-								<input class="form-check-input border-black" 
-									   type="radio" 
-									   name="szel" 
-									   id="vekony">
-								<label class="form-check-label" 
-									   for="vekony">
-									   {{translations.thin}}
-								</label>
-							</div>
-							<div class="form-check form-check-inline mb-4">
-								<input class="form-check-input border-black" 
-									   type="radio" 
-									   name="szel" 
-									   id="vastag" 
-									   checked>
-								<label class="form-check-label" 
-									   for="vastag">
-									   {{translations.thick}}
-								</label>
-							</div>
+							<!-- Radio gombok: vékony, vastag -->
 
-							<!-- Darabszám beállítása -->
-							<label for="darabszam{{x.termekID}}" 
-								   class="form-label">
-								   {{translations.amount}}
+							<!-- Darabszám megadása -->
+							<label for="darabszam{{x.termekID}}" class="form-label">
+								{{translations.amount}}
 							</label>
 							<input type="number" 
 								   id="darabszam{{x.termekID}}" 
@@ -135,15 +84,13 @@
 								   min="1" 
 								   value="1">
 
-							<!-- Ár megjelenítés -->
-							<p class="mb-2" 
-							   ng-init="ar = x.termekAr">
-							   {{translations.price}}: {{ar}} Ft
+							<!-- Ár kijelzése -->
+							<p class="mb-2" ng-init="ar = x.termekAr">
+								{{translations.price}}: {{ar}} Ft
 							</p>
 
+							<!-- Rendelés (kosárba helyezés) -->
 							<hr class="my-4">
-
-							<!-- Rendelés gomb -->
 							<button class="w-100 mb-2 btn btn-lg rounded-3 btn-danger" 
 									type="button"
 									ng-click="methods.addToCart(x.termekNev, x.termekLeiras, x.termekAr, darabszam)"
@@ -152,6 +99,7 @@
 							</button>
 						</form>
 					</div>
+
 				</div>
 			</div>
 		</div>

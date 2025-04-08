@@ -4,7 +4,7 @@
 	<div class="banner-text">{{translations.reservation}}</div>
 </div>
 
-<!-- Asztalfoglalási űrlap tartalmazó doboz -->
+<!-- Foglalási űrlapot tartalmazó doboz -->
 <div class="position-relative rotateCarouselRightIn my-5"
      style="font-family: 'ABeeZee'; src: url(../css/ABeeZee-Regular.ttf);">
     <div class="row mt-5 justify-content-center">
@@ -21,148 +21,148 @@
                 </h3>
             </div>
 
-            <!-- Foglalási űrlap -->
+            <!-- Asztalfoglalási űrlap -->
             <form name="bookingForm" 
 				  class="needs-validation d-flex flex-column justify-content-between" 
 				  novalidate>
                 <div class="row gy-5 p-5 flex-grow-1">
-                    <!-- Név mező -->
+
+                    <!-- Vendég neve -->
                     <div class="col-11">
                         <label for="booking-name" 
-							   class="form-label">
-                            {{translations.name}}
-							<span class="text-danger">
-								*
-							</span>
+                               class="form-label">
+                            {{translations.name}} 
+                            <span class="text-danger">*</span>
                         </label>
                         <input id="booking-name" 
-							   class="form-control" 
-							   name="name" 
-							   type="text"
+                               class="form-control" 
+                               name="name" 
+                               type="text"
                                placeholder="..." 
-							   spellcheck="false" 
-							   autocomplete="off" 
-							   required
+                               required 
                                maxlength="100" 
-							   ng-model="model.name"
+                               ng-model="model.name"
                                ng-pattern="/^[A-Za-záéíóöőúüűÁÉÍÓÖŐÚÜŰ\s]+$/">
                     </div>
 
-                    <!-- Email mező -->
+                    <!-- E-mail cím -->
                     <div class="col-11 col-md-5">
-                        <label for="booking-email" class="form-label">
-                            {{translations.email}} <span class="text-danger">*</span>
+                        <label for="booking-email" 
+                               class="form-label">
+                            {{translations.email}} 
+                            <span class="text-danger">*</span>
                         </label>
                         <div class="input-group">
                             <span class="input-group-text">
                                 <i class="fa-solid fa-envelope"></i>
                             </span>
-                            <input id="booking-email" class="form-control" name="email" type="text"
-                                   placeholder="te@példa.com" spellcheck="false" autocomplete="off"
-                                   required maxlength="50" ng-model="model.email"
+                            <input id="booking-email" 
+                                   class="form-control" 
+                                   name="email" 
+                                   type="text"
+                                   placeholder="te@példa.com" 
+                                   required 
+                                   maxlength="50"
+                                   ng-model="model.email"
                                    ng-pattern="/^([a-z0-9_.+-])+\@(([a-z0-9-])+\.)+([a-z0-9]{2,4})+$/">
                         </div>
                         <div class="form-text">{{translations.give_email}}</div>
                     </div>
-                    
-                    
+
+                    <!-- Email megerősítés visszajelzés -->
                     <div class="col-1 d-flex align-items-center justify-content-start ps-1">
-                        <!-- Email megerősítés érvényesség ellenőrzés -->
                         <span class="fw-bolder text-success"
                               ng-class="{'invisible': bookingForm.email.$invalid}">&check;</span>
-                        <span data-bs-toggle="tooltip"
-                              data-bs-custom-class="custom-tooltip"
-                              data-bs-html="true"
+                        <span data-bs-toggle="tooltip" 
                               data-bs-title="&lt;p class='my-1'>Az e-mail cím ellenőrzése szükséges!&lt;/p>">
                             <i class="fa-solid fa-circle-info text-primary ms-2"></i>
                         </span>
                     </div>
 
-                    <!-- Telefonszám mező -->
+                    <!-- Telefonszám és országkód -->
                     <div class="col-11 col-md-5">
                         <label for="booking-phone" class="form-label">
                             {{translations.phone_num}} <span class="text-danger">*</span>
                         </label>
                         <div class="input-group">
-                            <span class="input-group-text">
-                                +
-                            </span>
+                            <span class="input-group-text">+</span>
                             <input id="booking-countryCode" 
                                    name="countryCode" 
                                    type="text"
                                    placeholder="00" 
                                    class="form-control" 
-                                   spellcheck="false" 
-                                   autocomplete="off"
-                                   maxlength="2" 
+                                   maxlength="2"
                                    ng-model="model.countryCode">
                             <input id="booking-phone" 
                                    name="phone" 
                                    type="tel"
                                    placeholder="0000000" 
                                    class="form-control" 
-                                   spellcheck="false" 
-                                   autocomplete="off"
-                                   maxlength="7" 
+                                   maxlength="7"
                                    ng-model="model.phone">
                         </div>
-                    </div>                    
+                    </div>
+
+                    <!-- Telefonszám formátum segítő tooltip -->
                     <div class="col-1 d-flex align-items-center justify-content-start ps-1">
                         <span data-bs-toggle="tooltip"
-                              data-bs-custom-class="custom-tooltip"
-                              data-bs-html="true"
-                              data-bs-title="&lt;p class='my-1'> Az országkód csak számokat tartalmazhat, és 1-4 karakter hosszú lehet.
-                                             A telefonszámnak 7-10 számjegyből kell állnia, és nem kezdődhet 0-val.&lt;/p>">
+                              data-bs-title="&lt;p class='my-1'>Az országkód csak számokat tartalmazhat...&lt;/p>">
                             <i class="fa-solid fa-circle-info text-primary ms-2"></i>
                         </span>
                     </div>
 
-                    <!-- Dátum és idő mezők -->
+                    <!-- Érkezés dátuma -->
                     <div class="col-11 col-md-5">
-                        <label for="booking-datum" class="form-label">
-                            {{translations.arrival}} <span class="text-danger">*</span>
+                        <label for="booking-datum" 
+                               class="form-label">
+                            {{translations.arrival}} 
+                            <span class="text-danger">*</span>
                         </label>
-                        <input id="booking-datum" class="form-control" name="datum" type="date"
-                               required ng-model="model.datum">
+                        <input id="booking-datum" 
+                               class="form-control" 
+                               name="datum" 
+                               type="date"
+                               required 
+                               ng-model="model.datum">
                         <div class="form-text">Kérlek, válassz egy dátumot az érkezéshez.</div>
                     </div>
+
+                    <!-- Tooltip a dátum mezőhöz -->
                     <div class="col-1 d-flex align-items-center justify-content-start ps-1">
                         <span data-bs-toggle="tooltip"
-                              data-bs-custom-class="custom-tooltip"
-                              data-bs-html="true"
                               data-bs-title="&lt;p class='my-1'>A dátum mező kitöltése kötelező!&lt;/p>">
                             <i class="fa-solid fa-circle-info text-primary ms-2"></i>
                         </span>
-                    </div>                 
+                    </div>
 
+                    <!-- Érkezés ideje -->
                     <div class="col-11 col-md-5">
                         <label for="booking-ido" 
-							   class="form-label">
-                            {{translations.arrival_time}}
-							<span class="text-danger">
-								*
-							</span>
+                               class="form-label">
+                            {{translations.arrival_time}} 
+                            <span class="text-danger">*</span>
                         </label>
                         <input id="booking-ido" 
-							   class="form-control" 
-							   name="ido" 
-							   type="time"
-                               required 
-							   ng-model="model.ido">
+                               class="form-control" 
+                               name="ido" 
+                               type="time"
+                               required ng-model="model.ido">
                     </div>
+
+                    <!-- Tooltip az idő mezőhöz -->
                     <div class="col-1 d-flex align-items-center justify-content-start ps-1">
                         <span data-bs-toggle="tooltip"
-                              data-bs-custom-class="custom-tooltip"
-                              data-bs-html="true"
                               data-bs-title="&lt;p class='my-1'>Az idő mező kitöltése kötelező!&lt;/p>">
                             <i class="fa-solid fa-circle-info text-primary ms-2"></i>
                         </span>
                     </div>
 
-                    <!-- Vendégek száma és megjegyzések -->
+                    <!-- Vendégek száma -->
                     <div class="col-11">
-                        <label for="booking-vendegek" class="form-label">
-                            {{translations.guests}} <span class="text-danger">*</span>
+                        <label for="booking-vendegek" 
+                               class="form-label">
+                            {{translations.guests}} 
+                            <span class="text-danger">*</span>
                         </label>
                         <input id="booking-vendegek" 
                                class="form-control" 
@@ -171,25 +171,27 @@
                                min="0" 
                                max="20" 
                                required 
-                               ng-init="model.vendegek=0" 
+                               ng-init="model.vendegek=0"
                                ng-model="model.vendegek">
                         <div class="form-text">{{translations.help_patrons}}</div>
                     </div>
+
+                    <!-- Vendégek számához visszajelzés és segítség -->
                     <div class="col-1 d-flex align-items-center justify-content-start ps-1">
                         <span class="fw-bolder text-success"
                               ng-class="{'invisible': bookingForm.vendegek.$invalid}">&check;</span>
                         <span data-bs-toggle="tooltip"
-                              data-bs-custom-class="custom-tooltip"
-                              data-bs-html="true"
                               data-bs-title="&lt;p class='my-1'>A vendégek számának 0 és 20 között kell lennie!&lt;/p>">
                             <i class="fa-solid fa-circle-info text-primary ms-2"></i>
                         </span>
                     </div>
 
-                    <!-- Órák száma-->
+                    <!-- Foglalási időtartam -->
                     <div class="col-11">
-                        <label for="booking-orak" class="form-label">
-                            Hány órát tervez maradni <span class="text-danger">*</span>
+                        <label for="booking-orak" 
+                               class="form-label">
+                            Hány órát tervez maradni 
+                            <span class="text-danger">*</span>
                         </label>
                         <input id="booking-orak" 
                                class="form-control" 
@@ -198,60 +200,54 @@
                                min="1" 
                                max="8" 
                                required 
-                               ng-init="model.orak=1" 
+                               ng-init="model.orak=1"
                                ng-model="model.vendegek">
                         <div class="form-text">Az órák számának 1 és 8 között kell lennie!</div>
                     </div>
+
+                    <!-- Tooltip a foglalási időhöz -->
                     <div class="col-1 d-flex align-items-center justify-content-start ps-1">
                         <span class="fw-bolder text-success"
                               ng-class="{'invisible': bookingForm.orak.$invalid}">&check;</span>
                         <span data-bs-toggle="tooltip"
-                              data-bs-custom-class="custom-tooltip"
-                              data-bs-html="true"
                               data-bs-title="&lt;p class='my-1'>Az órák számának 1 és 8 között kell lennie!&lt;/p>">
                             <i class="fa-solid fa-circle-info text-primary ms-2"></i>
                         </span>
                     </div>
 
-                    <!-- Asztal igény mező -->
-					<div class="col-11">
-						<label for="contact-uzenet" 
-							   class="form-label">
-							Asztal igényléshez üzenet
-						</label>
-						<textarea id="contact-uzenet" 
-								  class="form-control" 
-								  name="igeny" 
-								  type="text"
-							  	  rows="3" 
-								  placeholder="..." 
-								  spellcheck="false" 
-								  autocomplete="off" 
-							  	  maxlength="100" 
-								  ng-init="model.igeny=null" 
-								  ng-model="model.igeny">
-						</textarea>
-					</div>
-                    
-                    
+                    <!-- Extra megjegyzés / igény -->
+                    <div class="col-11">
+                        <label for="contact-uzenet" class="form-label">
+                            Asztal igényléshez üzenet
+                        </label>
+                        <textarea id="contact-uzenet" 
+                                  class="form-control" 
+                                  name="igeny"
+                                  rows="3" 
+                                  maxlength="100" 
+                                  placeholder="..."
+                                  ng-model="model.igeny">
+                        </textarea>
+                    </div>
 
-                    <!-- Gombok -->
+                    <!-- Foglalás és Mégse gombok -->
                     <div class="row my-3 justify-content-center">
                         <hr>
                         <div class="w-auto ms-auto">
                             <button class="btn btn-outline-warning btn-lg w-auto me-3 text-uppercase" 
-									type="button" 
-                                    ng-disabled="bookingForm.$invalid" 
-									ng-click="methods.booking()">
-									{{translations.booking}}
-							</button>
+                                    type="button" 
+                                    ng-disabled="bookingForm.$invalid"
+                                    ng-click="methods.booking()">
+                                {{translations.booking}}
+                            </button>
                             <button class="btn btn-outline-secondary btn-lg w-auto me-3 text-uppercase" 
-									type="button" 
+                                    type="button" 
                                     ng-click="methods.cancel()">
-									{{translations.cancel}}
-							</button>
+                                {{translations.cancel}}
+                            </button>
                         </div>
                     </div>
+
                 </div>
             </form>
         </div>
