@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Már 21. 09:30
+-- Létrehozás ideje: 2025. Ápr 04. 13:15
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.1.17
 
@@ -37,7 +37,6 @@ CREATE TABLE `asztalfoglalasok` (
   `ido` time NOT NULL,
   `orak` tinyint(4) NOT NULL,
   `vendegek` tinyint(4) NOT NULL,
-  `megjegyzes` text NOT NULL,
   `igeny` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -45,14 +44,14 @@ CREATE TABLE `asztalfoglalasok` (
 -- A tábla adatainak kiíratása `asztalfoglalasok`
 --
 
-INSERT INTO `asztalfoglalasok` (`foglalasID`, `nev`, `email`, `orszagkod`, `telszam`, `datum`, `ido`, `orak`, `vendegek`, `megjegyzes`, `igeny`) VALUES
-(1, 'Nagy Raul', 'nagyraul@gmail.com', '', '+36566575675', '2024-11-21', '09:00:00', 2, 2, 'megjegyzés', 'nincs'),
-(2, 'Rútka Pál', 'rutkapal@gmail.com', '', '+36209399676', '2025-02-19', '10:30:00', 1, 0, 'megyjegzés', 'nincs'),
-(3, 'Luc Feri', 'balraamasodikajto@gmail.com', '', '+36209399676', '2025-02-26', '11:20:00', 2, 3, 'megjegyzés', 'nincs'),
-(4, 'Kolom Pál', 'kolompal@gmail.com', '', '+36209399676', '2025-03-12', '14:06:00', 4, 6, 'megjegyzés', 'igény'),
-(5, 'Miklós Róbert', 'mikrobi@gmail.com', '', '+36209399676', '2025-02-11', '16:00:00', 4, 9, 'fléksdkfsdléf', 'fkdlfklséfl'),
-(6, 'Kovács Péter', 'kovacs.peter@gmail.com', '36', '301234567', '2025-02-20', '17:00:00', 9, 4, 'a', 'a'),
-(7, 'Nagy Raul', 'raul@gmail.com', '36', '8659864', '2025-07-30', '19:35:00', 10, 9, 'asd', 'asd');
+INSERT INTO `asztalfoglalasok` (`foglalasID`, `nev`, `email`, `orszagkod`, `telszam`, `datum`, `ido`, `orak`, `vendegek`, `igeny`) VALUES
+(1, 'Nagy Raul', 'nagyraul@gmail.com', '36', '566575675', '2024-11-21', '09:00:00', 2, 2, 'nincs'),
+(2, 'Rútka Pál', 'rutkapal@gmail.com', '36', '209399676', '2025-02-19', '10:30:00', 1, 0, 'nincs'),
+(3, 'Luc Feri', 'balraamasodikajto@gmail.com', '36', '209399676', '2025-02-26', '11:20:00', 2, 3, 'nincs'),
+(4, 'Kolom Pál', 'kolompal@gmail.com', '36', '209399676', '2025-03-12', '14:06:00', 4, 6, 'igény'),
+(5, 'Miklós Róbert', 'mikrobi@gmail.com', '36', '209399676', '2025-02-11', '16:00:00', 4, 9, 'fkdlfklséfl'),
+(6, 'Kovács Péter', 'kovacs.peter@gmail.com', '36', '301234567', '2025-02-20', '17:00:00', 9, 4, 'a'),
+(7, 'Nagy Raul', 'raul@gmail.com', '36', '8659864', '2025-07-30', '19:35:00', 10, 9, 'asd');
 
 -- --------------------------------------------------------
 
