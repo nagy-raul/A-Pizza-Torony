@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-// Include environment
+// Környezet betöltése
 require_once("../../common/php/environment.php");
 
-// Get arguments
+// Paraméterek lekérése
 $args = Util::getArgs();
 
-// Set SQL command
+// SQL lekérdezés beállítása
 $query ="SELECT `felhasznaloID` AS `id`, 
                 `nev`           AS `name`, 
                 `email`         AS `email`, 
@@ -18,22 +18,22 @@ $query ="SELECT `felhasznaloID` AS `id`,
          WHERE  `felhasznaloID` = :id
 	     LIMIT   1";
 
-// Connect to MySQL server
+// Kapcsolódás MySQL szerverhez
 $db = new Database();
 
-// Execute SQL command
+// SQL lekérdezés végrehajtása
 $result = $db->execute($query, $args);
 
-// Close connection
+// Kapcsolat lezárása
 $db = null;
 
-// Check result
+// Eredmény ellenőrzése
 if (is_null($result)){
     Util::setError("A felhasználó nem létezik!"); 
 }
 
-// Simplifying the result
+// Az eredmény egyszerűsítése
 $result = $result[0];
 
-// Set response
+// Válasz beállítása
 Util::setResponse($result);

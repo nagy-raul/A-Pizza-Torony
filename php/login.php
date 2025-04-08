@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-// Include environment
+// Környezet betöltése
 require_once("../../common/php/environment.php");
 
-// Get arguments
+// Argumentumok lekérése
 $args = Util::getArgs();
 
-// Set SQL command
+// SQL parancs beállítása
 $query =  "SELECT `felhasznaloID`, 
 				  `nev`, 
 				  `email`, 
@@ -19,28 +19,28 @@ $query =  "SELECT `felhasznaloID`,
 		  	WHERE `email` = ?
 		    LIMIT 1";
 
-// Connect to MySQL server
+// Csatlakozás MySQL szerverhez
 $db = new Database();
 
-// Execute SQL command
+// SQL parancs végrehajtása
 $result = $db->execute($query, array($args['email']));
 
-// Close connection
+// Kapcsolat lezárása
 $db = null;
 
-// Check result
+// Eredmény ellenőrzése
 if (is_null($result))
 	Util::setError("A felhasználó nem létezik ezen az e-mail címen!");
 
-// Simplifying the result
+// Eredmény egyszerűsítése
 $result = $result[0];
 
-// Check password
+// Jelszó ellenőrzése
 if ($result['jelszo'] !== $args['password'])
 	Util::setError("Helytelen jelszó!");
 
-// Remove password property
+// Jelszó tulajdonság eltávolítása
 unset($result['jelszo']);
 
-// Ser response
+// Válasz küldése
 Util::setResponse($result);

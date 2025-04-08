@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-// Set arguments
+// Állítsd be az argumentumokat
 $_POST['data'] = '{
                     "key": "value",
                     "key2": "value2",
@@ -11,5 +11,5 @@ $_POST['data'] = '{
                     "key6": "value6"
                   }';
 
-// Include php file to debug
+// Töltsd be a php fájlt a hibakereséshez
 require_once('./booking.php');
