@@ -168,10 +168,10 @@
                                class="form-control" 
                                name="vendegek" 
                                type="number"
-                               min="0" 
+                               min="1" 
                                max="20" 
                                required 
-                               ng-init="model.vendegek=0"
+                               ng-init="model.vendegek=1" 
                                ng-model="model.vendegek">
                         <div class="form-text">{{translations.help_patrons}}</div>
                     </div>
@@ -181,6 +181,8 @@
                         <span class="fw-bolder text-success"
                               ng-class="{'invisible': bookingForm.vendegek.$invalid}">&check;</span>
                         <span data-bs-toggle="tooltip"
+                              data-bs-custom-class="custom-tooltip"
+                              data-bs-html="true"
                               data-bs-title="&lt;p class='my-1'>A vendégek számának 0 és 20 között kell lennie!&lt;/p>">
                             <i class="fa-solid fa-circle-info text-primary ms-2"></i>
                         </span>
@@ -200,7 +202,7 @@
                                min="1" 
                                max="8" 
                                required 
-                               ng-init="model.orak=1"
+                               ng-init="model.orak=1" 
                                ng-model="model.vendegek">
                         <div class="form-text">Az órák számának 1 és 8 között kell lennie!</div>
                     </div>
