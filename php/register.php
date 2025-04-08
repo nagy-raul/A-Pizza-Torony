@@ -1,29 +1,29 @@
 <?php
 declare(strict_types=1);
 
-// Include environment
+// Környezet betöltése
 require_once("../../common/php/environment.php");
 
-// Get arguments
+// Argumentumok lekérése
 $args = Util::getArgs();
 
-// Set SQL command
+// SQL parancs beállítása
 $query = "SELECT 	`felhasznaloID`
 		  FROM `felhasznalok` 
 		  WHERE `email` = ?
 		  LIMIT 1";
 
-// Connect to MySQL server
+// Kapcsolódás a MySQL szerverhez
 $db = new Database();
 
-// Execute SQL command
+// SQL parancs végrehajtása
 $result = $db->execute($query, array($args['email']));
 
-// Check email exist
+// Ellenőrizze, hogy létezik-e már felhasználó e-mail címmel
 if (!is_null($result))
 	Util::setError("Felhasználó már létezik ezen az e-mail címen!");
 
-// Set SQL command
+// SQL parancs beállítása
 $query = "INSERT INTO `felhasznalok` 
 					 (`nev`, 
 					  `email`, 
@@ -38,11 +38,11 @@ $query = "INSERT INTO `felhasznalok`
 					   :address, 
 					   :password);";
 
-// Execute SQL command
+// SQL parancs végrehajtása
 $result = $db->execute($query, $args);
 
-// Close connection
+// Kapcsolat lezárása
 $db = null;
 
-// Ser response
+// Válasz beállítása
 Util::setResponse($result);

@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-// Include environment
+// Környezet betöltése
 require_once("../../common/php/environment.php");
 
-// Get arguments
+// Argumentumok lekérése
 $args = Util::getArgs();
 
-// Connect to MySQL server
+// Kapcsolódás a MySQL szerverhez
 $db = new Database();
 
-// Set SQL command
+// SQL parancs beállítása
 $query = "INSERT INTO `asztalfoglalasok` (`nev`, 
                                           `email`, 
                                           `orszagkod`, 
@@ -30,11 +30,11 @@ $query = "INSERT INTO `asztalfoglalasok` (`nev`,
                   :vendegek, 
                   :igeny)";
 
-// Execute SQL command
+// SQL parancs végrehajtása
 $result = $db->execute($query, $args);
 
-// Close connection
+// Kapcsolat bezárása
 $db = null;
 
-// Set response
+// Válasz beállítása
 Util::setResponse($result);

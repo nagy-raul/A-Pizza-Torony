@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-// Include environment
+// Környezet betöltése
 require_once("../../common/php/environment.php");
 
-// Get arguments
+// Paraméterek lekérése
 $args = Util::getArgs();
 
-// Connect to MySQL server
+// Csatlakozás MySQL szerverhez
 $db = new Database();
 
-// Set SQL command
+// SQL parancs beállítása
 $query  = "UPDATE `felhasznalok` 
            SET `nev`= :name,
                `email`= :email,
@@ -19,11 +19,11 @@ $query  = "UPDATE `felhasznalok`
                `lakcim`= :address
          WHERE `felhasznaloID` = :id;";
 
-// Execute SQL command
+// SQL parancs végrehajtása
 $result = $db->execute($query, $args);
 
-// Close connection
+// Csatlakozás lezárása
 $db = null;
 
-// Ser response
+// Válasz beállítása
 Util::setResponse($result);
