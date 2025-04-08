@@ -124,7 +124,7 @@
 						
 						<!-- Bankkártya adatok, ha PayPal-t választanak -->
 						<div class="row gy-3" 
-							 ng-show="paymentMethod == 'paypal' || paymentMethod == 'credit-card'">
+						     ng-if="paymentMethod === 'credit-card'">
 							<!-- Név a kártyán -->
 							<div class="col-md-6">
 								<label for="cc-name" 
