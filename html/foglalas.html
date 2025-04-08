@@ -8,6 +8,7 @@
 <div class="position-relative rotateCarouselRightIn my-5"
      style="font-family: 'ABeeZee'; src: url(../css/ABeeZee-Regular.ttf);">
     <div class="row mt-5 justify-content-center">
+        <!-- Formát tartalmazó doboz -->
         <div class="text-warning border-5 border-warning shadow-bottom-end col-11 col-md-10 col-lg-9 col-xl-8 col-xxl-7 d-flex flex-column"
              style="border-style: double; background-color: #2B2B2B; min-height: 715px;">
             
@@ -74,6 +75,8 @@
                         <span class="fw-bolder text-success"
                               ng-class="{'invisible': bookingForm.email.$invalid}">&check;</span>
                         <span data-bs-toggle="tooltip" 
+                              data-bs-custom-class="custom-tooltip"
+                              data-bs-html="true"
                               data-bs-title="&lt;p class='my-1'>Az e-mail cím ellenőrzése szükséges!&lt;/p>">
                             <i class="fa-solid fa-circle-info text-primary ms-2"></i>
                         </span>
@@ -106,6 +109,8 @@
                     <!-- Telefonszám formátum segítő tooltip -->
                     <div class="col-1 d-flex align-items-center justify-content-start ps-1">
                         <span data-bs-toggle="tooltip"
+                              data-bs-custom-class="custom-tooltip"
+                              data-bs-html="true"
                               data-bs-title="&lt;p class='my-1'>Az országkód csak számokat tartalmazhat...&lt;/p>">
                             <i class="fa-solid fa-circle-info text-primary ms-2"></i>
                         </span>
@@ -130,6 +135,8 @@
                     <!-- Tooltip a dátum mezőhöz -->
                     <div class="col-1 d-flex align-items-center justify-content-start ps-1">
                         <span data-bs-toggle="tooltip"
+                              data-bs-custom-class="custom-tooltip"
+                              data-bs-html="true"
                               data-bs-title="&lt;p class='my-1'>A dátum mező kitöltése kötelező!&lt;/p>">
                             <i class="fa-solid fa-circle-info text-primary ms-2"></i>
                         </span>
@@ -152,6 +159,8 @@
                     <!-- Tooltip az idő mezőhöz -->
                     <div class="col-1 d-flex align-items-center justify-content-start ps-1">
                         <span data-bs-toggle="tooltip"
+                              data-bs-custom-class="custom-tooltip"
+                              data-bs-html="true"
                               data-bs-title="&lt;p class='my-1'>Az idő mező kitöltése kötelező!&lt;/p>">
                             <i class="fa-solid fa-circle-info text-primary ms-2"></i>
                         </span>
@@ -212,6 +221,8 @@
                         <span class="fw-bolder text-success"
                               ng-class="{'invisible': bookingForm.orak.$invalid}">&check;</span>
                         <span data-bs-toggle="tooltip"
+                              data-bs-custom-class="custom-tooltip"
+                              data-bs-html="true"
                               data-bs-title="&lt;p class='my-1'>Az órák számának 1 és 8 között kell lennie!&lt;/p>">
                             <i class="fa-solid fa-circle-info text-primary ms-2"></i>
                         </span>

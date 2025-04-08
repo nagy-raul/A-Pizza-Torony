@@ -24,9 +24,9 @@
 
 			<!-- Űrlap -->
 			<form name="contactForm" 
-				  class="needs-validation" 
+				  class="needs-validation d-flex flex-column justify-content-between" 
 				  novalidate>
-				<div class="row gy-4 p-5">
+				<div class="row gy-5 p-5 flex-grow-1">
 					
 					<!-- Név mező -->
 					<div class="col-11">
@@ -58,7 +58,7 @@
 					</div>
 
 					<!-- Email mező -->
-					<div class="col-12 col-md-6">
+					<div class="col-11 col-md-5">
 						<label for="contact-email" 
 							   class="form-label">
 							{{translations.email}} 
@@ -71,7 +71,7 @@
                                 <i class="fa-solid fa-envelope"></i>
                             </span>
 							<input id="contact-email" 
-								   class="form-control me-3" 
+								   class="form-control" 
 								   name="email" 
 								   type="text"
 								   placeholder="{{translations.example_email}}" 
@@ -85,20 +85,24 @@
 							 <span class="fw-bolder text-success"
 								   ng-class="{'invisible': contactForm.email.$invalid}">&check;
 							</span>
-							<div class="align-items-center">
-								<span data-bs-toggle="tooltip"
-									  data-bs-custom-class="custom-tooltip"
-									  data-bs-html="true"
-									  data-bs-title="&lt;p class='my-1'>Az e-mail cím ellenőrzése szükséges!!&lt;/p>">
-									<i class="fa-solid fa-circle-info text-primary ms-2"></i>
-								</span>
-							</div>
 						</div>
+					</div>
+
+					<!-- Email megerősítés visszajelzés -->
+					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
+						<span class="fw-bolder text-success"
+							  ng-class="{'invisible': contactForm.email.$invalid}">&check;</span>
+						<span data-bs-toggle="tooltip" 
+							  data-bs-custom-class="custom-tooltip"
+							  data-bs-html="true"
+							  data-bs-title="&lt;p class='my-1'>Az e-mail cím ellenőrzése szükséges!&lt;/p>">
+							<i class="fa-solid fa-circle-info text-primary ms-2"></i>
+						</span>
 					</div>
 
 
 					<!-- Telefonszám mező -->
-					<div class="col-12 col-md-6">
+					<div class="col-11 col-md-5">
 						<label for="contact-phone" 
 							   class="form-label">
 							<i class="fa-solid fa-mobile-screen"></i>
@@ -113,8 +117,7 @@
 								   class="form-control" 
 								   maxlength="10"
 								   ng-init="model.countryCode=null" 
-								   ng-model="model.countryCode"
-								   style="max-width:100px;">
+								   ng-model="model.countryCode">
 							<input id="contact-phone" 
 								   name="phone" 
 								   type="tel"
@@ -124,16 +127,17 @@
 								   ng-init="model.phone=null" 
 								   ng-model="model.phone"
 								   ng-pattern="/^(?!(0))[0-9]{7,10}$/">
-							<div class="align-items-center">
-								<span data-bs-toggle="tooltip"
-									  data-bs-custom-class="custom-tooltip"
-									  data-bs-html="true"
-									  data-bs-title="&lt;p class='my-1'> Az országkód csak számokat tartalmazhat, és 1-4 karakter hosszú lehet.
-													A telefonszámnak 7-10 számjegyből kell állnia, és nem kezdődhet 0-val.&lt;/p>">
-									<i class="fa-solid fa-circle-info text-primary ms-2"></i>
-								</span>
-							</div>
 						</div>
+					</div>
+
+					<div class="col-1 d-flex align-items-center justify-content-start ps-1">
+						<span data-bs-toggle="tooltip"
+							  data-bs-custom-class="custom-tooltip"
+							  data-bs-html="true"
+							  data-bs-title="&lt;p class='my-1'> Az országkód csak számokat tartalmazhat, és 1-4 karakter hosszú lehet.
+											A telefonszámnak 7-10 számjegyből kell állnia, és nem kezdődhet 0-val.&lt;/p>">
+							<i class="fa-solid fa-circle-info text-primary ms-2"></i>
+						</span>
 					</div>
 
 					<!-- Üzenet mező -->
