@@ -52,7 +52,12 @@
 					</h4>
 					<!-- A rendelési űrlap -->
 					<form name="orderForm" 
-						  ng-submit="submitOrder()">
+						  ng-submit="submitOrder()"
+						  ng-init="paymentMethods = [
+								{ id: 'cash', label: translations.cash, value: 'cash' },
+								{ id: 'credit-card', label: translations.credit_card, value: 'credit-card' },
+								{ id: 'paypal', label: 'Paypal', value: 'paypal' }
+						 ]">
 						<div class="row g-3">
 							<!-- Név mező -->
 							<div class="col-12">
@@ -117,9 +122,9 @@
 							</div>
 						</div>
 						
-						<!-- Bankkártya adatok, ha nem PayPal-t választanak -->
+						<!-- Bankkártya adatok, ha PayPal-t választanak -->
 						<div class="row gy-3" 
-							 ng-show="paymentMethod !== 'paypal'">
+							 ng-show="paymentMethod == 'paypal' || paymentMethod == 'credit-card'">
 							<!-- Név a kártyán -->
 							<div class="col-md-6">
 								<label for="cc-name" 

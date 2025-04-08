@@ -122,5 +122,7 @@
   "booking": "foglalás",
   "code": "Kód",
   "example_email": "te@példa.com",
-  "teli": "Tel"
+  "teli": "Tel",
+  "cash": "Készpénz",
+  "credit_card": "Bankkártya"
 }

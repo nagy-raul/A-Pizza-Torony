@@ -125,5 +125,7 @@
   "friday": "Frei",
   "wednesday": "Mitt",
   "saturday": "Sam",
-  "teli": "Tel"
+  "teli": "Tel",
+  "cash": "Bargeld",
+  "credit_card": "Kreditkarte"
 }
