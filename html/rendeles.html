@@ -51,6 +51,7 @@
 						{{translations.billing_add}}
 					</h4>
 					<!-- A rendelési űrlap -->
+					<!--
 					<form name="orderForm" 
 						  ng-submit="submitOrder()"
 						  ng-init="paymentMethods = [
@@ -58,17 +59,24 @@
 								{ id: 'credit-card', label: translations.credit_card, value: 'credit-card' },
 								{ id: 'paypal', label: 'Paypal', value: 'paypal' }
 						 ]">
+					-->
+					<form name="orderForm" 
+						  ng-submit="submitOrder()"
+						  ng-init="paymentMethods = [
+								{ id: 'cash', label: translations.cash, value: 'cash' },
+								{ id: 'credit-card', label: translations.credit_card, value: 'credit-card' }						 
+						  ]">
 						<div class="row g-3">
 							<!-- Név mező -->
 							<div class="col-12">
 								<label for="name" 
 									   class="form-label">
-									   {{translations.name}}
+									   {{translations.name}}<span class="text-danger">*</span>
 								</label>
 								<input type="text" 
 									   class="form-control" 
 									   id="name" 
-									   ng-model="name" 
+									   ng-model="model.name" 
 									   required>
 								</div>
 								
@@ -76,24 +84,24 @@
 								<div class="col-12">
 								<label for="email" 
 									   class="form-label">
-									   {{translations.email}} ({{translations.optional}})
+									   {{translations.email}}
 								</label>
 								<input type="email" 
 									   class="form-control" 
 									   id="email" 
-									   ng-model="email">
+									   ng-model="model.email">
 							</div>
 							
 							<!-- Kézbesítési cím mező -->
 							<div class="col-12">
 								<label for="address" 
 									   class="form-label">
-									   {{translations.delivery_add}}
+									   {{translations.delivery_add}}<span class="text-danger">*</span>
 								</label>
 								<input type="text" 
 									   class="form-control" 
 									   id="address" 
-									   ng-model="address" 
+									   ng-model="model.address" 
 									   required>
 							</div>
 						</div>
@@ -102,7 +110,7 @@
 						
 						<!-- Fizetési mód rész -->
 						<h4 class="mb-3">
-							{{translations.pay}}
+							{{translations.pay}}<span class="text-danger">*</span>
 						</h4>
 						<div class="my-3">
 							<!-- Fizetési módok kiválasztása (például PayPal, kártyás fizetés) -->
@@ -112,7 +120,7 @@
 									   name="paymentMethod" 
 									   type="radio" 
 									   class="form-check-input" 
-									   ng-model="paymentMethod" 
+									   ng-model="model.paymentMethod" 
 									   value="{{method.value}}" 
 									   required>
 								<label class="form-check-label" 
@@ -123,53 +131,109 @@
 						</div>
 						
 						<!-- Bankkártya adatok, ha PayPal-t választanak -->
-						<div class="row gy-3">
+						<div class="row gy-3"
+							 ng-show="model.paymentMethod === 'credit-card'">
+
 							<!-- Név a kártyán -->
 							<div class="col-md-6">
 								<label for="cc-name" 
 									   class="form-label">
-									   {{translations.card_name}}
+									   {{translations.card_name}}<span class="text-danger">*</span>
 								</label>
 								<input type="text" 
 									   class="form-control" 
 									   id="cc-name" 
-									   ng-model="cardName" 
+									   ng-model="model.cardName" 
 									   required>
 							</div>
 							<!-- Bankkártya szám -->
 							<div class="col-md-6">
 								<label for="cc-number" 
 									   class="form-label">
-										{{translations.card_num}}
+										{{translations.card_num}}<span class="text-danger">*</span>
 								</label>
 								<input type="text" 
 									   class="form-control" 
 									   id="cc-number" 
-									   ng-model="cardNumber" 
+									   ng-model="model.cardNumber" 
 									   required>
 							</div>
 							<!-- Lejárati dátum -->
 							<div class="col-md-3">
 								<label for="cc-expiration" 
 									   class="form-label">
-									   {{translations.card_expiration_date}}
+									   {{translations.card_expiration_date}}<span class="text-danger">*</span>
 								</label>
 								<input type="date" 
 									   class="form-control" 
 									   id="cc-expiration" 
-									   ng-model="cardExpiry" 
+									   ng-model="model.cardExpiry" 
 									   required>
 							</div>
 							<!-- CVV -->
 							<div class="col-md-3">
 								<label for="cc-cvv" 
 									   class="form-label">
-									   {{translations.cvv}}
+									   {{translations.cvv}}<span class="text-danger">*</span>
 								</label>
 								<input type="text" 
 									   class="form-control" 
 									   id="cc-cvv" 
-									   ng-model="cardCVV" 
+									   ng-model="model.cardCVV" 
+									   required>
+							</div>
+						</div>
+
+						<!-- Bankkártya adatok, ha PayPal-t választanak -->
+						<div class="row gy-3"
+							 ng-show="model.paymentMethod === 'paypal'">
+
+							<!-- Név a kártyán -->
+							<div class="col-md-6">
+								<label for="cc-name" 
+									   class="form-label">
+									   {{translations.card_name}}<span class="text-danger">*</span>
+								</label>
+								<input type="text" 
+									   class="form-control" 
+									   id="cc-name" 
+									   ng-model="model.cardName" 
+									   required>
+							</div>
+							<!-- Bankkártya szám -->
+							<div class="col-md-6">
+								<label for="cc-number" 
+									   class="form-label">
+										{{translations.card_num}}<span class="text-danger">*</span>
+								</label>
+								<input type="text" 
+									   class="form-control" 
+									   id="cc-number" 
+									   ng-model="model.cardNumber" 
+									   required>
+							</div>
+							<!-- Lejárati dátum -->
+							<div class="col-md-3">
+								<label for="cc-expiration" 
+									   class="form-label">
+									   {{translations.card_expiration_date}}<span class="text-danger">*</span>
+								</label>
+								<input type="date" 
+									   class="form-control" 
+									   id="cc-expiration" 
+									   ng-model="model.cardExpiry" 
+									   required>
+							</div>
+							<!-- CVV -->
+							<div class="col-md-3">
+								<label for="cc-cvv" 
+									   class="form-label">
+									   {{translations.cvv}}<span class="text-danger">*</span>
+								</label>
+								<input type="text" 
+									   class="form-control" 
+									   id="cc-cvv" 
+									   ng-model="model.cardCVV" 
 									   required>
 							</div>
 						</div>
