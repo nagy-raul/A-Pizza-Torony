@@ -183,60 +183,6 @@
 									   required>
 							</div>
 						</div>
-
-						<!-- Bankkártya adatok, ha PayPal-t választanak -->
-						<div class="row gy-3"
-							 ng-show="model.paymentMethod === 'paypal'">
-
-							<!-- Név a kártyán -->
-							<div class="col-md-6">
-								<label for="cc-name" 
-									   class="form-label">
-									   {{translations.card_name}}<span class="text-danger">*</span>
-								</label>
-								<input type="text" 
-									   class="form-control" 
-									   id="cc-name" 
-									   ng-model="model.cardName" 
-									   required>
-							</div>
-							<!-- Bankkártya szám -->
-							<div class="col-md-6">
-								<label for="cc-number" 
-									   class="form-label">
-										{{translations.card_num}}<span class="text-danger">*</span>
-								</label>
-								<input type="text" 
-									   class="form-control" 
-									   id="cc-number" 
-									   ng-model="model.cardNumber" 
-									   required>
-							</div>
-							<!-- Lejárati dátum -->
-							<div class="col-md-3">
-								<label for="cc-expiration" 
-									   class="form-label">
-									   {{translations.card_expiration_date}}<span class="text-danger">*</span>
-								</label>
-								<input type="date" 
-									   class="form-control" 
-									   id="cc-expiration" 
-									   ng-model="model.cardExpiry" 
-									   required>
-							</div>
-							<!-- CVV -->
-							<div class="col-md-3">
-								<label for="cc-cvv" 
-									   class="form-label">
-									   {{translations.cvv}}<span class="text-danger">*</span>
-								</label>
-								<input type="text" 
-									   class="form-control" 
-									   id="cc-cvv" 
-									   ng-model="model.cardCVV" 
-									   required>
-							</div>
-						</div>
 						
 						<hr class="my-4">
 						

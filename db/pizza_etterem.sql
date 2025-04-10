@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Ápr 04. 13:15
+-- Létrehozás ideje: 2025. Ápr 10. 13:37
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.1.17
 
@@ -161,9 +161,10 @@ INSERT INTO `pizza` (`termekID`, `termekNev`, `termekLeiras`, `termekAr`, `meret
 
 CREATE TABLE `rendelesek` (
   `rendelesID` int(11) NOT NULL,
-  `felhasznaloID` int(11) NOT NULL,
+  `nev` varchar(100) NOT NULL,
+  `email` varchar(150) NOT NULL,
   `szalcim` varchar(100) NOT NULL,
-  `fizform` varchar(100) NOT NULL,
+  `fizform` enum('készpénz','bankkártya') NOT NULL,
   `kartyaNev` varchar(100) DEFAULT NULL,
   `kartyaSzam` varchar(24) DEFAULT NULL,
   `lejarat` date DEFAULT NULL,
@@ -179,10 +180,10 @@ CREATE TABLE `rendelesek` (
 -- A tábla adatainak kiíratása `rendelesek`
 --
 
-INSERT INTO `rendelesek` (`rendelesID`, `felhasznaloID`, `szalcim`, `fizform`, `kartyaNev`, `kartyaSzam`, `lejarat`, `cvv`, `reszossz`, `szalldij`, `vegossz`, `datum`, `statusz`) VALUES
-(1, 1, 'Makó, Hagyma utca 32.', 'készpénz', NULL, NULL, NULL, NULL, 2580, 100, 2480, '2025-02-06 07:11:43', 'függőben'),
-(2, 4, '6900 Makó, Liget u. 34', 'kártya', 'CSABA SELMECZI', '2347 6534 5234 3454', '2026-02-11', 123, 2490, 150, 2670, '2025-02-06 07:11:43', 'függőben'),
-(3, 3, '6900 Makó, Kálvin u. 18', 'készpénz', NULL, NULL, NULL, NULL, 2980, 200, 2880, '2025-02-06 07:11:43', 'függőben');
+INSERT INTO `rendelesek` (`rendelesID`, `nev`, `email`, `szalcim`, `fizform`, `kartyaNev`, `kartyaSzam`, `lejarat`, `cvv`, `reszossz`, `szalldij`, `vegossz`, `datum`, `statusz`) VALUES
+(1, 'Nagy Raul', 'nagyraul@gmail.com', 'Makó, Hagyma utca 32.', 'készpénz', NULL, NULL, NULL, NULL, 2580, 100, 2480, '2025-02-06 07:11:43', 'függőben'),
+(2, 'Csaba Selmeczi', 'csabaselmeczi@gmail.com', '6900 Makó, Liget u. 34', '', 'CSABA SELMECZI', '2347 6534 5234 3454', '2026-02-11', 123, 2490, 150, 2670, '2025-02-06 07:11:43', 'függőben'),
+(3, 'Balázs Lehel', 'balazslehel@gmail.com', '6900 Makó, Kálvin u. 18', 'készpénz', NULL, NULL, NULL, NULL, 2980, 200, 2880, '2025-02-06 07:11:43', 'függőben');
 
 -- --------------------------------------------------------
 
@@ -244,7 +245,7 @@ ALTER TABLE `pizza`
 --
 ALTER TABLE `rendelesek`
   ADD PRIMARY KEY (`rendelesID`),
-  ADD KEY `felhasznaloID` (`felhasznaloID`);
+  ADD KEY `email` (`email`);
 
 --
 -- A tábla indexei `rendeles_elemei`
