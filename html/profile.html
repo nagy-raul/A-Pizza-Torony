@@ -29,29 +29,6 @@
 			<form name="profileForm" 
 				  novalidate>
 
-				<!-- Azonosító mező (nem szerkeszthető, letiltott) -->
-				<div class="row mb-3">
-					<label for="profile-id" 
-						   class="col-form-label col-md-4 text-md-end">
-						<i class="fa-solid fa-fingerprint me-1"></i>
-						<span class="text-capitalize">{{translations.code}}:</span>
-					</label>
-					<div class="col-11 col-md-7 position-relative">
-						<div class="row">
-							<div class="col-md-2">
-								<input id="profile-id"
-									   class="form-control form-control-disabled"
-									   name="id" 
-									   type="text"
-									   spellcheck="false" 
-									   autocomplete="off"
-									   ng-model="model.id"
-									   disabled>
-							</div>
-						</div>
-					</div>
-				</div>
-
 				<!-- E-mail mező (nem szerkeszthető) -->
 				<div class="row mb-3">
 					<label for="profile-email" 
