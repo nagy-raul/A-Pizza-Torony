@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Ápr 10. 13:37
+-- Létrehozás ideje: 2025. Ápr 11. 11:53
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.1.17
 
@@ -51,7 +51,7 @@ INSERT INTO `asztalfoglalasok` (`foglalasID`, `nev`, `email`, `orszagkod`, `tels
 (4, 'Kolom Pál', 'kolompal@gmail.com', '36', '209399676', '2025-03-12', '14:06:00', 4, 6, 'igény'),
 (5, 'Miklós Róbert', 'mikrobi@gmail.com', '36', '209399676', '2025-02-11', '16:00:00', 4, 9, 'fkdlfklséfl'),
 (6, 'Kovács Péter', 'kovacs.peter@gmail.com', '36', '301234567', '2025-02-20', '17:00:00', 9, 4, 'a'),
-(7, 'Nagy Raul', 'raul@gmail.com', '36', '8659864', '2025-07-30', '19:35:00', 10, 9, 'asd');
+(7, 'Balázs Lehel', 'balazslehel@gmail.com', '36', '8659864', '2025-07-30', '19:35:00', 10, 9, 'asd');
 
 -- --------------------------------------------------------
 
@@ -107,7 +107,7 @@ INSERT INTO `kapcsolat` (`kapcsolatID`, `nev`, `email`, `orszagkod`, `telszam`, 
 (1, 'Balázs Lehel', 'balazslehel@gmail.com', '36', '321312414', 'A pizzát nem kaptam meg.', 'A pizzát nem sikerült megkapnom'),
 (2, 'Németh Szilárd', 'NSzilard@gmail.com', '36', '209399676', 'Patkány van a pizzás dobozban', 'Én csak egy pizzát rendeltem, patkányt nem.'),
 (3, 'Méreg Attila', 'mattila@gmail.com', '36', '209399676', 'Hol van a pizza?', 'Már vagy egy órája várok arra az átkozott pizzára, de még mindig nincs itt!!! Mi tart ilyen sokáig!??!?! '),
-(4, 'Lel', 'te@gmail.com', '36', '4444444', 'jlkfjdklgjfdklgjfdkljgfdlkgj', 'jkglédfjglfdgjkfdgkldfjlkgjdfglkfjdklg');
+(4, 'Nagy Raul', 'nagyraul@gmail.com', '36', '4444444', 'jlkfjdklgjfdklgjfdkljgfdlkgj', 'jkglédfjglfdgjkfdgkldfjlkgjdfglkfjdklg');
 
 -- --------------------------------------------------------
 
@@ -181,7 +181,7 @@ CREATE TABLE `rendelesek` (
 --
 
 INSERT INTO `rendelesek` (`rendelesID`, `nev`, `email`, `szalcim`, `fizform`, `kartyaNev`, `kartyaSzam`, `lejarat`, `cvv`, `reszossz`, `szalldij`, `vegossz`, `datum`, `statusz`) VALUES
-(1, 'Nagy Raul', 'nagyraul@gmail.com', 'Makó, Hagyma utca 32.', 'készpénz', NULL, NULL, NULL, NULL, 2580, 100, 2480, '2025-02-06 07:11:43', 'függőben'),
+(1, 'Nagy Raul', 'nagyraul@gmail.com', '6900 Makó, Hagyma utca 32.', 'készpénz', NULL, NULL, NULL, NULL, 2580, 100, 2480, '2025-02-06 07:11:43', 'függőben'),
 (2, 'Csaba Selmeczi', 'csabaselmeczi@gmail.com', '6900 Makó, Liget u. 34', '', 'CSABA SELMECZI', '2347 6534 5234 3454', '2026-02-11', 123, 2490, 150, 2670, '2025-02-06 07:11:43', 'függőben'),
 (3, 'Balázs Lehel', 'balazslehel@gmail.com', '6900 Makó, Kálvin u. 18', 'készpénz', NULL, NULL, NULL, NULL, 2980, 200, 2880, '2025-02-06 07:11:43', 'függőben');
 

@@ -189,7 +189,8 @@
 						<!-- A rendelés gomb -->
 						<button class="w-100 btn btn-outline-warning btn-lg" 
 							    type="button"
-							    ng-click="methods.order()">
+							    ng-click="methods.order()"
+								ng-disabled="orderForm.$invalid">
 								{{translations.order}}
 						</button>
 					</form>
