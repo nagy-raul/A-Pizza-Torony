@@ -291,9 +291,17 @@
 
               $state.go('home')
 
-            } else alert("A foglalást nem sikerült elküldeni!");
+            } else alert("A foglalást nem sikerült rögzíteni!");
           })
-          .catch(e => alert(e));
+          .catch(e => 
+            {
+              console.log(e)
+
+              // Show result
+              alert("A foglalást nem sikerült rögzíteni!");
+
+            }
+          );
         },
 
         // Cancel
