@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Ápr 11. 11:53
+-- Létrehozás ideje: 2025. Ápr 16. 09:42
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.1.17
 
@@ -51,7 +51,9 @@ INSERT INTO `asztalfoglalasok` (`foglalasID`, `nev`, `email`, `orszagkod`, `tels
 (4, 'Kolom Pál', 'kolompal@gmail.com', '36', '209399676', '2025-03-12', '14:06:00', 4, 6, 'igény'),
 (5, 'Miklós Róbert', 'mikrobi@gmail.com', '36', '209399676', '2025-02-11', '16:00:00', 4, 9, 'fkdlfklséfl'),
 (6, 'Kovács Péter', 'kovacs.peter@gmail.com', '36', '301234567', '2025-02-20', '17:00:00', 9, 4, 'a'),
-(7, 'Balázs Lehel', 'balazslehel@gmail.com', '36', '8659864', '2025-07-30', '19:35:00', 10, 9, 'asd');
+(7, 'Balázs Lehel', 'balazslehel@gmail.com', '36', '8659864', '2025-07-30', '19:35:00', 10, 9, 'asd'),
+(8, 'Nagy Raul', 'nagyraul@gmail.com', '36', '6546565', '2025-04-17', '10:32:00', 3, 2, 'AAAAAAAAAAA'),
+(9, 'Nagy Raul', 'nagyraul@gmail.com', '36', '6546565', '2025-04-17', '11:36:00', 4, 3, 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
 
 -- --------------------------------------------------------
 
@@ -263,7 +265,7 @@ ALTER TABLE `rendeles_elemei`
 -- AUTO_INCREMENT a táblához `asztalfoglalasok`
 --
 ALTER TABLE `asztalfoglalasok`
-  MODIFY `foglalasID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `foglalasID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT a táblához `felhasznalok`
