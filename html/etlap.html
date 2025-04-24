@@ -63,15 +63,69 @@
 							 height="200" 
 							 class="img-fluid me-4">
 
-						<form name="form{{x.termekID}}" novalidate>
+						<form name="form{{x.termekID}}" 
+						      novalidate 
+							  ng-init="model = { meret: '24 cm', szel: 'Vékony', darabszam: 1 }">
 
 							<!-- Méretválasztás -->
 							<p class="mb-2">{{translations.pizza_size}}</p>
+
 							<!-- Radio gombok: 24 cm, 32 cm -->
+							<div class="form-check form-check-inline">
+								<input class="form-check-input border-black" 
+									   type="radio" 
+									   name="meret" 
+									   id="meret1"
+									   ng-model="model.meret"
+									   value="24 cm">
+								<label class="form-check-label" 
+									   for="meret1">
+									   24 cm
+								</label>
+							</div>
+							<div class="form-check form-check-inline mb-4">
+								<input class="form-check-input border-black" 
+									   type="radio" 
+									   name="meret" 
+									   id="meret2"
+									   ng-model="model.meret"
+									   value="32 cm" >
+								<label class="form-check-label" 
+									   for="meret2">
+									   32 cm
+								</label>
+							</div>
+
+
 
 							<!-- Szélválasztás -->
 							<p class="mb-2">{{translations.pizzaCorner_type}}</p>
+
 							<!-- Radio gombok: vékony, vastag -->
+							<div class="form-check form-check-inline">
+								<input class="form-check-input border-black" 
+									   type="radio" 
+									   name="szel" 
+									   id="vekony"
+									   ng-model="model.szel"
+									   value="Vékony">
+								<label class="form-check-label" 
+									   for="vekony">
+									   {{translations.thin}}
+								</label>
+							</div>
+							<div class="form-check form-check-inline mb-4">
+								<input class="form-check-input border-black" 
+									   type="radio" 
+									   name="szel" 
+									   id="vastag" 
+									   ng-model="model.szel"
+									   value="Vastag">
+								<label class="form-check-label" 
+									   for="vastag">
+									   {{translations.thick}}
+								</label>
+							</div>
 
 							<!-- Darabszám megadása -->
 							<label for="darabszam{{x.termekID}}" class="form-label">
@@ -80,20 +134,21 @@
 							<input type="number" 
 								   id="darabszam{{x.termekID}}" 
 								   class="form-control text-center w-50 mx-auto" 
-								   ng-model="darabszam" 
+								   ng-model="model.darabszam" 
 								   min="1" 
-								   value="1">
+								   max="99"
+								   ng-init="model.darabszam = 1">
 
 							<!-- Ár kijelzése -->
 							<p class="mb-2" ng-init="ar = x.termekAr">
-								{{translations.price}}: {{ar}} Ft
+								{{translations.price}}: {{ar * model.darabszam}} Ft
 							</p>
 
 							<!-- Rendelés (kosárba helyezés) -->
 							<hr class="my-4">
 							<button class="w-100 mb-2 btn btn-lg rounded-3 btn-danger" 
 									type="button"
-									ng-click="methods.addToCart(x.termekNev, x.termekLeiras, x.termekAr, darabszam)"
+									ng-click="methods.addToCart(x.termekNev, x.termekLeiras, x.termekAr, model.meret, model.szel, model.darabszam)"
 									data-bs-dismiss="modal">
 								{{translations.cart}}
 							</button>

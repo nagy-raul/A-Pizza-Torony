@@ -213,11 +213,14 @@
 
         // Function to add items to cart
         $scope.methods = {
-            addToCart: (name, description, price) => {
+            addToCart: (name, description, price, size, crust, db) => {
                 $rootScope.cart.push({
                     name: name,
                     description: description,
-                    price: price
+                    price: price * db,
+                    size: size,
+                    crust: crust,
+                    db: db
                 });
                 console.log("Cart updated:", $rootScope.cart);
                 alert(`${name} hozzáadva a kosárhoz!`);
