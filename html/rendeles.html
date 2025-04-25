@@ -27,11 +27,10 @@
 								ng-repeat="item in cart">
 							<div>
 								<h6 class="my-0">
-									{{item.name}} * {{item.db}}
+									{{item.name}} (item.size, item.crust) * {{item.db}}
 								</h6>
 								<small class="text-body-secondary">
-									Méret: {{item.size}}<br>
-									Szél: {{item.crust}}
+									{{item.description}}
 								</small>
 							</div>
 							<span class="text-body-secondary">
@@ -66,7 +65,8 @@
 						  ng-init="paymentMethods = [
 								{ id: 'cash', label: translations.cash, value: 'cash' },
 								{ id: 'credit-card', label: translations.credit_card, value: 'credit-card' }						 
-						  ]">
+						  ];
+						  model = { paymentMethod: 'cash' }">
 						<div class="row g-3">
 							<!-- Név mező -->
 							<div class="col-12">
