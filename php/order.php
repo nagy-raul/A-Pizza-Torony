@@ -12,7 +12,7 @@ $db = new Database();
 
 // SQL parancs beállítása
 $query = "INSERT INTO `rendelesek`(`nev`, `email`, `szalcim`, `fizform`, `kartyaNev`, `kartyaSzam`, `lejarat`, `cvv`, `vegossz`) 
-          VALUES (:name, :email, :address, :paymentMethod, :cardName, :cardNumber, :cardExpiry, :cardCVV, :osszeg";
+          VALUES (:name, :email, :address, :paymentMethod, :cardName, :cardNumber, :cardExpiry, :cardCVV, :osszeg)";
 
 // SQL parancs végrehajtása
 $result = $db->execute($query, $args);

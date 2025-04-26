@@ -3,13 +3,16 @@ declare(strict_types=1);
 
 // Állítsd be az argumentumokat
 $_POST['data'] = '{
-                    "key": "value",
-                    "key2": "value2",
-                    "key3": "value3",
-                    "key4": "value4",
-                    "key5": "value5",
-                    "key6": "value6"
+                    "name": "John Doe",
+                    "email": "john@gmail.com",
+                    "address": "123 Main St",
+                    "paymentMethod": "bankkártya",
+                    "cardName": "John Doe",
+                    "cardNumber": "1234-5678-9012-3456",
+                    "cardExpiry": "12/25",
+                    "cardCVV": "123",
+                    "osszeg": 1000
                   }';
 
 // Töltsd be a php fájlt a hibakereséshez
-require_once('./booking.php');
+require_once('./order.php');
