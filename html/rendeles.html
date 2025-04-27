@@ -66,7 +66,7 @@
 								{ id: 'cash', label: translations.cash, value: 'készpénz' },
 								{ id: 'credit-card', label: translations.credit_card, value: 'bankkártya' }						 
 						  ];
-						  model = { paymentMethod: 'cash' }">
+						  model = { paymentMethod: 'készpénz' }">
 						<div class="row g-3">
 							<!-- Név mező -->
 							<div class="col-12">
@@ -133,7 +133,7 @@
 						
 						<!-- Bankkártya adatok, ha PayPal-t választanak -->
 						<div class="row gy-3"
-							 ng-show="model.paymentMethod === 'credit-card'">
+							 ng-show="model.paymentMethod === 'bankkártya'">
 
 							<!-- Név a kártyán -->
 							<div class="col-md-6">

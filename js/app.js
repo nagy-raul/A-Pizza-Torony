@@ -442,13 +442,30 @@
             data: data
           })
           .then(response => {
+            console.log(response);
+
             if (response.affectedRows) {
-              alert("Rendelés elküldve!");
-              $state.go('home');
-              $rootScope.cart = [];
               $scope.osszeg = 0; // Reset total after order
             } else {
               alert("A rendelést nem sikerült elküldeni!");
+            }
+          })
+          .catch(e => alert(e));
+
+          http.request({
+            method: "POST",
+            url: "./php/setItems.php",
+            data: cart
+          })
+          .then(response => {
+            console.log(response);
+
+            if (response.affectedRows) {
+              alert("Rendelés sikeresen elküldve!");
+              $state.go('home');
+              $rootScope.cart = [];
+            } else {
+              alert("A termékeket nem sikerült feltölteni az adatbázisba!");
             }
           })
           .catch(e => alert(e));
