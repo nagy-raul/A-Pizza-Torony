@@ -1,24 +1,40 @@
 <?php
-declare(strict_types=1);
 
-// Környezet betöltése
-require_once("../../common/php/environment.php");
+header('Content-Type: application/json');
 
-// Argumentumok lekérése
-$args = Util::getArgs();
+// Database connection
+$servername = "localhost";
+$username = "root";
+$password = ""; // Change if necessary
+$dbname = "pizza_etterem";
 
-// Csatlakozás a MySQL szerverhez
-$db = new Database();
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-// SQL parancs beállítása
-$query = "INSERT INTO `rendelesek`(`nev`, `email`, `szalcim`, `fizform`, `kartyaNev`, `kartyaSzam`, `lejarat`, `cvv`, `vegossz`) 
-          VALUES (:name, :email, :address, :paymentMethod, :cardName, :cardNumber, :cardExpiry, :cardCVV, :osszeg)";
+// Get incoming data (JSON expected)
+$data = json_decode(file_get_contents('php://input'), true);
 
-// SQL parancs végrehajtása
-$result = $db->execute($query, $args);
+if (!isset($data['cart']) || !isset($data['rendelesID'])) {
+    die(json_encode(["status" => "error", "message" => "Missing cart or rendelesID"]));
+}
 
-// Kapcsolat lezárása
-$db = null;
+$cart = $data['cart'];
+$rendelesID = intval($data['rendelesID']);
 
-// Válasz beállítása
-Util::setResponse($result);
+// Insert each item into database
+foreach ($cart as $item) {
+
+    $termekID = isset($item['termekID']) ? intval($item['termekID']) : 0; // Assume it is passed
+    $darab = intval($item['db']);
+    $price = intval($item['price']);
+
+    $stmt = $conn->prepare("INSERT INTO rendeles_elemei (rendelesID, termekID, darab, termekAr) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("iiii", $rendelesID, $termekID, $darab, $item['price']);
+
+    $stmt->execute();
+    $stmt->close();
+}
+
+echo json_encode(["status" => "success", "message" => "Cart uploaded successfully."]);
+
+$conn->close();
+?>
