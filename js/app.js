@@ -446,6 +446,7 @@
 
             if (response.affectedRows) {
               $scope.osszeg = 0; // Reset total after order
+              $scope.rendelesID = response.lastInsertId;
             } else {
               alert("A rendelést nem sikerült elküldeni!");
             }
@@ -455,7 +456,10 @@
           http.request({
             method: "POST",
             url: "./php/setItems.php",
-            data: cart
+            data: {
+              items: $rootScope.cart,
+              orderID: $scope.rendelesID
+            }
           })
           .then(response => {
             console.log(response);
