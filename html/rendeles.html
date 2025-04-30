@@ -81,7 +81,8 @@
 									   maxlength="100" 
 									   spellcheck="false" 
 									   autocomplete="off" 
-									   required>
+									   required
+									   ng-init="model.name = null">
 								</div>
 								
 								<!-- Email cím (opcionális) mező -->
@@ -96,7 +97,8 @@
 									   ng-model="model.email"
 									   maxlength="50"
 									   spellcheck="false" 
-									   autocomplete="off">
+									   autocomplete="off"
+									   ng-init="model.email = null">
 							</div>
 							
 							<!-- Kézbesítési cím mező -->
@@ -112,7 +114,8 @@
 									   maxlength="100"
 									   spellcheck="false" 
 									   autocomplete="off" 
-									   required>
+									   required
+									   ng-init="model.address = null">
 							</div>
 						</div>
 						
@@ -154,7 +157,9 @@
 									   class="form-control" 
 									   id="cc-name" 
 									   ng-model="model.cardName" 
-									   ng-required="model.paymentMethod === 'bankkártya'">
+									   ng-required="model.paymentMethod === 'bankkártya'"
+									   ng-init="model.cardName = null"
+									   maxlength="100">
 							</div>
 							<!-- Bankkártya szám -->
 							<div class="col-md-6">
@@ -166,7 +171,10 @@
 									   class="form-control" 
 									   id="cc-number" 
 									   ng-model="model.cardNumber" 
-									   ng-required="model.paymentMethod === 'bankkártya'">
+									   ng-required="model.paymentMethod === 'bankkártya'"
+									   ng-init="model.cardNumber = null"
+									   maxlength="16">
+
 							</div>
 							<!-- Lejárati dátum -->
 							<div class="col-md-3">
@@ -178,7 +186,9 @@
 									   class="form-control" 
 									   id="cc-expiration" 
 									   ng-model="model.cardExpiry" 
-									   ng-required="model.paymentMethod === 'bankkártya'">
+									   ng-required="model.paymentMethod === 'bankkártya'"
+									   ng-init="model.cardExpiry = null">
+
 							</div>
 							<!-- CVV -->
 							<div class="col-md-3">
@@ -190,7 +200,9 @@
 									   class="form-control" 
 									   id="cc-cvv" 
 									   ng-model="model.cardCVV" 
-									   ng-required="model.paymentMethod === 'bankkártya'">
+									   ng-required="model.paymentMethod === 'bankkártya'"
+									   ng-init="model.cardCVV = null"
+									   maxlength="3">
 							</div>
 						</div>
 						

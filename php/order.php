@@ -11,7 +11,7 @@ $args = Util::getArgs();
 $db = new Database();
 
 $query = "INSERT INTO `rendelesek`(`nev`, `email`, `szalcim`, `fizform`, `kartyaNev`, `kartyaSzam`, `lejarat`, `cvv`, `vegossz`) 
-          VALUES" . "('" . $args['name'] . "', '" . $args['email'] . "', '" . $args['address'] . "', '" . $args['paymentMethod'] . "', '" . $args['cardName'] . "', '" . $args['cardNumber'] . "', '" . $args['cardExpiry'] . "', '" . $args['cardCVV'] . "', " . $args['osszeg'] . ");";
+          VALUES ('" . $args['name'] . "', '" . $args['email'] . "', '" . $args['address'] . "', '" . $args['paymentMethod'] . "', '" . $args['cardName'] . "', '" . $args['cardNumber'] . "', '" . $args['cardExpiry'] . "', '" . $args['cardCVV'] . "', " . $args['osszeg'] . ");";
 
 // SQL parancs végrehajtása
 $result = $db->execute($query);

@@ -213,8 +213,9 @@
 
         // Function to add items to cart
         $scope.methods = {
-            addToCart: (name, description, price, size, crust, db) => {
+            addToCart: (id, name, description, price, size, crust, db) => {
                 $rootScope.cart.push({
+                    id: id,
                     name: name,
                     description: description,
                     price: price * db,
