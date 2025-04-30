@@ -65,7 +65,7 @@
 
 						<form name="form{{x.termekID}}" 
 						      novalidate 
-							  ng-init="model = { meret: '24 cm', szel: 'Vékony', darabszam: 1 }">
+							  ng-init="model = { meret: '24 cm', szel: 'vékony', darabszam: 1 }">
 
 							<!-- Méretválasztás -->
 							<p class="mb-2">{{translations.pizza_size}}</p>
@@ -108,7 +108,7 @@
 									   name="szel" 
 									   id="vekony"
 									   ng-model="model.szel"
-									   value="Vékony">
+									   value="vékony">
 								<label class="form-check-label" 
 									   for="vekony">
 									   {{translations.thin}}
@@ -120,7 +120,7 @@
 									   name="szel" 
 									   id="vastag" 
 									   ng-model="model.szel"
-									   value="Vastag">
+									   value="vastag">
 								<label class="form-check-label" 
 									   for="vastag">
 									   {{translations.thick}}

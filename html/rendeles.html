@@ -27,10 +27,10 @@
 								ng-repeat="item in cart">
 							<div>
 								<h6 class="my-0">
-									{{item.name}} ({{item.size}}, {{item.crust}}) * {{item.db}}
+									{{item.name}} <span class="text-danger">* {{item.db}}</span>
 								</h6>
 								<small class="text-body-secondary">
-									{{item.description}}
+									{{item.size}}, {{item.crust}}
 								</small>
 							</div>
 							<span class="text-body-secondary">
@@ -78,6 +78,9 @@
 									   class="form-control" 
 									   id="name" 
 									   ng-model="model.name" 
+									   maxlength="100" 
+									   spellcheck="false" 
+									   autocomplete="off" 
 									   required>
 								</div>
 								
@@ -87,10 +90,13 @@
 									   class="form-label">
 									   {{translations.email}}
 								</label>
-								<input type="email" 
+								<input type="text" 
 									   class="form-control" 
 									   id="email" 
-									   ng-model="model.email">
+									   ng-model="model.email"
+									   maxlength="50"
+									   spellcheck="false" 
+									   autocomplete="off">
 							</div>
 							
 							<!-- Kézbesítési cím mező -->
@@ -103,6 +109,9 @@
 									   class="form-control" 
 									   id="address" 
 									   ng-model="model.address" 
+									   maxlength="100"
+									   spellcheck="false" 
+									   autocomplete="off" 
 									   required>
 							</div>
 						</div>
@@ -145,7 +154,7 @@
 									   class="form-control" 
 									   id="cc-name" 
 									   ng-model="model.cardName" 
-									   required>
+									   ng-required="model.paymentMethod === 'bankkártya'">
 							</div>
 							<!-- Bankkártya szám -->
 							<div class="col-md-6">
@@ -157,7 +166,7 @@
 									   class="form-control" 
 									   id="cc-number" 
 									   ng-model="model.cardNumber" 
-									   required>
+									   ng-required="model.paymentMethod === 'bankkártya'">
 							</div>
 							<!-- Lejárati dátum -->
 							<div class="col-md-3">
@@ -169,7 +178,7 @@
 									   class="form-control" 
 									   id="cc-expiration" 
 									   ng-model="model.cardExpiry" 
-									   required>
+									   ng-required="model.paymentMethod === 'bankkártya'">
 							</div>
 							<!-- CVV -->
 							<div class="col-md-3">
@@ -181,7 +190,7 @@
 									   class="form-control" 
 									   id="cc-cvv" 
 									   ng-model="model.cardCVV" 
-									   required>
+									   ng-required="model.paymentMethod === 'bankkártya'">
 							</div>
 						</div>
 						

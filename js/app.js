@@ -391,12 +391,13 @@
   ])
 
   .controller('rendelesController', [
+    '$rootScope',
     '$scope',
     '$state',
     'form',
     'util',
     'http',
-    function($scope, $state, form, util, http) {
+    function($rootScope, $scope, $state, form, util, http) {
   
       // Initialize the total amount variable
       $scope.osszeg = 0;
@@ -433,47 +434,59 @@
       // Set scope methods
       $scope.methods = {
         order: () => {
-          let data = util.objFilterByKeys($scope.model);
-          console.log(data);
   
           http.request({
             method: "POST",
             url: "./php/order.php",
-            data: data
-          })
-          .then(response => {
-            console.log(response);
-
-            if (response.affectedRows) {
-              $scope.osszeg = 0; // Reset total after order
-              $scope.rendelesID = response.lastInsertId;
-            } else {
-              alert("A rendelést nem sikerült elküldeni!");
-            }
-          })
-          .catch(e => alert(e));
-
-          http.request({
-            method: "POST",
-            url: "./php/setItems.php",
             data: {
-              items: $rootScope.cart,
-              orderID: $scope.rendelesID
+              name: $scope.model.name,
+              email: $scope.model.email,
+              address: $scope.model.address,
+              paymentMethod: $scope.model.paymentMethod,
+              cardName: $scope.model.cardName,
+              cardNumber: $scope.model.cardNumber,
+              cardExpiry: $scope.model.cardExpiry,
+              cardCVV: $scope.model.cardCVV,
+              osszeg: $scope.osszeg
+            }
+            
+          })
+          .then(response => {
+            console.log(response);
+          
+            if (response.affectedRows) {
+              $scope.osszeg = 0;
+              $scope.rendelesID = response.lastInsertId;
+              $scope.$applyAsync();
+          
+              return http.request({
+                method: "POST",
+                url: "./php/setItems.php",
+                data: {
+                  items: $rootScope.cart,
+                  orderID: response.lastInsertId
+                }
+              });
+            } else {
+              throw new Error("Order insert failed");
             }
           })
           .then(response => {
             console.log(response);
-
+          
             if (response.affectedRows) {
               alert("Rendelés sikeresen elküldve!");
               $state.go('home');
               $rootScope.cart = [];
+              $rootScope.$applyAsync();
             } else {
               alert("A termékeket nem sikerült feltölteni az adatbázisba!");
             }
           })
-          .catch(e => alert(e));
+          .catch(e => alert(e.message || e));
+
         },
+        
         cancel: () => {
           $state.go('home');
         }
@@ -525,14 +538,7 @@
           util.localStorage('set', 'phone', $rootScope.user.phone);
           util.localStorage('set', 'address', $rootScope.user.address);
 
-          alert(`Sikerült bejelentkezni!
-            Felhasználói adatok:
-            ID: ${$rootScope.user.id}
-            Név: ${$rootScope.user.name}
-            Email: ${$rootScope.user.email}
-            Országkód: ${$rootScope.user.countryCode}
-            Telefon: ${$rootScope.user.phone}
-            Lakcím: ${$rootScope.user.address}`);
+          alert(`Sikerült bejelentkezni!`);
 
           $state.go('home')
         })

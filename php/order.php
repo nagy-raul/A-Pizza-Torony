@@ -10,12 +10,11 @@ $args = Util::getArgs();
 // Csatlakozás a MySQL szerverhez
 $db = new Database();
 
-// SQL parancs beállítása
 $query = "INSERT INTO `rendelesek`(`nev`, `email`, `szalcim`, `fizform`, `kartyaNev`, `kartyaSzam`, `lejarat`, `cvv`, `vegossz`) 
-          VALUES (:name, :email, :address, :paymentMethod, :cardName, :cardNumber, :cardExpiry, :cardCVV, :osszeg)";
+          VALUES" . "('" . $args['name'] . "', '" . $args['email'] . "', '" . $args['address'] . "', '" . $args['paymentMethod'] . "', '" . $args['cardName'] . "', '" . $args['cardNumber'] . "', '" . $args['cardExpiry'] . "', '" . $args['cardCVV'] . "', " . $args['osszeg'] . ");";
 
 // SQL parancs végrehajtása
-$result = $db->execute($query, $args);
+$result = $db->execute($query);
 
 // Kapcsolat lezárása
 $db = null;
