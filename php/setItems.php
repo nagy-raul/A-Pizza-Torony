@@ -18,8 +18,15 @@ $rendelesID = $args['orderID'];
 foreach ($cart as $item) {
 
     // SQL parancs beállítása
-    $query = "INSERT INTO `rendeles_elemei`(`rendelesID`, `termekID`, `darab`, `ar`) 
-              VALUES (". $rendelesID . ", " . $item['id'] . ", " . $item['db'] . ", " . $item['price'] . ");";
+    $query = "INSERT INTO `rendeles_elemei`(
+                                             `rendelesID`, 
+                                             `termekID`, 
+                                             `darab`, 
+                                             `ar`) 
+              VALUES (". $rendelesID . ", " 
+                       . $item['id'] . ", " 
+                       . $item['db'] . ", " 
+                       . $item['price'] . ");";
 
     // SQL parancs végrehajtása
     $result = $db->execute($query);
