@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-// Állítsd be az argumentumokat
+// Argumentumok
 $_POST['data'] = '{
                     "name": "John Doe",
                     "email": "john@gmail.com",
@@ -14,5 +14,5 @@ $_POST['data'] = '{
                     "osszeg": 1000
                   }';
 
-// Töltsd be a php fájlt a hibakereséshez
+// A php fájl a hibakereséshez
 require_once('./order.php');
