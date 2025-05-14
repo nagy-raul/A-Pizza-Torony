@@ -186,6 +186,8 @@
 
       // Load the default language at startup
       $rootScope.loadLanguage($rootScope.language);
+
+      $rootScope.$applyAsync();
       
     }
   ])
@@ -406,6 +408,7 @@
       // Function to calculate total price
       $scope.calculateTotal = function() {
         $scope.osszeg = $scope.cart.reduce((total, item) => total + item.price, 0);
+        $scope.$applyAsync();
       };
   
       // Watch for cart changes and update the total
@@ -422,6 +425,7 @@
             email: util.localStorage('get', 'email'),
             address: util.localStorage('get', 'address')
           };
+          $scope.$applyAsync();
           form.focus();
           let now = new Date();
           let year = now.getFullYear();
@@ -518,6 +522,8 @@
       console.log('Login controller...');
 
       $scope.model = {email: util.localStorage('get', 'email')};
+      $scope.$applyAsync();
+
 
       $scope.login = () => {
         http.request({
@@ -532,6 +538,8 @@
           $rootScope.user.phone = response.telszam;
           $rootScope.user.address = response.lakcim;
 
+          $rootScope.$applyAsync();
+
           util.localStorage('set', 'id', $rootScope.user.id);
           util.localStorage('set', 'name', $rootScope.user.name);
           util.localStorage('set', 'email', $rootScope.user.email);
@@ -545,6 +553,7 @@
         })
         .catch(e => {
           $scope.model.password = null
+          $scope.$applyAsync();
 
           alert(e)
         })
@@ -598,6 +607,8 @@
               $rootScope.user.countryCode = $scope.model.countyCode;
               $rootScope.user.phone = $scope.model.phone;
               $rootScope.user.address = $scope.model.address;
+
+              $rootScope.$applyAsync();
     
               util.localStorage('set', 'id', $rootScope.user.id);
               util.localStorage('set', 'name', $rootScope.user.name);
@@ -650,6 +661,8 @@
 
           // Set model from rootscope model
           $scope.model = util.objMerge({}, $rootScope.user);
+          $scope.$applyAsync();
+
 
           // Get rest data
           methods.get();
@@ -742,6 +755,8 @@
 
               // Update user properties
               $rootScope.user = util.objMerge($rootScope.user, data, true);
+
+              $rootScope.$applyAsync();
 
               // Update local storage
               util.localStorage('set', 'name', $rootScope.user.name);

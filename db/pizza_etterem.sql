@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Ápr 29. 22:21
+-- Létrehozás ideje: 2025. Máj 14. 17:58
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -83,7 +83,8 @@ INSERT INTO `felhasznalok` (`felhasznaloID`, `nev`, `email`, `orszagkod`, `telsz
 (4, 'Csaba Selmeczi', 'csabaselmeczi@gmail.com', '36', '2087654321', '1108 Budapest, Kozma u. 13  ', 'Jelszo3', '2025-02-06 07:11:43'),
 (5, 'Raul', 'raul@gmail.com', '36', '301234567', '6900 Makó, Árpád u. 5', 'Jelszo0', '2025-02-10 12:05:17'),
 (7, 'Teszt Elek', 'tesztelek@gmail.com', '36', '7034567890', '6900, Makó, Gyöngy u. 8', 'Jelszo6', '2025-02-27 13:28:47'),
-(8, 'Tokai Gergő', 'tokaig@gmail.com', '36', '209399676', '6900 Barkó u. 12', 'Jelszo5', '2025-03-11 09:02:16');
+(8, 'Tokai Gergő', 'tokaig@gmail.com', '36', '209399676', '6900 Barkó u. 12', 'Jelszo5', '2025-03-11 09:02:16'),
+(9, 'B', 'a@gmail.com', '36', '555555555', '6900 Makó, Hagyma u. 11', 'Jelszo0', '2025-05-14 15:24:37');
 
 -- --------------------------------------------------------
 
@@ -171,8 +172,6 @@ CREATE TABLE `rendelesek` (
   `kartyaSzam` varchar(24) DEFAULT NULL,
   `lejarat` date DEFAULT NULL,
   `cvv` int(11) DEFAULT NULL,
-  `reszossz` int(11) NOT NULL,
-  `szalldij` int(11) NOT NULL,
   `vegossz` int(11) NOT NULL,
   `datum` timestamp NOT NULL DEFAULT current_timestamp(),
   `statusz` enum('függőben','szállításban','elszállítva','törölt') DEFAULT 'függőben'
@@ -182,10 +181,13 @@ CREATE TABLE `rendelesek` (
 -- A tábla adatainak kiíratása `rendelesek`
 --
 
-INSERT INTO `rendelesek` (`rendelesID`, `nev`, `email`, `szalcim`, `fizform`, `kartyaNev`, `kartyaSzam`, `lejarat`, `cvv`, `reszossz`, `szalldij`, `vegossz`, `datum`, `statusz`) VALUES
-(1, 'Nagy Raul', 'nagyraul@gmail.com', '6900 Makó, Hagyma utca 32.', 'készpénz', NULL, NULL, NULL, NULL, 2580, 100, 2480, '2025-02-06 07:11:43', 'függőben'),
-(2, 'Csaba Selmeczi', 'csabaselmeczi@gmail.com', '6900 Makó, Liget u. 34', '', 'CSABA SELMECZI', '2347 6534 5234 3454', '2026-02-11', 123, 2490, 150, 2670, '2025-02-06 07:11:43', 'függőben'),
-(3, 'Balázs Lehel', 'balazslehel@gmail.com', '6900 Makó, Kálvin u. 18', 'készpénz', NULL, NULL, NULL, NULL, 2980, 200, 2880, '2025-02-06 07:11:43', 'függőben');
+INSERT INTO `rendelesek` (`rendelesID`, `nev`, `email`, `szalcim`, `fizform`, `kartyaNev`, `kartyaSzam`, `lejarat`, `cvv`, `vegossz`, `datum`, `statusz`) VALUES
+(1, 'Nagy Raul', 'nagyraul@gmail.com', '6900 Makó, Hagyma utca 32.', 'készpénz', NULL, NULL, NULL, NULL, 2480, '2025-02-06 07:11:43', 'függőben'),
+(2, 'Csaba Selmeczi', 'csabaselmeczi@gmail.com', '6900 Makó, Liget u. 34', 'bankkártya', 'CSABA SELMECZI', '2347 6534 5234 3454', '2026-02-11', 123, 2670, '2025-02-06 07:11:43', 'függőben'),
+(3, 'Balázs Lehel', 'balazslehel@gmail.com', '6900 Makó, Kálvin u. 18', 'készpénz', NULL, NULL, NULL, NULL, 2880, '2025-02-06 07:11:43', 'függőben'),
+(4, 'Nagy Raul', 'nagyraul@gmail.com', '6900 Makó, Hagyma utca 32.', 'készpénz', '', '', '0000-00-00', 0, 31840, '2025-05-13 14:21:30', 'függőben'),
+(5, 'Nagy Raul', 'nagyraul@gmail.com', '6900 Makó, Hagyma utca 32.', 'készpénz', '', '', '0000-00-00', 0, 17910, '2025-05-13 14:25:57', 'függőben'),
+(6, 'Balázs Lehel', 'balazslehel@gmail.com', '6900 Makó, Kálvin u. 18', 'bankkártya', 'BALÁZS LEHEL', '1234123412341234', '2026-06-18', 123, 5970, '2025-05-13 14:31:06', 'függőben');
 
 -- --------------------------------------------------------
 
@@ -211,7 +213,14 @@ INSERT INTO `rendeles_elemei` (`rendelesElemeID`, `rendelesID`, `termekID`, `dar
 (3, 3, 3, 5, 9950),
 (4, 4, 4, 8, 15920),
 (5, 5, 6, 9, 17910),
-(6, 6, 5, 4, 7960);
+(6, 6, 5, 4, 7960),
+(7, 4, 1, 4, 7960),
+(8, 4, 2, 3, 5970),
+(9, 4, 3, 9, 17910),
+(10, 5, 1, 3, 5970),
+(11, 5, 2, 3, 5970),
+(12, 5, 3, 3, 5970),
+(13, 6, 1, 3, 5970);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -271,7 +280,7 @@ ALTER TABLE `asztalfoglalasok`
 -- AUTO_INCREMENT a táblához `felhasznalok`
 --
 ALTER TABLE `felhasznalok`
-  MODIFY `felhasznaloID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `felhasznaloID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT a táblához `kapcsolat`
@@ -289,13 +298,13 @@ ALTER TABLE `pizza`
 -- AUTO_INCREMENT a táblához `rendelesek`
 --
 ALTER TABLE `rendelesek`
-  MODIFY `rendelesID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `rendelesID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT a táblához `rendeles_elemei`
 --
 ALTER TABLE `rendeles_elemei`
-  MODIFY `rendelesElemeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `rendelesElemeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
